@@ -299,17 +299,17 @@
         })
 
 
-        // false, true, false, true, false, true
+        // false, true, false, true, true, true
         function logger_stop_button (event) {
             if(started_tracking){
                 clearTimeout(response_timeout);
 
                 clearTimeout(moved_before_timeout);
-                if (event && practice_mode && moved_before_400ms && (([1,3,5].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2,4].indexOf(exp_pointer) > -1  && event.target.id=="false"))) {
+                if (event && practice_mode && moved_before_400ms && (([1,3,4,5].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2].indexOf(exp_pointer) > -1  && event.target.id=="false"))) {
                     warner = "Good!"
-                } else if (event && practice_mode && (([1,3,5].indexOf(exp_pointer) > -1 && event.target.id!="true") || ([0,2,4].indexOf(exp_pointer) > -1 && event.target.id!="false"))) {
+                } else if (event && practice_mode && (([1,3,4,5].indexOf(exp_pointer) > -1 && event.target.id!="true") || ([0,2].indexOf(exp_pointer) > -1 && event.target.id!="false"))) {
                     warner = "Incorrect!"
-                } else if (event && practice_mode && !moved_before_400ms && (([1,3,5].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2,4].indexOf(exp_pointer) > -1 && event.target.id=="false"))) {
+                } else if (event && practice_mode && !moved_before_400ms && (([1,3,4,5].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2].indexOf(exp_pointer) > -1 && event.target.id=="false"))) {
                     warner = "Please, start moving the mouse earlier."
                 }
                 document.body.removeEventListener('mousemove', record_mouse)
