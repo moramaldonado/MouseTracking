@@ -231,16 +231,38 @@
                         document.getElementsByTagName('p')[0].innerHTML = 'Giants are small.';
                         console.log(exp_pointer);
                         break;
+
                     case 1:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Giants are tall.';
                         console.log(exp_pointer);
                         break;
+
                     case 2:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Skyscrapers are not tall.';
                         console.log(exp_pointer);
                         break;
+
+
+                    case 3:
+                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
+                        document.getElementsByTagName('p')[0].innerHTML = 'Skyscrapers are tall.';
+                        console.log(exp_pointer);
+                        break;
+
+                    case 4:
+                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
+                        document.getElementsByTagName('p')[0].innerHTML = 'Cars have no wings.';
+                        console.log(exp_pointer);
+                        break;
+
+                    case 5:
+                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
+                        document.getElementsByTagName('p')[0].innerHTML = 'Cars have wheels.';
+                        console.log(exp_pointer);
+                        break;
+
 
                 }
                 else{
@@ -277,16 +299,17 @@
         })
 
 
-        // true, false
+        // false, true, false, true, false, true
         function logger_stop_button (event) {
             if(started_tracking){
                 clearTimeout(response_timeout);
+
                 clearTimeout(moved_before_timeout);
-                if (event && practice_mode && moved_before_400ms && ((exp_pointer===1 && event.target.id=="true") || (exp_pointer!==1 && event.target.id=="false"))) {
+                if (event && practice_mode && moved_before_400ms && (([1,3,5].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2,4].indexOf(exp_pointer) > -1  && event.target.id=="false"))) {
                     warner = "Good!"
-                } else if (event && practice_mode && ((exp_pointer===1 && event.target.id!="true") || (exp_pointer!==1 && event.target.id!="false"))) {
+                } else if (event && practice_mode && (([1,3,5].indexOf(exp_pointer) > -1 && event.target.id!="true") || ([0,2,4].indexOf(exp_pointer) > -1 && event.target.id!="false"))) {
                     warner = "Incorrect!"
-                } else if (event && practice_mode && !moved_before_400ms && ((exp_pointer===1 && event.target.id=="true") || (exp_pointer!==1 && event.target.id=="false"))) {
+                } else if (event && practice_mode && !moved_before_400ms && (([1,3,5].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2,4].indexOf(exp_pointer) > -1 && event.target.id=="false"))) {
                     warner = "Please, start moving the mouse earlier."
                 }
                 document.body.removeEventListener('mousemove', record_mouse)
@@ -359,14 +382,14 @@
                 {"B/S":
                 {"T":{"P": ["Bears are big.", "Hippopotamuses are big."],
                      "N":["Mice are small.", "Ants are small."]},
-                 "F":{"P":["Mice are big.", "Ants are big"],
+                 "F":{"P":["Mice are big.", "Ants are big."],
                      "N":["Bears are small.", "Hippopotamuses are small."]}},
 
                 "B/D":
                 {"T":{"P": ["Daylight is bright.", "Stars are bright."],
                     "N":["Wells are dark.", "Caves are dark."]},
-                "F":{"P": ["Wells is bright.", "Caves are bright."],
-                    "N":["Daylight are dark.", "Stars are dark."]},},
+                "F":{"P": ["Wells are bright.", "Caves are bright."],
+                    "N":["Daylight is dark.", "Stars are dark."]},},
 
                 "F/S":
                 {"T":{"P": ["Hares are fast.", "Falcons are fast."],
@@ -375,8 +398,8 @@
                     "N":["Hares are slow.", "Falcons are slow."]},},
                 "H/C":
                 {"T":{"P": ["Bonfires are hot.", "Lava is hot."],
-                        "N":["Ice-cream is cold.", "Freezers are cold."]},
-                    "F":{"P": ["Ice-cream is hot.", "Freezers are hot."],
+                        "N":["Ice cream is cold.", "Freezers are cold."]},
+                    "F":{"P": ["Ice cream is hot.", "Freezers are hot."],
                         "N":["Bonfires are cold.", "Lava is cold."]},},
 
                     "L/Q":
@@ -396,7 +419,7 @@
             {"1": {"T":{"P":"Dogs are mammals.",
                 "N":"Dogs are not reptiles."},
 
-                "F":{"P":"Dogs are reptiles",
+                "F":{"P":"Dogs are reptiles.",
                     "N":"Dogs are not mammals."}},
 
                 "2": {"T":{"P":"Blood is red.",

@@ -45,7 +45,7 @@ function Template(templates, elements, data, callback, finished) {
             i = 1;*/
 /*        if(i==4 && exp_pointer < 3)
             i = 3;*/
-        if(i==4 && exp_pointer <2)
+        if(i==4 && exp_pointer < 5)
             i=3;
         if(i==6 && exp_pointer < order.length-1)
             i = 5;
