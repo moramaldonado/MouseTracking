@@ -1,17 +1,29 @@
 [{
   "template": "simple",
   "title": "Informed Consent Form",
-  "text": "<p><strong>Description of the study:</strong></p><p>This is an experiment about English sentences. It will take about 15 minutes to complete, and you will be compensated by the amount indicated on Amazon MTurk.</p><p><strong>Risks, Benefits, and Confidentiality:</strong></p><p>There are no known risks and you will not receive any benefit for participating in the study. All of your responses will be held anonymously. Only the researchers involved in this study and those responsible for research oversight will have access to the information you provide. Your data and information will be completely confidential.</p><p><strong>Experimenter:</strong></p><p>If you have any questions or concerns about any aspect of the study, please contact Emmanuel Chemla, <a href=\"mailto:chemla@ens.fr\">chemla@ens.fr</a></p>",
+  "text": "<p><strong>Description of the study:</strong></p><p>This is an experiment about English sentences. It will take about 20 minutes to complete, and you will be compensated by the amount indicated on Amazon MTurk.</p><p><strong>Risks, Benefits, and Confidentiality:</strong></p><p>There are no known risks and you will not receive any benefit for participating in the study. All of your responses will be held anonymously. Only the researchers involved in this study and those responsible for research oversight will have access to the information you provide. Your data and information will be completely confidential.</p><p><strong>Experimenter:</strong></p><p>If you have any questions or concerns about any aspect of the study, please contact Mora Maldonado, <a href=\"mailto:mora.maldonado@ens.fr\">mora.maldonado@ens.fr</a></p>",
   "input": "{checkbox}",
   "checkbox_id": "checkbox_id",
   "check_text": "I agree"
 }, {
   "template": "simple",
   "title": "Instructions",
-  "text": "<p><strong>Thank you for your participation.</strong></p><p>In this experiment, you will see ... </p>",
+  "text": "<p><strong>Thank you for your participation.</strong></p><p>In this experiment, your task is to read a series of statements and decide to which extent the statement is a true description of the world.</p><p>At each time, you have to click \"START\" in order to see the statement.</p><p>Once that you make this first click, please answer as fast as you can. If you take too much time to respond, an alert message will be displayed.</p><p>We ask you, when possible, to use a computer mouse to perform the experiment.</p><p>Let us consider some examples... </p>",
   "input": "{single_button}",
   "button_text": "Next"
 },
+
+
+  {
+    "template": "simple",
+    "title": "Examples",
+    "text": "<p><center><big> Skyscrapers are tall.</big></center></p>Most people agree that one of the main characteristics of skyscrapers is being tall. We can then consider that this statement is a true description of the world.</p> <p>We could also have the reversed situation:</p><p><center><big>Dwarfs are tall.</big></center></p> <p> Most people agree that dwarfs are typically not tall, but short. We can then consider that the statement is a false description of the world.</p> <p>Now, you're ready to start the practice.</p>",
+    "input": "{single_button}",
+    "button_text": "Start"
+  },
+
+
+
   {
     "template": "experiment",
     "is_practice": "true"

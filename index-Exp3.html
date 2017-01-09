@@ -126,7 +126,7 @@
     function trial_structure(){
         var truth_value = ["T", "F"];
         var polarity = ["P", "N"];
-        var adjective = ["B/S"];
+        var adjective = ["B/S", "B/D", "H/C", "F/S", "L/Q"];
         var trial_type = ['EI', 'CI']; // ExperimentalItem vs. ControlItem
         var trials = [];
         var order = '';
@@ -228,12 +228,17 @@
                 if(practice_mode) switch (exp_pointer) {
                     case 0:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
-                        document.getElementsByTagName('p')[0].innerHTML = 'prueba1';
+                        document.getElementsByTagName('p')[0].innerHTML = 'Giants are small.';
                         console.log(exp_pointer);
                         break;
                     case 1:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
-                        document.getElementsByTagName('p')[0].innerHTML = 'prueba2';
+                        document.getElementsByTagName('p')[0].innerHTML = 'Giants are tall.';
+                        console.log(exp_pointer);
+                        break;
+                    case 2:
+                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
+                        document.getElementsByTagName('p')[0].innerHTML = 'Skyscrapers are not tall.';
                         console.log(exp_pointer);
                         break;
 
@@ -272,15 +277,18 @@
         })
 
 
-        // false, false, false, true
+        // true, false
         function logger_stop_button (event) {
             if(started_tracking){
                 clearTimeout(response_timeout);
                 clearTimeout(moved_before_timeout);
-                if (event && practice_mode && !moved_before_400ms && ((exp_pointer===0 && event.target.id=="true") || (exp_pointer!==0 && event.target.id=="false"))) {
+                if (event && practice_mode && moved_before_400ms && ((exp_pointer===1 && event.target.id=="true") || (exp_pointer!==1 && event.target.id=="false"))) {
+                    warner = "Good!"
+                } else if (event && practice_mode && ((exp_pointer===1 && event.target.id!="true") || (exp_pointer!==1 && event.target.id!="false"))) {
+                    warner = "Incorrect!"
+                } else if (event && practice_mode && !moved_before_400ms && ((exp_pointer===1 && event.target.id=="true") || (exp_pointer!==1 && event.target.id=="false"))) {
                     warner = "Please, start moving the mouse earlier."
                 }
-
                 document.body.removeEventListener('mousemove', record_mouse)
                 console.log(mouse_log);
                 // next
@@ -348,25 +356,62 @@
         var stimuli = {
             "type": "EI",
             "adjectives":
-            {"B/S":
-                {"T":{"P": ["Bears are big", "Elephants are big"],
-                     "N":["Mice are small", "Ants are small"]},
-                 "F":{"P":["Mice are big", "Ants are big"],
-                     "N":["Bears are small", "Elephants are small"]}
-                }
-            }
-        };
+                {"B/S":
+                {"T":{"P": ["Bears are big.", "Hippopotamuses are big."],
+                     "N":["Mice are small.", "Ants are small."]},
+                 "F":{"P":["Mice are big.", "Ants are big"],
+                     "N":["Bears are small.", "Hippopotamuses are small."]}},
+
+                "B/D":
+                {"T":{"P": ["Daylight is bright.", "Stars are bright."],
+                    "N":["Wells are dark.", "Caves are dark."]},
+                "F":{"P": ["Wells is bright.", "Caves are bright."],
+                    "N":["Daylight are dark.", "Stars are dark."]},},
+
+                "F/S":
+                {"T":{"P": ["Hares are fast.", "Falcons are fast."],
+                    "N":["Turtles are slow.", "Snails are slow."]},
+                "F":{"P": ["Turtles are fast.", "Snails are fast."],
+                    "N":["Hares are slow.", "Falcons are slow."]},},
+                "H/C":
+                {"T":{"P": ["Bonfires are hot.", "Lava is hot."],
+                        "N":["Ice-cream is cold.", "Freezers are cold."]},
+                    "F":{"P": ["Ice-cream is hot.", "Freezers are hot."],
+                        "N":["Bonfires are cold.", "Lava is cold."]},},
+
+                    "L/Q":
+                {"T":{"P": ["Drums are loud.", "Traffic is loud."],
+                        "N":["Waterfalls are quiet.", "Whispers are quiet."]},
+
+                    "F":{"P": ["Waterfalls are loud.", "Whispers are loud."],
+                        "N":["Drums are quiet.", "Traffic is quiet."]}},
+
+
+        } };
 
 
         var controls = {
             "type": "controls",
             "tokens":
-            {"1":
-            {"T":{"P":"Dogs are animals.",
-                "N":"Dogs are not vegetables."},
-                "F":{"P":"Dogs are vegetables",
-                    "N":"Dogs are not animals"}
-            }
+            {"1": {"T":{"P":"Dogs are mammals.",
+                "N":"Dogs are not reptiles."},
+
+                "F":{"P":"Dogs are reptiles",
+                    "N":"Dogs are not mammals."}},
+
+                "2": {"T":{"P":"Blood is red.",
+                    "N":"Blood is not green."},
+
+                    "F":{"P":"Blood is green.",
+                        "N":"Blood is not red."}},
+
+                "3": {"T":{"P":"Apples are fruits.",
+                    "N":"Apples are not insects."},
+
+                    "F":{"P":"Apples are insects",
+                        "N":"Apples are not fruits."}},
+
+
             }
         };
 
@@ -378,7 +423,7 @@
         }
         else
             {
-            setup.scontrol.sentence = controls.tokens["1"][setup.truth_condition][setup.polarity];
+            setup.scontrol.sentence = controls.tokens[setup.adjective][setup.truth_condition][setup.polarity];
         }
 
         console.log('trial of type (adj, truth, polarity): '+adjective+'-'+truth_condition+'-'+polarity)

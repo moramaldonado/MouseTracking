@@ -45,13 +45,13 @@ function Template(templates, elements, data, callback, finished) {
             i = 1;*/
 /*        if(i==4 && exp_pointer < 3)
             i = 3;*/
-        if(i==3 && exp_pointer <1)
-            i=2;
-        if(i==5 && exp_pointer < order.length-1)
-            i = 4;
+        if(i==4 && exp_pointer <2)
+            i=3;
+        if(i==6 && exp_pointer < order.length-1)
+            i = 5;
         fillTemplatePointer = i;
         console.log(i);
-        if (i == experiment.length-3) finished();
+        if (i == experiment.length-4) finished();
         return fillTemplate((experiment[i].template?templates[experiment[i].template]:templates.default), elements, experiment[i]);
     }
     this.fillNextTemplate = function() {
