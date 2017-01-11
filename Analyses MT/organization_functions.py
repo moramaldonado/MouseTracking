@@ -125,8 +125,8 @@ def information(all_trials,names,points_per_trial):
         total_time.append(m)
     
         all_trials[i][-2]['subject'] = i
-        all_trials[i][-2]['experiment'] = all_trials[i][0]['data']['design']['exp']
-        all_trials[i][-2]['strategy'] = all_trials[i][-1]['strategy']
+        #all_trials[i][-2]['experiment'] = all_trials[i][0]['data']['design']['exp']
+        #all_trials[i][-2]['strategy'] = all_trials[i][-1]['strategy']
         all_trials[i][-2]['total_time'] = m
         all_trials[i][-2]['file'] = names[i]
         all_trials[i][-2]['points']= points_per_trial[i]
@@ -152,44 +152,40 @@ def organization_trials(all_trials):
             all_trials[i][t]['subject'] = i
             all_trials[i][t]['RT'] = all_trials[i][t]['data']['end_track'] - all_trials[i][t]['data']['start_track']
             all_trials[i][t]['delaySTART'] = all_trials[i][t]['data']['start_track'] - all_trials[i][t]['data']['start_time']
-            all_trials[i][t]['experiment'] = all_trials[i][t]['data']['design']['exp']
-            all_trials[i][t]['block'] = all_trials[i][t]['data']['design']['block']
-            all_trials[i][t]['timing'] = all_trials[i][t]['data']['design']['timing']
-            all_trials[i][t]['target'] = all_trials[i][t]['data']['design']['target']
             all_trials[i][t]['type'] = all_trials[i][t]['data']['item']['type']
     #        if all_trials[i][t]['data']['item']['vignette']['target'] == 'filler':
     #            all_trials[i][t]['type'] = 'filler'
 
+
+
+
+
+
+
             if all_trials[i][t]['data']['item']['type'] == 'practice':
+                all_trials[i][t]['polarity'] = 'null'
                 all_trials[i][t]['expected_response'] = 'null'
-            else: 
-                all_trials[i][t]['expected_response'] = str(all_trials[i][t]['target'])
-         
-            # if t == 0:
-            #     all_trials[i][t]['previous.condition'] = '0'
-            # else:
-            #
-            #     all_trials[i][t]['previous.condition'] = all_trials[i][t-1]['condition']
-            #     if all_trials[i][t-1]['type'] == 'controlp' or all_trials[i][t-1]['type'] == 'controln':
-            #         all_trials[i][t]['previous.condition'] = 'control'
-            #     if all_trials[i][t-1]['type'] == 'starget' and all_trials[i][t-1]['expected_response'] == 'False':
-            #         all_trials[i][t]['previous.condition'] = 'filler'
-            #
-
-            if all_trials[i][t]['expected_response'] == all_trials[i][t]['value']:
-                all_trials[i][t]['accuracy'] = 1
+                #all_trials[i][t]['sentence'] = 'null'
+                all_trials[i][t]['adjective'] = 'null'
+                all_trials[i][t]['accuracy'] = 'null'
             else:
-                all_trials[i][t]['accuracy'] = 0
-            #
-            # if t == 0:
-            #
-            #     all_trials[i][t]['previous.accuracy'] = 'null'
-            # else:
-            #     all_trials[i][t]['previous.accuracy'] = all_trials[i][t-1]['accuracy']
+                all_trials[i][t]['polarity'] = all_trials[i][t]['data']['design']['polarity']
+                all_trials[i][t]['adjective'] = all_trials[i][t]['data']['design']['adjective']
+               # all_trials[i][t]['sentence'] = all_trials[i][t]['data']['starget']['sentence']
 
-            acc = acc + all_trials[i][t]['accuracy']
+                if all_trials[i][t]['data']['design']['truth_condition'] == 'F':
+                    all_trials[i][t]['expected_response'] = 'false'
+                elif all_trials[i][t]['data']['design']['truth_condition'] == 'T':
+                    all_trials[i][t]['expected_response'] = 'true'
 
-        print 'subject:'+str(i) +',correct:'+ str(acc)+',experiment:'+all_trials[i][1]['experiment']
+                if all_trials[i][t]['expected_response'] == all_trials[i][t]['value']:
+                    all_trials[i][t]['accuracy'] = 1
+                else:
+                    all_trials[i][t]['accuracy'] = 0
+
+                acc = acc + all_trials[i][t]['accuracy']
+
+        print 'subject:'+str(i) +',correct:'+ str(acc)
 
     return all_trials
 

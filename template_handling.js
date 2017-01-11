@@ -51,7 +51,7 @@ function Template(templates, elements, data, callback, finished) {
             i = 5;
         fillTemplatePointer = i;
         console.log(i);
-        if (i == experiment.length-4) finished();
+        if (i == experiment.length-3) finished();
         return fillTemplate((experiment[i].template?templates[experiment[i].template]:templates.default), elements, experiment[i]);
     }
     this.fillNextTemplate = function() {

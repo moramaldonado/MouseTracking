@@ -335,10 +335,10 @@
         var report_type;
         if(practice_mode) report_type = "practice";
         else switch (order[exp_pointer].substring(0,2)) {
-            case 'CN':
+            case 'CI':
                 report_type = "Control";
                 break;
-            default:
+            case 'EI':
                 report_type = "EI";
                 break;
         }
@@ -414,7 +414,7 @@
 
 
         var controls = {
-            "type": "controls",
+            "type": "CI",
             "tokens":
             {"1": {"T":{"P":"Dogs are mammals.",
                 "N":"Dogs are not reptiles."},
@@ -457,7 +457,7 @@
 
 
  function expectations_from_case (truth, setup) {
-        var setup = setup || {starget:{},controlp:{},controln:{}};
+        var setup = setup || {starget:{},scontrol:{}};
         if (truth==='F') {
             setup.starget.expectation = false
             setup.scontrol.expectation = false

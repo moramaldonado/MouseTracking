@@ -31,7 +31,6 @@ info, total_time = information(all_trials,names,points_per_trial) #subject infor
 print ">>>> information per subject taken"
 
 all_trials = organization_trials(all_trials)
-print all_trials[0][0]
 print ">>>> trial information organized"
 
 #minutes taken to complete the task (in minutes)
@@ -53,8 +52,8 @@ all_trials = acceleration_normalized(all_trials)
 print ">>>> acceleration done"
 
 ##False == A, True==B
-all_trials = euclidean_distance(all_trials,'A')
-all_trials = euclidean_distance(all_trials,'B')
+all_trials = euclidean_distance(all_trials,'false')
+all_trials = euclidean_distance(all_trials,'true')
 print ">>>> euclidean distance done"
 
 all_trials = total_length(all_trials)
