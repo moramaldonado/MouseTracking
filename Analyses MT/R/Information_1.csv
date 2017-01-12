@@ -1,2 +1,0 @@
-Subject,Experiment,File,Gender,Age,Total.time,Points,Clicker,Handeness,Language,Mobile,Normalized_button,Portrait,Strategy,Touch,User-agent,Window
-0,1,727549772-1474273919.json,f,28,1.3166666666666667,"[40, 55, 17]",trackpad,right,Spanish,False,"{'y': 0.19080207203940702, 'x': -0.33326547561442377}",False,,False,"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36",1164

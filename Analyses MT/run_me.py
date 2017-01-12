@@ -101,12 +101,12 @@ all_trials = integrate_x('max_smooth_acceleration',all_trials)
 
 #exporting the data for R
 pathR = path+'/R'
-exporting_data(pathR,all_trials, '1', info)
+exporting_data(pathR,all_trials, info)
 print ">>>> data exported in csv for R"
 
+print info[0]
 
 
-
-#plot_per_subject(0,all_trials,info,'A','normalized_positions','red')
-#plot_per_subject(0,all_trials,info,'B','normalized_positions','green')
+plot_per_subject(0,all_trials,info,'true','normalized_positions','red')
+plot_per_subject(0,all_trials,info,'false','normalized_positions','green')
 

@@ -3,15 +3,16 @@
 # Created on Sat Apr 18 00:17:22 2015
 #
 # @author: moramaldonado
-# """
-# from analyses_MT import *
-# import matplotlib.pyplot as plt
-# from matplotlib.patches import Rectangle
-# from mpl_toolkits.axes_grid1 import host_subplot
-# import mpl_toolkits.axisartist as AA
-# import os
-#
-#
+
+
+from analyses_MT import *
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+from mpl_toolkits.axes_grid1 import host_subplot
+import mpl_toolkits.axisartist as AA
+import os
+
+
 #
 #
 # def plot_acc(a,b):
@@ -188,43 +189,43 @@
 #     plt.ylabel("Y coordenate")
 #     plt.title(title)
 #
-# def plot_per_subject(subject, all_trials, info, expected_response, data_type, color):
-#     startX, startY = 0, 0
-#     falseX, falseY = -1, 1
-#     trueX, trueY = 1, 1
-#     x = info[subject]['normalized_button_size']['x']
-#     y = info[subject]['normalized_button_size']['y']
-#
-#     currentAxis = plt.gca()
-#
-#     currentAxis.add_patch(Rectangle((startX -(x/2), startY - y ), x, y, ec='b', fill=False))
-#     currentAxis.add_patch(Rectangle((falseX - x, falseY), x, y, ec='b', fill=False))
-#     currentAxis.add_patch(Rectangle((trueX, trueY ), x, y, ec='b', fill=False))
-#
-#     #plt.axis([-1-x-.25, 1+x+.25, 0-y , 1+y+.1])
-#     plt.ylabel('y coordenate')
-#     plt.xlabel('x coordenate')
-#     title = data_type
-#     plt.title(title)
-#     plt.text(1+(x/2),1+(y/2),'B')
-#     plt.text(-1-(x/2),1+(y/2),'A')
-#
-#     for t in range(len(all_trials[subject])):
-#         px = []
-#         py = []
-#
-#         if all_trials[subject][t]['accuracy'] == 1 and all_trials[subject][t]['expected_response']== expected_response and all_trials[subject][t][data_type] != 'NA':
-#             for i in range(len(all_trials[subject][t][data_type])):
-#                 px.append(all_trials[subject][t][data_type][i][0])
-#                 py.append(all_trials[subject][t][data_type][i][1])
-#
-#             plt.plot(px,py,color)
-#
-#
-#     plt.plot(0,0,'go')
-#     plt.show()
-#
-#
+def plot_per_subject(subject, all_trials, info, expected_response, data_type, color):
+    startX, startY = 0, 0
+    falseX, falseY = -1, 1
+    trueX, trueY = 1, 1
+    x = info[subject]['normalized_button_size']['x']
+    y = info[subject]['normalized_button_size']['y']
+
+    currentAxis = plt.gca()
+
+    currentAxis.add_patch(Rectangle((startX -(x/2), startY - y ), x, y, ec='b', fill=False))
+    currentAxis.add_patch(Rectangle((falseX - x, falseY), x, y, ec='b', fill=False))
+    currentAxis.add_patch(Rectangle((trueX, trueY ), x, y, ec='b', fill=False))
+
+    #plt.axis([-1-x-.25, 1+x+.25, 0-y , 1+y+.1])
+    plt.ylabel('y coordenate')
+    plt.xlabel('x coordenate')
+    title = data_type
+    plt.title(title)
+    plt.text(1+(x/2),1+(y/2),'true')
+    plt.text(-1-(x/2),1+(y/2),'false')
+
+    for t in range(len(all_trials[subject])):
+        px = []
+        py = []
+
+        if all_trials[subject][t]['accuracy'] == 1 and all_trials[subject][t]['expected_response']== expected_response and all_trials[subject][t][data_type] != 'NA':
+            for i in range(len(all_trials[subject][t][data_type])):
+                px.append(all_trials[subject][t][data_type][i][0])
+                py.append(all_trials[subject][t][data_type][i][1])
+
+            plt.plot(px,py,color)
+
+
+    plt.plot(0,0,'go')
+    plt.show()
+
+
 # def super_plot(subject,all_trials,info,data_type,experiment):
 #     name = str(subject)+'_ALL'
 #     plt.title(name)

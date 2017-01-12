@@ -87,7 +87,7 @@ def acceleration_normalized(all_trials):
 #   OUTPUT: list of distances: all_trials[euclidean_distance_response1],all_trials[euclidean_distance_response2]
 def euclidean_distance(all_trials, value):
     name = 'euclidean_distance_' + value
-    if value == 'True' or value=='B':
+    if value == 'true' or value=='B':
         x2 = 1
         y2 = 1
     else:
@@ -142,8 +142,8 @@ def difference(all_trials):  # distance to expected response - distance to alter
             difference = []
             if all_trials[s][t]['value'] != '--':
                 if all_trials[s][t]['value'] == 'true':
-                    target = 'euclidean_distance_True'
-                    alternative = 'euclidean_distance_False'
+                    target = 'euclidean_distance_true'
+                    alternative = 'euclidean_distance_false'
                 elif all_trials[s][t]['value'] == 'A':
                     target = 'euclidean_distance_A'
                     alternative = 'euclidean_distance_B'
@@ -151,8 +151,8 @@ def difference(all_trials):  # distance to expected response - distance to alter
                     target = 'euclidean_distance_B'
                     alternative = 'euclidean_distance_A'
                 else:
-                    target = 'euclidean_distance_False'
-                    alternative = 'euclidean_distance_True'
+                    target = 'euclidean_distance_false'
+                    alternative = 'euclidean_distance_true'
 
                 for i in range(len(all_trials[s][t][target])):
                     a = all_trials[s][t][target][i]
@@ -176,8 +176,8 @@ def ratio(all_trials):
             ratio =[]
             if all_trials[s][t]['value'] != '--':
                 if all_trials[s][t]['value'] == 'true':
-                    target = 'euclidean_distance_True'
-                    alternative = 'euclidean_distance_False'
+                    target = 'euclidean_distance_true'
+                    alternative = 'euclidean_distance_false'
                 elif all_trials[s][t]['value'] == 'A':
                     target = 'euclidean_distance_A'
                     alternative = 'euclidean_distance_B'
@@ -185,8 +185,8 @@ def ratio(all_trials):
                     target = 'euclidean_distance_B'
                     alternative = 'euclidean_distance_A'
                 else:
-                    target = 'euclidean_distance_False'
-                    alternative = 'euclidean_distance_True'
+                    target = 'euclidean_distance_false'
+                    alternative = 'euclidean_distance_true'
                 for i in range(len(all_trials[s][t][target])):
                     a = all_trials[s][t][target][i]
                     if a < 0.01:

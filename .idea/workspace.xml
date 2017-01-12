@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc92f62b-b90d-4f7a-a746-17fca9b24186" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Analyses MT/.idea/Analyses MT.iml" afterPath="$PROJECT_DIR$/Analyses MT/.idea/Analyses MT.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Analyses MT/.idea/misc.xml" afterPath="$PROJECT_DIR$/Analyses MT/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Analyses MT/.idea/workspace.xml" afterPath="$PROJECT_DIR$/Analyses MT/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Analyses MT/organization_functions.py" afterPath="$PROJECT_DIR$/Analyses MT/organization_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Analyses MT/run_me.py" afterPath="$PROJECT_DIR$/Analyses MT/run_me.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-Exp3.html" afterPath="$PROJECT_DIR$/index-Exp3.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template_handling.js" afterPath="$PROJECT_DIR$/template_handling.js" />
-    </list>
+    <list default="true" id="cc92f62b-b90d-4f7a-a746-17fca9b24186" name="Default" comment="" />
     <ignored path="negationMT.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
