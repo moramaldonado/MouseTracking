@@ -41,14 +41,14 @@ function Template(templates, elements, data, callback, finished) {
 
     //logic
     this.fillTemplate = function(i) {
-/*        if(i==3 && exp_pointer < 1)
-            i = 1;*/
-/*        if(i==4 && exp_pointer < 3)
-            i = 3;*/
-        if(i==4 && exp_pointer < 5)
-            i=3;
-        if(i==6 && exp_pointer < order.length-1)
-            i = 5;
+        if (i==4 && exp_pointer < 5)
+               i=3;
+
+        if(i==6 && exp_pointer < 11)
+            i=5;
+
+        if(i==8 && exp_pointer < order.length-1)
+            i = 7;
         fillTemplatePointer = i;
         console.log(i);
         if (i == experiment.length-3) finished();
@@ -110,6 +110,7 @@ function next_page(n, data){
             document.body.innerHTML = myTemplate.fillNextTemplate();
         setup_new_page();
     }).bind(undefined, n), ((data && data.pause)?(Math.random()+1)*250:0))
+    console.log(n)
 }
 
 //debug

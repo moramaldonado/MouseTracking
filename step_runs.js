@@ -14,6 +14,12 @@ function setup_new_page () {
         var run_type = all_items_for_a_run[i].getAttribute('data-run');
 
         switch (run_type) {
+
+            case "calibration_run":
+                extra_data.item = initialize_calibration();
+                extra_data.start_time = Date.now();
+                break;
+
             case "experimental_design":
                 extra_data.item = initialize();
                 extra_data.start_time = Date.now();

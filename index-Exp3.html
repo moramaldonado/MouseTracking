@@ -20,6 +20,20 @@
         text-align: center;
     }
 
+    [data-run=calibration_run]{
+        width: 120vh;
+        height: 100vh;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        -webkit-transform: translateX(-50%);transform: translateX(-50%);
+
+        font-size: 5vh;
+        text-align: center;
+    }
+    [data-run=calibrarion_run].invisible #points {
+        visibility: hidden;
+    }
 
     [data-run=experimental_design]{
         width: 120vh;
@@ -32,6 +46,16 @@
         font-size: 5vh;
         text-align: center;
     }
+
+    .exp_des_button_2{
+        padding: 1em;
+        width: 5em;
+        font-size: .75em;
+        display: inline-block;
+        position: absolute;
+        cursor: pointer;
+      }
+
     .exp_des_button{
         box-shadow: inset 0 0 0 1px black;
         padding: 1em;
@@ -69,9 +93,22 @@
         height: 100%;
         width: 100%;
     }
-    [data-run=experimental_design].invisible #sentence, [data-run=experimental_design].invisible #card{
+
+    [data-run=experimental_design] canvas#points{
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    [data-run=experimental_design].invisible #sentence {
         visibility: hidden;
     }
+
+
+
     #warning{
         position: absolute;
         left: 0;
@@ -84,6 +121,8 @@
         -webkit-animation: fade .5s ease-in;
         animation: fade .5s ease-in;
     }
+
+
 
     @-webkit-keyframes fade { from { background-color: red; } to { background-color: transparent; }  }
     @keyframes fade { from { background-color: red; } to { background-color: transparent; }  }
@@ -109,6 +148,7 @@
 </body>
 <script src="step_runs.js"></script>
 <script src="template_handling.js"></script>
+<script src="calibration.js"></script>
 <script>
     var exp_pointer = -1;
     var mouse_log;
@@ -119,8 +159,10 @@
     var zero_point, lessone_point, plusone_point, button_size = false;
     var warner = false;
     var response_timeout;
+    var ctx;
     var practice_mode = true;
     var moved_before_timeout, moved_before_400ms = true;
+
 
 
     function trial_structure(){
@@ -202,6 +244,7 @@
             button_size = {};
             button_size.x = temp_button_rect.width / (zero_point.x - lessone_point.x)
             button_size.y = temp_button_rect.height / (zero_point.y - lessone_point.y)
+
         }
 
         // setting up canvases
@@ -225,39 +268,40 @@
                 started_tracking = true;
                 document.querySelector('[data-run=experimental_design]').className = "visible";
 
+                //6:false, 7:true, 8:false, 9:true, 10-11:true
                 if(practice_mode) switch (exp_pointer) {
-                    case 0:
+                    case 6:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Giants are small.';
                         console.log(exp_pointer);
                         break;
 
-                    case 1:
+                    case 7:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Giants are tall.';
                         console.log(exp_pointer);
                         break;
 
-                    case 2:
+                    case 8:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Skyscrapers are not tall.';
                         console.log(exp_pointer);
                         break;
 
 
-                    case 3:
+                    case 9:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Skyscrapers are tall.';
                         console.log(exp_pointer);
                         break;
 
-                    case 4:
+                    case 10:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Cars have no wings.';
                         console.log(exp_pointer);
                         break;
 
-                    case 5:
+                    case 11:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Cars have wheels.';
                         console.log(exp_pointer);
@@ -265,6 +309,8 @@
 
 
                 }
+
+
                 else{
                 switch (order[exp_pointer].substring(0,2)){
                     case 'EI':
@@ -298,18 +344,17 @@
 
         })
 
-
-        // false, true, false, true, true, true
+        //6:false, 7:true, 8:false, 9:true, 10-11:true
         function logger_stop_button (event) {
             if(started_tracking){
                 clearTimeout(response_timeout);
 
                 clearTimeout(moved_before_timeout);
-                if (event && practice_mode && moved_before_400ms && (([1,3,4,5].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2].indexOf(exp_pointer) > -1  && event.target.id=="false"))) {
+                if (event && practice_mode && moved_before_400ms && (([7,9,10,11].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([6,8].indexOf(exp_pointer) > -1  && event.target.id=="false"))) {
                     warner = "Good!"
-                } else if (event && practice_mode && (([1,3,4,5].indexOf(exp_pointer) > -1 && event.target.id!="true") || ([0,2].indexOf(exp_pointer) > -1 && event.target.id!="false"))) {
+                } else if (event && practice_mode && (([7,9,10,11].indexOf(exp_pointer) > -1 && event.target.id!="true") || ([6,8].indexOf(exp_pointer) > -1 && event.target.id!="false"))) {
                     warner = "Incorrect!"
-                } else if (event && practice_mode && !moved_before_400ms && (([1,3,4,5].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2].indexOf(exp_pointer) > -1 && event.target.id=="false"))) {
+                } else if (event && practice_mode && !moved_before_400ms && (([7,9,10,11].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([6,8].indexOf(exp_pointer) > -1 && event.target.id=="false"))) {
                     warner = "Please, start moving the mouse earlier."
                 }
                 document.body.removeEventListener('mousemove', record_mouse)

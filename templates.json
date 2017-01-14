@@ -79,7 +79,7 @@
 </form>
 ",
 
-"experiment":"
+"experiments":"
 <div data-run=\"experimental_design\" class=\"invisible\" data-practice=\"{is_practice}\">
 <div class=\"exp_des_button\" id=\"false\">false</div>
 <div class=\"exp_des_button\" id=\"true\">true</div>
@@ -89,6 +89,16 @@
 <canvas id=\"debug\"></canvas>
 </div>
 <div id=\"warning\"><p>Too slow. Please answer faster.</p></div>
+",
+
+"calibration":"
+<div data-run=\"calibration_run\" class=\"invisible\" >
+<div class=\"exp_des_button_2\" id=\"false\"> </div>
+<div class=\"exp_des_button_2\" id=\"true\"> </div>
+<div class=\"exp_des_button\" id=\"start\">start</div>
+<canvas id=\"points\"></canvas>
+</div>
+
 "
 
 
