@@ -155,7 +155,8 @@
     var started_tracking = false;
     var can_debug, ctx_debug, rect_debug, timeout;
     var order = trial_structure();
-    console.log(order)
+    console.log(order);
+    console.log(order.length);
     var zero_point, lessone_point, plusone_point, button_size = false;
     var warner = false;
     var response_timeout;
@@ -171,29 +172,38 @@
         var adjective = ["B/S", "B/D", "H/C", "F/S", "L/Q"];
         var trial_type = ['EI', 'CI']; // ExperimentalItem vs. ControlItem
         var trials = [];
+        var trials_semirandom;
+        var flag = 0;
         var order = '';
         var i;//truth
         var t;//adjective
         var b;//polarity
         var n;//repetition
 
+
         for (n=0; n < 2; n++) {for (i = 0; i < truth_value.length; i++) {for (t = 0; t < adjective.length; t++){for (b = 0; b < polarity.length; b++)
             trials.push(trial_type[0]+adjective[t]+truth_value[i]+polarity[b]+String(n));
             //EI (0,2) + ADJ.PAIR (2,5) + TRUTH (5,6) + POLARITY (6,7) + nº (7,8)
         }}}
-        for (n=1; n < 3; n++) {for (i = 0; i < truth_value.length; i++) {for (b = 0; b < polarity.length; b++)
+        for (n=1; n < 4; n++) {for (i = 0; i < truth_value.length; i++) {for (b = 0; b < polarity.length; b++)
             trials.push(trial_type[1]+truth_value[i]+polarity[b]+String(n));
             //Controls (0,2) +  TRUTH (2,3) + POLARITY (3,4) + nº (4,5)
         }}
+        console.log(String(trials.length));
 
-        shuffle(trials)
-        /*
-        var o;
-        for (o = 0; o < trials.length; o++) {
-            order += trials[o]+' ';
-        }*/
-        //return order;
-        return trials;
+        while (flag < 51){
+            flag = 0;
+            trials_semirandom = [];
+            shuffle(trials);
+            trials_semirandom.push(trials[0]);
+            for (n=1; n<52; n++){
+                if(trials[n].substring(2,5) != trials[n-1].substring(2,5)){
+                    trials_semirandom.push(trials[n]);
+                    flag=flag+1;}}}
+
+        console.log(String(trials_semirandom.length));
+
+        return trials_semirandom;
     }
 
     function initialize () {
