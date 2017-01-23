@@ -8,9 +8,23 @@
 from analyses_MT import *
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
+from matplotlib import rc
+
+import matplotlib.patches as mpatch
+import matplotlib.transforms as mtransforms
+from matplotlib.patches import FancyBboxPatch
+
+import numpy as np
+import matplotlib.colors as colors
 from mpl_toolkits.axes_grid1 import host_subplot
 import mpl_toolkits.axisartist as AA
 import os
+
+def start(ax):
+    x = 0-0.05
+    y = 0-0.05
+    ax.text(x, y, 'start', style='normal', family ='serif',
+        bbox={'boxstyle':"round", 'facecolor':'black', 'alpha':0.3, 'pad':1})
 
 
 #
@@ -188,19 +202,75 @@ import os
 #     plt.xlabel("X coordenate")
 #     plt.ylabel("Y coordenate")
 #     plt.title(title)
-#
+
+
+def plot_calibration(all_trials, info, all_subj, data_type):
+    startX, startY = 0, 0
+    x = info[0]['normalized_button_size']['x']
+    y = info[0]['normalized_button_size']['y']
+    currentAxis = plt.gca()
+    #currentAxis.add_patch(Ellipsis((startX -(x/2), startY - y), x, y, ec='black', fill=False))
+    start(currentAxis)
+
+
+    #plt.axis([-1-x-.25, 1+x+.25, 0-y , 1+y+.1])
+    plt.ylabel('y coordenate')
+    plt.xlabel('x coordenate')
+    title = 'Calibration'
+    plt.title(title)
+
+    if all_subj == True:
+
+        for s in range(len(all_trials)):
+            for t in range(len(all_trials[s])):
+                if all_trials[s][t]['data']['item']['type'] == 'calibration':
+                    if all_trials[s][t]['expected_response'] == 'uncertain_l' or all_trials[s][t]['expected_response'] == 'uncertain_r':
+                        color = 'green'
+                    elif all_trials[s][t]['expected_response'] == 'deviated_l' or all_trials[s][t]['expected_response'] == 'deviated_r':
+                        color = 'red'
+                    else:
+                        color='blue'
+                    px = []
+                    py = []
+                    for i in range(len(all_trials[s][t][data_type])):
+                        px.append(all_trials[s][t][data_type][i][0])
+                        py.append(all_trials[s][t][data_type][i][1])
+                    plt.plot(px, py, '-', c=color, alpha=0.3)
+
+        mean_uncertain_l = mean_trajectory_calibration(all_trials, data_type, 'uncertain_l')
+        plt.plot(mean_uncertain_l[:,0], mean_uncertain_l[:,1], '.-', c='green')
+
+        mean_uncertain_r = mean_trajectory_calibration(all_trials, data_type, 'uncertain_r')
+        plt.plot(mean_uncertain_r[:,0], mean_uncertain_r[:,1], '.-', c='green')
+
+        mean_deviated_l = mean_trajectory_calibration(all_trials, data_type, 'deviated_l')
+        plt.plot(mean_deviated_l[:,0], mean_deviated_l[:,1], '.-', c='red')
+
+        mean_deviated_r = mean_trajectory_calibration(all_trials, data_type, 'deviated_r')
+        plt.plot(mean_deviated_r[:,0], mean_deviated_r[:,1], '.-', c='red')
+
+        mean_straight_l = mean_trajectory_calibration(all_trials, data_type, 'straight_l')
+        plt.plot(mean_straight_l[:,0], mean_straight_l[:,1], '.-', c='blue')
+
+        mean_straight_r = mean_trajectory_calibration(all_trials, data_type, 'straight_r')
+        plt.plot(mean_straight_r[:, 0], mean_straight_r[:, 1], '.-', c='blue')
+
+        plt.savefig('Calibration.pdf', format='pdf', bbox_inches='tight')
+
+
 def plot_per_subject(subject, all_trials, info, expected_response, data_type, color):
     startX, startY = 0, 0
     falseX, falseY = -1, 1
     trueX, trueY = 1, 1
     x = info[subject]['normalized_button_size']['x']
     y = info[subject]['normalized_button_size']['y']
-
     currentAxis = plt.gca()
 
-    currentAxis.add_patch(Rectangle((startX -(x/2), startY - y ), x, y, ec='b', fill=False))
-    currentAxis.add_patch(Rectangle((falseX - x, falseY), x, y, ec='b', fill=False))
-    currentAxis.add_patch(Rectangle((trueX, trueY ), x, y, ec='b', fill=False))
+    currentAxis.text(startX-(x/2), startY-y, 'start', style='normal', family ='serif',
+        bbox={'boxstyle':"round", 'facecolor':'black', 'alpha':0.3, 'pad':1})
+
+    #currentAxis.add_patch(Rectangle((falseX - x, falseY), x, y, ec='b', fill=False))
+    #currentAxis.add_patch(Rectangle((trueX, trueY ), x, y, ec='b', fill=False))
 
     #plt.axis([-1-x-.25, 1+x+.25, 0-y , 1+y+.1])
     plt.ylabel('y coordenate')
@@ -219,10 +289,8 @@ def plot_per_subject(subject, all_trials, info, expected_response, data_type, co
                 px.append(all_trials[subject][t][data_type][i][0])
                 py.append(all_trials[subject][t][data_type][i][1])
 
-            plt.plot(px,py,color)
+            plt.plot(px,py,'-',c=color,alpha=0.3)
 
-
-    plt.plot(0,0,'go')
     plt.show()
 
 

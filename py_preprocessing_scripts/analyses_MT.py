@@ -5,7 +5,7 @@ Created on Sat Apr 18 10:23:28 2015
 @author: moramaldonado
 """
 import math
-
+import numpy as np
 
 # FUNCTION: velocity normalized(all_trials)
 #   DESCRIPTION: measures velocity between 2 points and time, done over normalized positions (in time)
@@ -450,6 +450,27 @@ def mean_x(all_trials, block, info, data_type, expected_response, experiment):
     meanCurve[i][1] = float(meanCurve[i][1] / numTrials)
 
     return meanCurve
+
+
+def mean_trajectory_calibration(all_trials, data_type, type):
+    meanCurve = []
+    for i in range(101):
+        numTrials = 0
+        meanCurve.append([0, 0])
+        for s in range(len(all_trials)):
+            for t in range(len(all_trials[s])):
+                if all_trials[s][t]['data']['item']['type'] == 'calibration' and all_trials[s][t]['expected_response'] == type:
+                        meanCurve[i][0] = meanCurve[i][0] + all_trials[s][t][data_type][i][0]
+                        meanCurve[i][1] = meanCurve[i][1] + all_trials[s][t][data_type][i][1]
+                        numTrials = numTrials + 1
+
+        meanCurve[i][0] = float(meanCurve[i][0] / numTrials)
+        meanCurve[i][1] = float(meanCurve[i][1] / numTrials)
+
+    meanCurve = np.array(meanCurve)
+    return meanCurve
+
+
 
 def mean_trajectory(all_trials,block,info, data_type, expected_response,experiment):
     meanCurve = []

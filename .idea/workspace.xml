@@ -2,8 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc92f62b-b90d-4f7a-a746-17fca9b24186" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Analyses MT/.idea/workspace.xml" afterPath="$PROJECT_DIR$/Analyses MT/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-Exp3.html" afterPath="$PROJECT_DIR$/index-Exp3.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/.idea/Analyses MT.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/R/.~lock.Data_1.csv#" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/R/Data.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/R/Information.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/Summary and measurements.key" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/Summary and measurements.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/analyses_MT.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/data/426128502-1483989442.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/data/448618762-1484163928.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/data/520749873-1484157538.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/data/793223202-1483972839.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/data/86028293-1484171808.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/integrate.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/local_maxima.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/normalization.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/organization_functions.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/plot_mouse_paths.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/readme.rtf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Analyses MT/run_me.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/calibration.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/calibration.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/elements.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/expNeg.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/experiment.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/index-Exp3.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/main.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/new_data.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/step_runs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/template_handling.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="negationMT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,84 +59,12 @@
     <favorites_list name="negationMT" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index-Exp3.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index-Exp3.html">
+    <leaf>
+      <file leaf-file-name="run_me.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="178" column="25" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
-              <folding>
-                <element signature="e#2261#2535#0" expanded="false" />
-                <element signature="e#14743#15023#0" expanded="false" />
-                <element signature="e#15059#15603#0" expanded="false" />
-                <element signature="e#15683#18696#0" expanded="false" />
-                <element signature="e#18747#19084#0" expanded="false" />
-                <element signature="e#19712#19785#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1725">
-              <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calibration.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/calibration.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4995">
-              <caret line="335" column="47" selection-start-line="335" selection-start-column="47" selection-end-line="335" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#50#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="step_runs.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/step_runs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="template_handling.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template_handling.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
-              <folding>
-                <element signature="n#!!block;n#finished#0" expanded="false" />
-                <element signature="n#!!block;n#runAjax#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="templates.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="93" column="15" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="experiment.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/experiment.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="128" selection-start-line="3" selection-start-column="123" selection-end-line="3" selection-end-column="128" />
+            <state relative-caret-position="-1047">
+              <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -128,9 +90,11 @@
         <option value="$PROJECT_DIR$/step_runs.js" />
         <option value="$PROJECT_DIR$/template_handling.js" />
         <option value="$PROJECT_DIR$/templates.json" />
-        <option value="$PROJECT_DIR$/calibration.js" />
         <option value="$PROJECT_DIR$/experiment.json" />
         <option value="$PROJECT_DIR$/index-Exp3.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/calibration.js" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" />
       </list>
     </option>
   </component>
@@ -141,8 +105,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -169,6 +134,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -187,66 +154,203 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="negationMT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="negationMT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="py_preprocessing_scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="negationMT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="negationMT" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="figures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="FullScreen" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+  <component name="RunManager" selected="Python.run_me">
+    <configuration default="false" name="run_me" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py_preprocessing_scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="negationMT" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="negationMT" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
-      <config-file value="" />
-      <node-interpreter value="project" />
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
       <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="negationMT" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
-      <method />
-    </configuration>
-    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" value="" />
-      <option name="executablePath" />
-      <option name="filePath" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <node-interpreter value="project" />
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
       <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="negationMT" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
       <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="negationMT" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="negationMT" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="negationMT" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="negationMT" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.run_me" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.run_me" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -261,22 +365,26 @@
       <workItem from="1480584945074" duration="778000" />
       <workItem from="1481738347015" duration="1372000" />
       <workItem from="1483958995074" duration="5859000" />
-      <workItem from="1483968622901" duration="35505000" />
+      <workItem from="1483968622901" duration="35957000" />
+      <workItem from="1484642839544" duration="249000" />
+      <workItem from="1484729926999" duration="424000" />
+      <workItem from="1485165610207" duration="3855000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43514000" />
+    <option name="totallyTimeSpent" value="48494000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="1" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16362192" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26290706" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -308,144 +416,66 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index-Exp3.html">
+    <entry file="file://$PROJECT_DIR$/index-Exp3.html" />
+    <entry file="file://$PROJECT_DIR$/main.css" />
+    <entry file="file://$PROJECT_DIR$/calibration.js" />
+    <entry file="file://$PROJECT_DIR$/step_runs.js" />
+    <entry file="file://$PROJECT_DIR$/template_handling.js" />
+    <entry file="file://$PROJECT_DIR$/templates.json" />
+    <entry file="file://$PROJECT_DIR$/experiment.json" />
+    <entry file="file://$PROJECT_DIR$/index-Exp3.html" />
+    <entry file="file://$PROJECT_DIR$/main.css" />
+    <entry file="file://$PROJECT_DIR$/calibration.js" />
+    <entry file="file://$PROJECT_DIR$/step_runs.js" />
+    <entry file="file://$PROJECT_DIR$/template_handling.js" />
+    <entry file="file://$PROJECT_DIR$/templates.json" />
+    <entry file="file://$PROJECT_DIR$/experiment.json" />
+    <entry file="file://$PROJECT_DIR$/index-Exp3.html" />
+    <entry file="file://$PROJECT_DIR$/step_runs.js" />
+    <entry file="file://$PROJECT_DIR$/template_handling.js" />
+    <entry file="file://$PROJECT_DIR$/new_data.php" />
+    <entry file="file://$PROJECT_DIR$/data.json" />
+    <entry file="file://$PROJECT_DIR$/new_data.php" />
+    <entry file="file://$PROJECT_DIR$/calibration.html" />
+    <entry file="file://$PROJECT_DIR$/elements.json" />
+    <entry file="file://$PROJECT_DIR$/index-Exp3.html" />
+    <entry file="file://$PROJECT_DIR$/step_runs.js" />
+    <entry file="file://$PROJECT_DIR$/template_handling.js" />
+    <entry file="file://$PROJECT_DIR$/templates.json" />
+    <entry file="file://$PROJECT_DIR$/experiment.json" />
+    <entry file="file://$PROJECT_DIR$/main.css" />
+    <entry file="file://$PROJECT_DIR$/calibration.js" />
+    <entry file="file://$PROJECT_DIR$/index.html" />
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="207" column="25" selection-start-line="207" selection-start-column="25" selection-end-line="207" selection-end-column="25" />
           <folding>
-            <element signature="e#2261#2535#0" expanded="false" />
-            <element signature="e#14743#15023#0" expanded="false" />
-            <element signature="e#15059#15603#0" expanded="false" />
-            <element signature="e#15683#18696#0" expanded="false" />
-            <element signature="e#18747#19084#0" expanded="false" />
-            <element signature="e#19712#19785#0" expanded="false" />
+            <marker date="1485181455000" expanded="true" signature="0:96" ph="..." />
+            <marker date="1485181455000" expanded="false" signature="99:501" ph="import ..." />
+            <marker date="1485181455000" expanded="true" signature="517:685" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="688:7117" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="7180:9641" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="7633:9641" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="7675:8542" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="7723:8542" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="7801:8542" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="8342:8480" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="9729:11020" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="10112:10324" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="10552:11004" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="10751:11004" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="10819:10953" ph="..." />
+            <marker date="1485181455000" expanded="true" signature="11023:15499" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/step_runs.js">
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="62" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="62" />
+        <state relative-caret-position="-1047">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template_handling.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="43" />
-          <folding>
-            <element signature="n#!!block;n#finished#0" expanded="false" />
-            <element signature="n#!!block;n#runAjax#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/new_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/new_data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/elements.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2040">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/step_runs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template_handling.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="48" selection-start-line="49" selection-start-column="48" selection-end-line="49" selection-end-column="48" />
-          <folding>
-            <element signature="n#!!block;n#finished#0" expanded="false" />
-            <element signature="n#!!block;n#runAjax#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="93" column="15" selection-start-line="93" selection-start-column="15" selection-end-line="93" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calibration.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4995">
-          <caret line="335" column="47" selection-start-line="335" selection-start-column="47" selection-end-line="335" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#50#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="128" selection-start-line="3" selection-start-column="123" selection-end-line="3" selection-end-column="128" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1725">
-          <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-Exp3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="178" column="25" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
-          <folding>
-            <element signature="e#2261#2535#0" expanded="false" />
-            <element signature="e#14743#15023#0" expanded="false" />
-            <element signature="e#15059#15603#0" expanded="false" />
-            <element signature="e#15683#18696#0" expanded="false" />
-            <element signature="e#18747#19084#0" expanded="false" />
-            <element signature="e#19712#19785#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

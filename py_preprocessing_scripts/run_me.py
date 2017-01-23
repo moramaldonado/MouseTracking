@@ -6,7 +6,7 @@ import os
 import matplotlib.pyplot as plt
 import time
 import math
-import numpy
+import numpy as npy
 import pygame
 from organization_functions import *
 from analyses_MT import *
@@ -17,8 +17,9 @@ from plot_mouse_paths import *
 from scipy import stats
 
 
-path = os.getcwd()
-pathData = os.getcwd() + '/data'
+path = "/Users/moramaldonado/WebstormProjects/negationMT"
+
+pathData = path + '/raw_data'
 print path
 
 #import the data
@@ -30,6 +31,7 @@ points_per_trial = points_per_trial(all_trials) #Mean mouse-tracking points per 
 info, total_time = information(all_trials,names,points_per_trial) #subject information + total time to perform the task
 print ">>>> information per subject taken"
 
+print info
 all_trials = organization_trials(all_trials)
 print ">>>> trial information organized"
 
@@ -38,6 +40,7 @@ print ">>>> total_time per subject:"+ str(total_time)
 
 all_trials = convert_time(all_trials) #time in milliseconds
 print ">>>> raw time added to mouse_log"
+
 
 all_trials = delay(all_trials) #delay to start moving the mouse after clicking start
 
@@ -98,15 +101,14 @@ all_trials = integrate('difference','maxDeviation',all_trials)
 all_trials = integrate_x('max_smooth_acceleration',all_trials)
 
 
-
 #exporting the data for R
-pathR = path+'/R'
+pathR = path+'/data_R'
 exporting_data(pathR,all_trials, info)
 print ">>>> data exported in csv for R"
 
-print info[0]
-
-
-plot_per_subject(0,all_trials,info,'true','normalized_positions','red')
-plot_per_subject(0,all_trials,info,'false','normalized_positions','green')
+#plotting
+os.chdir(path+'/figures')
+plot_calibration(all_trials,info,True,'normalized_positions_space')
+#plot_per_subject(0,all_trials,info,'true','normalized_positions_space','red')
+#plot_per_subject(0,all_trials,info,'false','normalized_positions_space','green')
 

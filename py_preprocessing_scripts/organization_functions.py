@@ -121,16 +121,17 @@ def information(all_trials,names,points_per_trial):
         m = float(m /1000)
         m = float(m/60)
         total_time.append(m)
-    
-        all_trials[i][-1]['subject'] = i
-        #all_trials[i][-2]['experiment'] = all_trials[i][0]['data']['design']['exp']
-        #all_trials[i][-2]['strategy'] = all_trials[i][-1]['strategy']
-        all_trials[i][-1]['total_time'] = m
-        all_trials[i][-1]['file'] = names[i]
-        all_trials[i][-1]['points']= points_per_trial[i]
-        #del all_trials[i][-1]
+
+        all_trials[i][-2]['subject'] = i
+        all_trials[i][-2]['strategy'] = all_trials[i][-1]['strategy']
+        all_trials[i][-2]['total_time'] = m
+        all_trials[i][-2]['file'] = names[i]
+        all_trials[i][-2]['points']= points_per_trial[i]
+        del all_trials[i][-1]
         info.append(all_trials[i][-1])
         del all_trials[i][-1]
+
+
         #include gender and age
 
     return info, total_time
@@ -146,8 +147,10 @@ def convert_time(all_trials):
 
 def organization_trials(all_trials):
     for i in range(len(all_trials)):
+
         acc = 0
         for t in range(len(all_trials[i])):
+
             all_trials[i][t]['subject'] = i
             all_trials[i][t]['RT'] = all_trials[i][t]['data']['end_track'] - all_trials[i][t]['data']['start_track']
             all_trials[i][t]['delaySTART'] = all_trials[i][t]['data']['start_track'] - all_trials[i][t]['data']['start_time']
@@ -159,13 +162,38 @@ def organization_trials(all_trials):
             if all_trials[i][t]['data']['item']['type'] == 'practice':
                 all_trials[i][t]['polarity'] = 'null'
                 all_trials[i][t]['expected_response'] = 'null'
-                #all_trials[i][t]['sentence'] = 'null'
+                all_trials[i][t]['sentence'] = 'null'
                 all_trials[i][t]['adjective'] = 'null'
                 all_trials[i][t]['accuracy'] = 'null'
+
+            elif all_trials[i][t]['data']['item']['type'] == 'calibration':
+
+                all_trials[i][t]['polarity'] = 'null'
+
+                if all_trials[i][t]['data']['item']['item_number'] == 0:
+                    all_trials[i][t]['expected_response'] = 'straight_r'
+                elif all_trials[i][t]['data']['item']['item_number'] == 1:
+                    all_trials[i][t]['expected_response'] = 'straight_l'
+                elif all_trials[i][t]['data']['item']['item_number'] == 2:
+                    all_trials[i][t]['expected_response'] = 'deviated_l'
+                elif all_trials[i][t]['data']['item']['item_number'] == 3:
+                    all_trials[i][t]['expected_response'] = 'deviated_r'
+                elif all_trials[i][t]['data']['item']['item_number'] == 4:
+                    all_trials[i][t]['expected_response'] = 'uncertain_r'
+                elif all_trials[i][t]['data']['item']['item_number'] == 5:
+                    all_trials[i][t]['expected_response'] = 'uncertain_l'
+                else:
+                    all_trials[i][t]['expected_response'] = 'null'
+
+
+                all_trials[i][t]['sentence'] = 'null'
+                all_trials[i][t]['adjective'] = 'null'
+                all_trials[i][t]['accuracy'] = 'null'
+
             else:
                 all_trials[i][t]['polarity'] = all_trials[i][t]['data']['design']['polarity']
                 all_trials[i][t]['adjective'] = all_trials[i][t]['data']['design']['adjective']
-               # all_trials[i][t]['sentence'] = all_trials[i][t]['data']['starget']['sentence']
+                all_trials[i][t]['sentence'] = all_trials[i][t]['data']['design']['sentence']
 
                 if all_trials[i][t]['data']['design']['truth_condition'] == 'F':
                     all_trials[i][t]['expected_response'] = 'false'

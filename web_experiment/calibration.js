@@ -47,6 +47,7 @@ function initialize_calibration(){
     var button_right = width-(temp_button_rect.width/3);
     var button_left =  temp_button_rect.width/3;
     var y2 = temp_button_rect.height;
+
     console.log(start_size.height, start_size.width, width, height, x1, y1)
     // on click bindings
     started_tracking = false;
@@ -59,7 +60,9 @@ function initialize_calibration(){
             mouse_log.push([norm_x, norm_y, extra_data.start_track]);
             started_tracking = true;
             document.querySelector('[data-run=calibration_run]').className = "visible";
+
             switch (exp_pointer) {
+
                 case 0:
 
                     ctx.fillStyle = "red";
@@ -81,7 +84,7 @@ function initialize_calibration(){
                     ctx.arc(button_right, y2, 12, 0, 2 * Math.PI);
                     ctx.closePath();
                     ctx.fill();
-                    calibration_type = 'straight_right';
+
                     console.log(exp_pointer);
                     break;
 
@@ -105,7 +108,7 @@ function initialize_calibration(){
                     ctx.arc(button_left, y2, 12, 0, 2 * Math.PI);
                     ctx.closePath();
                     ctx.fill();
-                    calibration_type = 'straight_left';
+
                     console.log(exp_pointer);
 
                     break;
@@ -143,7 +146,7 @@ function initialize_calibration(){
                     ctx.arc(button_left, y2, 12, 0, 2 * Math.PI);
                     ctx.closePath();
                     ctx.fill();
-                    calibration_type = 'derviation_left';
+                    calibration_type = 'deviation_right';
                     console.log(exp_pointer);
                     break;
 
@@ -181,7 +184,7 @@ function initialize_calibration(){
                     ctx.arc(button_right, y2, 12, 0, 2 * Math.PI);
                     ctx.closePath();
                     ctx.fill();
-                    calibration_type = 'derviation_right';
+
                     console.log(exp_pointer);
                     break;
 
@@ -231,7 +234,7 @@ function initialize_calibration(){
                     ctx.arc(button_right, y2, 12, 0, 2 * Math.PI);
                     ctx.closePath();
                     ctx.fill();
-                    calibration_type = 'uncertainty_right';
+
                     console.log(exp_pointer);
                     break;
 
@@ -285,7 +288,7 @@ function initialize_calibration(){
 
                     //ctx.font = "20px Georgia";
                     //ctx.fillText("Click", button_left, y2/2);
-                    calibration_type = 'uncertainty_left';
+
 
                     console.log(exp_pointer);
                     break;
