@@ -224,9 +224,9 @@ def plot_calibration(all_trials, info, all_subj, data_type):
         for s in range(len(all_trials)):
             for t in range(len(all_trials[s])):
                 if all_trials[s][t]['data']['item']['type'] == 'calibration':
-                    if all_trials[s][t]['expected_response'] == 'uncertain_l' or all_trials[s][t]['expected_response'] == 'uncertain_r':
+                    if all_trials[s][t]['polarity'] == 'uncertain':
                         color = 'green'
-                    elif all_trials[s][t]['expected_response'] == 'deviated_l' or all_trials[s][t]['expected_response'] == 'deviated_r':
+                    elif all_trials[s][t]['polarity'] == 'deviated':
                         color = 'red'
                     else:
                         color='blue'
@@ -237,22 +237,16 @@ def plot_calibration(all_trials, info, all_subj, data_type):
                         py.append(all_trials[s][t][data_type][i][1])
                     plt.plot(px, py, '-', c=color, alpha=0.3)
 
-        mean_uncertain_l = mean_trajectory_calibration(all_trials, data_type, 'uncertain_l')
+        mean_uncertain_l, mean_uncertain_r = mean_trajectory_calibration(all_trials, data_type, 'uncertain')
         plt.plot(mean_uncertain_l[:,0], mean_uncertain_l[:,1], '.-', c='green')
-
-        mean_uncertain_r = mean_trajectory_calibration(all_trials, data_type, 'uncertain_r')
         plt.plot(mean_uncertain_r[:,0], mean_uncertain_r[:,1], '.-', c='green')
 
-        mean_deviated_l = mean_trajectory_calibration(all_trials, data_type, 'deviated_l')
+        mean_deviated_l, mean_deviated_r = mean_trajectory_calibration(all_trials, data_type, 'deviated')
         plt.plot(mean_deviated_l[:,0], mean_deviated_l[:,1], '.-', c='red')
-
-        mean_deviated_r = mean_trajectory_calibration(all_trials, data_type, 'deviated_r')
         plt.plot(mean_deviated_r[:,0], mean_deviated_r[:,1], '.-', c='red')
 
-        mean_straight_l = mean_trajectory_calibration(all_trials, data_type, 'straight_l')
+        mean_straight_l,mean_straight_r  = mean_trajectory_calibration(all_trials, data_type, 'straight')
         plt.plot(mean_straight_l[:,0], mean_straight_l[:,1], '.-', c='blue')
-
-        mean_straight_r = mean_trajectory_calibration(all_trials, data_type, 'straight_r')
         plt.plot(mean_straight_r[:, 0], mean_straight_r[:, 1], '.-', c='blue')
 
         plt.savefig('Calibration.pdf', format='pdf', bbox_inches='tight')

@@ -453,22 +453,35 @@ def mean_x(all_trials, block, info, data_type, expected_response, experiment):
 
 
 def mean_trajectory_calibration(all_trials, data_type, type):
-    meanCurve = []
+
+    meanCurveL = []
+    meanCurveR = []
     for i in range(101):
-        numTrials = 0
-        meanCurve.append([0, 0])
+        numTrialsL = 0
+        meanCurveL.append([0, 0])
+        numTrialsR = 0
+        meanCurveR.append([0, 0])
         for s in range(len(all_trials)):
             for t in range(len(all_trials[s])):
-                if all_trials[s][t]['data']['item']['type'] == 'calibration' and all_trials[s][t]['expected_response'] == type:
-                        meanCurve[i][0] = meanCurve[i][0] + all_trials[s][t][data_type][i][0]
-                        meanCurve[i][1] = meanCurve[i][1] + all_trials[s][t][data_type][i][1]
-                        numTrials = numTrials + 1
+                if all_trials[s][t]['data']['item']['type'] == 'calibration' and all_trials[s][t]['polarity'] == type:
+                    if all_trials[s][t]['expected_response'] =='left':
+                        meanCurveL[i][0] = meanCurveL[i][0] + all_trials[s][t][data_type][i][0]
+                        meanCurveL[i][1] = meanCurveL[i][1] + all_trials[s][t][data_type][i][1]
+                        numTrialsL = numTrialsL + 1
+                    elif all_trials[s][t]['expected_response'] == 'right':
+                            meanCurveR[i][0] = meanCurveR[i][0] + all_trials[s][t][data_type][i][0]
+                            meanCurveR[i][1] = meanCurveR[i][1] + all_trials[s][t][data_type][i][1]
+                            numTrialsR = numTrialsR + 1
 
-        meanCurve[i][0] = float(meanCurve[i][0] / numTrials)
-        meanCurve[i][1] = float(meanCurve[i][1] / numTrials)
+        meanCurveR[i][0] = float(meanCurveR[i][0] / numTrialsR)
+        meanCurveR[i][1] = float(meanCurveR[i][1] / numTrialsR)
 
-    meanCurve = np.array(meanCurve)
-    return meanCurve
+        meanCurveL[i][0] = float(meanCurveR[i][0] / numTrialsL)
+        meanCurveL[i][1] = float(meanCurveR[i][1] / numTrialsL)
+
+    meanCurveL = np.array(meanCurveL)
+    meanCurveR = np.array(meanCurveR)
+    return meanCurveL, meanCurveR
 
 
 

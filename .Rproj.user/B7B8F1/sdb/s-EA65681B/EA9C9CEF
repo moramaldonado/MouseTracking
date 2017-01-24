@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n## WHICH MEASURE IS A BETTER PREDICTOR FOR THE CALIBRATION ##\ncalibration_data.summary <- ddply(calibration_data, c(\"Polarity\"),\n                                  function(calibration_data.summary)c(MaxLogRatio.mean=mean(calibration_data.summary$MaxLogRatio, na.rm=T), MaxLogRatio.se=se(calibration_data.summary$MaxLogRatio, na.rm=T), MaxDifference.mean=mean(calibration_data.summary$MaxDifference, na.rm=T), MaxDifference.se=se(calibration_data.summary$MaxDifference, na.rm=T)))\n\nggplot(calibration_data, aes(x=Polarity, y=) )\n\n#1. MaxLogRatio\n#2. MaxDifference\n#3. MaxDeviation\n\ncalibration_ratio.lmer <- lmer(MaxLogRatio~Polarity+(1|Subject), data = calibration_data)\ncalibration_data.lmer_sum <- summary(calibration_ratio.lmer)\n\ncalibration_ratio.lmer <- lmer(MaxDeviation~Polarity+(1|Subject), data = calibration_data)\ncalibration_data.lmer_sum <- summary(calibration_ratio.lmer)\n\n\n\n##Bootstrapping the number of calibration\nn = 100\n\n## Linear regression\ncalibration.lmer <- lmer()",
+    "created" : 1485190159001.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "176643215",
+    "id" : "EA9C9CEF",
+    "lastKnownWriteTime" : 1485255242,
+    "last_content_update" : 1485255243001,
+    "path" : "~/WebstormProjects/negationMT/R_scripts/choosing_measures.R",
+    "project_path" : "R_scripts/choosing_measures.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

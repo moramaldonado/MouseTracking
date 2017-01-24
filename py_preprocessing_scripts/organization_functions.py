@@ -168,22 +168,35 @@ def organization_trials(all_trials):
 
             elif all_trials[i][t]['data']['item']['type'] == 'calibration':
 
-                all_trials[i][t]['polarity'] = 'null'
+
 
                 if all_trials[i][t]['data']['item']['item_number'] == 0:
-                    all_trials[i][t]['expected_response'] = 'straight_r'
+                    all_trials[i][t]['expected_response'] = 'right'
+                    all_trials[i][t]['polarity'] = 'straight'
+
                 elif all_trials[i][t]['data']['item']['item_number'] == 1:
-                    all_trials[i][t]['expected_response'] = 'straight_l'
+                    all_trials[i][t]['expected_response'] = 'left'
+                    all_trials[i][t]['polarity'] = 'straight'
+
                 elif all_trials[i][t]['data']['item']['item_number'] == 2:
-                    all_trials[i][t]['expected_response'] = 'deviated_l'
+                    all_trials[i][t]['expected_response'] = 'left'
+                    all_trials[i][t]['polarity'] = 'deviated'
+
                 elif all_trials[i][t]['data']['item']['item_number'] == 3:
-                    all_trials[i][t]['expected_response'] = 'deviated_r'
+                    all_trials[i][t]['expected_response'] = 'right'
+                    all_trials[i][t]['polarity'] = 'deviated'
+
                 elif all_trials[i][t]['data']['item']['item_number'] == 4:
-                    all_trials[i][t]['expected_response'] = 'uncertain_r'
+                    all_trials[i][t]['expected_response'] = 'right'
+                    all_trials[i][t]['polarity'] = 'uncertain'
+
                 elif all_trials[i][t]['data']['item']['item_number'] == 5:
-                    all_trials[i][t]['expected_response'] = 'uncertain_l'
+                    all_trials[i][t]['expected_response'] = 'left'
+                    all_trials[i][t]['polarity'] = 'uncertain'
+
                 else:
                     all_trials[i][t]['expected_response'] = 'null'
+                    all_trials[i][t]['polarity'] = 'null'
 
 
                 all_trials[i][t]['sentence'] = 'null'
