@@ -41,8 +41,8 @@ function Template(templates, elements, data, callback, finished) {
 
     //logic
     this.fillTemplate = function(i) {
-        if (i==4 && exp_pointer < 5)
-               i=3;
+        if (i==3 && exp_pointer < 5)
+               i=2;
 
         if(i==6 && exp_pointer < 11)
             i=5;

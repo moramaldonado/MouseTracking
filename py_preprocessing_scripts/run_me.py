@@ -96,9 +96,11 @@ all_trials = find_value_in(all_trials, 'ratio_log','maxDeviation')
 
 all_trials = integrate('ratio','max_smooth_acceleration',all_trials)
 all_trials = integrate('ratio_log','max_smooth_acceleration',all_trials)
+all_trials = integrate('ratio_log','fin',all_trials)
 all_trials = integrate('difference','max_smooth_acceleration',all_trials)
 all_trials = integrate('difference','maxDeviation',all_trials)
 all_trials = integrate_x('max_smooth_acceleration',all_trials)
+all_trials = integrate_x('fin',all_trials)
 
 
 #exporting the data for R

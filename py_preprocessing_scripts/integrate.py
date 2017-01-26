@@ -12,7 +12,10 @@ def integrate(curve,dx,all_trials):
             auc = 0
             
             if all_trials[s][t]['value'] != '--' and all_trials[s][t]['mouse_log'] != [] and len(all_trials[s][t]['mouse_log']) > 1:
-                index = all_trials[s][t][dx][2] + 1
+                if dx == 'fin':
+                    index = 100
+                else:
+                    index = all_trials[s][t][dx][2] + 1
                 for j in range(1,index):
                     yCurrent = all_trials[s][t][curve][j]
                     xCurrent = j
@@ -35,7 +38,11 @@ def integrate_x(dx,all_trials):
             auc = 0
             
             if all_trials[s][t]['value'] != '--' and all_trials[s][t]['mouse_log'] != [] and len(all_trials[s][t]['mouse_log']) > 1:
-                index = all_trials[s][t][dx][2] + 1
+                if dx == 'fin':
+                    index = 100
+                else:
+                    index = all_trials[s][t][dx][2] + 1
+
                 for j in range(1,index):
                     yCurrent = all_trials[s][t]['normalized_positions'][j][0]
                     xCurrent = j
