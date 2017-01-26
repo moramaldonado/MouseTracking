@@ -87,7 +87,7 @@ def acceleration_normalized(all_trials):
 #   OUTPUT: list of distances: all_trials[euclidean_distance_response1],all_trials[euclidean_distance_response2]
 def euclidean_distance(all_trials, value):
     name = 'euclidean_distance_' + value
-    if value == 'true' or value=='B':
+    if value == 'true':
         x2 = 1
         y2 = 1
     else:
@@ -100,7 +100,7 @@ def euclidean_distance(all_trials, value):
                 for i in range(len(all_trials[s][t]['normalized_positions'])):
                     x1 = float(all_trials[s][t]['normalized_positions'][i][0])
                     y1 = float(all_trials[s][t]['normalized_positions'][i][1])
-                    if value == 'True' or value=='B':
+                    if value == 'true' or value=='B':
                         if x1 > x2 and y1 < y2:
                             x1 = x2
                         if x1 < x2 and y1 > y2:
@@ -144,12 +144,6 @@ def difference(all_trials):  # distance to expected response - distance to alter
                 if all_trials[s][t]['value'] == 'true':
                     target = 'euclidean_distance_true'
                     alternative = 'euclidean_distance_false'
-                elif all_trials[s][t]['value'] == 'A':
-                    target = 'euclidean_distance_A'
-                    alternative = 'euclidean_distance_B'
-                elif all_trials[s][t]['value'] == 'B':
-                    target = 'euclidean_distance_B'
-                    alternative = 'euclidean_distance_A'
                 else:
                     target = 'euclidean_distance_false'
                     alternative = 'euclidean_distance_true'
@@ -178,15 +172,12 @@ def ratio(all_trials):
                 if all_trials[s][t]['value'] == 'true':
                     target = 'euclidean_distance_true'
                     alternative = 'euclidean_distance_false'
-                elif all_trials[s][t]['value'] == 'A':
-                    target = 'euclidean_distance_A'
-                    alternative = 'euclidean_distance_B'
-                elif all_trials[s][t]['value'] == 'B':
-                    target = 'euclidean_distance_B'
-                    alternative = 'euclidean_distance_A'
-                else:
+
+
+                elif all_trials[s][t]['value'] == 'false':
                     target = 'euclidean_distance_false'
                     alternative = 'euclidean_distance_true'
+
                 for i in range(len(all_trials[s][t][target])):
                     a = all_trials[s][t][target][i]
                     if a < 0.01:
@@ -464,11 +455,11 @@ def mean_trajectory_calibration(all_trials, data_type, type):
         for s in range(len(all_trials)):
             for t in range(len(all_trials[s])):
                 if all_trials[s][t]['data']['item']['type'] == 'calibration' and all_trials[s][t]['polarity'] == type:
-                    if all_trials[s][t]['expected_response'] =='left':
+                    if all_trials[s][t]['expected_response'] =='false':
                         meanCurveL[i][0] = meanCurveL[i][0] + all_trials[s][t][data_type][i][0]
                         meanCurveL[i][1] = meanCurveL[i][1] + all_trials[s][t][data_type][i][1]
                         numTrialsL = numTrialsL + 1
-                    elif all_trials[s][t]['expected_response'] == 'right':
+                    elif all_trials[s][t]['expected_response'] == 'true':
                             meanCurveR[i][0] = meanCurveR[i][0] + all_trials[s][t][data_type][i][0]
                             meanCurveR[i][1] = meanCurveR[i][1] + all_trials[s][t][data_type][i][1]
                             numTrialsR = numTrialsR + 1
@@ -476,8 +467,8 @@ def mean_trajectory_calibration(all_trials, data_type, type):
         meanCurveR[i][0] = float(meanCurveR[i][0] / numTrialsR)
         meanCurveR[i][1] = float(meanCurveR[i][1] / numTrialsR)
 
-        meanCurveL[i][0] = float(meanCurveR[i][0] / numTrialsL)
-        meanCurveL[i][1] = float(meanCurveR[i][1] / numTrialsL)
+        meanCurveL[i][0] = float(meanCurveL[i][0] / numTrialsL)
+        meanCurveL[i][1] = float(meanCurveL[i][1] / numTrialsL)
 
     meanCurveL = np.array(meanCurveL)
     meanCurveR = np.array(meanCurveR)

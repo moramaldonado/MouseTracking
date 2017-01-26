@@ -171,27 +171,27 @@ def organization_trials(all_trials):
 
 
                 if all_trials[i][t]['data']['item']['item_number'] == 0:
-                    all_trials[i][t]['expected_response'] = 'right'
+                    all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'straight'
 
                 elif all_trials[i][t]['data']['item']['item_number'] == 1:
-                    all_trials[i][t]['expected_response'] = 'left'
+                    all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'straight'
 
                 elif all_trials[i][t]['data']['item']['item_number'] == 2:
-                    all_trials[i][t]['expected_response'] = 'left'
+                    all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'deviated'
 
                 elif all_trials[i][t]['data']['item']['item_number'] == 3:
-                    all_trials[i][t]['expected_response'] = 'right'
+                    all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'deviated'
 
                 elif all_trials[i][t]['data']['item']['item_number'] == 4:
-                    all_trials[i][t]['expected_response'] = 'right'
+                    all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'uncertain'
 
                 elif all_trials[i][t]['data']['item']['item_number'] == 5:
-                    all_trials[i][t]['expected_response'] = 'left'
+                    all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'uncertain'
 
                 else:

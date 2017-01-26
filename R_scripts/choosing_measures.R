@@ -1,9 +1,18 @@
-
 ## WHICH MEASURE IS A BETTER PREDICTOR FOR THE CALIBRATION ##
 
-#1. MaxLogRatio
+## See the distribution in real data
+ggplot(calibration_data, aes(fill=Polarity, x=MaxLogRatio, color=Polarity)) + geom_density(alpha=.2)
+#calibration_data$deviated <- if_else(calibration_data$Polarity=='deviated', 1, 0)          
+#calibration_ratio.lmer <- glmer(deviated ~ MaxLogRatio  + (1|Subject), data = calibration_data, family=binomial)
+
+
+#Take the sd for each measure, each condition
+#1. MaxLogRatio 
+MaxLogRatio.sd <- aggregate(MaxLogRatio~Polarity, data=calibration_data, FUN=sd)
 #2. MaxDifference
+MaxDifference.sd <- aggregate(MaxDifference~Polarity, data=calibration_data, FUN=sd)
 #3. MaxDeviation
+MaxDeviation.sd <- aggregate(MaxDeviation~Polarity, data=calibration_data, FUN=sd)
 
 ##SIMULATION FAKE DATA: Create fake data and run model 
 n = 50
@@ -17,34 +26,64 @@ sample_n(n, replace = T) %>%
 # Order by original subject ID
 arrange(Subject) %>%
 # Assign subject IDs 1 to n for sampled subjects
-mutate(randomID = paste("randomID", 1:n, sep = "_"))%>%
-# Add some variance per subject
-mutate(MaxLogRatio_sd = rnorm(n, 0, sd(calibration_data$MaxLogRatio)))%>%
-mutate(MaxDifference_sd = rnorm(n, 0, sd(calibration_data$MaxDifference)))%>%  
-mutate(MaxDeviation_sd = rnorm(n, 0, sd(calibration_data$MaxDeviation)))
+mutate(randomID = paste("randomID", 1:n, sep = "_"))
+  # Add some variance per subject
 
 # Make data for new subjects
 calibration_data_new_subjects = calibration_data %>%
 # Combine original data with list of new subjects to get
 inner_join(new_subjects) %>%
+  arrange(randomID) %>%
 # Make a new column for dependent variable with added variance
-mutate(MaxLogRatio_NEW = MaxLogRatio + MaxLogRatio_sd) %>%
-mutate(MaxDifference_NEW = MaxDifference + MaxDifference_sd) %>%
-mutate(MaxDeviation_NEW = MaxLogRatio + MaxDeviation_sd) 
-
+mutate(MaxLogRatio_NEW = MaxLogRatio + if_else(Polarity=='straight',
+                                               rnorm(1, 0, MaxLogRatio.sd[1,2]),
+                                               if_else(Polarity=='deviated',
+                                                       rnorm(1, 0, MaxLogRatio.sd[2,2]),
+                                                       rnorm(1, 0, MaxLogRatio.sd[3,2])))) %>%
+  mutate(MaxDifference_NEW = MaxDifference + if_else(Polarity=='straight',
+                                                 rnorm(1, 0, MaxDifference.sd[1,2]),
+                                                 if_else(Polarity=='deviated',
+                                                         rnorm(1, 0, MaxDifference.sd[2,2]),
+                                                         rnorm(1, 0, MaxDifference.sd[3,2])))) %>%
+  
+  mutate(MaxDeviation_NEW = MaxDeviation + if_else(Polarity=='straight',
+                                                     rnorm(1, 0, MaxDeviation.sd[1,2]),
+                                                     if_else(Polarity=='deviated',
+                                                             rnorm(1, 0, MaxDeviation.sd[2,2]),
+                                                             rnorm(1, 0, MaxDeviation.sd[3,2]))))
+  
 
 # Run model and save result
-calibration_data_new_subjects$Polarity_num <- as.numeric(factor(calibration_data_new_subjects$Polarity))-1
-calibration.lmer <- lmer(Polarity_num ~ MaxLogRatio_NEW  +
-                            (1|randomID), data = calibration_data_new_subjects)
-calibration.lmer_sum = summary(calibration.lmer)
-calibration.lmer_anova = anova(calibration.lmer)
+calibration_data_new_subjects$Polarity <- factor(calibration_data_new_subjects$Polarity)
+calibration.lmer <- glmer(Polarity ~ MaxLogRatio_NEW  +
+                            (1|randomID), data = calibration_data_new_subjects, family=binomial)
 
+
+calibration_data_new_subjects$straight <- if_else(calibration_data_new_subjects$Polarity=='straight', 
+                                                  1,
+                                                  0)
+calibration_data_new_subjects$deviated <- if_else(calibration_data_new_subjects$Polarity=='deviated', 
+                                                  1,
+                                                  0)
+calibration_data_new_subjects$uncertain <- if_else(calibration_data_new_subjects$Polarity=='uncertain', 
+                                                   1,
+                                                   0)
+
+calibration_deviated_ratio.lmer <- glmer(deviated ~ MaxLogRatio_NEW  +
+                            (1|randomID), data = calibration_data_new_subjects, family=binomial)
+
+
+#visualizing and plotting
 calibration_data.summary <- ddply(calibration_data_new_subjects, c("Polarity"),
                                   function(calibration_data.summary)c(MaxLogRatio.mean=mean(calibration_data.summary$MaxLogRatio_NEW, na.rm=T), MaxLogRatio.se=se(calibration_data.summary$MaxLogRatio_NEW, na.rm=T), MaxDifference.mean=mean(calibration_data.summary$MaxDifference_NEW, na.rm=T), MaxDifference.se=se(calibration_data.summary$MaxDifference_NEW, na.rm=T), MaxDeviation.mean=mean(calibration_data.summary$MaxDeviation_NEW, na.rm=T), MaxDeviation.se=se(calibration_data.summary$MaxDeviation_NEW, na.rm=T)))
-
-#plotting
-p1 <- ggplot(calibration_data.summary, aes(x=Polarity, y=MaxLogRatio.mean, color=Polarity)) + geom_point() + geom_errorbar(aes(ymin=MaxLogRatio.mean-MaxLogRatio.se,   ymax=MaxLogRatio.mean+MaxLogRatio.se), width=.1) 
-p2 <- ggplot(calibration_data.summary, aes(x=Polarity, y=MaxDifference.mean, color=Polarity)) + geom_point()  + geom_point() + geom_errorbar(aes(ymin=MaxDifference.mean-MaxDifference.se,   ymax=MaxDifference.mean+MaxDifference.se), width=.1) 
-p3 <- ggplot(calibration_data.summary, aes(x=Polarity, y=MaxDeviation.mean , color=Polarity)) + geom_point() + geom_point() + geom_errorbar(aes(ymin=MaxDeviation.mean-MaxDeviation.se,   ymax=MaxDeviation.mean+MaxDeviation.se), width=.1) 
+p1 <- ggplot(calibration_data_new_subjects, aes(x=Polarity, y=MaxLogRatio_NEW, color=Polarity)) + geom_point(alpha=.2)
+p2 <-  ggplot(calibration_data_new_subjects, aes(x=Polarity, y=MaxDifference_NEW, color=Polarity)) + geom_point(alpha=.2)
+p3 <- ggplot(calibration_data_new_subjects, aes(x=Polarity, y=MaxDeviation_NEW, color=Polarity)) + geom_point(alpha=.2) 
 multiplot(p1,p2,p3)
+
+
+#Another possibility
+mod <- multinom(Polarity ~ MaxLogRatio_NEW, calibration_data_new_subjects)
+predict(mod)
+
+

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "##SIMULATION FAKE DATA: Create fake data and run model \nn = 50\n# Make new subjects\nnew_subjects = calibration_data %>%\n  # Select 2 unique subjects\n  select(Subject) %>%\n  distinct() %>%\n  # Sample subjects n times with replacement\n  sample_n(n, replace = T) %>%\n  # Order by original subject ID\n  arrange(Subject) %>%\n  # Assign subject IDs 1 to n for sampled subjects\n  mutate(randomID = paste(\"randomID\", 1:n, sep = \"_\"))%>%\n  # Add some variance per subject\n  mutate(MaxLogRatio_sd = rnorm(n, 0, sd(calibration_data$MaxLogRatio)))%>%\n  mutate(MaxDifference_sd = rnorm(n, 0, sd(calibration_data$MaxDifference)))%>%  \n  mutate(MaxDeviation_sd = rnorm(n, 0, sd(calibration_data$MaxDeviation)))\n\n# Make data for new subjects\ncalibration_data_new_subjects = calibration_data %>%\n  # Combine original data with list of new subjects to get\n  inner_join(new_subjects) %>%\n  # Make a new column for dependent variable with added variance\n  mutate(MaxLogRatio_NEW = MaxLogRatio + MaxLogRatio_sd) %>%\n  mutate(MaxDifference_NEW = MaxDifference + MaxDifference_sd) %>%\n  mutate(MaxDeviation_NEW = MaxLogRatio + MaxDeviation_sd) ",
+    "created" : 1485357934187.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "4001436877",
+    "id" : "EF95055",
+    "lastKnownWriteTime" : 2305843009213693958,
+    "last_content_update" : 1485357936257,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
