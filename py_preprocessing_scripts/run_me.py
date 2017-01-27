@@ -83,6 +83,8 @@ all_trials,more_RL = maximum_value(all_trials, 'ratio_log')
 all_trials,more_D = maximum_value(all_trials, 'difference')
 all_trials,more_SA = maximum_value(all_trials, 'smooth_acceleration')  #max_smooth_acceleration
 all_trials = median_value(all_trials,'ratio_log')
+all_trials = median_value(all_trials,'difference')
+
 print ">>>> maximum values: ratio, difference, velocity, acceleration"
 
 print all_trials[1][10]['median_ratio_log']
