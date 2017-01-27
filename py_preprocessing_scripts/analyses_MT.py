@@ -207,6 +207,27 @@ def lineMagnitude(x1, y1, x2, y2):
     return lineMagnitude
 
 
+def median_value(all_trials, value):
+    name = 'median_' + value
+    for s in range(len(all_trials)):
+        for t in range(len(all_trials[s])):
+            if all_trials[s][t]['value'] != '--' and all_trials[s][t]['mouse_log'] != [] and len(all_trials[s][t]['mouse_log']) > 1:
+                m = np.median(all_trials[s][t][value])
+                # temp = [i for i, j in enumerate(all_trials[s][t][value]) if j == m]
+                # index = temp[-1]
+                # if len(temp) > 1:
+                #     more.append([s, t])
+                #
+                # temp = all_trials[s][t]['temp_velocity'][index]
+                #
+                # all_trials[s][t][name] = [m, temp, index]
+                all_trials[s][t][name] = m
+            else:
+                all_trials[s][t][name] = ['NA', 'NA', 'NA']
+
+    return all_trials
+
+
 def maximum_value(all_trials, value):
     name = 'max_' + value
     more = []
