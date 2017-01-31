@@ -8,7 +8,15 @@ p4 <- ggplot(calibration_data, aes(fill=Polarity, x=Int.LogRatio.Fin, color=Pola
 p5 <- ggplot(calibration_data, aes(fill=Polarity, x=abs(Int.X.AccPeak), color=Polarity)) + geom_histogram(alpha=.2, binwidth=1)+ theme(legend.position = "none")
 p6 <- ggplot(calibration_data, aes(fill=Polarity, x=MaxDeviationBorder, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.05) + theme(legend.position = "none")
 p7 <- ggplot(calibration_data, aes(fill=Polarity, x=abs(AUC), color=Polarity)) + geom_histogram(alpha=.2, binwidth=1) + theme(legend.position = "none")
-multiplot(p1, p2,p3,p4,p6,p7,cols = 2)
+p8 <- ggplot(calibration_data, aes(fill=Polarity, x=Median.LogRatio, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.1)+ theme(legend.position = "none")
+p9 <- ggplot(calibration_data, aes(fill=Polarity, x=Median.Difference, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.1)+ theme(legend.position = "none")
+
+multiplot(p1,p2,p3,p4,p6,p7,p8,p9,cols = 3)
+
+ok <- filter(calibration_data, MaxLogRatio<2 & Polarity=='deviated')
+ok2 <- filter(calibration_data, MaxDeviation>1 & Polarity=='uncertain')
+ok3 <- filter(calibration_data, abs(AUC)<20 & Polarity=='uncertain')
+
 
 
 #Take the sd for each measure, each condition

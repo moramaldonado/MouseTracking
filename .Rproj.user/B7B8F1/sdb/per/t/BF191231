@@ -12,15 +12,15 @@
     "path" : null,
     "project_path" : null,
     "properties" : {
-        "cacheKey" : "DCD63792",
+        "cacheKey" : "2734A27C",
         "caption" : "calibration_data",
-        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=calibration_data&cache_key=DCD63792",
-        "displayedObservations" : 24,
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=calibration_data&cache_key=2734A27C",
+        "displayedObservations" : "24",
         "environment" : "",
         "object" : "calibration_data",
-        "preview" : 0,
-        "totalObservations" : 24,
-        "variables" : 35
+        "preview" : "0",
+        "totalObservations" : "24",
+        "variables" : "36"
     },
     "relative_order" : 4,
     "source_on_save" : false,

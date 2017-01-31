@@ -220,7 +220,6 @@ def plot_calibration(all_trials, info, all_subj, data_type):
     plt.title(title)
 
     if all_subj == True:
-
         for s in range(len(all_trials)):
             for t in range(len(all_trials[s])):
                 if all_trials[s][t]['data']['item']['type'] == 'calibration':
@@ -250,6 +249,10 @@ def plot_calibration(all_trials, info, all_subj, data_type):
         plt.plot(mean_straight_r[:, 0], mean_straight_r[:, 1], '.-', c='blue')
 
         plt.savefig('Calibration.pdf', format='pdf', bbox_inches='tight')
+        plt.close()
+
+
+
 
 
 def plot_per_subject(subject, all_trials, info, expected_response, data_type, color):

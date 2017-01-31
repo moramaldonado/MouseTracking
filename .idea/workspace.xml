@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc92f62b-b90d-4f7a-a746-17fca9b24186" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/752EA7A7" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/AE0CFB9B" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/C1C9A710" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/C304BC05" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/EA9C9CEF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/FFE1C9EF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/u/EF95055" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/viewer-cache/9CF0FB1A.Rdata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/viewer-cache/E5ABE05F.Rdata" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/Calibration.pdf" afterPath="$PROJECT_DIR$/figures/Calibration.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/session-persistent-state" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/session-persistent-state" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-3CEFCC6/BF191231" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-3CEFCC6/BF191231" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-3CEFCC6/EA9C9CEF" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-3CEFCC6/EA9C9CEF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_R/Data.csv" afterPath="$PROJECT_DIR$/data_R/Data.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" />
     </list>
     <ignored path="negationMT.iws" />
@@ -39,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="organization_functions.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py">
+      <file leaf-file-name="plot_mouse_paths.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="88" column="142" selection-start-line="88" selection-start-column="142" selection-end-line="88" selection-end-column="142" />
+            <state relative-caret-position="381">
+              <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -73,13 +64,13 @@
         <option value="$PROJECT_DIR$/index-Exp3.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/calibration.js" />
-        <option value="$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py" />
         <option value="$PROJECT_DIR$/web_experiment/template_handling.js" />
         <option value="$PROJECT_DIR$/web_experiment/experiment.json" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/integrate.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/analyses_MT.py" />
-        <option value="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" />
       </list>
     </option>
   </component>
@@ -372,7 +363,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -423,9 +414,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1485514771000" expanded="true" signature="24:54" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1485514771000" expanded="false" signature="55:351" ph="import ..." />
-            <marker date="1485514771000" expanded="true" signature="3698:3858" ph="..." />
+            <marker date="1485518684000" expanded="true" signature="24:54" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1485518684000" expanded="false" signature="55:351" ph="import ..." />
+            <marker date="1485518684000" expanded="true" signature="3698:3885" ph="..." />
+            <marker date="1485518684000" expanded="true" signature="4371:4554" ph="..." />
+            <marker date="1485518684000" expanded="true" signature="5067:5249" ph="..." />
+            <marker date="1485518684000" expanded="true" signature="5763:5946" ph="..." />
           </folding>
         </state>
       </provider>
@@ -520,13 +514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-705">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="249" column="8" selection-start-line="249" selection-start-column="8" selection-end-line="249" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -731,22 +718,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py">
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
+        <state relative-caret-position="426">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding>
-            <marker date="1485514771000" expanded="true" signature="24:54" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1485514771000" expanded="false" signature="55:351" ph="import ..." />
-            <marker date="1485514771000" expanded="true" signature="3698:3858" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="24:91" ph="&quot;&quot;&quot;Created on Fri Apr 17 18:40:03 2015...&quot;&quot;&quot;" />
+            <marker date="1485514889000" expanded="false" signature="94:221" ph="import ..." />
+            <marker date="1485514889000" expanded="true" signature="246:546" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="280:532" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="571:973" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="623:959" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="1001:1621" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="1095:1591" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="1173:1591" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="1213:1591" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="1388:1591" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="1465:1591" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="1666:5061" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="1788:2497" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="1846:2072" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="2119:2497" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="2149:2495" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="2543:4989" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="2610:3334" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="3379:4989" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="3427:4989" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="3496:4987" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="5097:5419" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="5160:5391" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="5473:6119" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="5544:6090" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="6150:6493" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="6187:6466" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="6231:6466" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="6295:6466" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="6540:10077" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="6577:10054" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="6638:9998" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="7011:7143" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="7216:7496" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="7573:9121" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="7649:7778" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="7854:7984" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="8060:8190" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="8266:8395" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="8471:8601" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="8677:8808" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="8831:8956" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="9140:9998" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="10101:10407" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="10138:10385" ph="..." />
+            <marker date="1485514889000" expanded="true" signature="10182:10385" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py">
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="88" column="142" selection-start-line="88" selection-start-column="142" selection-end-line="88" selection-end-column="142" />
+        <state relative-caret-position="561">
+          <caret line="172" column="37" selection-start-line="172" selection-start-column="37" selection-end-line="172" selection-end-column="37" />
+          <folding>
+            <marker date="1485518684000" expanded="true" signature="24:54" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1485518684000" expanded="false" signature="55:351" ph="import ..." />
+            <marker date="1485518684000" expanded="true" signature="3698:3885" ph="..." />
+            <marker date="1485518684000" expanded="true" signature="4371:4554" ph="..." />
+            <marker date="1485518684000" expanded="true" signature="5067:5249" ph="..." />
+            <marker date="1485518684000" expanded="true" signature="5763:5946" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="254" column="0" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
           <folding />
         </state>
       </provider>
