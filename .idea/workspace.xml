@@ -1,36 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc92f62b-b90d-4f7a-a746-17fca9b24186" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/5DEB6BED" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/9353120" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/AD275521" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/AE0CFB9B" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/BF191231" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/CBAB5685" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/t/EA9C9CEF" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/per/u/EF95055" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/viewer-cache/1BBB0424.Rdata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/viewer-cache/2734A27C.Rdata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/viewer-cache/9D41EE44.Rdata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/viewer-cache/A237C09E.Rdata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/viewer-cache/FA2445CD.Rdata" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.RData" afterPath="$PROJECT_DIR$/.RData" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/Calibration.pdf" afterPath="$PROJECT_DIR$/figures/Calibration.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rhistory" afterPath="$PROJECT_DIR$/.Rhistory" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/source-pane.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/source-pane.pper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/prop/INDEX" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/prop/INDEX" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/session-persistent-state" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/session-persistent-state" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/shared/notebooks/paths" afterPath="$PROJECT_DIR$/.Rproj.user/shared/notebooks/paths" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/choosing_measures.R" afterPath="$PROJECT_DIR$/R_scripts/choosing_measures.R" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/packages.R" afterPath="$PROJECT_DIR$/R_scripts/packages.R" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_R/Data.csv" afterPath="$PROJECT_DIR$/data_R/Data.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/local_maxima.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/local_maxima.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/normalization.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/normalization.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" />
-    </list>
+    <list default="true" id="cc92f62b-b90d-4f7a-a746-17fca9b24186" name="Default" comment="" />
     <ignored path="negationMT.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />

@@ -1,7 +1,7 @@
 
 
 # Data cleaning / management
-require(dplyr)
+require(tidyverse)
 require(plyr)
 require(ggplot2)
 
