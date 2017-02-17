@@ -1,6 +1,4 @@
 
-
-
 normalized_positions = calibration_data %>%
   select(Subject, Normalized.positions.X, Polarity, Expected_response) %>%
   separate(Normalized.positions.X, into= as.character(c(1:101)), sep = ",") %>%

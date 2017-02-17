@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "\n##1. CHARGE PACKAGES\nsource(\"R_scripts/packages.R\")\n\n## 2. EXTRACTING_DATA\nsource(\"R_scripts/extracting_data.R\")\n\n## 3. CALIBRATION / Choosing measures\nsource(\"R_scripts/choosing_measures.R\")\n",
+    "contents" : "\n##1. CHARGE PACKAGES\nsource(\"R_scripts/packages.R\")\n\n## 2. EXTRACTING_DATA\nsource(\"R_scripts/extracting_data.R\")\n\n## 3. CALIBRATION / Choosing measures\nsource(\"R_scripts/choosing_measures.R\")\n\n## 4. LDA \nsource(\"R_scripts/LDA.R\")\n",
     "created" : 1485354599519.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "778019039",
+    "hash" : "4081619793",
     "id" : "AE0CFB9B",
-    "lastKnownWriteTime" : 1485274494,
-    "last_content_update" : 1485274494,
+    "lastKnownWriteTime" : 1487341923,
+    "last_content_update" : 1487341923936,
     "path" : "~/WebstormProjects/negationMT/R_scripts/compile.R",
     "project_path" : "R_scripts/compile.R",
     "properties" : {

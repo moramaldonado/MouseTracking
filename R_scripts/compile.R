@@ -7,3 +7,6 @@ source("R_scripts/extracting_data.R")
 
 ## 3. CALIBRATION / Choosing measures
 source("R_scripts/choosing_measures.R")
+
+## 4. LDA 
+source("R_scripts/LDA.R")
