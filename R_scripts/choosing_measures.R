@@ -1,3 +1,5 @@
+
+
 ## WHICH MEASURE IS A BETTER PREDICTOR FOR THE CALIBRATION ##
 
 ## See the distribution in real data
@@ -11,12 +13,9 @@ p7 <- ggplot(calibration_data, aes(fill=Polarity, x=abs(AUC), color=Polarity)) +
 p8 <- ggplot(calibration_data, aes(fill=Polarity, x=Median.LogRatio, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.1)+ theme(legend.position = "none")
 p9 <- ggplot(calibration_data, aes(fill=Polarity, x=Median.Difference, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.1)+ theme(legend.position = "none")
 
-multiplot(p1,p2,p3,p4,p6,p7,p8,p9,cols = 3)
-
-ok <- filter(calibration_data, MaxLogRatio<2 & Polarity=='deviated')
-ok2 <- filter(calibration_data, MaxDeviation>1 & Polarity=='uncertain')
-ok3 <- filter(calibration_data, abs(AUC)<20 & Polarity=='uncertain')
-
+p<- ggplot(calibration_data, aes(color=Polarity, x=X.flips, y=MaxDifference)) + geom_point(alpha=.6, position=position_jitter(width=1,height=.5))+ theme(legend.position = "none")
+pbis<- ggplot(calibration_data, aes(color=Polarity, x=X.flips2, y=MaxDifference)) + geom_point(alpha=.6, position=position_jitter(width=1,height=.5))+ theme(legend.position = "none")
+pbisbis<- ggplot(calibration_data, aes(color=Polarity, x=Len.Local.Maxima.X, y=MaxDifference)) + geom_point(alpha=.6, position=position_jitter(width=1,height=.5))+ theme(legend.position = "none")
 
 
 #Take the sd for each measure, each condition
@@ -122,7 +121,7 @@ classified_data <-  data %>% filter(Sentence_Type=='EI') %>%
   select(Subject, MaxLogRatio, Polarity) %>%
   mutate(classification= if_else(MaxLogRatio>2,
                                  'class.deviation', 
-                                 if_else(MaxLogRatio>0.5 & MaxLogRatio<=2, 
+                                 if_else(MaxLogRatio>0.1 & MaxLogRatio<=2, 
                                          'class.uncertain', 
                                          'class.straight')))
 ggplot(classified_data, aes(color= Polarity, y=MaxLogRatio, x=classification))+ geom_point()

@@ -1,15 +1,15 @@
+
+
 # Data cleaning / management
-library(tidyverse)
-library(plyr)
-# Effect sizes
-library(effsize)
-library(powerAnalysis)
+require(dplyr)
+require(plyr)
+require(ggplot2)
 
-# Power analyses
-library(pwr)
+#MASS and lmer
+require(lme4)
 
-# Linear mixed effects models
-library(lme4)
+#LDA
+#require(lda)
 
 # Standard error of the mean
 se <- function(x, ...) {
@@ -17,6 +17,11 @@ se <- function(x, ...) {
   return(sd(x, ...)/sqrt(n))
 }
 
+
+
+
+
+#Multiplot
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   library(grid)
   

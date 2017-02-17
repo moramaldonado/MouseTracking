@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1487336078609.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "ECE95301",
+    "lastKnownWriteTime" : 4294967302,
+    "last_content_update" : 1487336078609,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "BE9C432A",
+        "caption" : "trunc",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=trunc&cache_key=BE9C432A",
+        "displayedObservations" : 12,
+        "environment" : "",
+        "object" : "trunc",
+        "preview" : 0,
+        "totalObservations" : 12,
+        "variables" : 203
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

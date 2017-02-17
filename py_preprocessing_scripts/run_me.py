@@ -104,6 +104,12 @@ all_trials = integrate('difference','max_smooth_acceleration',all_trials)
 all_trials = integrate('difference','maxDeviation',all_trials)
 all_trials = integrate_x('max_smooth_acceleration',all_trials)
 all_trials = integrate_x('fin',all_trials)
+all_trials = local_maxima_x(all_trials)
+all_trials = x_flips(all_trials)
+all_trials = x_flips2(all_trials)
+
+print all_trials[1][10]['x_flips']
+
 
 
 #exporting the data for R
@@ -118,65 +124,3 @@ plot_calibration(all_trials,info,True,'normalized_positions_space')
 #plot_per_subject(0,all_trials,info,'false','normalized_positions_space','green')
 
 #plot a couple of subject
-
-startX, startY = 0, 0
-x = info[0]['normalized_button_size']['x']
-y = info[0]['normalized_button_size']['y']
-currentAxis = plt.gca()
-# currentAxis.add_patch(Ellipsis((startX -(x/2), startY - y), x, y, ec='black', fill=False))
-start(currentAxis)
-
-# plt.axis([-1-x-.25, 1+x+.25, 0-y , 1+y+.1])
-plt.ylabel('y coordenate')
-plt.xlabel('x coordenate')
-title = 'Uncertain class as deviated'
-plt.title(title)
-px = []
-py = []
-for i in range(len(all_trials[1][4]['normalized_positions_space'])):
-    px.append(all_trials[1][4]['normalized_positions_space'][i][0])
-    py.append(all_trials[1][4]['normalized_positions_space'][i][1])
-    plt.plot(px, py, '-', c='blue', alpha=0.7)
-plt.savefig('S1-bad.pdf', format='pdf', bbox_inches='tight')
-plt.close()
-
-startX, startY = 0, 0
-x = info[0]['normalized_button_size']['x']
-y = info[0]['normalized_button_size']['y']
-currentAxis = plt.gca()
-# currentAxis.add_patch(Ellipsis((startX -(x/2), startY - y), x, y, ec='black', fill=False))
-start(currentAxis)
-
-plt.ylabel('y coordenate')
-plt.xlabel('x coordenate')
-title = 'Deviated class as uncertain'
-plt.title(title)
-px = []
-py = []
-for i in range(len(all_trials[3][2]['normalized_positions_space'])):
-    px.append(all_trials[3][2]['normalized_positions_space'][i][0])
-    py.append(all_trials[3][2]['normalized_positions_space'][i][1])
-    plt.plot(px, py, '-', c='red', alpha=0.7)
-plt.savefig('S3-bad.pdf', format='pdf', bbox_inches='tight')
-plt.close()
-
-
-startX, startY = 0, 0
-x = info[0]['normalized_button_size']['x']
-y = info[0]['normalized_button_size']['y']
-currentAxis = plt.gca()
-# currentAxis.add_patch(Ellipsis((startX -(x/2), startY - y), x, y, ec='black', fill=False))
-start(currentAxis)
-
-plt.ylabel('y coordenate')
-plt.xlabel('x coordenate')
-title = 'uncertain class as deviated'
-plt.title(title)
-px = []
-py = []
-for i in range(len(all_trials[0][5]['normalized_positions_space'])):
-    px.append(all_trials[0][5]['normalized_positions_space'][i][0])
-    py.append(all_trials[0][5]['normalized_positions_space'][i][1])
-    plt.plot(px, py, '-', c='blue', alpha=0.7)
-plt.savefig('S0-bad.pdf', format='pdf', bbox_inches='tight')
-plt.close()

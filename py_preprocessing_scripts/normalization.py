@@ -17,6 +17,8 @@ def normalisation_in_time(all_trials):
         for t in range(len(all_trials[s])):  # trial
             if all_trials[s][t]['value'] != '--' and len(all_trials[s][t]['mouse_log']) > 1:
                 normalized_points = []
+                normalized_points_x = []
+                normalized_points_y = []
                 rt = all_trials[s][t]['mouse_log'][-1][3] - all_trials[s][t]['mouse_log'][0][3]
                 delta_t = float(rt) / (points - 1)
                 time_offset = all_trials[s][t]['mouse_log'][0][3]
@@ -24,6 +26,8 @@ def normalisation_in_time(all_trials):
                 x0 = all_trials[s][t]['mouse_log'][0][0]
                 y0 = all_trials[s][t]['mouse_log'][0][1]
                 normalized_points.append([x0, y0, t0])
+                normalized_points_x.append(x0)
+                normalized_points_y.append(y0)
 
                 for i in range(1, (points - 1)):
                     temp = time_offset + (i * delta_t)
@@ -41,16 +45,26 @@ def normalisation_in_time(all_trials):
                         x = all_trials[s][t]['mouse_log'][j][0]
                         y = all_trials[s][t]['mouse_log'][j][1]
                     normalized_points.append([x, y, temp])
+                    normalized_points_x.append(x)
+                    normalized_points_y.append(y)
 
                 tn = rt + time_offset
                 xn = all_trials[s][t]['mouse_log'][-1][0]
                 yn = all_trials[s][t]['mouse_log'][-1][1]
 
                 normalized_points.append([xn, yn, tn])
+                normalized_points_x.append(xn)
+                normalized_points_y.append(yn)
                 all_trials[s][t]['normalized_positions'] = normalized_points
+                all_trials[s][t]['normalized_positions_x'] = normalized_points_x
+                all_trials[s][t]['normalized_positions_y'] = normalized_points_y
             else:
                 # print 'here I do not have information', s,t, all_trials[s][t]['value'], all_trials[s][t]['accuracy']
                 all_trials[s][t]['normalized_positions'] = 'NA'
+                all_trials[s][t]['normalized_positions_x'] = 'NA'
+                all_trials[s][t]['normalized_positions_y'] = 'NA'
+
+
 
     return all_trials
 
