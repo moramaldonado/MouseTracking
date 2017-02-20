@@ -19,9 +19,7 @@ my_data1 <- as.data.frame(sapply(my_data1, as.numeric))
 res <- prcomp(my_data1, center = TRUE, scale = FALSE)
 summary(res)
 plot(cumsum(res$sdev^2/sum(res$sdev^2)))
-pc.use <- 3
-trunc <- res$x[,9:12] %*% t(res$rotation[,9:12])
-
+trunc <- res$x[,9:12] #last three PC
 trunc <- as.data.frame(trunc)
 Polarity <- my_data$Polarity
 trunc <- cbind(Polarity, trunc)
@@ -36,7 +34,7 @@ my_data2 <- my_data %>%
 #LDA for real data 
 library(MASS)
 fit <- lda(formula = Polarity ~ ., 
-           data = my_data2, CV=TRUE)
+           data = trunc, CV=TRUE)
 
 
 ct <- table(my_data$Polarity, fit$class)
