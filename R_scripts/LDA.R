@@ -19,11 +19,10 @@ my_data1 <- as.data.frame(sapply(my_data1, as.numeric))
 res <- prcomp(my_data1, center = TRUE, scale = FALSE)
 summary(res)
 plot(cumsum(res$sdev^2/sum(res$sdev^2)))
-trunc <- res$x[,9:12] #last three PC
+trunc <- res$x[,1:3]
 trunc <- as.data.frame(trunc)
 Polarity <- my_data$Polarity
 trunc <- cbind(Polarity, trunc)
-
 
 #Part of data (done by hand): Still collinear!
 ex.x <- paste('x', as.character(c(25:75)), sep='') 
@@ -35,7 +34,6 @@ my_data2 <- my_data %>%
 library(MASS)
 fit <- lda(formula = Polarity ~ ., 
            data = trunc, CV=TRUE)
-
 
 ct <- table(my_data$Polarity, fit$class)
 ct
