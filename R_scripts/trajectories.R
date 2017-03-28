@@ -49,7 +49,6 @@ normalized_positions.means.traj <- ddply(normalized_positions.plot, c("Polarity"
                                                                           Y.Position.mean=mean(normalized_positions.means$Y.Position, na.rm=T), 
                                                                           Y.Position.se=se(normalized_positions.means$Y.Position, na.rm=T)))
 
-
 ggplot(normalized_positions.means, aes(x=Time.Step, y=X.Position.mean, color=Polarity, group=Polarity)) + geom_point(alpha=.6) + geom_line() + theme(legend.position = "none") + facet_grid(.~Expected_response) + 
   geom_errorbar(aes(ymin=X.Position.mean-X.Position.se, ymax=X.Position.mean+X.Position.se), width=.1) 
 

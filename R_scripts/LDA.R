@@ -32,20 +32,43 @@ y_correlations <- cor(dplyr::select(normalized_positions, starts_with("y"))) > 0
 x_correlations.sums <- colSums(x_correlations)
 y_correlations.sums <- colSums(y_correlations)
 
+##Remove points after 2 correlation > .99 (otherwise I'll be removing too many points)
+# for(c in 3:101) {
+#   for (r in 1:101) {
+#     m <- paste('x', as.character(c), sep='')
+#     l <- paste('x', as.character(c-1), sep='')
+#     if(x_correlations[r,m] == TRUE & x_correlations[r,l] == TRUE) 
+#     {x[r]='SACAR'}
+#   }}
+# for(c in 3:101) {
+#   for (r in 1:101) {
+#     m <- paste('y', as.character(c), sep='')
+#     l <- paste('y', as.character(c-1), sep='')
+#     if(y_correlations[r,m] == TRUE & y_correlations[r,l] == TRUE) 
+#     {y[r]='SACAR'}
+#   }}
+
+
+######
+##Remove points after 3 correlation > .99 (otherwise I'll be removing too many points)
 for(c in 3:101) {
   for (r in 1:101) {
-    m <- paste('x', as.character(c), sep='')
-    l <- paste('x', as.character(c-1), sep='')
-    if(x_correlations[r,m] == TRUE & x_correlations[r,l] == TRUE) 
-    {x[r]='SACAR'}
+  m <- paste('x', as.character(c), sep='')
+  l <- paste('x', as.character(c-1), sep='')
+  k <- paste('x', as.character(c-2), sep='')
+  if(x_correlations[r,m] == TRUE & x_correlations[r,l] == TRUE & x_correlations[r,k] == TRUE)
+  {x[r]='SACAR'}
   }}
 for(c in 3:101) {
   for (r in 1:101) {
     m <- paste('y', as.character(c), sep='')
     l <- paste('y', as.character(c-1), sep='')
-    if(y_correlations[r,m] == TRUE & y_correlations[r,l] == TRUE) 
+    k <- paste('y', as.character(c-2), sep='')
+    if(y_correlations[r,m] == TRUE & y_correlations[r,l] == TRUE & y_correlations[r,k] == TRUE)
     {y[r]='SACAR'}
   }}
+
+
 
 #Taking out elements
 x.subset <- x[x != "SACAR"];
@@ -101,40 +124,5 @@ calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Sub
 
 
 
-######
-#(THIS DOES NOT WORK) Remove points after 3 correlation > .99 (otherwise I'll be removing too many points)
-# x_correlations.sums <- colSums(x_correlations)
-# y_correlations.sums <- colSums(y_correlations)
-# 
-# for(c in 3:101) {
-#   for (r in 1:101) {
-#   m <- paste('x', as.character(c), sep='')
-#   l <- paste('x', as.character(c-1), sep='')
-#   k <- paste('x', as.character(c-2), sep='')
-#   if(x_correlations[r,m] == TRUE & x_correlations[r,l] == TRUE & x_correlations[r,k] == TRUE) 
-#   {x[r]='SACAR'}
-#   }}
-# for(c in 3:101) {
-#   for (r in 1:101) {
-#     m <- paste('y', as.character(c), sep='')
-#     l <- paste('y', as.character(c-1), sep='')
-#     k <- paste('y', as.character(c-2), sep='')
-#     if(y_correlations[r,m] == TRUE & y_correlations[r,l] == TRUE & y_correlations[r,k] == TRUE) 
-#     {y[r]='SACAR'}
-#   }}
-# 
-# #Taking out elements
-# x.subset <- x[x != "SACAR"];
-# y.subset <- y[y != "SACAR"];
-# 
-# #Subsetting data
-# ##NOTE: we should take out the y variables
-# normalized_positions.new <- normalized_positions %>%
-#   dplyr::select(Subject, Item.number, Polarity, Expected_response, one_of(x.subset), one_of(y.subset))%>%
-#   mutate(Deviation=ifelse(Polarity == "deviated", "NonCentral", "Central"))
-# 
-# m_lda <- lda(x=dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y")),
-#              grouping=normalized_positions.new$Deviation)
-# 
-##Here: Warning message: In lda.default(x, grouping, ...) : variables are collinear
+
 
