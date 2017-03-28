@@ -3,20 +3,8 @@
 ## WHICH MEASURE IS A BETTER PREDICTOR FOR THE CALIBRATION ##
 
 ## See the distribution in real data
-p1 <- ggplot(calibration_data, aes(fill=Polarity, x=MaxLogRatio, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.1)+ theme(legend.position = "top")
-p2 <- ggplot(calibration_data, aes(fill=Polarity, x=MaxDifference, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.05)+ theme(legend.position = "none")
-p3 <- ggplot(calibration_data, aes(fill=Polarity, x=MaxDeviation, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.05)+ theme(legend.position = "none")
-p4 <- ggplot(calibration_data, aes(fill=Polarity, x=Int.LogRatio.Fin, color=Polarity)) + geom_histogram(alpha=.2, binwidth=5)+ theme(legend.position = "none")
-p5 <- ggplot(calibration_data, aes(fill=Polarity, x=abs(Int.X.AccPeak), color=Polarity)) + geom_histogram(alpha=.2, binwidth=1)+ theme(legend.position = "none")
-p6 <- ggplot(calibration_data, aes(fill=Polarity, x=MaxDeviationBorder, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.05) + theme(legend.position = "none")
-p7 <- ggplot(calibration_data, aes(fill=Polarity, x=abs(AUC), color=Polarity)) + geom_histogram(alpha=.2, binwidth=1) + theme(legend.position = "none")
-p8 <- ggplot(calibration_data, aes(fill=Polarity, x=Median.LogRatio, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.1)+ theme(legend.position = "none")
-p9 <- ggplot(calibration_data, aes(fill=Polarity, x=Median.Difference, color=Polarity)) + geom_histogram(alpha=.2, binwidth=.1)+ theme(legend.position = "none")
-
-p<- ggplot(calibration_data, aes(color=Polarity, x=X.flips, y=MaxDifference)) + geom_point(alpha=.6, position=position_jitter(width=1,height=.5))+ theme(legend.position = "none")
-pbis<- ggplot(calibration_data, aes(color=Polarity, x=X.flips2, y=MaxDifference)) + geom_point(alpha=.6, position=position_jitter(width=1,height=.5))+ theme(legend.position = "none")
-pbisbis<- ggplot(calibration_data, aes(color=Polarity, x=Len.Local.Maxima.X, y=MaxDifference)) + geom_point(alpha=.6, position=position_jitter(width=1,height=.5))+ theme(legend.position = "none")
-
+ggplot(calibration_data, aes(fill=Polarity, x=MaxLogRatio, fill=Polarity)) + geom_histogram(binwidth=1,  position="dodge")+ theme(legend.position = "top")
+ggsave('MaxLogRatio.png', plot = last_plot(), scale = 1, dpi = 300)
 
 #Take the sd for each measure, each condition
 #1. MaxLogRatio 
@@ -31,7 +19,7 @@ n = 150
 # Make new subjects
 new_subjects = calibration_data %>%
 # Select 2 unique subjects
-select(Subject) %>%
+dplyr::select(Subject) %>%
 distinct() %>%
 # Sample subjects n times with replacement
 sample_n(n, replace = T) %>%
@@ -75,10 +63,6 @@ ggplot(calibration_data_new_subjects, aes(fill=Polarity, x=MaxLogRatio_NEW, colo
 
 # Testing model FAKE DATA for MAX LOG RATIO
 
-calibration_data_new_subjects$Polarity <- factor(calibration_data_new_subjects$Polarity)
-calibration.lmer <- glmer(Polarity ~ MaxLogRatio_NEW  +
-                            (1|randomID), data = calibration_data_new_subjects, family=binomial)
-
 
 calibration_data_new_subjects$straight <- if_else(calibration_data_new_subjects$Polarity=='straight', 
                                                   1,
@@ -90,21 +74,12 @@ calibration_data_new_subjects$uncertain <- if_else(calibration_data_new_subjects
                                                    1,
                                                    0)
 
-calibration_deviated_ratio.lmer <- glmer(deviated ~ MaxLogRatio_NEW  +
-                            (1|randomID), data = calibration_data_new_subjects, family=binomial)
-calibration_uncertain_ratio.lmer <- glmer(uncertain ~ MaxLogRatio_NEW  +
-                                           (1|randomID), data = calibration_data_new_subjects, family=binomial)
-
-calibration_straight_ratio.lmer <- glmer(straight ~ MaxLogRatio_NEW  +
-                                            (1|randomID), data = calibration_data_new_subjects, family=binomial)
-
-
 
 ## FIND A THRESHOLD
 
 # iff MaxLogRatio > 2, 'deviated'; else 'uncertain'
 classified_data <- calibration_data_new_subjects %>%
-  select(randomID, MaxLogRatio_NEW, Polarity) %>%
+  dplyr::select(randomID, MaxLogRatio_NEW, Polarity) %>%
   mutate(classification= if_else(MaxLogRatio_NEW>2,
                                  'class.deviation', 
                                  if_else(MaxLogRatio_NEW>0.1 & MaxLogRatio_NEW <= 2, 
@@ -118,7 +93,7 @@ ggplot(classified_data, aes(x=MaxLogRatio_NEW, y=classification, color=Polarity)
 
 ## TEST how it does with the data I have from previous experiment
 classified_data <-  data %>% filter(Sentence_Type=='EI') %>%
-  select(Subject, MaxLogRatio, Polarity) %>%
+  dplyr::select(Subject, MaxLogRatio, Polarity) %>%
   mutate(classification= if_else(MaxLogRatio>2,
                                  'class.deviation', 
                                  if_else(MaxLogRatio>0.1 & MaxLogRatio<=2, 

@@ -84,7 +84,7 @@ def exporting_data(path,all_trials, info):
     with open(name, 'w') as f:
         
         writer = csv.writer(f)
-        writer.writerow( ('Subject', 'Sentence_Type', 'Adjective', 'Polarity',
+        writer.writerow( ('Subject', 'Item.number', 'Sentence_Type', 'Adjective', 'Polarity',
                           'Expected_response','Response','Accuracy','RT','Normalized.positions.X','Normalized.positions.Y', 'Difference','MaxDeviation','MaxDeviation.Time','MaxDeviation.Time.Norm',
                           'MaxDeviationBorder','MaxDeviationBorder.Time','MaxDeviationBorder.Time.Norm', 'Median.LogRatio', 'Median.Difference',
                           'MaxRatio','MaxLogRatio','MaxRatio.Time','MaxRatio.Time.Norm','MaxDifference','MaxDifference.Time','MaxDifference.Time.Norm',
@@ -93,7 +93,7 @@ def exporting_data(path,all_trials, info):
         for i in range(len(all_trials)):
             for t in range(len(all_trials[i])):
                     #print i,t
-                    writer.writerow((str(i), all_trials[i][t]['type'], all_trials[i][t]['adjective'], all_trials[i][t]['polarity'],
+                    writer.writerow((str(i), str(t), all_trials[i][t]['type'], all_trials[i][t]['adjective'], all_trials[i][t]['polarity'],
                                       all_trials[i][t]['expected_response'],
                                         all_trials[i][t]['value'], all_trials[i][t]['accuracy'], all_trials[i][t]['RT'], ','.join(map(repr, all_trials[i][t]['normalized_positions_x'])),','.join(map(repr, all_trials[i][t]['normalized_positions_y'])), ','.join(map(repr, all_trials[i][t]['difference'])), all_trials[i][t]['maxDeviation'][0], all_trials[i][t]['maxDeviation'][1],all_trials[i][t]['maxDeviation'][2], all_trials[i][t]['maxDeviationBorder'][0], all_trials[i][t]['maxDeviationBorder'][1],all_trials[i][t]['maxDeviationBorder'][2], all_trials[i][t]['median_ratio_log'], all_trials[i][t]['median_difference'], all_trials[i][t]['max_ratio'][0],all_trials[i][t]['max_ratio_log'][0],all_trials[i][t]['max_ratio'][1],all_trials[i][t]['max_ratio'][2],all_trials[i][t]['max_difference'][0],all_trials[i][t]['max_difference'][1],all_trials[i][t]['max_difference'][2], all_trials[i][t]['max_smooth_acceleration'][0],all_trials[i][t]['max_smooth_acceleration'][1],all_trials[i][t]['max_smooth_acceleration'][2], all_trials[i][t]['integral_ratio_on_max_smooth_acceleration'],all_trials[i][t]['integral_ratio_log_on_max_smooth_acceleration'],all_trials[i][t]['integral_ratio_log_on_fin'],all_trials[i][t]['integral_difference_on_max_smooth_acceleration'],all_trials[i][t]['integral_X_on_max_smooth_acceleration'],all_trials[i][t]['integral_X_on_fin'],all_trials[i][t]['local_maxima'],len(all_trials[i][t]['local_maxima']),all_trials[i][t]['local_maxima_x'],len(all_trials[i][t]['local_maxima_x']), all_trials[i][t]['x_flips'],all_trials[i][t]['x_flips2'],all_trials[i][t]['delay'],all_trials[i][t]['ratio_log_in_max_smooth_acceleration']))
                                         
@@ -170,29 +170,29 @@ def organization_trials(all_trials):
 
 
 
-                if all_trials[i][t]['data']['item']['item_number'] == 0:
-                    all_trials[i][t]['expected_response'] = 'true'
-                    all_trials[i][t]['polarity'] = 'straight'
-
-                elif all_trials[i][t]['data']['item']['item_number'] == 1:
-                    all_trials[i][t]['expected_response'] = 'false'
-                    all_trials[i][t]['polarity'] = 'straight'
-
-                elif all_trials[i][t]['data']['item']['item_number'] == 2:
-                    all_trials[i][t]['expected_response'] = 'false'
-                    all_trials[i][t]['polarity'] = 'deviated'
-
-                elif all_trials[i][t]['data']['item']['item_number'] == 3:
+                if all_trials[i][t]['data']['item']['item_number'] == 0 or (all_trials[i][t]['data']['item']['item_number'] == 3 or all_trials[i][t]['data']['item']['item_number'] == 9):
                     all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'deviated'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 4:
+                elif all_trials[i][t]['data']['item']['item_number'] == 1 or (all_trials[i][t]['data']['item']['item_number'] == 2 or all_trials[i][t]['data']['item']['item_number'] == 8):
+                    all_trials[i][t]['expected_response'] = 'false'
+                    all_trials[i][t]['polarity'] = 'deviated'
+
+                elif all_trials[i][t]['data']['item']['item_number'] == 4 or all_trials[i][t]['data']['item']['item_number'] == 10 :
                     all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'uncertain'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 5:
+                elif all_trials[i][t]['data']['item']['item_number'] == 5 or all_trials[i][t]['data']['item']['item_number'] == 11:
                     all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'uncertain'
+
+                elif all_trials[i][t]['data']['item']['item_number'] == 6:
+                    all_trials[i][t]['expected_response'] = 'false'
+                    all_trials[i][t]['polarity'] = 'straight'
+
+                elif all_trials[i][t]['data']['item']['item_number'] == 7:
+                    all_trials[i][t]['expected_response'] = 'true'
+                    all_trials[i][t]['polarity'] = 'straight'
 
                 else:
                     all_trials[i][t]['expected_response'] = 'null'

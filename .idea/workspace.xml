@@ -2,8 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc92f62b-b90d-4f7a-a746-17fca9b24186" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/7E3C1A54" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/7E3C1A54" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_experiment/index-calibration.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_experiment/template_handling_calibration.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/2E2471A9" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/7E3C1A54" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/9351E921" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/AE0CFB9B" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/C898FF95" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/E1BA0E9" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/lock_file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/raw_data/140054081-1485257165.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/raw_data/697393592-1485174169.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/raw_data/793266898-1485419735.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/raw_data/809369166-1485441859.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.RData" afterPath="$PROJECT_DIR$/.RData" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/Calibration.pdf" afterPath="$PROJECT_DIR$/figures/Calibration.pdf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rhistory" afterPath="$PROJECT_DIR$/.Rhistory" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/source-pane.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/source-pane.pper" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/windowlayoutstate.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/windowlayoutstate.pper" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/workbench-pane.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/workbench-pane.pper" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/prop/INDEX" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/prop/INDEX" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/LDA.R" afterPath="$PROJECT_DIR$/R_scripts/LDA.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/choosing_measures.R" afterPath="$PROJECT_DIR$/R_scripts/choosing_measures.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/compile.R" afterPath="$PROJECT_DIR$/R_scripts/compile.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/extracting_data.R" afterPath="$PROJECT_DIR$/R_scripts/extracting_data.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/trajectories.R" afterPath="$PROJECT_DIR$/R_scripts/trajectories.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_R/Data.csv" afterPath="$PROJECT_DIR$/data_R/Data.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_R/Information.csv" afterPath="$PROJECT_DIR$/data_R/Information.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_experiment/calibration.js" afterPath="$PROJECT_DIR$/web_experiment/calibration.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_experiment/template_handling.js" afterPath="$PROJECT_DIR$/web_experiment/template_handling.js" />
     </list>
     <ignored path="negationMT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +55,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="normalization.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/normalization.py">
+      <file leaf-file-name="organization_functions.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+            <state relative-caret-position="15">
+              <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -60,15 +89,19 @@
         <option value="$PROJECT_DIR$/index-Exp3.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/calibration.js" />
-        <option value="$PROJECT_DIR$/web_experiment/template_handling.js" />
         <option value="$PROJECT_DIR$/web_experiment/experiment.json" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/integrate.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/analyses_MT.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/local_maxima.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" />
-        <option value="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/normalization.py" />
+        <option value="$PROJECT_DIR$/web_experiment/calibration/index-calibration.html" />
+        <option value="$PROJECT_DIR$/web_experiment/calibration/experiment-calibration.json" />
+        <option value="$PROJECT_DIR$/web_experiment/index-calibration.html" />
+        <option value="$PROJECT_DIR$/web_experiment/calibration.js" />
+        <option value="$PROJECT_DIR$/web_experiment/template_handling.js" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
       </list>
     </option>
   </component>
@@ -79,8 +112,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -107,8 +141,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -141,29 +173,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="negationMT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="negationMT" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="figures" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="FullScreen" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web_experiment" />
+      <recent name="$PROJECT_DIR$/web_experiment/calibration" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.run_me">
     <configuration default="false" name="run_me" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -346,22 +371,25 @@
       <workItem from="1485418734919" duration="596000" />
       <workItem from="1485429676175" duration="697000" />
       <workItem from="1485513820563" duration="9000" />
+      <workItem from="1487847173446" duration="459000" />
+      <workItem from="1489244141965" duration="3884000" />
+      <workItem from="1489253126726" duration="159000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49796000" />
+    <option name="totallyTimeSpent" value="54298000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="1" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19459888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3113582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32824427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -374,6 +402,25 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28038126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -393,65 +440,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web_experiment/calibration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3540">
-          <caret line="249" column="8" selection-start-line="249" selection-start-column="8" selection-end-line="249" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/template_handling.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/templates.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/experiment.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/plot_mouse_paths.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index-Exp3.html" />
-    <entry file="file://$PROJECT_DIR$/main.css" />
-    <entry file="file://$PROJECT_DIR$/calibration.js" />
     <entry file="file://$PROJECT_DIR$/step_runs.js" />
     <entry file="file://$PROJECT_DIR$/template_handling.js" />
     <entry file="file://$PROJECT_DIR$/templates.json" />
@@ -479,41 +467,6 @@
     <entry file="file://$PROJECT_DIR$/main.css" />
     <entry file="file://$PROJECT_DIR$/calibration.js" />
     <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/web_experiment/templates.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/template_handling.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/experiment.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/calibration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="329" column="30" selection-start-line="329" selection-start-column="30" selection-end-line="329" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/readme.rtf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -546,213 +499,109 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="270" column="48" selection-start-line="270" selection-start-column="48" selection-end-line="270" selection-end-column="48" />
-          <folding>
-            <marker date="1485470484000" expanded="true" signature="24:91" ph="&quot;&quot;&quot;Created on Sat Apr 18 10:23:28 2015...&quot;&quot;&quot;" />
-            <marker date="1485470484000" expanded="false" signature="92:122" ph="import ..." />
-            <marker date="1485470484000" expanded="true" signature="124:282" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="319:1928" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="356:1905" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="421:1905" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="575:1767" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="856:1594" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="886:1518" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="1135:1220" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="1251:1518" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="1785:1905" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="1931:2049" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="2090:3304" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="2127:3281" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="2171:3281" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="2304:3207" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="2448:3143" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="2478:3043" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="2707:2792" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="2823:3043" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="3307:3575" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="3618:5572" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="3683:3713" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="3723:3754" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="3791:5550" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="3835:5550" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="3979:5488" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="4058:4977" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="4270:4558" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="4486:4558" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="4584:4872" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="4800:4872" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="4995:5427" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="5574:5771" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="5799:6732" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="5895:6709" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="5939:6709" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="6017:6639" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="6073:6189" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="6211:6327" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="6391:6578" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="6735:6917" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="6940:7886" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="6977:7864" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="7021:7864" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="7093:7818" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="7149:7265" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="7326:7442" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="7506:7818" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="7960:8298" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="7997:8276" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="8041:8276" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="8127:8222" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="8335:8439" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="8478:9281" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="8544:9258" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="8588:9258" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="8721:9180" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="8793:9137" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="9321:10252" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="9398:10223" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="9442:10223" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="9596:10145" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="10299:10675" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="10370:10652" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="10414:10652" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="10465:10588" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="10678:10973" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="11021:12000" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="11208:11274" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="11415:11725" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="11424:11535" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="11735:11948" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="12003:12225" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="12265:13515" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="12499:13496" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="12539:13496" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="12625:13496" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="12642:12709" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="12839:12897" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="12984:13043" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="13119:13496" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="13548:15217" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="13581:15198" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="13621:15198" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="13716:15042" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="13977:14782" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="14283:14479" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="14563:14782" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="15060:15198" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="15254:15955" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="15324:15932" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="15368:15932" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="15458:15868" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="15552:15820" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="15999:16154" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="16065:16116" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="16226:17075" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="16270:17054" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="16365:16855" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="16413:16855" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="16659:16855" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="16924:17054" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="17159:18084" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="17219:18062" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="17323:17851" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="17637:17851" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="17932:18062" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="18165:19124" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="18209:18987" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="18305:18987" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="18357:18987" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="18409:18987" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="18781:18987" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="19188:20591" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="19254:20480" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="19409:20222" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="19457:20222" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="19576:20222" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="19648:19892" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="19966:20222" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="20679:21684" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="20723:21654" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="20818:21531" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="20870:21531" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="20922:21531" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="21293:21531" ph="..." />
-            <marker date="1485470484000" expanded="true" signature="21688:23767" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="87" column="98" selection-start-line="87" selection-start-column="98" selection-end-line="87" selection-end-column="98" />
-          <folding>
-            <marker date="1487185864000" expanded="true" signature="24:91" ph="&quot;&quot;&quot;Created on Fri Apr 17 18:40:03 2015...&quot;&quot;&quot;" />
-            <marker date="1487185864000" expanded="false" signature="94:221" ph="import ..." />
-            <marker date="1487185864000" expanded="true" signature="246:546" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="280:532" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="571:973" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="623:959" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="1001:1621" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="1095:1591" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="1173:1591" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="1213:1591" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="1388:1591" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="1465:1591" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="1666:5504" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="1788:2497" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="1846:2072" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="2119:2497" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="2149:2495" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="2543:5432" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="2543:5504" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="2610:3462" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="3507:5432" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="3555:5432" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="3624:5430" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="5540:5862" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="5603:5834" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="5916:6562" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="5987:6533" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="6593:6936" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="6630:6909" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="6674:6909" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="6738:6909" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="6983:10520" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="7020:10497" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="7081:10441" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="7454:7586" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="7659:7939" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="8016:9564" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="8092:8221" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="8297:8427" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="8503:8633" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="8709:8838" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="8914:9044" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="9120:9251" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="9274:9399" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="9583:10441" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="10544:10850" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="10581:10828" ph="..." />
-            <marker date="1487185864000" expanded="true" signature="10625:10828" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding>
-            <marker date="1487012675000" expanded="true" signature="24:54" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1487012675000" expanded="true" signature="55:351" ph="import ..." />
-            <marker date="1487012675000" expanded="true" signature="3842:4029" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/normalization.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+        <state relative-caret-position="315">
+          <caret line="29" column="46" selection-start-line="29" selection-start-column="46" selection-end-line="29" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/calibration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/calibration/calibration.js" />
+    <entry file="file://$PROJECT_DIR$/web_experiment/calibration/template_handling_calibration.js" />
+    <entry file="file://$PROJECT_DIR$/web_experiment/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/elements.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/templates.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/calibration/index.html" />
+    <entry file="file://$PROJECT_DIR$/web_experiment/experiment.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/step_runs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/calibration/experiment-calibration.json" />
+    <entry file="file://$PROJECT_DIR$/web_experiment/calibration/index-calibration.html" />
+    <entry file="file://$PROJECT_DIR$/web_experiment/index-Exp3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/index-calibration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3728">
+          <caret line="282" column="26" selection-start-line="282" selection-start-column="26" selection-end-line="282" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/calibration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="90" column="26" selection-start-line="90" selection-start-column="26" selection-end-line="90" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/template_handling.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="50" column="7" selection-start-line="50" selection-start-column="7" selection-end-line="50" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
           <folding />
         </state>
       </provider>

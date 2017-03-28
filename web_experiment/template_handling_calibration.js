@@ -44,11 +44,11 @@ function Template(templates, elements, data, callback, finished) {
         if (i==3 && exp_pointer < 11)
                i=2;
 
-         if(i==12 && exp_pointer < 11)
-         i=5;
+        // if(i==12 && exp_pointer < 11)
+        //     i=5;
 
-         if(i==8 && exp_pointer < order.length-1)
-         i = 7;
+/*        if(i==8 && exp_pointer < order.length-1)
+         i = 7;*/
          fillTemplatePointer = i;
          console.log(i);
 

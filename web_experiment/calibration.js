@@ -63,8 +63,8 @@ function initialize_calibration(){
 
             switch (exp_pointer) {
 
-                case 0:
-
+                //Straight
+                case 7:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -88,7 +88,8 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
-                case 1:
+                //Straight
+                case 6:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -113,7 +114,7 @@ function initialize_calibration(){
 
                     break;
 
-                case 2:
+                case 8:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -141,6 +142,7 @@ function initialize_calibration(){
                     ctx.strokeStyle = "red";
                     ctx.stroke();
 
+
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(button_left, y2, 12, 0, 2 * Math.PI);
@@ -150,7 +152,7 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
-                case 3:
+                case 9:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -194,7 +196,6 @@ function initialize_calibration(){
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
                     ctx.closePath();
                     ctx.fill();
-
 
                     ctx.beginPath();
                     ctx.moveTo(x1, y1);
@@ -293,6 +294,258 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
+                case 1:
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(button_right-width/7, height/3)
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_right-width/7, height/3, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(button_right-width/7, height/3)
+                    ctx.lineTo(button_left, y2)
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_left, y2, 12, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+                    calibration_type = 'deviation_right';
+                    console.log(exp_pointer);
+                    break;
+
+                case 0:
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(button_left+width/7, height/3)
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_left+width/7, height/3, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(button_left+width/7, height/3);
+                    ctx.lineTo(button_right, y2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_right, y2, 12, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+                    calibration_type = 'deviation_right';
+                    console.log(exp_pointer);
+                    break;
+
+                case 3:
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x1, height/2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, height/2, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, height/2);
+                    ctx.lineTo(button_left+width/8, y2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+
+                    ctx.stroke();
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_left+width/8, y2, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(button_left+width/8, y2);
+                    ctx.lineTo(button_right, y2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_right, y2, 12, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+                    calibration_type = 'deviation_right';
+                    console.log(exp_pointer);
+                    break;
+
+                case 2:
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x1, height/2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, height/2, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, height/2);
+                    ctx.lineTo(button_right-width/8, y2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+
+                    ctx.stroke();
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_right-width/8, y2, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(button_right-width/8, y2);
+                    ctx.lineTo(button_left, y2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_left, y2, 12, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+                    calibration_type = 'deviation_right';
+                    console.log(exp_pointer);
+                    break;
+
+
+                case 10:
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x1, height/2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, height/2, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, height/2);
+                    ctx.lineTo(button_right, y2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_right, y2, 12, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+                    calibration_type = 'deviation_right';
+                    console.log(exp_pointer);
+                    break;
+
+                case 11:
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x1, height/2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(x1, height/2, 5, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, height/2);
+                    ctx.lineTo(button_left, y2);
+                    ctx.closePath();
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+
+
+                    ctx.fillStyle = "red";
+                    ctx.beginPath();
+                    ctx.arc(button_left, y2, 12, 0, 2 * Math.PI);
+                    ctx.closePath();
+                    ctx.fill();
+
+                    calibration_type = 'straight_left';
+                    console.log(exp_pointer);
+                    break;
+
+
+
+             break;
 
 
 

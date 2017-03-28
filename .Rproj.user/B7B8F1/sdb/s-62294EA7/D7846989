@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n###JUST WITH X-COORDINATES\n\nlibrary(MASS) # NB: this will mask dplyr::select\n\n### ORDERING DATA\nx <- paste('x', as.character(c(1:101)), sep='')\n\n# Each x coordenate into different columns (101 coordenates per trial) \nnormalized_positions = calibration_data %>%\n  dplyr::select(Subject, Item.number, Polarity, Expected_response, Normalized.positions.X) %>%\n  separate(Normalized.positions.X, into= x, sep = \",\", convert=T) \n\n# Taking the negative of false items, to have everything in the same scale\nnormalized_positions_false = normalized_positions%>%\n  filter(Expected_response=='false')%>%\n  dplyr::mutate_at(vars(starts_with('x')), funs('-'))\nnormalized_positions_true = filter(normalized_positions, Expected_response=='true')\nnormalized_positions = bind_rows(normalized_positions_false,normalized_positions_true)\nrm(normalized_positions_true, normalized_positions_false)\n\n#last arrangements\nnormalized_positions$Subject <- factor(normalized_positions$Subject)\nnormalized_positions$Item.number <- factor(normalized_positions$Item.number)\nnormalized_positions$Polarity <- factor(normalized_positions$Polarity)\nnormalized_positions$Expected_response <- factor(normalized_positions$Expected_response)\n\n#Correlation matrix\nx_correlations <- cor(dplyr::select(normalized_positions, starts_with(\"x\"))) > 0.99\n\n# Remove points after 2 correlation > .99 (otherwise I'll be removing too many points)\n#x_correlations.sums <- colSums(x_correlations)\n\nfor(c in 3:101) {\n  for (r in 1:101) {\n    m <- paste('x', as.character(c), sep='')\n    l <- paste('x', as.character(c-1), sep='')\n    k <- paste('x', as.character(c-2), sep='')\n    if(x_correlations[r,m] == TRUE & x_correlations[r,l] == TRUE & x_correlations[r,k] == TRUE) \n    {x[r]='SACAR'}\n  }}\n\n#Taking out elements\nx.subset <- x[x != \"SACAR\"];\n\n### LDA\nnormalized_positions.new <- normalized_positions %>%\n  dplyr::select(Subject, Item.number, Polarity, Expected_response, one_of(x.subset))%>%\n  mutate(Deviation=ifelse(Polarity == \"deviated\", \"NonCentral\", \"Central\"))\n\nm_lda <- lda(x=dplyr::select(normalized_positions.new, starts_with(\"x\")),\n             grouping=normalized_positions.new$Deviation)\n\nv_lda <- m_lda$scaling\nb_lda <- mean(as.matrix(dplyr::select(normalized_positions.new, starts_with(\"x\"))) %*% v_lda)\n\n#save(m_pca, v_lda, b_lda, file=\"transformation.RData\")\n\n#Creating matrix with the lda meaur\nlda_measure.df <- data_frame(\n  lda_measure=c(as.matrix(dplyr::select(normalized_positions.new, starts_with(\"x\"))) %*% v_lda- b_lda),\n  Deviation=c(normalized_positions.new$Deviation), \n  Subject = c(normalized_positions.new$Subject), \n  Expected_response = normalized_positions.new$Expected_response,\n  Item.number = c(normalized_positions.new$Item.number))\n\nggplot(lda_measure.df, aes(x=lda_measure, fill=Deviation)) + \n  geom_histogram(binwidth=.5,  position=\"dodge\")+ \n  theme(legend.position = \"top\") + \n  facet_grid(.~Expected_response)\nggsave('LDA-classification.png', plot = last_plot(), scale = 1, dpi = 300)\n\n###SAVING THIS DATA\ncalibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c(\"Subject\", \"Item.number\", \"Expected_response\"))\n\n\n\n\n\n",
+    "created" : 1490703674113.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "181298919",
+    "id" : "D7846989",
+    "lastKnownWriteTime" : 1490704828,
+    "last_content_update" : 1490704828187,
+    "path" : "~/WebstormProjects/negationMT/R_scripts/LDA-x-coordinates.R",
+    "project_path" : "R_scripts/LDA-x-coordinates.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
