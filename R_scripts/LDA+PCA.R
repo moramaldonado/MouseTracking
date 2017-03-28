@@ -46,7 +46,7 @@ m_lda <- lda(x=dplyr::select(normalized_positions_pca, starts_with("PC")),
 ## Third version: combined classifier
 v_lda <- m_lda$scaling
 b_lda <- mean(as.matrix(dplyr::select(normalized_positions_pca, starts_with("PC"))) %*% v_lda)
-save(m_pca, v_lda, b_lda, file="transformation.RData")
+#save(m_pca, v_lda, b_lda, file="transformation.RData")
 
 
 ##new
@@ -63,10 +63,6 @@ ggplot(lda_measure.df, aes(fill=Deviation, x=lda_measure, fill=Deviation)) +
   facet_grid(.~Expected_response)
 
 ggsave('LDA-classification.png', plot = last_plot(), scale = 1, dpi = 300)
-
-ggplot(calibration_data, aes(fill=Polarity, x=MaxLogRatio, fill=Polarity)) + geom_histogram(binwidth=1,  position="dodge")+ theme(legend.position = "top")
-ggsave('MaxLogRatio.png', plot = last_plot(), scale = 1, dpi = 300)
-
 
 calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
 

@@ -2,37 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc92f62b-b90d-4f7a-a746-17fca9b24186" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_experiment/index-calibration.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web_experiment/template_handling_calibration.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/2E2471A9" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/7E3C1A54" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/9351E921" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/AE0CFB9B" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/C898FF95" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/E1BA0E9" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-A9B48A38/lock_file" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/raw_data/140054081-1485257165.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/raw_data/697393592-1485174169.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/raw_data/793266898-1485419735.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/raw_data/809369166-1485441859.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.RData" afterPath="$PROJECT_DIR$/.RData" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-62294EA7/1FB7E011" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-62294EA7/CDD01D7F" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-62294EA7/D7846989" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-62294EA7/E02225EE" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDA-classification.png" afterPath="$PROJECT_DIR$/LDA-classification.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDA-trajectories1.png" afterPath="$PROJECT_DIR$/LDA-trajectories1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LDA-trajectories2.png" afterPath="$PROJECT_DIR$/LDA-trajectories2.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/figures/Calibration.pdf" afterPath="$PROJECT_DIR$/figures/Calibration.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rhistory" afterPath="$PROJECT_DIR$/.Rhistory" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/source-pane.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/source-pane.pper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/windowlayoutstate.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/windowlayoutstate.pper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/workbench-pane.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/workbench-pane.pper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/prop/INDEX" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/prop/INDEX" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transformation.RData" afterPath="$PROJECT_DIR$/transformation.RData" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-62294EA7/E5398C76" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-62294EA7/E5398C76" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/shared/notebooks/paths" afterPath="$PROJECT_DIR$/.Rproj.user/shared/notebooks/paths" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/LDA.R" afterPath="$PROJECT_DIR$/R_scripts/LDA.R" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/choosing_measures.R" afterPath="$PROJECT_DIR$/R_scripts/choosing_measures.R" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/compile.R" afterPath="$PROJECT_DIR$/R_scripts/compile.R" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/extracting_data.R" afterPath="$PROJECT_DIR$/R_scripts/extracting_data.R" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/trajectories.R" afterPath="$PROJECT_DIR$/R_scripts/trajectories.R" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_R/Data.csv" afterPath="$PROJECT_DIR$/data_R/Data.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_R/Information.csv" afterPath="$PROJECT_DIR$/data_R/Information.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_experiment/calibration.js" afterPath="$PROJECT_DIR$/web_experiment/calibration.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web_experiment/template_handling.js" afterPath="$PROJECT_DIR$/web_experiment/template_handling.js" />
     </list>
     <ignored path="negationMT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,8 +41,8 @@
       <file leaf-file-name="organization_functions.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+            <state relative-caret-position="64">
+              <caret line="216" column="14" selection-start-line="216" selection-start-column="14" selection-end-line="216" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -381,15 +364,15 @@
     <option name="totallyTimeSpent" value="54298000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="773" extended-state="1" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3113582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3113582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32824427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977098" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32824427" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -600,8 +583,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="195" column="0" selection-start-line="195" selection-start-column="0" selection-end-line="195" selection-end-column="0" />
+        <state relative-caret-position="64">
+          <caret line="216" column="14" selection-start-line="216" selection-start-column="14" selection-end-line="216" selection-end-column="14" />
           <folding />
         </state>
       </provider>

@@ -61,7 +61,7 @@ m_lda <- lda(x=dplyr::select(normalized_positions.new, starts_with("x"), starts_
 
 v_lda <- m_lda$scaling
 b_lda <- mean(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y"))) %*% v_lda)
-save(v_lda, b_lda, file="transformation.RData")
+save(v_lda, b_lda, x.subset, y.subset, file="transformation.RData")
 
 #Creating matrix with the lda meaur
 lda_measure.df <- data_frame(
@@ -83,6 +83,14 @@ calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Sub
 
 
 
+
+##Fake data (just in case)
+# normalized_positions.fake = calibration_data_new_subjects %>%
+#   dplyr::select(Subject, Polarity, Expected_response, Normalized.positions.X,Normalized.positions.Y) %>%
+#   separate(Normalized.positions.Y, into= y, sep = ",", convert=T) %>%
+#   separate(Normalized.positions.X, into= x, sep = ",", convert=T)
+# normalized_positions.fake$Subject <- factor(normalized_positions.fake$Subject)
+# normalized_positions.fake$Polarity <- factor(normalized_positions.fake$Polarity)
 
 
 
