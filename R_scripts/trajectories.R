@@ -8,24 +8,23 @@ normalized_positions.plot.Y = calibration_data %>%
   separate(Normalized.positions.Y, into= as.character(c(1:101)), sep = ",") %>%
   gather(Time.Step, Y.Position, 4:104) 
 normalized_positions.plot <- merge(normalized_positions.plot.X,normalized_positions.plot.Y)
-rm(normalized_positions.plot.X,normalized_positions.plot.Y)
+#rm(normalized_positions.plot.X,normalized_positions.plot.Y)
 
 normalized_positions.plot$X.Position<- as.numeric(normalized_positions.plot$X.Position)
 normalized_positions.plot$Y.Position <- as.numeric(normalized_positions.plot$Y.Position)
 normalized_positions.plot$Time.Step <- as.numeric(normalized_positions.plot$Time.Step)
 normalized_positions.plot$Subject <- factor(normalized_positions.plot$Subject)
 normalized_positions.plot$Polarity <- factor(normalized_positions.plot$Polarity )
-normalized_positions.plot$lda_measure_cut <- cut(normalized_positions.plot$lda_measure, 6)
+normalized_positions.plot$lda_measure_cut <- cut(normalized_positions.plot$lda_measure, 5)
 normalized_positions.plot$grp <- paste(normalized_positions.plot$Subject,normalized_positions.plot$Item.number)
 
 normalized_positions.plot.false = normalized_positions.plot %>%
   filter(Expected_response=='false')%>%
   dplyr::mutate_at('X.Position', funs('-'))
-
 normalized_positions.plot.true = normalized_positions.plot %>%
   filter(Expected_response=='true')
 normalized_positions.plot <- rbind(normalized_positions.plot.false, normalized_positions.plot.true)
-
+summary(normalized_positions.plot)
 
 #Plotting real subjects
 ggplot(normalized_positions.plot, aes(x=X.Position, y=Y.Position, color=Polarity, group=grp)) + geom_point(alpha=.4, size=1) + theme(legend.position = "none") + 
