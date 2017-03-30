@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "getwd()\n\n## 1. INFORMATION FILE ##\ninfo<- read.csv(file=\"data_R/Information.csv\", header=TRUE, sep=\",\")\ninfo$Subject<- mapvalues(info$Subject, from = c(0:max(info$Subject)), to = c(1:length(info$Subject)))\n\n## 2. DATA FILE WITH ALL RESULTS ##\ndata <- read.csv(file=\"data_R/Data.csv\", header=TRUE, sep=\",\")\ndata$Subject<- mapvalues(data$Subject, from = c(0:max(data$Subject)), to = c(1:length(info$Subject)))\ndata$Item.number<- mapvalues(data$Item.number, from = c(0:63), to = c(1:64))\n\n## 3. ONLY CALIBRATION ##\ncalibration_data <- data %>% \n  filter(Sentence_Type=='calibration')%>%\n  mutate(Subject = as.factor(Subject))\n\n",
+    "created" : 1490819859469.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2325584135",
+    "id" : "8BCD0FAB",
+    "lastKnownWriteTime" : 1490819907,
+    "last_content_update" : 1490819907312,
+    "path" : "~/WebstormProjects/negationMT/R_scripts/extracting_data.R",
+    "project_path" : "R_scripts/extracting_data.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

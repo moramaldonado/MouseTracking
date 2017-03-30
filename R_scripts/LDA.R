@@ -13,6 +13,13 @@ normalized_positions[y] <- sapply(normalized_positions[y],as.numeric)
 normalized_positions[x] <- sapply(normalized_positions[x],as.numeric)
 sapply(normalized_positions, class)
 
+par(mfrow=c(2,2))
+hist(normalized_positions$x10)
+hist(normalized_positions$x30)
+hist(normalized_positions$x60)
+hist(normalized_positions$x90)
+
+
 
 # Taking the negative of false items, to have everything in the same scale
 normalized_positions_false = normalized_positions%>%
@@ -24,7 +31,6 @@ rm(normalized_positions_true, normalized_positions_false)
 
 #last arrangements
 normalized_positions$Subject <- factor(normalized_positions$Subject)
-normalized_positions$Item.number <- factor(normalized_positions$Item.number)
 normalized_positions$Polarity <- factor(normalized_positions$Polarity)
 normalized_positions$Expected_response <- factor(normalized_positions$Expected_response)
 
@@ -84,29 +90,35 @@ y.subset <- y[y != "SACAR"];
 
 ### LDA
 normalized_positions.new <- normalized_positions %>%
-dplyr::select(Subject, Item.number, Polarity, Expected_response, one_of(x.subset), one_of(y.subset))%>%
-  #dplyr::select(Subject, Item.number, Polarity, Expected_response, one_of(x.subset))%>%  
+#dplyr::select(Subject, Item.number, Polarity, Expected_response, one_of(x.subset), one_of(y.subset))%>%
+  dplyr::select(Subject, Item.number, Polarity, Expected_response, one_of(x.subset))%>%  
   mutate(Deviation=ifelse(Polarity == "deviated", "NonCentral", "Central"))
 
+jpeg('histograms_positions(after exclusion).jpg')
+par(mfrow=c(2,2))
+hist(normalized_positions.new$x13)
+hist(normalized_positions.new$x35)
+hist(normalized_positions.new$x68)
+hist(normalized_positions.new$x95)
+dev.off()
 
-m_lda <- lda(x=dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y")),
-#m_lda <- lda(x=dplyr::select(normalized_positions.new, starts_with("x")),
+#m_lda <- lda(x=dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y")),
+m_lda <- lda(x=dplyr::select(normalized_positions.new, starts_with("x")),
              grouping=normalized_positions.new$Deviation)
 
 v_lda <- m_lda$scaling
-b_lda <- mean(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y"))) %*% v_lda)
-#b_lda <- mean(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"))) %*% v_lda)
+#b_lda <- mean(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y"))) %*% v_lda)
+b_lda <- mean(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"))) %*% v_lda)
 save(v_lda, b_lda, x.subset, y.subset, file="transformation.RData")
 
 #Creating matrix with the lda meaur
 lda_measure.df <- data_frame(
-  lda_measure=c(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y"))) %*% v_lda- b_lda),
-  #lda_measure=c(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"))) %*% v_lda- b_lda),
-
-  Deviation=c(normalized_positions.new$Deviation), 
-  Subject = c(normalized_positions.new$Subject), 
+  #lda_measure=c(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y"))) %*% v_lda- b_lda),
+  lda_measure=c(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"))) %*% v_lda- b_lda),
+  Deviation=normalized_positions.new$Deviation, 
+  Subject = normalized_positions.new$Subject, 
   Expected_response = normalized_positions.new$Expected_response,
-  Item.number = c(normalized_positions.new$Item.number))
+  Item.number = normalized_positions.new$Item.number)
  
 ggplot(lda_measure.df, aes(x=lda_measure, fill=Deviation)) + 
   geom_histogram(binwidth=.5,  position="dodge")+ 

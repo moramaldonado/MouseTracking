@@ -11,4 +11,6 @@ data$Item.number<- mapvalues(data$Item.number, from = c(0:63), to = c(1:64))
 
 ## 3. ONLY CALIBRATION ##
 calibration_data <- data %>% 
-  filter(Sentence_Type=='calibration')
+  filter(Sentence_Type=='calibration')%>%
+  mutate(Subject = as.factor(Subject))
+

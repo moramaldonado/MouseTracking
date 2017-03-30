@@ -17,13 +17,10 @@ normalized_positions.plot_false_raw <- normalized_positions.plot_raw%>%
   filter(Expected_response=='false')
 
 summary(normalized_positions.plot_raw)
+hist(normalized_positions.plot_raw$Y.Position)
+hist(normalized_positions.plot_raw$X.Position)
+par(mfrow=c(2,1))
 
-# Taking the negative of false items, to have everything in the same scale
-normalized_positions.plot_false <- normalized_positions.plot_raw%>%
-  filter(Expected_response=='false')%>%
-  dplyr::mutate_at('X.Position', funs('-'))
 
-normalized_positions.plot_true = filter(normalized_positions.plot_raw, Expected_response=='true')
-normalized_positions.plot = bind_rows(normalized_positions.plot_false,normalized_positions.plot_true)
 
-summary(normalized_positions.plot)
+
