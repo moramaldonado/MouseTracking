@@ -29,11 +29,11 @@ summary(normalized_positions.plot)
 #Plotting real subjects
 ggplot(normalized_positions.plot, aes(x=X.Position, y=Y.Position, color=Polarity, group=grp)) + geom_point(alpha=.4, size=1) + theme(legend.position = "none") + 
   facet_grid(lda_measure_cut~Expected_response)     
-ggsave('LDA-trajectories1.png', plot = last_plot(), scale = 1, dpi = 300)
+ggsave('LDA-trajectories1_all.png', plot = last_plot(), scale = 1, dpi = 300)
 
 ggplot(normalized_positions.plot, aes(x=Time.Step, y=X.Position, color=Polarity, group=grp)) + geom_point(alpha=.4, size=1) + geom_line()+ theme(legend.position = "none") + 
   facet_grid(lda_measure_cut~Expected_response) 
-ggsave('LDA-trajectories2.png', plot = last_plot(), scale = 1, dpi = 300)
+ggsave('LDA-trajectories2_all.png', plot = last_plot(), scale = 1, dpi = 300)
 
 
 #Plotting real means
