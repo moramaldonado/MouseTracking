@@ -132,20 +132,35 @@ normalized_positions.new <- normalized_positions %>%
   mutate(Deviation=ifelse(Polarity == "deviated", "NonCentral", "Central"))
 
 
-###THIS IS FAILING!!!
+#look at predictors that have near zero variance
+x = nearZeroVar(normalized_positions.new, saveMetrics = TRUE)
+x[x[,"zeroVar"] + x[,"nzv"] > 0, ] 
+normalized_positions.new <- normalized_positions.new%>%dplyr::select(-x2_delta,-x6_delta,-x7_delta,-x9_delta,-x97_delta,-x99_delta,-x100_delta,-y95_delta) 
 
+###THIS IS FAILING!!!
 m_lda <- lda(x=dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y")),
              #m_lda <- lda(x=dplyr::select(normalized_positions.new, starts_with("x")),
              grouping=normalized_positions.new$Deviation)
 
 
-#look at predictors that have near zero variance
-colnames(normalized_positions.new)[30 + 1]
-x = nearZeroVar(normalized_positions.new, saveMetrics = TRUE)
-x[x[,"zeroVar"] + x[,"nzv"] > 0, ] 
 
 
 v_lda <- m_lda$scaling
 b_lda <- mean(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y"))) %*% v_lda)
 #b_lda <- mean(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"))) %*% v_lda)
-save(v_lda, b_lda, x.subset, y.subset, file="transformation_all.RData")
+
+#save(v_lda, b_lda, x.subset, y.subset, file="transformation_all.RData")
+
+#Creating matrix with the lda meaur
+lda_measure.df <- data_frame(
+  lda_measure=c(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y"))) %*% v_lda- b_lda),
+  #lda_measure=c(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"))) %*% v_lda- b_lda),
+  Deviation=normalized_positions.new$Deviation, 
+  Subject = normalized_positions.new$Subject, 
+  Expected_response = normalized_positions.new$Expected_response,
+  Item.number = normalized_positions.new$Item.number)
+
+ggplot(lda_measure.df, aes(x=lda_measure, fill=Deviation)) + 
+  geom_histogram(binwidth=.5,  position="dodge")+ 
+  theme(legend.position = "top") + 
+  facet_grid(.~Expected_response)
