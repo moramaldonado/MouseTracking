@@ -130,14 +130,27 @@ ggsave('LDA-classification_all.png', plot = last_plot(), scale = 1, dpi = 300)
 calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
 
 
+#Last tests
+mymatrix <- as.matrix(dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y")))
+test <- t(t(mymatrix)  * as.vector(v_lda)) # first optono
+
+dev.off()
+hist(test.df)
+
+
+ggplot(data = melt(as.data.frame(test)), mapping = aes(x = value)) + ggtitle('calibration')+
+  geom_histogram(bins = 10) + facet_wrap(~variable, scales = 'free_x')+ theme(strip.text = element_text(size=7), axis.text=element_text(size=7))
+
+
+ggplot(data = melt(as.data.frame(mymatrix)), mapping = aes(x = value)) + ggtitle('calibration')+
+  geom_histogram(bins = 20) + facet_wrap(~variable)+ theme(strip.text = element_text(size=7), axis.text=element_text(size=7))
 
 
 
 
+ggplot(data = dplyr::select(normalized_positions.new, y96, Deviation), aes(x=y96, fill=Deviation))+geom_histogram()
 
-
-
-
+ggplot(data = dplyr::select(normalized_positions.new, y99, Deviation), aes(x=y99, fill=Deviation))+geom_histogram()
 
 
 
