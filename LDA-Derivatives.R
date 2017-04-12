@@ -151,7 +151,7 @@ b_lda <- mean(as.matrix(dplyr::select(normalized_positions.new, starts_with("x")
 
 #save(v_lda, b_lda, x.subset, y.subset, file="transformation_all.RData")
 
-#Creating matrix with the lda meaur
+#Creating matrix with the lda meaure
 lda_measure.df <- data_frame(
   lda_measure=c(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"), starts_with("y"))) %*% v_lda- b_lda),
   #lda_measure=c(as.matrix(dplyr::select(normalized_positions.new, starts_with("x"))) %*% v_lda- b_lda),
