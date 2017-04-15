@@ -49,7 +49,7 @@ summary1 <- ddply(Data.Plurals, c('Subject','Response'), summarise,
                   Mean.Accuracy = mean(Accuracy)
 )
 
-print(summary1)
+
 rm(summary1)
 rm(i)
 

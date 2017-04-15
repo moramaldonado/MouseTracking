@@ -2,7 +2,7 @@
 rm(list = ls())
 
 ##1. CHARGE PACKAGES
-source("real_data/packages.R")
+source("R_scripts/packages.R")
 
 ## 2. EXTRACTING_DATA
 source("real_data/extracting_data.R")
@@ -14,7 +14,7 @@ source("real_data/excluding_criteria.R")
 source("real_data/excluding_trajectories.R")
 
 ## 5. LDA (only for controls)
-source("real_data/LDA.R")
+source("real_data/LDA-Derivatives-real-data.R")
 
 ## 6. PLOT TRAJECTORIES
 source("real_data/trajectories.R")

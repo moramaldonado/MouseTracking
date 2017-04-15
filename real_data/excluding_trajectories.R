@@ -14,7 +14,7 @@ normalized_positions.plot.Y = controls %>%
   mutate(Y.Position = as.numeric(Y.Position))
 normalized_positions.plot <- merge(normalized_positions.plot.X, normalized_positions.plot.Y)
 rm(normalized_positions.plot.Y, normalized_positions.plot.X)
-summary(normalized_positions.plot)
+
 
 pdf('histograms_positions(before exclusion).pdf')
 par(mfrow=c(2,1))

@@ -11,9 +11,8 @@ source("R_scripts/extracting_data.R")
 #source("R_scripts/choosing_measures.R")
 
 ## 4. LDA 
-source("R_scripts/LDA.R")
-#source("R_scripts/LDA+PCA.R")
-#source("R_scripts/LDA-x-coordinates.R")
+source("R_scripts/LDA-Derivatives.R")
+
 
 ## 4. Trajectories 
 source("R_scripts/trajectories.R")

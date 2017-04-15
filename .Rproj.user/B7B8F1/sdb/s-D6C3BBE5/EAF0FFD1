@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## CLEAN ENVIRONMENT\nrm(list = ls())\n\n##1. CHARGE PACKAGES\nsource(\"R_scripts/packages.R\")\n\n## 2. EXTRACTING_DATA\nsource(\"real_data/extracting_data.R\")\n\n## 3. EXCLUDING SUBJECTS\nsource(\"real_data/excluding_criteria.R\")\n\n## 4. EXCLUDING TRAJECTORIES (only for controls)\nsource(\"real_data/excluding_trajectories.R\")\n\n## 5. LDA (only for controls)\nsource(\"real_data/LDA-Derivatives-real-data.R\")\n\n## 6. PLOT TRAJECTORIES\nsource(\"real_data/trajectories.R\")\n",
+    "created" : 1492247574138.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2185904446",
+    "id" : "EAF0FFD1",
+    "lastKnownWriteTime" : 1492248726,
+    "last_content_update" : 1492248726745,
+    "path" : "~/WebstormProjects/negationMT/real_data/compile_real_data.R",
+    "project_path" : "real_data/compile_real_data.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

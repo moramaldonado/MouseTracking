@@ -26,6 +26,14 @@ Info.Plurals <- subset(Info.Plurals, !(Subject %in% BADSUBJECTS))
 Data.Plurals$Subject <- factor(Data.Plurals$Subject)
 Info.Plurals$Subject <- factor(Info.Plurals$Subject)
 
+
 controls <- subset(Data.Plurals, Type=='control' & Accuracy==1)
+controls$Item.number.total <- controls$Item.number
+for (i in levels(factor(controls$Subject)))
+{ nr <- nrow(controls[controls$Subject==i,])
+  controls$Item.number[controls$Subject==i] <- 1:nr} 
+
+
+
 experimental_items <- subset(Data.Plurals, Type=='target' & Accuracy==1)
 
