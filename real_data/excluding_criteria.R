@@ -33,7 +33,9 @@ for (i in levels(factor(controls$Subject)))
 { nr <- nrow(controls[controls$Subject==i,])
   controls$Item.number[controls$Subject==i] <- 1:nr} 
 
-
-
-experimental_items <- subset(Data.Plurals, Type=='target' & Accuracy==1)
+experimental_items <- subset(Data.Plurals, Type=='target')
+experimental_items$Item.number.total <- experimental_items$Item.number
+for (i in levels(factor(experimental_items$Subject)))
+{ nr <- nrow(experimental_items[experimental_items$Subject==i,])
+experimental_items$Item.number[experimental_items$Subject==i] <- 1:nr} 
 
