@@ -16,5 +16,8 @@ source("real_data/plural/exclusion_trajectories_plural.R")
 ## 5. LDA (only for plurals)
 source("real_data/plural/LDA-Derivatives-plural-data.R")
 
+## 6. Trajectories (only for plurals)
+source("real_data/plural/trajectories_plural.R")
 
-## 6. PLOT TRAJECTORIES
+## 7. Stats
+source("real_data/plural/stat_plural.R")
