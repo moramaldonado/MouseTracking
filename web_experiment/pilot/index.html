@@ -148,7 +148,6 @@
 </body>
 <script src="step_runs.js"></script>
 <script src="template_handling.js"></script>
-<script src="calibration.js"></script>
 
 <script>
     var exp_pointer = -1;
@@ -171,7 +170,7 @@
         var truth_value = ["T", "F"];
         var polarity = ["P", "N"];
         var adjective = ["B/S", "B/D", "H/C", "F/S", "L/Q"];
-        var trial_type = ['EI', 'CI']; // ExperimentalItem vs. ControlItem
+        var trial_type = ['CI']; //  ControlItem
         var trials = [];
         var trials_semirandom;
         var flag = 0;
@@ -181,30 +180,15 @@
         var b;//polarity
         var n;//repetition
 
-
-        for (n=0; n < 2; n++) {for (i = 0; i < truth_value.length; i++) {for (t = 0; t < adjective.length; t++){for (b = 0; b < polarity.length; b++)
-            trials.push(trial_type[0]+adjective[t]+truth_value[i]+polarity[b]+String(n));
-            //EI (0,2) + ADJ.PAIR (2,5) + TRUTH (5,6) + POLARITY (6,7) + nº (7,8)
-        }}}
-        for (n=1; n < 4; n++) {for (i = 0; i < truth_value.length; i++) {for (b = 0; b < polarity.length; b++)
-            trials.push(trial_type[1]+truth_value[i]+polarity[b]+String(n));
+        for (n=1; n < 5; n++) {for (i = 0; i < truth_value.length; i++) {for (b = 0; b < polarity.length; b++)
+            trials.push(trial_type[0]+truth_value[i]+polarity[b]+String(n));
             //Controls (0,2) +  TRUTH (2,3) + POLARITY (3,4) + nº (4,5)
         }}
         console.log(String(trials.length));
 
-        while (flag < 51){
-            flag = 0;
-            trials_semirandom = [];
-            shuffle(trials);
-            trials_semirandom.push(trials[0]);
-            for (n=1; n<52; n++){
-                if(trials[n].substring(2,5) != trials[n-1].substring(2,5)){
-                    trials_semirandom.push(trials[n]);
-                    flag=flag+1;}}}
+        shuffle(trials);
 
-        console.log(String(trials_semirandom.length));
-
-        return trials_semirandom;
+        return trials;
     }
 
     function initialize () {
@@ -281,40 +265,28 @@
 
                 //6:false, 7:true, 8:false, 9:true, 10-11:true
                 if(practice_mode) switch (exp_pointer) {
-                    case 6:
+                    case 0:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Giants are small.';
                         console.log(exp_pointer);
                         break;
 
-                    case 7:
+                    case 1:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Giants are tall.';
                         console.log(exp_pointer);
                         break;
 
-                    case 8:
+                    case 2:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Skyscrapers are not tall.';
                         console.log(exp_pointer);
                         break;
 
 
-                    case 9:
+                    case 3:
                         //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
                         document.getElementsByTagName('p')[0].innerHTML = 'Skyscrapers are tall.';
-                        console.log(exp_pointer);
-                        break;
-
-                    case 10:
-                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
-                        document.getElementsByTagName('p')[0].innerHTML = 'Cars have no wings.';
-                        console.log(exp_pointer);
-                        break;
-
-                    case 11:
-                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
-                        document.getElementsByTagName('p')[0].innerHTML = 'Cars have wheels.';
                         console.log(exp_pointer);
                         break;
 
@@ -432,41 +404,6 @@
 
 
     function stim_type (type, adjective, truth_condition, polarity, number) {
-        var stimuli = {
-            "type": "EI",
-            "adjectives":
-                {"B/S":
-                {"T":{"P": ["Bears are big.", "Hippopotamuses are big."],
-                     "N":["Mice are small.", "Ants are small."]},
-                 "F":{"P":["Mice are big.", "Ants are big."],
-                     "N":["Bears are small.", "Hippopotamuses are small."]}},
-
-                "B/D":
-                {"T":{"P": ["Daylight is bright.", "Stars are bright."],
-                    "N":["Wells are dark.", "Caves are dark."]},
-                "F":{"P": ["Wells are bright.", "Caves are bright."],
-                    "N":["Daylight is dark.", "Stars are dark."]},},
-
-                "F/S":
-                {"T":{"P": ["Hares are fast.", "Falcons are fast."],
-                    "N":["Turtles are slow.", "Snails are slow."]},
-                "F":{"P": ["Turtles are fast.", "Snails are fast."],
-                    "N":["Hares are slow.", "Falcons are slow."]},},
-                "H/C":
-                {"T":{"P": ["Bonfires are hot.", "Lava is hot."],
-                        "N":["Ice cream is cold.", "Freezers are cold."]},
-                    "F":{"P": ["Ice cream is hot.", "Freezers are hot."],
-                        "N":["Bonfires are cold.", "Lava is cold."]},},
-
-                    "L/Q":
-                {"T":{"P": ["Drums are loud.", "Traffic is loud."],
-                        "N":["Waterfalls are quiet.", "Whispers are quiet."]},
-
-                    "F":{"P": ["Waterfalls are loud.", "Whispers are loud."],
-                        "N":["Drums are quiet.", "Traffic is quiet."]}},
-
-
-        } };
 
 
         var controls = {
@@ -490,6 +427,11 @@
                     "F":{"P":"Apples are insects",
                         "N":"Apples are not fruits."}},
 
+                "4": {"T":{"P":"Cars have wheels.",
+                    "N":"Cars have no wheels."},
+
+                    "F":{"P":"Cars have wings.",
+                        "N":"Cars have no wings."}},
 
             }
         };
@@ -567,4 +509,7 @@
 
 
 </script>
+
+<script src="calibration.js"></script>
+
 </html>

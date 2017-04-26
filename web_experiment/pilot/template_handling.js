@@ -41,17 +41,18 @@ function Template(templates, elements, data, callback, finished) {
 
     //logic
     this.fillTemplate = function(i) {
-        if (i==3 && exp_pointer < 11)
-               i=2;
-
-         if(i==12 && exp_pointer < 11)
-         i=5;
-
-         if(i==8 && exp_pointer < order.length-1)
-         i = 7;
-
+        //practice
+        if (i==4 && exp_pointer < 3)
+               i=3;
+        //experiment
+         if(i==6 && exp_pointer < order.length-1)
+         i = 5;
+        //calibration
+        if(i==8 && exp_pointer < 26)
+           i=7;
          fillTemplatePointer = i;
          console.log(i);
+
 
         if (i == experiment.length-3) finished();
         return fillTemplate((experiment[i].template?templates[experiment[i].template]:templates.default), elements, experiment[i]);
