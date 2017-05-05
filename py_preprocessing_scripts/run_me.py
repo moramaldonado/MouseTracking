@@ -87,7 +87,7 @@ all_trials = median_value(all_trials,'difference')
 
 print ">>>> maximum values: ratio, difference, velocity, acceleration"
 
-print all_trials[1][10]['median_ratio_log']
+
 
 all_trials = find_value_in(all_trials, 'ratio_log','max_smooth_acceleration')
 
@@ -108,7 +108,7 @@ all_trials = local_maxima_x(all_trials)
 all_trials = x_flips(all_trials)
 all_trials = x_flips2(all_trials)
 
-print all_trials[1][10]['x_flips']
+
 
 
 
@@ -118,8 +118,8 @@ exporting_data(pathR,all_trials, info)
 print ">>>> data exported in csv for R"
 
 #plotting
-os.chdir(path+'/figures')
-plot_calibration(all_trials,info,True,'normalized_positions_space')
+#os.chdir(path+'/figures')
+#plot_calibration(all_trials,info,True,'normalized_positions_space')
 #plot_per_subject(0,all_trials,info,'true','normalized_positions_space','red')
 #plot_per_subject(0,all_trials,info,'false','normalized_positions_space','green')
 

@@ -55,7 +55,8 @@ for(i in 2:101)
 #Training with the whole data set, commented: training with all data set but subject 1, test on subject 1
 normalized_positions_tr <- normalized_positions
 #normalized_positions_tr <- normalized_positions[!(normalized_positions$Subject %in% c("1")),]
-normalized_positions_te <- normalized_positions[(normalized_positions$Subject %in% c("1")),]
+#commented testing
+#normalized_positions_te <- normalized_positions[(normalized_positions$Subject %in% c("1")),]
 
 # Remove dimensions that are constant within groups
 find_constant <- function(d, epsilon=1e-4) {
@@ -70,6 +71,7 @@ constant_columns_nctl <- normalized_positions_tr %>%
                           dplyr::select(starts_with("x"), starts_with("y")) %>%
                           find_constant
 constant_columns <- c(constant_columns_ctl, constant_columns_nctl)
+
 normalized_positions_tr <- dplyr::select(normalized_positions_tr,
                                       -one_of(constant_columns))
 
@@ -128,27 +130,28 @@ lda_measure.df <- data_frame(
   Item.number = normalized_positions_tr$Item.number)
 
 ggplot(lda_measure.df, aes(x=lda_measure, fill=Deviation)) +
- geom_histogram(binwidth=.5,  position="dodge")+
+ geom_histogram(bins=10,  position="dodge")+
  theme(legend.position = "top") +
  facet_grid(.~Expected_response)
-ggsave('LDA_all_training_calibration.png', path='R_scripts/graphs')
+ggsave('LDA_all_calibration.png', path='R_scripts/graphs')
 
-normalized_positions_te_pca <- bind_cols(normalized_positions_te,
-                                         as.data.frame(predict(m_pca, normalized_positions_te)[,1:n_pca]))
-
-lda_measure_te.df <- data_frame(
-  lda_measure=c(as.matrix(dplyr::select(normalized_positions_te_pca, starts_with("PC"))) %*% v_lda- b_lda),
-  Deviation=normalized_positions_te$Deviation, 
-  Subject = normalized_positions_te$Subject, 
-  Expected_response = normalized_positions_te$Expected_response,
-  Item.number = normalized_positions_te$Item.number)
-
-ggplot(lda_measure_te.df, aes(x=lda_measure, fill=Deviation)) + 
-  geom_histogram(binwidth=.5,  position="dodge")+ 
-  theme(legend.position = "top") + 
-  facet_grid(.~Expected_response)
-ggsave('LDA_all_test_calibration.png', path='R_scripts/graphs')
+# normalized_positions_te_pca <- bind_cols(normalized_positions_te,
+#                                          as.data.frame(predict(m_pca, normalized_positions_te)[,1:n_pca]))
+# 
+# lda_measure_te.df <- data_frame(
+#   lda_measure=c(as.matrix(dplyr::select(normalized_positions_te_pca, starts_with("PC"))) %*% v_lda- b_lda),
+#   Deviation=normalized_positions_te$Deviation, 
+#   Subject = normalized_positions_te$Subject, 
+#   Expected_response = normalized_positions_te$Expected_response,
+#   Item.number = normalized_positions_te$Item.number)
+# 
+# ggplot(lda_measure_te.df, aes(x=lda_measure, fill=Deviation)) + 
+#   geom_histogram(bins=10,  position="dodge")+ 
+#   theme(legend.position = "top") + 
+#   facet_grid(.~Expected_response)
+# ggsave('LDA_all_test_calibration.png', path='R_scripts/graphs')
 
 ###SAVING THIS DATA
+
 calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
 

@@ -85,7 +85,7 @@ def exporting_data(path,all_trials, info):
         
         writer = csv.writer(f)
         writer.writerow( ('Subject', 'Item.number', 'Sentence_Type', 'Adjective', 'Polarity',
-                          'Expected_response','Response','Accuracy','RT','Normalized.positions.X','Normalized.positions.Y', 'Difference','MaxDeviation','MaxDeviation.Time','MaxDeviation.Time.Norm',
+                          'Expected_response', 'Sentence','Response','Accuracy','RT','Normalized.positions.X','Normalized.positions.Y', 'Difference','MaxDeviation','MaxDeviation.Time','MaxDeviation.Time.Norm',
                           'MaxDeviationBorder','MaxDeviationBorder.Time','MaxDeviationBorder.Time.Norm', 'Median.LogRatio', 'Median.Difference',
                           'MaxRatio','MaxLogRatio','MaxRatio.Time','MaxRatio.Time.Norm','MaxDifference','MaxDifference.Time','MaxDifference.Time.Norm',
                           'AccPeak','AccPeak.Time','AccPeak.Time.Norm', 'Int.Ratio.AccPeak', 'Int.LogRatio.AccPeak','Int.LogRatio.Fin','Int.Difference.AccPeak','Int.X.AccPeak','AUC','Local.Maxima.Acc','Len.Local.Maxima.Acc','Local.Maxima.X','Len.Local.Maxima.X','X-flips','X-flips2', 'Delay', 'Ratio.Acc') )
@@ -94,7 +94,7 @@ def exporting_data(path,all_trials, info):
             for t in range(len(all_trials[i])):
                     #print i,t
                     writer.writerow((str(i), str(t), all_trials[i][t]['type'], all_trials[i][t]['adjective'], all_trials[i][t]['polarity'],
-                                      all_trials[i][t]['expected_response'],
+                                      all_trials[i][t]['expected_response'], all_trials[i][t]['sentence'],
                                         all_trials[i][t]['value'], all_trials[i][t]['accuracy'], all_trials[i][t]['RT'], ','.join(map(repr, all_trials[i][t]['normalized_positions_x'])),','.join(map(repr, all_trials[i][t]['normalized_positions_y'])), ','.join(map(repr, all_trials[i][t]['difference'])), all_trials[i][t]['maxDeviation'][0], all_trials[i][t]['maxDeviation'][1],all_trials[i][t]['maxDeviation'][2], all_trials[i][t]['maxDeviationBorder'][0], all_trials[i][t]['maxDeviationBorder'][1],all_trials[i][t]['maxDeviationBorder'][2], all_trials[i][t]['median_ratio_log'], all_trials[i][t]['median_difference'], all_trials[i][t]['max_ratio'][0],all_trials[i][t]['max_ratio_log'][0],all_trials[i][t]['max_ratio'][1],all_trials[i][t]['max_ratio'][2],all_trials[i][t]['max_difference'][0],all_trials[i][t]['max_difference'][1],all_trials[i][t]['max_difference'][2], all_trials[i][t]['max_smooth_acceleration'][0],all_trials[i][t]['max_smooth_acceleration'][1],all_trials[i][t]['max_smooth_acceleration'][2], all_trials[i][t]['integral_ratio_on_max_smooth_acceleration'],all_trials[i][t]['integral_ratio_log_on_max_smooth_acceleration'],all_trials[i][t]['integral_ratio_log_on_fin'],all_trials[i][t]['integral_difference_on_max_smooth_acceleration'],all_trials[i][t]['integral_X_on_max_smooth_acceleration'],all_trials[i][t]['integral_X_on_fin'],all_trials[i][t]['local_maxima'],len(all_trials[i][t]['local_maxima']),all_trials[i][t]['local_maxima_x'],len(all_trials[i][t]['local_maxima_x']), all_trials[i][t]['x_flips'],all_trials[i][t]['x_flips2'],all_trials[i][t]['delay'],all_trials[i][t]['ratio_log_in_max_smooth_acceleration']))
                                         
   
@@ -168,29 +168,27 @@ def organization_trials(all_trials):
 
             elif all_trials[i][t]['data']['item']['type'] == 'calibration':
 
-
-
-                if all_trials[i][t]['data']['item']['item_number'] == 0 or (all_trials[i][t]['data']['item']['item_number'] == 3 or all_trials[i][t]['data']['item']['item_number'] == 9):
+                if all_trials[i][t]['data']['item']['item_number'] == 25 or (all_trials[i][t]['data']['item']['item_number'] == 24  or all_trials[i][t]['data']['item']['item_number'] == 20):
                     all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'deviated'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 1 or (all_trials[i][t]['data']['item']['item_number'] == 2 or all_trials[i][t]['data']['item']['item_number'] == 8):
+                elif all_trials[i][t]['data']['item']['item_number'] == 26 or (all_trials[i][t]['data']['item']['item_number'] == 19 or all_trials[i][t]['data']['item']['item_number'] == 23):
                     all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'deviated'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 4 or all_trials[i][t]['data']['item']['item_number'] == 10 :
+                elif all_trials[i][t]['data']['item']['item_number'] == 21 or all_trials[i][t]['data']['item']['item_number'] == 27:
                     all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'uncertain'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 5 or all_trials[i][t]['data']['item']['item_number'] == 11:
+                elif all_trials[i][t]['data']['item']['item_number'] == 22 or all_trials[i][t]['data']['item']['item_number'] == 17:
                     all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'uncertain'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 6:
+                elif all_trials[i][t]['data']['item']['item_number'] == 18:
                     all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'straight'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 7:
+                elif all_trials[i][t]['data']['item']['item_number'] == 16:
                     all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'straight'
 
@@ -208,9 +206,20 @@ def organization_trials(all_trials):
                 all_trials[i][t]['adjective'] = all_trials[i][t]['data']['design']['adjective']
                 all_trials[i][t]['sentence'] = all_trials[i][t]['data']['design']['sentence']
 
+
+
                 if all_trials[i][t]['data']['design']['truth_condition'] == 'F':
                     all_trials[i][t]['expected_response'] = 'false'
                 elif all_trials[i][t]['data']['design']['truth_condition'] == 'T':
+                    all_trials[i][t]['expected_response'] = 'true'
+
+                if all_trials[i][t]['sentence']=='Cars have no wings.':
+                    all_trials[i][t]['expected_response'] = 'true'
+                elif all_trials[i][t]['sentence']=='Cars have no wheels.':
+                    all_trials[i][t]['expected_response'] = 'false'
+                elif all_trials[i][t]['sentence']=='Cars have wings.':
+                    all_trials[i][t]['expected_response'] = 'false'
+                elif all_trials[i][t]['sentence']=='Cars have wheels.':
                     all_trials[i][t]['expected_response'] = 'true'
 
                 if all_trials[i][t]['expected_response'] == all_trials[i][t]['value']:
