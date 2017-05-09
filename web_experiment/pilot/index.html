@@ -180,7 +180,7 @@
         var b;//polarity
         var n;//repetition
 
-        for (n=1; n < 5; n++) {for (i = 0; i < truth_value.length; i++) {for (b = 0; b < polarity.length; b++)
+        for (n=1; n < 6; n++) {for (i = 0; i < truth_value.length; i++) {for (b = 0; b < polarity.length; b++)
             trials.push(trial_type[0]+truth_value[i]+polarity[b]+String(n));
             //Controls (0,2) +  TRUTH (2,3) + POLARITY (3,4) + nº (4,5)
         }}
@@ -327,17 +327,17 @@
 
         })
 
-        //6:false, 7:true, 8:false, 9:true, 10-11:true
+        //0:false, 1:true, 2:false, 3:true
         function logger_stop_button (event) {
             if(started_tracking){
                 clearTimeout(response_timeout);
 
                 clearTimeout(moved_before_timeout);
-                if (event && practice_mode && moved_before_400ms && (([7,9,10,11].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([6,8].indexOf(exp_pointer) > -1  && event.target.id=="false"))) {
+                if (event && practice_mode && moved_before_400ms && (([1,3].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2].indexOf(exp_pointer) > -1  && event.target.id=="false"))) {
                     warner = "Good!"
-                } else if (event && practice_mode && (([7,9,10,11].indexOf(exp_pointer) > -1 && event.target.id!="true") || ([6,8].indexOf(exp_pointer) > -1 && event.target.id!="false"))) {
+                } else if (event && practice_mode && (([1,3].indexOf(exp_pointer) > -1 && event.target.id!="true") || ([0,2].indexOf(exp_pointer) > -1 && event.target.id!="false"))) {
                     warner = "Incorrect!"
-                } else if (event && practice_mode && !moved_before_400ms && (([7,9,10,11].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([6,8].indexOf(exp_pointer) > -1 && event.target.id=="false"))) {
+                } else if (event && practice_mode && !moved_before_400ms && (([1,3].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2].indexOf(exp_pointer) > -1 && event.target.id=="false"))) {
                     warner = "Please, start moving the mouse earlier."
                 }
                 document.body.removeEventListener('mousemove', record_mouse)
@@ -409,29 +409,35 @@
         var controls = {
             "type": "CI",
             "tokens":
-            {"1": {"T":{"P":"Dogs are mammals.",
+            {"1": {"T":{"P":"Dogs are animals.",
                 "N":"Dogs are not reptiles."},
 
                 "F":{"P":"Dogs are reptiles.",
-                    "N":"Dogs are not mammals."}},
+                    "N":"Dogs are not animals."}},
 
-                "2": {"T":{"P":"Blood is red.",
-                    "N":"Blood is not green."},
+                "2": {"T":{"P":"Human blood is red.",
+                    "N":"Human blood is not green."},
 
-                    "F":{"P":"Blood is green.",
-                        "N":"Blood is not red."}},
+                    "F":{"P":"Human blood is green.",
+                        "N":"Human blood is not red."}},
 
                 "3": {"T":{"P":"Apples are fruits.",
                     "N":"Apples are not insects."},
 
-                    "F":{"P":"Apples are insects",
+                    "F":{"P":"Apples are insects.",
                         "N":"Apples are not fruits."}},
 
                 "4": {"T":{"P":"Cars have wheels.",
-                    "N":"Cars have no wheels."},
+                    "N":"Cars have no wings."},
 
                     "F":{"P":"Cars have wings.",
-                        "N":"Cars have no wings."}},
+                        "N":"Cars have no wheels."}},
+
+                "5": {"T":{"P":"Elephants have a trunk.",
+                    "N":"Elephants have no hair."},
+
+                    "F":{"P":"Elephants have hair.",
+                        "N":"Elephants have no trunk."}},
 
             }
         };

@@ -18,7 +18,7 @@
 "simple": "
 <h1>{title}</h1>
 <p>{text}</p>
-<form class='marginBottom'><center>{input}</center></form>
+<form class='marginBottom'>{input}</form>
 ",
 
 "centeredTitle":"

@@ -48,7 +48,7 @@ function Template(templates, elements, data, callback, finished) {
          if(i==6 && exp_pointer < order.length-1)
          i = 5;
         //calibration
-        if(i==8 && exp_pointer < 26)
+        if(i==8 && exp_pointer < 31)
            i=7;
          fillTemplatePointer = i;
          console.log(i);

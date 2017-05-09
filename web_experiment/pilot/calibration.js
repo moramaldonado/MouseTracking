@@ -66,7 +66,7 @@ function initialize_calibration(){
             switch (exp_pointer) {
 
                 //Straight
-                case 16:
+                case 20:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -91,7 +91,7 @@ function initialize_calibration(){
                     break;
 
                 //Straight
-                case 18:
+                case 22:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -116,7 +116,7 @@ function initialize_calibration(){
 
                     break;
 
-                case 19:
+                case 23:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -154,7 +154,7 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
-                case 20:
+                case 24:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -192,7 +192,7 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
-                case 21:
+                case 25:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -242,7 +242,7 @@ function initialize_calibration(){
                     break;
 
 
-                case 22:
+                case 26:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -296,7 +296,7 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
-                case 23:
+                case 27:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -332,7 +332,7 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
-                case 24:
+                case 28:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -368,7 +368,7 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
-                case 25:
+                case 29:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -417,7 +417,7 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
-                case 26:
+                case 30:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -467,7 +467,7 @@ function initialize_calibration(){
                     break;
 
 
-                case 27:
+                case 31:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
@@ -506,7 +506,7 @@ function initialize_calibration(){
                     console.log(exp_pointer);
                     break;
 
-                case 17:
+                case 21:
                     ctx.fillStyle = "red";
                     ctx.beginPath();
                     ctx.arc(x1, y1, 5, 0, 2 * Math.PI);
