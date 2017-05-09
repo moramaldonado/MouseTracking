@@ -168,27 +168,27 @@ def organization_trials(all_trials):
 
             elif all_trials[i][t]['data']['item']['type'] == 'calibration':
 
-                if all_trials[i][t]['data']['item']['item_number'] == 25 or (all_trials[i][t]['data']['item']['item_number'] == 24  or all_trials[i][t]['data']['item']['item_number'] == 20):
+                if all_trials[i][t]['data']['item']['item_number'] == 29 or (all_trials[i][t]['data']['item']['item_number'] == 24 or all_trials[i][t]['data']['item']['item_number'] == 28):
                     all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'deviated'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 26 or (all_trials[i][t]['data']['item']['item_number'] == 19 or all_trials[i][t]['data']['item']['item_number'] == 23):
+                elif all_trials[i][t]['data']['item']['item_number'] == 30 or (all_trials[i][t]['data']['item']['item_number'] == 23 or all_trials[i][t]['data']['item']['item_number'] == 27):
                     all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'deviated'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 21 or all_trials[i][t]['data']['item']['item_number'] == 27:
+                elif all_trials[i][t]['data']['item']['item_number'] == 25 or all_trials[i][t]['data']['item']['item_number'] == 31:
                     all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'uncertain'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 22 or all_trials[i][t]['data']['item']['item_number'] == 17:
+                elif all_trials[i][t]['data']['item']['item_number'] == 26 or all_trials[i][t]['data']['item']['item_number'] == 21:
                     all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'uncertain'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 18:
+                elif all_trials[i][t]['data']['item']['item_number'] == 22:
                     all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['polarity'] = 'straight'
 
-                elif all_trials[i][t]['data']['item']['item_number'] == 16:
+                elif all_trials[i][t]['data']['item']['item_number'] == 20:
                     all_trials[i][t]['expected_response'] = 'true'
                     all_trials[i][t]['polarity'] = 'straight'
 

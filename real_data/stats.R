@@ -34,7 +34,7 @@ m0.interaction <- lmer(MaxLogRatio~ Sentence_Type+Truth.value+ (1+Sentence_Type*
 anova(control_model.logratio, m0.interaction)
 
 ### LdaMeasure: Differences between conditions and truth values
-control_model.lda <- lmer(lda_measure ~ Sentence_Type + Truth.value + Interaction + (1+Sentence_Type*Truth.value|Subject), data = mydata, REML=FALSE)
+control_model.lda <- lmer(lda_measure ~ Sentence_Type + Truth.value + Interaction * Item.number + (1+Sentence_Type*Truth.value|Subject), data = mydata, REML=FALSE)
 summary(control_model.lda)
 
 #Main Effect: truth value (False vs. True)
@@ -42,11 +42,11 @@ m0.truth.lda <- lmer(lda_measure ~ Sentence_Type + Interaction + (1+Sentence_Typ
 anova(control_model.lda, m0.truth.lda)
 
 #Main Effect: sentence type (Affirmative vs. Negative)
-m0.sentence.lda <- lmer(lda_measure ~ Truth.value + Interaction + (1+Sentence_Type*Truth.value|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
+m0.sentence.lda <- lmer(lda_measure ~ Truth.value + Interaction + Item.number+ (1+Sentence_Type*Truth.value|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
 anova(control_model.lda, m0.sentence.lda)
 
 #Effect of Interaction
-m0.interaction.lda <- lmer(lda_measure~ Sentence_Type+Truth.value+ (1+Sentence_Type*Truth.value|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
+m0.interaction.lda <- lmer(lda_measure~ Sentence_Type+Truth.value+ Item.number+(1+Sentence_Type*Truth.value|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
 anova(control_model.lda, m0.interaction.lda)
 
 

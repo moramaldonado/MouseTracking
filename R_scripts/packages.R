@@ -1,5 +1,12 @@
 library(reshape2)
 
+
+
+library(devtools)
+install_github("ewan/rocauc", subdir="rocauc", force=TRUE)
+require(rocauc)
+require(pROC)
+
 # Data cleaning / management
 require(tidyverse)
 require(plyr)

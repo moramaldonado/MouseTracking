@@ -155,3 +155,8 @@ ggsave('LDA_all_calibration.png', path='R_scripts/graphs')
 
 calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
 
+ggplot(calibration_data, aes(x=MaxLogRatio, fill=Deviation)) +
+  geom_histogram(bins=10,  position="dodge")+
+  theme(legend.position = "top") +
+  facet_grid(.~Expected_response)
+ggsave('MaxLogRatio_all_calibration.png', path='R_scripts/graphs')
