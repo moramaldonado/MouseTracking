@@ -78,7 +78,7 @@ def exporting_data(path,all_trials, info):
 
         for j in range(len(info)):
             writer.writerow((info[j]['subject'], info[j]['file'], info[j]['gender'],info[j]['age'],info[j]['total_time'],info[j]['points'], info[j]['clicker'][0],
-                                info[j]['handedness'], info[j]['language'], info[j]['mobile'], info[j]['normalized_button_size'], info[j]['portrait'], info[j]['touch'],info[j]['userAgent'], info[j]['windowWidth']))
+                                info[j]['handedness'], info[j]['language'], info[j]['mobile'], info[j]['normalized_button_size'], info[j]['portrait'], info[j]['strategy'], info[j]['touch'],info[j]['userAgent'], info[j]['windowWidth']))
         
      
     with open(name, 'w') as f:
