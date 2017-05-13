@@ -31,7 +31,7 @@ points_per_trial = points_per_trial(all_trials) #Mean mouse-tracking points per 
 info, total_time = information(all_trials,names,points_per_trial) #subject information + total time to perform the task
 print ">>>> information per subject taken"
 
-print info
+
 all_trials = organization_trials(all_trials)
 print ">>>> trial information organized"
 
@@ -116,6 +116,8 @@ all_trials = x_flips2(all_trials)
 pathR = path+'/data_R'
 exporting_data(pathR,all_trials, info)
 print ">>>> data exported in csv for R"
+
+
 
 #plotting
 #os.chdir(path+'/figures')
