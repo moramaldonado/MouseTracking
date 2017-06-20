@@ -3,84 +3,14 @@
 Created on Sat Apr 18 10:23:28 2015
 
 @author: moramaldonado
+
 """
+
+
+
+
 import math
 import numpy as np
-
-# FUNCTION: velocity normalized(all_trials)
-#   DESCRIPTION: measures velocity between 2 points and time, done over normalized positions (in time)
-#   OUTPUT:
-def velocity_normalized(all_trials):
-    for s in range(len(all_trials)):
-        overlap = []
-        for t in range(len(all_trials[s])):
-            if all_trials[s][t]['value'] != '--' and all_trials[s][t]['mouse_log'] != [] and len(
-                    all_trials[s][t]['mouse_log']) > 1:
-                bad_points = []
-                velocity = []
-                temp = []
-                temp.append(all_trials[s][t]['normalized_positions'][0][2])
-                velocity.append(0)
-                for p in range(1, len(all_trials[s][t]['normalized_positions'])):
-                    if p > 0:
-                        t1 = float(all_trials[s][t]['normalized_positions'][p - 1][2])
-                        t2 = float(all_trials[s][t]['normalized_positions'][p][2])
-                        resta = t2 - t1
-                        if resta == 0:
-                            bad_points.append(p)
-                            print p
-
-                        else:
-                            x1 = float(all_trials[s][t]['normalized_positions'][p - 1][0])
-                            x2 = float(all_trials[s][t]['normalized_positions'][p][0])
-                            v = (x2 - x1) / resta
-                            v = abs(v)
-
-                    temp.append(t2)
-                    velocity.append(v)
-
-                overlap.append(len(bad_points))
-                all_trials[s][t]['velocity_normalized'] = velocity
-                all_trials[s][t]['temp_velocity'] = temp
-            else:
-                all_trials[s][t]['velocity_normalized'] = 'NA'
-                all_trials[s][t]['temp_velocity'] = 'NA'
-
-    return all_trials
-
-
-# FUNCTION: acceleration_normalized(all_trials, value)
-#   DESCRIPTION: requires velocity_normalized first
-#   OUTPUT:
-def acceleration_normalized(all_trials):
-    for s in range(len(all_trials)):
-        for t in range(len(all_trials[s])):
-            if all_trials[s][t]['value'] != '--' and all_trials[s][t]['mouse_log'] != [] and len(all_trials[s][t]['mouse_log']) > 1:
-                acceleration = []
-                bad_points = []
-                for p in range(len(all_trials[s][t]['velocity_normalized'])):
-                    if p > 0:
-                        t1 = float(all_trials[s][t]['temp_velocity'][p - 1])
-                        t2 = float(all_trials[s][t]['temp_velocity'][p])
-                        resta = t2 - t1
-                        if resta == 0:
-                            bad_points.append(p)
-                            print p
-
-                        else:
-                            x1 = float(all_trials[s][t]['velocity_normalized'][p - 1])
-                            x2 = float(all_trials[s][t]['velocity_normalized'][p])
-                            a = (x2 - x1) / resta
-                    else:
-                        a = 0
-
-                    acceleration.append(a)
-                all_trials[s][t]['acceleration'] = acceleration
-            else:
-                all_trials[s][t]['acceleration'] = 'NA'
-
-    return all_trials
-
 
 # FUNCTION: euclidean_distance(all_trials, value)
 #   DESCRIPTION: Calc eucl.distance from the position to each of the response buttons ('value'==response)
@@ -180,11 +110,11 @@ def ratio(all_trials):
 
                 for i in range(len(all_trials[s][t][target])):
                     a = all_trials[s][t][target][i]
-                    if a < 0.01:
-                        a = 0.01
+                    if a < 0.001:
+                        a = 0.001
                     b = all_trials[s][t][alternative][i]
-                    if b < 0.01:
-                        b = 0.01
+                    if b < 0.001:
+                        b = 0.001
                     r = float(a/b)
                     ratio.append(r)
             all_trials[s][t]['ratio'] = ratio
@@ -236,7 +166,7 @@ def maximum_value(all_trials, value):
             if all_trials[s][t]['value'] != '--' and all_trials[s][t]['mouse_log'] != [] and len(
                     all_trials[s][t]['mouse_log']) > 1:
 
-                if value == 'smooth_acceleration' and all_trials[s][t]['local_maxima'] != []:
+                if value == 'acceleration' and all_trials[s][t]['local_maxima'] != []:
                     m = all_trials[s][t]['local_maxima'][-1][0]
                 else:
                     m = max(all_trials[s][t][value])
@@ -245,7 +175,7 @@ def maximum_value(all_trials, value):
                 if len(temp) > 1:
                     more.append([s, t])
 
-                temp = all_trials[s][t]['temp_velocity'][index]
+                temp = all_trials[s][t]['velocity.time'][index]
 
                 all_trials[s][t][name] = [m, temp, index]
             else:
@@ -518,6 +448,28 @@ def mean_trajectory(all_trials,block,info, data_type, expected_response,experime
         meanCurve[i][1] = float(meanCurve[i][1] / numTrials)
         
     return meanCurve
+
+def find_point_change(all_trials):
+    for s in range(len(all_trials)):
+        for t in range(len(all_trials[s])):
+            myList = all_trials[s][t]['normalized_positions_y']
+            myNumber = float(all_trials[s][t]['change_point'])
+            if myNumber != 0:
+                closest_y = min(myList, key=lambda x: abs(x - myNumber))
+                time_point_change = myList.index(closest_y)
+                all_trials[s][t]['PointChange.Y'] = closest_y
+                all_trials[s][t]['PointChange.X'] = all_trials[s][t]['normalized_positions_x'][time_point_change]
+                all_trials[s][t]['PointChange.Time'] = time_point_change
+                all_trials[s][t]['PointChange.Time.Raw'] = all_trials[s][t]['corresponding_time'][time_point_change]
+
+            else:
+                all_trials[s][t]['PointChange.Y'] = 0
+                all_trials[s][t]['PointChange.X'] = 0
+                all_trials[s][t]['PointChange.Time'] = 0
+                all_trials[s][t]['PointChange.Time.Raw'] = 0
+
+    return all_trials
+
 
 
 

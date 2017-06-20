@@ -11,6 +11,9 @@ import math
 #   INPUT:
 #   OUTPUT: trials[i]['normalized_position']
 
+
+
+
 def normalisation_in_time(all_trials):
     points = 101
     for s in range(len(all_trials)):  # subject
@@ -19,6 +22,7 @@ def normalisation_in_time(all_trials):
                 normalized_points = []
                 normalized_points_x = []
                 normalized_points_y = []
+                corresponding_time =[]
                 rt = all_trials[s][t]['mouse_log'][-1][3] - all_trials[s][t]['mouse_log'][0][3]
                 delta_t = float(rt) / (points - 1)
                 time_offset = all_trials[s][t]['mouse_log'][0][3]
@@ -28,6 +32,7 @@ def normalisation_in_time(all_trials):
                 normalized_points.append([x0, y0, t0])
                 normalized_points_x.append(x0)
                 normalized_points_y.append(y0)
+                corresponding_time.append(t0)
 
                 for i in range(1, (points - 1)):
                     temp = time_offset + (i * delta_t)
@@ -47,6 +52,7 @@ def normalisation_in_time(all_trials):
                     normalized_points.append([x, y, temp])
                     normalized_points_x.append(x)
                     normalized_points_y.append(y)
+                    corresponding_time.append(temp)
 
                 tn = rt + time_offset
                 xn = all_trials[s][t]['mouse_log'][-1][0]
@@ -55,14 +61,17 @@ def normalisation_in_time(all_trials):
                 normalized_points.append([xn, yn, tn])
                 normalized_points_x.append(xn)
                 normalized_points_y.append(yn)
+                corresponding_time.append(tn)
                 all_trials[s][t]['normalized_positions'] = normalized_points
                 all_trials[s][t]['normalized_positions_x'] = normalized_points_x
                 all_trials[s][t]['normalized_positions_y'] = normalized_points_y
+                all_trials[s][t]['corresponding_time'] = corresponding_time
             else:
                 # print 'here I do not have information', s,t, all_trials[s][t]['value'], all_trials[s][t]['accuracy']
                 all_trials[s][t]['normalized_positions'] = 'NA'
                 all_trials[s][t]['normalized_positions_x'] = 'NA'
                 all_trials[s][t]['normalized_positions_y'] = 'NA'
+                all_trials[s][t]['corresponding_time'] = 'NA'
 
 
 
