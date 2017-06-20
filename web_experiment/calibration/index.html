@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="main.css">
+<style type="text/css">
+    body{
+        margin: 0;
+        padding: 0 1em;
+    }
+    #instructions{
+        position: absolute;
+        width: 529px;
+        right: 0;
+        left: 0;
+        top: 25%;
+        font-weight: 800;
+    }
+    #instructions, #instructions + main p{
+        text-align: center;
+    }
+
+    [data-run=calibration_run]{
+        width: 120vh;
+        height: 100vh;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        -webkit-transform: translateX(-50%);transform: translateX(-50%);
+
+        font-size: 5vh;
+        text-align: center;
+    }
+
+    [data-run=calibrarion_run].invisible #points {
+        visibility: hidden;
+    };
+
+    [data-run=experimental_design]{
+        width: 120vh;
+        height: 100vh;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        -webkit-transform: translateX(-50%);transform: translateX(-50%);
+
+        font-size: 5vh;
+        text-align: center;
+    }
+
+    .exp_des_button_2{
+        box-shadow: inset 0 0 0 1px black;
+        padding: 0.5em;
+        width: 3em;
+        font-size: .7em;
+        display: inline-block;
+        position: absolute;
+        cursor: pointer;
+        border-radius: .2em;
+        }
+
+    .exp_des_button{
+        box-shadow: inset 0 0 0 1px black;
+        padding: 0.5em;
+        width: 3em;
+        font-size: .7em;
+        display: inline-block;
+        position: absolute;
+        cursor: pointer;
+        border-radius: .2em;
+    }
+
+    #false{
+        left: 3em;
+        top: 1em;
+        background-color: #4E60F0;
+
+    }
+    #true{
+        right: 3em;
+        top: 1em;
+        background-color: red;
+    }
+    #start{
+        bottom: 1em;
+        left: 50%;
+        -webkit-transform: translateX(-50%);transform: translateX(-50%);
+    }
+
+    [data-run=experimental_design] p{
+        position: absolute;
+        bottom: 10em;
+        width: 100%;
+    }
+    canvas#debug{
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    [data-run=experimental_design] canvas#points{
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    [data-run=experimental_design].invisible #sentence {
+        visibility: hidden;
+    }
+
+
+
+    #warning{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: transparent;
+        z-index: -5;
+        margin: 0;
+        -webkit-animation: fade .5s ease-in;
+        animation: fade .5s ease-in;
+    }
+
+
+
+    @-webkit-keyframes fade { from { background-color: red; } to { background-color: transparent; }  }
+    @keyframes fade { from { background-color: red; } to { background-color: transparent; }  }
+    #warning p{
+        font-size: 2em;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: auto;
+        margin: 0;
+        transform: translate(-50%,-50%);
+    }
+
+
+</style>
+<body>
+<p id="loading">Loading experiment</p>
+<div class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+</body>
+<script src="step_runs.js"></script>
+
+<script src="template_handling.js"></script>
+
+<script>
+    var exp_pointer = -1;
+    var mouse_log;
+    var started_tracking = false;
+    var can_debug, ctx_debug, rect_debug, timeout;
+    var zero_point, lessone_point, plusone_point, button_size = false;
+    var warner = false;
+    var response_timeout;
+    var ctx;
+    var practice_mode = true;
+    var moved_before_timeout, moved_before_400ms = true;
+
+    function record_mouse (event) {
+        var norm_x = (event.clientX - zero_point.x) / (zero_point.x - lessone_point.x)
+        var norm_y = (zero_point.y - event.clientY) / (zero_point.y - lessone_point.y)
+
+        //if(norm_y > t){document.body.style.backgroundColor = color;}
+        mouse_log.push([norm_x, norm_y, Date.now()]);
+        clearTimeout(moved_before_timeout);
+
+    }
+
+
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+
+
+    function get_random_int(min, max) {
+        return Math.floor(Math.random() * (max + 1 - min)) + min;
+    }
+
+    function b() {
+        return Math.random()<.5;
+    }
+
+    function get_random_from_array (source, exclude) {
+        var item;
+        do{
+            item = shuffle(source)[0];
+        } while ( !exclude ? false : Array.isArray(exclude) ? exclude.indexOf(item) !== -1 : item === exclude )
+        return item;
+    }
+
+
+</script>
+
+<script src="calibration.js"></script>
+
+</html>
