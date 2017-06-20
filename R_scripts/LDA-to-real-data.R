@@ -1,7 +1,8 @@
 library(MASS) # NB: this will mask dplyr::select
 ##LOADING THE DATA FROM CALIBRATION
-#load('OLD_transformation_all.RData')
-#load('transformation.RData')
+load('transformation_all.RData')
+
+negation_data = subset(negation_data, Adjective!=5)
 
 x <- paste0('x', sprintf("%03d", c(1:101)))
 y <- paste0('y', sprintf("%03d", c(1:101)))
@@ -68,17 +69,6 @@ lda_measure.new.df <- data_frame(
   Response = normalized_positions.new_pca$Response)
 
 
-#Plotting LDA
-ggplot(lda_measure.new.df, aes(x=lda_measure, fill=Polarity)) + 
-  geom_histogram(position="dodge")+ 
-  theme(legend.position = "top") + 
-  facet_grid(.~Response)
-
-ggsave('LDA_real_data_1.png', plot = last_plot(), scale = 1, dpi = 300, path='R_scripts/graphs/negation_data')
-#ggsave('LDA_real_data(with_OLD_calibration).png', plot = last_plot(), scale = 1, dpi = 300, path='R_scripts/graphs')
-
-
-
 ##Including the relevant lda_measure in the data
 negation_data$Subject <- factor(negation_data$Subject)
 negation_data$Response <- factor(negation_data$Response)
@@ -87,25 +77,31 @@ negation_data <- dplyr::full_join(lda_measure.new.df, negation_data, by=c("Subje
 
 
 #Plotting LDA and MaxLogRatio
-#subsetting to accurate trials
+
+##Subsetting to accurate trials
 not_accurate_negation_data <- subset(negation_data, Accuracy==0)
 negation_data <- subset(negation_data, Accuracy==1)
 
-ggplot(negation_data, aes(x=lda_measure, fill=Polarity)) + 
-  geom_histogram(position="dodge")+ 
-  theme(legend.position = "top") + 
+##Plotting distributions
+ggplot(negation_data, aes(x=lda_measure, fill=Polarity)) +
+  geom_histogram(alpha=.4, position='dodge')+
+  scale_fill_brewer(palette="Set1")+ 
+  theme_minimal() +
+  xlab('LDA: Coord+Deltas+DeltaDelta (with uncertain)')+
   facet_grid(.~Response)
 
-ggsave('LDA_real_data(onlyAcc).png', plot = last_plot(), scale = 1, dpi = 300, path='R_scripts/graphs')
 
-ggplot(negation_data, aes(x=MaxLogRatio, fill=Polarity)) + 
-  geom_histogram(position="dodge")+ 
-  theme(legend.position = "top") + 
+
+
+#MaxLogRatio
+
+lda_density <-
+  ggplot(negation_data, aes(x=lda_measure, fill=Polarity)) +
+  geom_density(alpha=.5)+
+  theme(legend.position = "top") +
+  scale_fill_brewer(palette="Set1") +
+  theme_minimal() +
   facet_grid(.~Response)
-
-ggsave('MaxLogRatio_real_data(onlyAcc).png', plot = last_plot(), scale = 1, dpi = 300, path='R_scripts/graphs/negation_data')
-
-
 
 mydata.agreggated.lda <- ddply(negation_data, c("Polarity", "Subject", "Response"),
                                function(negation_data)c(lda_measure=mean(negation_data$lda_measure, na.rm=T)))
@@ -113,30 +109,105 @@ mydata.agreggated.lda <- ddply(negation_data, c("Polarity", "Subject", "Response
 mydata.agreggated.overall.lda <- ddply(mydata.agreggated.lda, c("Polarity", "Response"),
                                        function(mydata.agreggated.lda)c(mean=mean(mydata.agreggated.lda$lda_measure, na.rm=T), se=se(mydata.agreggated.lda$lda_measure, na.rm=T) ))
 
-
-ggplot(mydata.agreggated.overall.lda, aes(x=Polarity, y=mean, fill=Polarity)) +
+lda_means <-ggplot(mydata.agreggated.overall.lda, aes(x=Polarity, y=mean, fill=Polarity)) +
   geom_bar(position=position_dodge(), stat="identity") +
   scale_fill_brewer(palette="Set1")+  
   xlab(' ')  +
+  scale_y_continuous(breaks = seq(0, 1.5, by = 0.1)) +
+  theme_minimal() +
   geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.2, position=position_dodge(.9)) +
   facet_grid(.~Response)
 
-ggsave('LDA_means.png', plot = last_plot(), scale = 1, dpi = 300, path='R_scripts/graphs/negation_data')
+png(filename= "R_scripts/graphs/negation_data/LDA.png", width=800, height=480, unit='px')
+multiplot(lda_density, lda_means, cols=2)
+dev.off()
 
-#Plot
+#MaxLogRatio
+
+logratio_density <-
+  ggplot(negation_data, aes(x=MaxLogRatio, fill=Polarity)) +
+  geom_density(alpha=.5)+
+  theme(legend.position = "top") +
+  scale_fill_brewer(palette="Set1") +
+  theme_minimal() +
+  facet_grid(.~Response)
+
+
 mydata.agreggated.maxratio <- ddply(negation_data, c("Polarity", "Subject", "Response"),
                                     function(negation_data)c(MaxLogRatio=mean(negation_data$MaxLogRatio, na.rm=T)))
 
-mydata.agreggated.overall.maxratio <- ddply(mydata.agreggated.maxratio, c("Polarity", "Response"),
+mydata.agreggated.overall.maxratio <- ddply(mydata.agreggated.maxratio, c("Polarity", Response),
                                             function(mydata.agreggated.maxratio)c(mean=mean(mydata.agreggated.maxratio$MaxLogRatio, na.rm=T), se=se(mydata.agreggated.maxratio$MaxLogRatio, na.rm=T) ))
 
-
-ggplot(mydata.agreggated.overall.maxratio, aes(x=Polarity, y=mean, fill=Polarity)) +
+logratio_mean <- ggplot(mydata.agreggated.overall.maxratio, aes(x=Polarity, y=mean, fill=Polarity)) +
   geom_bar(position=position_dodge(), stat="identity") +
   scale_fill_brewer(palette="Set1")+  
   xlab(' ')  +
-  geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.2, position=position_dodge(.9)) +
+  theme_minimal()+
+  facet_grid(.~Response) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.2, position=position_dodge(.9))
+
+png(filename= "R_scripts/graphs/negation_data/MaxLogRatio.png", width=800, height=480, unit='px')
+multiplot(logratio_density, logratio_mean, cols=2)
+dev.off()
+
+
+
+#MaxDeviation
+
+maxdev_density <-
+  ggplot(negation_data, aes(x=MaxDeviation, fill=Polarity)) +
+  geom_density(alpha=.5)+
+  theme(legend.position = "top") +
+  scale_fill_brewer(palette="Set1") +
+  theme_minimal() +
   facet_grid(.~Response)
-ggsave('Max_means.png', plot = last_plot(), scale = 1, dpi = 300, path='R_scripts/graphs/negation_data')
 
 
+mydata.agreggated.maxdev <- ddply(negation_data, c("Polarity", "Subject", "Response"),
+                                    function(negation_data)c(MaxDeviation=mean(negation_data$MaxDeviation, na.rm=T)))
+
+mydata.agreggated.overall.maxdev <- ddply(mydata.agreggated.maxdev, c("Polarity", "Response"),
+                                            function(mydata.agreggated.maxdev)c(mean=mean(mydata.agreggated.maxdev$MaxDeviation, na.rm=T), se=se(mydata.agreggated.maxdev$MaxDeviation, na.rm=T) ))
+
+maxdev_mean <- ggplot(mydata.agreggated.overall.maxdev, aes(x=Polarity, y=mean, fill=Polarity)) +
+  geom_bar(position=position_dodge(), stat="identity") +
+  scale_fill_brewer(palette="Set1")+  
+  xlab(' ')  +
+  theme_minimal()+
+  facet_grid(.~Response) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.2, position=position_dodge(.9))
+
+png(filename= "R_scripts/graphs/negation_data/MaxDeviation.png", width=800, height=480, unit='px')
+multiplot(maxdev_density, maxdev_mean, cols=2)
+dev.off()
+
+
+#XFlips
+
+xflips_density <-
+  ggplot(negation_data, aes(x=X.flips, fill=Polarity)) +
+  geom_density(alpha=.5)+
+  theme(legend.position = "top") +
+  scale_fill_brewer(palette="Set1") +
+  theme_minimal() +
+  facet_grid(.~Response)
+
+
+mydata.agreggated.xflips <- ddply(negation_data, c("Polarity", "Subject", "Response"),
+                                  function(negation_data)c(X.flips=mean(negation_data$X.flips, na.rm=T)))
+
+mydata.agreggated.overall.xflips <- ddply(mydata.agreggated.xflips, c("Polarity", "Response"),
+                                          function(mydata.agreggated.xflips)c(mean=mean(mydata.agreggated.xflips$X.flips, na.rm=T), se=se(mydata.agreggated.xflips$X.flip, na.rm=T) ))
+
+xflips_mean <- ggplot(mydata.agreggated.overall.xflips, aes(x=Polarity, y=mean, fill=Polarity)) +
+  geom_bar(position=position_dodge(), stat="identity") +
+  scale_fill_brewer(palette="Set1")+  
+  xlab(' ')  +
+  theme_minimal()+
+  facet_grid(.~Response) +
+  geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.2, position=position_dodge(.9))
+
+png(filename= "R_scripts/graphs/negation_data/MaxDeviation.png", width=800, height=480, unit='px')
+multiplot(xflips_density, xflips_mean, cols=2)
+dev.off()

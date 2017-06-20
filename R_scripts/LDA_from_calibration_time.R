@@ -42,16 +42,16 @@ for(i in 2:101)
   name_ddx <- paste0(name_x,'_ddelta')
   name_ddy <- paste0(name_y,'_ddelta')
   normalized_positions[[name_dx]] <-  normalized_positions[[name_x]] -
-                                        normalized_positions[[name_x_last]]
+    normalized_positions[[name_x_last]]
   normalized_positions[[name_dy]] <-  normalized_positions[[name_y]] -
-                                        normalized_positions[[name_y_last]]
+    normalized_positions[[name_y_last]]
   if (i > 2) {
     name_dx_last <- paste0(name_x_last, '_delta')
     name_dy_last <- paste0(name_y_last, '_delta')
     normalized_positions[[name_ddx]] <-  normalized_positions[[name_dx]] -
-                                          normalized_positions[[name_dx_last]]
+      normalized_positions[[name_dx_last]]
     normalized_positions[[name_ddy]] <-  normalized_positions[[name_dy]] -
-                                          normalized_positions[[name_dy_last]]
+      normalized_positions[[name_dy_last]]
   }
 }
 
@@ -66,17 +66,17 @@ find_constant <- function(d, epsilon=1e-4) {
   names(d)[apply(d,2,function(x) is.na(var(x)) || sqrt(var(x)) < epsilon)]
 }
 constant_columns_ctl <- normalized_positions_tr %>%
-                          filter(Deviation == "Central") %>%
-                          dplyr::select(starts_with("x"), starts_with("y")) %>%
-                          find_constant
+  filter(Deviation == "Central") %>%
+  dplyr::select(starts_with("x"), starts_with("y")) %>%
+  find_constant
 constant_columns_nctl <- normalized_positions_tr %>%
-                          filter(Deviation == "NonCentral") %>%
-                          dplyr::select(starts_with("x"), starts_with("y")) %>%
-                          find_constant
+  filter(Deviation == "NonCentral") %>%
+  dplyr::select(starts_with("x"), starts_with("y")) %>%
+  find_constant
 constant_columns <- c(constant_columns_ctl, constant_columns_nctl)
 
 normalized_positions_tr <- dplyr::select(normalized_positions_tr,
-                                      -one_of(constant_columns))
+                                         -one_of(constant_columns))
 
 # Remove correlated dimensions
 find_uncorrelated <- function(d, data_columns, cutoff=0.95,
@@ -102,8 +102,8 @@ find_uncorrelated <- function(d, data_columns, cutoff=0.95,
 #                                          cutoff=0.95)
 
 all_data_columns <- names(dplyr::select(normalized_positions_tr,
-                                             starts_with("x"),
-                                             starts_with("y")))
+                                        starts_with("x"),
+                                        starts_with("y")))
 ##PCA in training set
 m_pca <- normalized_positions_tr %>%
   dplyr::select(one_of(all_data_columns)) %>%
@@ -112,7 +112,7 @@ m_pca <- normalized_positions_tr %>%
 
 n_pca <- 13
 normalized_positions_tr_pca <- bind_cols(normalized_positions_tr,
-                                      as.data.frame(m_pca$x[,1:n_pca]))
+                                         as.data.frame(m_pca$x[,1:n_pca]))
 ### LDA
 m_lda <- lda(factor(Deviation) ~ .,
              data=dplyr::select(normalized_positions_tr_pca,

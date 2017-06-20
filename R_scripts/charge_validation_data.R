@@ -19,7 +19,7 @@ normalized_positions_validation[x] <- sapply(normalized_positions_validation[x],
 normalized_positions_false = normalized_positions_validation%>%
   filter(Expected_response=='false')%>%
   dplyr::mutate_at(vars(starts_with('x')), funs('-'))
-normalized_positions_true = filter(normalized_positions, Expected_response=='true')
+normalized_positions_true = filter(normalized_positions_validation, Expected_response=='true')
 normalized_positions_validation = bind_rows(normalized_positions_false,normalized_positions_true)
 rm(normalized_positions_true, normalized_positions_false)
 
