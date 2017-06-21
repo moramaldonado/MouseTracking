@@ -24,19 +24,14 @@ rawtime = calibration_data %>%
   gather(Time.Step, RawTime, 4:104) 
 
 acceleration_calibration = calibration_data %>%
-  dplyr::select(Subject,Polarity, Expected_response, Smooth_Acceleration, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange_cut, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time) %>%
-  separate(Smooth_Acceleration, into= as.character(c(1:101)), sep = ",") %>%
-  gather(Time.Step, Smooth_Acceleration, 4:104) 
+  dplyr::select(Subject,Polarity, Expected_response, Acceleration, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange_cut, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time) %>%
+  separate(Acceleration, into= as.character(c(1:101)), sep = ",") %>%
+  gather(Time.Step, Acceleration, 4:104) 
 
-filtered = calibration_data %>%
-  dplyr::select(Subject,Polarity, Expected_response, Filtered_Acceleration, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange_cut, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time) %>%
-  separate(Filtered_Acceleration, into= as.character(c(1:101)), sep = ",") %>%
-  gather(Time.Step, Filtered_Acceleration, 4:104) 
 
 normalized_positions.plot <- merge(normalized_positions.plot.X,normalized_positions.plot.Y)
 normalized_positions.plot <- merge(normalized_positions.plot, rawtime)
 normalized_positions.plot <- merge(normalized_positions.plot, acceleration_calibration)
-normalized_positions.plot <- merge(normalized_positions.plot, filtered)
 
 normalized_positions.plot$X.Position<- as.numeric(normalized_positions.plot$X.Position)
 normalized_positions.plot$Y.Position <- as.numeric(normalized_positions.plot$Y.Position)
@@ -45,9 +40,7 @@ normalized_positions.plot$PointChange.Time <- as.numeric(normalized_positions.pl
 normalized_positions.plot$RawTime <- as.numeric(normalized_positions.plot$RawTime)
 normalized_positions.plot$Subject <- factor(normalized_positions.plot$Subject)
 normalized_positions.plot$Polarity <- factor(normalized_positions.plot$Polarity )
-normalized_positions.plot$Smooth_Acceleration <- as.numeric(normalized_positions.plot$Smooth_Acceleration)
-normalized_positions.plot$Filtered_Acceleration <- as.numeric(normalized_positions.plot$Filtered_Acceleration)
-
+normalized_positions.plot$Acceleration <- as.numeric(normalized_positions.plot$Acceleration)
 
 normalized_positions.plot.false = normalized_positions.plot %>%
   filter(Expected_response=='blue')%>%

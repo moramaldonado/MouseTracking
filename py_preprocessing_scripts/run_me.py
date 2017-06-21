@@ -55,8 +55,11 @@ print ">>>> velocity normalized taken"
 all_trials = acceleration_normalized(all_trials)
 print ">>>> acceleration done"
 
-all_trials = vel_acc_moving(all_trials,6)
+#all_trials = vel_acc_moving(all_trials,6)
 print ">>>> acceleration smooth with D and D"
+
+all_trials = vel_acc_moving(all_trials,7)
+
 
 ##False == A, True==B
 all_trials = euclidean_distance(all_trials,'false')
@@ -107,3 +110,4 @@ all_trials = acc_flips(all_trials)
 pathR = path+'/data_R/calibration_pilot'
 exporting_data(pathR,all_trials, info)
 print ">>>> data exported in csv for R"
+
