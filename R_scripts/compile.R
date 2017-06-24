@@ -1,20 +1,19 @@
 ## CLEAN ENVIRONMENT
 rm(list = ls())
 
-##1. CHARGE PACKAGES
+## CHARGE PACKAGES
 source("R_scripts/packages.R")
 
-## 2. EXTRACTING_DATA
-#calibration_data includes all the data we have
-##negattion_data includes **only** data from the experiment
+## EXTRACTING_DATA
+#Extracts data from calibration (last version: June 2017) into calibration_data
 source("R_scripts/extracting_calibration_data.R")
 
-## 3. CREATING A DATA.FRAME WITH POSITIONS TO PLOT (CALIBRATION DATA) + EXCLUSION OF WEIRD TRAJECTORIES
-# excluded_trials: contains all subject-item pairs that are excluded from the calibration data 
+## DATA FRAME FOR PLOT
+# Creates data frame normalized_positions.plot: each row contains one time.step with X.Position, Y.Position, Raw.Acceleration, Raw.Time columns among others 
 source("R_scripts/calibration-trajectories.R")
 
-## 4. LDA: Take LDA measure from calibration data, strore. 
-source("R_scripts/LDA-from-calibration.R")
+## LDAs 
+source("R_scripts/LDA-training(Coord+Delta+DeltaDelta).R")
 
 ## 5. Plot Calibration Trajectories 
 source("R_scripts/plot-calibration-trajectories.R")

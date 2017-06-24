@@ -1,5 +1,5 @@
-library(reshape2)
 
+library(reshape2)
 library(devtools)
 require(rocauc)
 require(pROC)
@@ -7,8 +7,10 @@ require(pROC)
 # Data cleaning / management
 require(tidyverse)
 require(plyr)
+require(Hmisc)
 require(ggplot2)
-
+library(ellipse)
+library(GGally)
 #MASS and lmer
 require(lme4)
 

@@ -1,5 +1,35 @@
 
-##PLOTTING
+##PLOTTING different measures
+plot_measure <- function(data, measure){
+  histogram <- ggplot(data, aes(x=measure, fill=Polarity)) +
+    geom_histogram(bins=12,  position="dodge")+
+    scale_fill_brewer(palette="Set1")+
+    theme(legend.position = "top") +
+    theme_minimal()
+  
+  density <-ggplot(data, aes(x=measure, fill=Polarity)) +
+    geom_density(alpha=.5)+
+    scale_fill_brewer(palette="Set1")+
+    theme_minimal() +theme(legend.position = "none")
+  
+  mydata.agreggated <- ddply(data, c("Polarity", "Subject"),
+                                 function(data)c(mean=mean(data$measure, na.rm=T)))
+  mydata.agreggated.overall <- ddply(mydata.agreggated, c("Polarity"),
+                                         function(mydata.agreggated)c(mean=mean(mydata.agreggated$mean, na.rm=T), se=se(mydata.agreggated$mean, na.rm=T) ))
+  
+  
+  mean <- ggplot(mydata.agreggated.overall, aes(x=Polarity, y=mean, fill=Polarity)) +
+    geom_bar(position=position_dodge(), stat="identity") +
+    scale_fill_brewer(palette="Set1")+  
+    theme_minimal()+
+    xlab(' ')  +
+    geom_errorbar(aes(ymin=mean-se, ymax=mean+se), width=.2, position=position_dodge(.9)) 
+  
+
+  return(multiplot(density, histogram, mean, cols=2))  
+}
+
+
 
 #LDA
 lda_histo <- ggplot(calibration_data, aes(x=lda_measure, fill=Polarity)) +
@@ -7,7 +37,7 @@ lda_histo <- ggplot(calibration_data, aes(x=lda_measure, fill=Polarity)) +
   scale_fill_brewer(palette="Set1")+
   theme(legend.position = "top") +
   theme_minimal()
-lda_density <-ggplot(calibration_data, aes(x=lda_measure, fill=Polarity)) +
+lda_density <-ggplot(calibration_data, aes(x=lda_measure_logratio, fill=Polarity)) +
   geom_density(alpha=.5)+
   scale_fill_brewer(palette="Set1")+
    theme_minimal() +theme(legend.position = "none")
@@ -146,14 +176,14 @@ dev.off()
 
 
 # ACC FLIPS
-ggplot(calibration_data, aes(x=Acc.flips, fill=Deviation)) +
+ggplot(subset(calibration_data, Polarity!='uncertain'), aes(x=Acc.flips, fill=Polarity)) +
   geom_histogram(bins=15,  position="dodge")+
   theme(legend.position = "top") +
   theme_minimal() +
   facet_grid(.~Expected_response)
 ggsave('AccFlips_histo_SvD.png',  width = 6, path='R_scripts/graphs/calibration_new')
 
-ggplot(calibration_data, aes(x=Acc.flips, fill=Deviation)) +
+ggplot(subset(calibration_data, Polarity!='uncertain'), aes(x=Acc.flips, fill=Polarity)) +
   geom_density(alpha=.5)+
   theme(legend.position = "top") +
   theme_minimal()
@@ -162,5 +192,10 @@ ggsave('AccFlips_densit_SvD.png',  width = 6, path='R_scripts/graphs/calibration
 
 
 
+mydata.agreggated.accflips <- ddply(calibration_data, c("Polarity", "Subject"),
+                                  function(calibration_data)c(Acc.flips=mean(calibration_data$Acc.flips, na.rm=T)))
+
+mydata.agreggated.overal.accflips <- ddply(mydata.agreggated.accflips, c("Polarity"),
+                                         function(mydata.agreggated.accflips)c(mean=mean(mydata.agreggated.accflips$Acc.flips, na.rm=T), se=se(mydata.agreggated.accflips$Acc.flips, na.rm=T) ))
 
 
