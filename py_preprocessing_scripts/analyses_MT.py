@@ -395,7 +395,6 @@ def mean_x(all_trials, block, info, data_type, expected_response, experiment):
 
 
 def mean_trajectory_calibration(all_trials, data_type, type):
-
     meanCurveL = []
     meanCurveR = []
     for i in range(101):

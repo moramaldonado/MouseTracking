@@ -108,8 +108,8 @@ def vel_acc_moving(all_trials, windsize):
                 distance.append(dist)
 
             # In loop 2:WS-1, sum the distances such that I end up with vector distances of 0:95
-            velocity_window = []
-            velocity_window_time = []
+            velocity_window = [0]
+            velocity_window_time = [1]
 
             for i in range(0, lenvel):  # Range is not inclusive
                 dist = distance[i]
@@ -121,6 +121,11 @@ def vel_acc_moving(all_trials, windsize):
                 velocity_window.append(vel)
                 velocity_window_time.append(vel_time)
 
+            velocity_window.append(0)
+            velocity_window.append(0)
+            velocity_window_time.append(vel_time+1)
+            velocity_window_time.append(vel_time+2)
+
 
 
             # include this in all_trials
@@ -128,12 +133,15 @@ def vel_acc_moving(all_trials, windsize):
             all_trials[s][t]['velocity_window.time'] = velocity_window_time
 
             # Acceleration
-            acceleration = []
-            acceleration_time = []
+            acceleration = [0]
+            acceleration_time = [1]
             for i in range(1, len(all_trials[s][t]['velocity_window'])):
                 diffvel = all_trials[s][t]['velocity_window'][i] - all_trials[s][t]['velocity_window'][i - 1]
                 difftime = all_trials[s][t]['velocity_window.time'][i] - all_trials[s][t]['velocity_window.time'][i - 1]
-                acc = diffvel / difftime
+                if difftime==0:
+                    acc=0
+                else:
+                    acc = diffvel / difftime
                 acc_time = (all_trials[s][t]['velocity_window.time'][i] + all_trials[s][t]['velocity_window.time'][
                     i - 1]) / 2
                 acceleration.append(acc)
@@ -146,71 +154,22 @@ def vel_acc_moving(all_trials, windsize):
                     acceleration[p] = 0
 
             # include this in all_trials
+            acceleration.append(0)
+            acceleration.append(0)
+            acceleration.append(0)
+            acceleration_time.append(acc_time+1)
+            acceleration_time.append(acc_time+2)
+            acceleration_time.append(acc_time+3)
+
+
             all_trials[s][t]['acceleration_window'] = acceleration
             all_trials[s][t]['acceleration_window.time'] = acceleration_time
+            print len(acceleration)
 
 
     return all_trials
 
 
-
-# Function speed and acceleration throuh simple moving-average smoothing over a window of a set size.
-def vel_acc_moving_test(all_trials, windsize):
-    # Take the two vectors of times
-    s = 1
-    t = 20
-    ts1 = [all_trials[s][t]['corresponding_time'][i] for i in range(0,96)]
-    ts2 = [all_trials[s][t]['corresponding_time'][i] for i in range(5,101)]
-    distance = []
-    distance.append(0)
-
-
-    # Calculate the distances for all the points in vector DISTANCE
-    for i in range(1,101):
-        diffy = all_trials[s][t]['normalized_positions_x'][i] - all_trials[s][t]['normalized_positions_x'][i-1]
-        diffx = all_trials[s][t]['normalized_positions_y'][i] - all_trials[s][t]['normalized_positions_y'][i-1]
-        dist = math.sqrt(math.pow(diffx, 2) + math.pow(diffy, 2))
-        distance.append(dist)
-
-    # In loop 2:WS-1, sum the distances such that I end up with vector distances of 0:95
-    velocity_window = []
-    velocity_window_time = []
-
-    for i in range(0, 96): #Range is not inclusive
-        dist = distance[i]
-        for w in range(1, windsize):
-            dist = dist + distance[i+w]
-        difftime = ts2[i] - ts1[i]
-        vel_time = (ts2[i] + ts1[i])/2
-        vel = (dist/difftime)*1000
-        velocity_window.append(vel)
-        velocity_window_time.append(vel_time)
-
-
-
-
-    #include this in all_trials
-    all_trials[s][t]['velocity_window'] = velocity_window
-    all_trials[s][t]['velocity_window.time'] = velocity_window_time
-
-    #Acceleration
-    acceleration = []
-    acceleration_time = []
-    for i in range(1, len(all_trials[s][t]['velocity_window'])):
-        diffvel = all_trials[s][t]['velocity_window'][i] - all_trials[s][t]['velocity_window'][i-1]
-        difftime = all_trials[s][t]['velocity_window.time'][i] - all_trials[s][t]['velocity_window.time'][i - 1]
-        acc = diffvel/difftime
-        acc_time = (all_trials[s][t]['velocity_window.time'][i] + all_trials[s][t]['velocity_window.time'][i - 1])/2
-        acceleration.append(acc)
-        acceleration_time.append(acc_time)
-
-
-    # include this in all_trials
-
-
-
-    all_trials[s][t]['acceleration_window'] = acceleration
-    all_trials[s][t]['acceleration_window.time'] = acceleration_time
 
 # FUNCTION: velocity normalized(all_trials)
 #   DESCRIPTION: measures velocity between 2 points and time, done over normalized positions (in time)
@@ -254,21 +213,19 @@ def velocity_normalized_x(all_trials):
 
     return all_trials
 
-def acc_flips(all_trials):
+def acc_flips(all_trials, threshold):
     for s in range(len(all_trials)):
         for t in range(len(all_trials[s])):
             x_flips = []
             if all_trials[s][t]['value'] != '--' and all_trials[s][t]['mouse_log'] != [] and len(all_trials[s][t]['mouse_log']) > 1:
-                for i in range(0,len(all_trials[s][t]['acceleration_window'])-5):
-
-                    x0 = all_trials[s][t]['acceleration_window'][i]  # x-1
-                    x1 = all_trials[s][t]['acceleration_window'][i+1] # x
-                    x2 = all_trials[s][t]['acceleration_window'][i+2] #x-2
-                    x3 = all_trials[s][t]['acceleration_window'][i+3] # x-2
-                    x4 = all_trials[s][t]['acceleration_window'][i+4] # x-2
-                    x5 = all_trials[s][t]['acceleration_window'][i+5] # x-2
-
-                    flip = -1*(x0-x1)*(x1-x2)*(x2-x3)*(x3-x4)*(x4-x5)
+                for i in range(0,len(all_trials[s][t]['acceleration_window'])-threshold, threshold):
+                    #print (i)
+                    if threshold == 3:
+                        flip = -1 * (all_trials[s][t]['acceleration_window'][i] - all_trials[s][t]['acceleration_window'][i+1]) * (all_trials[s][t]['acceleration_window'][i+1]- all_trials[s][t]['acceleration_window'][i+2])
+                    else:
+                        flip = -1 * (all_trials[s][t]['acceleration_window'][i] - all_trials[s][t]['acceleration_window'][i+1])
+                        for th in range(1, threshold-2):
+                            flip = flip * (all_trials[s][t]['acceleration_window'][i+th] - all_trials[s][th]['acceleration_window'][i+th+1])
 
                     if flip < 0:
                         flip = 0

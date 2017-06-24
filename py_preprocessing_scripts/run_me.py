@@ -103,7 +103,7 @@ all_trials = x_flips(all_trials)
 all_trials = find_point_change(all_trials)
 #all_trials = filter_acceleration(all_trials)
 #all_trials = smooth(all_trials, 'acceleration_filter')
-all_trials = acc_flips(all_trials)
+all_trials = acc_flips(all_trials, 3)
 
 
 # Exporting the data for R
