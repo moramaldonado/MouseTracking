@@ -63,12 +63,12 @@ v_lda <- m_lda$scaling
 b_lda <- mean(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda)
 
 #save(v_lda, b_lda, x.subset, y.subset, file="transformation_all.RData")
-save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA-training-LogRatio.RData")
+save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA(LogRatio).RData")
 
 #Creating matrix with the lda meaure
 lda_measure.df <- data_frame(
   lda_measure_logratio=c(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda- b_lda),
-  Deviation=normalized_positions_tr$Deviation, 
+  Deviation = normalized_positions_tr$Deviation, 
   Subject = normalized_positions_tr$Subject, 
   Expected_response = normalized_positions_tr$Expected_response,
   Item.number = normalized_positions_tr$Item.number)
@@ -76,9 +76,13 @@ lda_measure.df <- data_frame(
 
 ###SAVING THIS DATA
 calibration_data$Subject <- factor(calibration_data$Subject)
-calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
-normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response"))
+calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response", "Deviation"))
+normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response", "Deviation"))
 normalized_positions.plot$lda_measure_logratio_cut <- cut(normalized_positions.plot$lda_measure_logratio, 5)
 calibration_data$lda_measure_logratio_cut <- cut(calibration_data$lda_measure_logratio, 5)
 
-rm(all_data_columns, lda_measure.df, constant_columns, constant_columns_ctl,constant_columns_nctl,i,name_ddx,name_ddy,name_dx,name_dx_last, name_dy, name_x_last, name_y, name_x, name_y_last, name_dy_last, x, y, normalized_positions)
+rm(all_data_columns, lda_measure.df, constant_columns, constant_columns_ctl,constant_columns_nctl, normalized_positions)
+
+
+
+

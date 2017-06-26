@@ -1,7 +1,5 @@
 library(MASS) # NB: this will mask dplyr::select
 
-##Subset to deviated and straight trials
-calibration_data = subset(calibration_data, Polarity != 'uncertain')
 
 ### ORDERING DATA
 x <- paste0('x', sprintf("%03d", c(1:101)))
@@ -39,20 +37,10 @@ for(i in 2:101)
   name_y_last <- y[i-1]
   name_dx <- paste0(name_x,'_delta')
   name_dy <- paste0(name_y,'_delta')
-  name_ddx <- paste0(name_x,'_ddelta')
-  name_ddy <- paste0(name_y,'_ddelta')
   normalized_positions[[name_dx]] <-  normalized_positions[[name_x]] -
-                                        normalized_positions[[name_x_last]]
+    normalized_positions[[name_x_last]]
   normalized_positions[[name_dy]] <-  normalized_positions[[name_y]] -
-                                        normalized_positions[[name_y_last]]
-  if (i > 2) {
-    name_dx_last <- paste0(name_x_last, '_delta')
-    name_dy_last <- paste0(name_y_last, '_delta')
-    normalized_positions[[name_ddx]] <-  normalized_positions[[name_dx]] -
-                                          normalized_positions[[name_dx_last]]
-    normalized_positions[[name_ddy]] <-  normalized_positions[[name_dy]] -
-                                          normalized_positions[[name_dy_last]]
-  }
+    normalized_positions[[name_y_last]]
 }
 
 #Training with the whole data set, commented: training with all data set but subject 1, test on subject 1
@@ -66,17 +54,17 @@ find_constant <- function(d, epsilon=1e-4) {
   names(d)[apply(d,2,function(x) is.na(var(x)) || sqrt(var(x)) < epsilon)]
 }
 constant_columns_ctl <- normalized_positions_tr %>%
-                          filter(Deviation == "Central") %>%
-                          dplyr::select(starts_with("x"), starts_with("y")) %>%
-                          find_constant
+  filter(Deviation == "Central") %>%
+  dplyr::select(starts_with("x"), starts_with("y")) %>%
+  find_constant
 constant_columns_nctl <- normalized_positions_tr %>%
-                          filter(Deviation == "NonCentral") %>%
-                          dplyr::select(starts_with("x"), starts_with("y")) %>%
-                          find_constant
+  filter(Deviation == "NonCentral") %>%
+  dplyr::select(starts_with("x"), starts_with("y")) %>%
+  find_constant
 constant_columns <- c(constant_columns_ctl, constant_columns_nctl)
 
 normalized_positions_tr <- dplyr::select(normalized_positions_tr,
-                                      -one_of(constant_columns))
+                                         -one_of(constant_columns))
 
 # Remove correlated dimensions
 find_uncorrelated <- function(d, data_columns, cutoff=0.95,
@@ -102,8 +90,8 @@ find_uncorrelated <- function(d, data_columns, cutoff=0.95,
 #                                          cutoff=0.95)
 
 all_data_columns <- names(dplyr::select(normalized_positions_tr,
-                                             starts_with("x"),
-                                             starts_with("y")))
+                                        starts_with("x"),
+                                        starts_with("y")))
 ##PCA in training set
 m_pca <- normalized_positions_tr %>%
   dplyr::select(one_of(all_data_columns)) %>%
@@ -112,7 +100,7 @@ m_pca <- normalized_positions_tr %>%
 
 n_pca <- 13
 normalized_positions_tr_pca <- bind_cols(normalized_positions_tr,
-                                      as.data.frame(m_pca$x[,1:n_pca]))
+                                         as.data.frame(m_pca$x[,1:n_pca]))
 ### LDA
 m_lda <- lda(factor(Deviation) ~ .,
              data=dplyr::select(normalized_positions_tr_pca,
@@ -124,12 +112,11 @@ v_lda <- m_lda$scaling
 #overall bias
 b_lda <- mean(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda)
 
-#save(v_lda, b_lda, x.subset, y.subset, file="transformation_all.RData")
-save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA(Coords+Delta+DeltaDelta).RData")
+save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA(Coord+Delta).RData")
 
 #Creating matrix with the lda meaure
 lda_measure.df <- data_frame(
-  lda_measure=c(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda- b_lda),
+  lda_measure_coord_delta =c(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda- b_lda),
   Deviation=normalized_positions_tr$Deviation, 
   Subject = normalized_positions_tr$Subject, 
   Expected_response = normalized_positions_tr$Expected_response,
@@ -138,9 +125,20 @@ lda_measure.df <- data_frame(
 
 ###SAVING THIS DATA
 calibration_data$Subject <- factor(calibration_data$Subject)
-calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
-normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response"))
-normalized_positions.plot$lda_measure_cut <- cut(normalized_positions.plot$lda_measure, 5)
-calibration_data$lda_measure_cut <- cut(calibration_data$lda_measure, 5)
+calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response", "Deviation"))
+normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response", "Deviation"))
+normalized_positions.plot$lda_measure_coord_delta_cut <- cut(normalized_positions.plot$lda_measure_coord_delta, 5)
+calibration_data$lda_measure_coord_delta_cut <- cut(calibration_data$lda_measure_coord_delta, 5)
+
+
+
 
 rm(all_data_columns, lda_measure.df, constant_columns, constant_columns_ctl,constant_columns_nctl,i,name_ddx,name_ddy,name_dx,name_dx_last, name_dy, name_x_last, name_y, name_x, name_y_last, name_dy_last, x, y, normalized_positions)
+
+
+
+
+
+
+
+

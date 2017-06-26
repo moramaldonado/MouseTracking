@@ -1,17 +1,23 @@
 library(MASS) # NB: this will mask dplyr::select
 
+##Subset to deviated and straight trials
+calibration_data = subset(calibration_data, Polarity != 'uncertain')
 
 ### ORDERING DATA
 x <- paste0('x', sprintf("%03d", c(1:101)))
 y <- paste0('y', sprintf("%03d", c(1:101)))
+a <- paste0('a', sprintf("%03d", c(1:101)))
 
 # Each x and y coordenate into two columns (101 coordenates per trial) 
 normalized_positions = calibration_data %>%
-  dplyr::select(Subject, Item.number, Polarity, Expected_response, Normalized.positions.X,Normalized.positions.Y) %>%
+  dplyr::select(Subject, Item.number, Polarity, Expected_response, Normalized.positions.X,Normalized.positions.Y, Acceleration) %>%
   separate(Normalized.positions.Y, into= y, sep = ",") %>%
-  separate(Normalized.positions.X, into= x, sep = ",")
+  separate(Normalized.positions.X, into= x, sep = ",") %>%
+  separate(Acceleration, into= a, sep = ",")
+  
 normalized_positions[y] <- sapply(normalized_positions[y],as.numeric)
 normalized_positions[x] <- sapply(normalized_positions[x],as.numeric)
+normalized_positions[a] <- sapply(normalized_positions[a],as.numeric)
 
 # Taking the negative of false items, to have everything in the same scale
 normalized_positions_false = normalized_positions%>%
@@ -39,13 +45,14 @@ normalized_positions_tr <- normalized_positions
 find_constant <- function(d, epsilon=1e-4) {
   names(d)[apply(d,2,function(x) is.na(var(x)) || sqrt(var(x)) < epsilon)]
 }
+
 constant_columns_ctl <- normalized_positions_tr %>%
   filter(Deviation == "Central") %>%
-  dplyr::select(starts_with("x"), starts_with("y")) %>%
+  dplyr::select(starts_with("x"), starts_with("y"), starts_with('a')) %>%
   find_constant
 constant_columns_nctl <- normalized_positions_tr %>%
   filter(Deviation == "NonCentral") %>%
-  dplyr::select(starts_with("x"), starts_with("y")) %>%
+  dplyr::select(starts_with("x"), starts_with("y"), starts_with('a')) %>%
   find_constant
 constant_columns <- c(constant_columns_ctl, constant_columns_nctl)
 
@@ -77,7 +84,8 @@ find_uncorrelated <- function(d, data_columns, cutoff=0.95,
 
 all_data_columns <- names(dplyr::select(normalized_positions_tr,
                                         starts_with("x"),
-                                        starts_with("y")))
+                                        starts_with("y"), 
+                                        starts_with("a")))
 ##PCA in training set
 m_pca <- normalized_positions_tr %>%
   dplyr::select(one_of(all_data_columns)) %>%
@@ -98,11 +106,12 @@ v_lda <- m_lda$scaling
 #overall bias
 b_lda <- mean(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda)
 
-save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="transformation_all_coord.RData")
-  
+#save(v_lda, b_lda, x.subset, y.subset, file="transformation_all.RData")
+save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA(Coord+AccDist).RData")
+
 #Creating matrix with the lda meaure
 lda_measure.df <- data_frame(
-  lda_measure_4 =c(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda- b_lda),
+  lda_measure_coord.acc=c(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda- b_lda),
   Deviation=normalized_positions_tr$Deviation, 
   Subject = normalized_positions_tr$Subject, 
   Expected_response = normalized_positions_tr$Expected_response,
@@ -112,72 +121,8 @@ lda_measure.df <- data_frame(
 ###SAVING THIS DATA
 calibration_data$Subject <- factor(calibration_data$Subject)
 calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response", "Deviation"))
-normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response"))
+normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response", "Deviation"))
+normalized_positions.plot$lda_measure_coord.acc_cut <- cut(normalized_positions.plot$lda_measure_coord.acc, 5)
+calibration_data$lda_measure_coord.acc_cut <- cut(calibration_data$lda_measure_coord.acc, 5)
 
-
-
-##PLOTTING
-
-histo_lda_1 <- ggplot(calibration_data, aes(x=lda_measure, fill=Deviation)) +
-  geom_histogram(bins=10,  position="dodge")+
-  theme_minimal() +
-  theme(legend.position = "none") +
-  xlab('LDA: Coord+Delta+DeltaDelta')
-
-density_lda_1 <- ggplot(calibration_data, aes(x=lda_measure, fill=Deviation)) +
-  geom_density(alpha=.5)+
-  theme_minimal() +
-  theme(legend.position = "none") +
-  xlab('LDA: Coord+Delta+DeltaDelta')
-
-histo_lda_2 <- ggplot(calibration_data, aes(x=lda_measure_2, fill=Deviation)) +
-  geom_histogram(bins=10,  position="dodge")+
-  theme_minimal() +
-  theme(legend.position = "none") +
-  xlab('LDA: Coord+Delta')
-
-density_lda_2 <- ggplot(calibration_data, aes(x=lda_measure_2, fill=Deviation)) +
-  geom_density(alpha=.5)+
-  theme_minimal() +
-  theme(legend.position = "none")  +
-  xlab('LDA: Coord+Delta')
-
-histo_lda_3 <- ggplot(calibration_data, aes(x=lda_measure_3, fill=Deviation)) +
-  geom_histogram(bins=10,  position="dodge")+
-  theme_minimal() +
-  theme(legend.position = "none")  +
-  xlab('LDA: DeltaDelta')
-
-density_lda_3 <- ggplot(calibration_data, aes(x=lda_measure_3, fill=Deviation)) +
-  geom_density(alpha=.5)+
-  theme_minimal() +
-  theme(legend.position = "none") +
-  xlab('LDA: DeltaDelta')
-
-histo_lda_4 <- ggplot(calibration_data, aes(x=lda_measure_4, fill=Deviation)) +
-  geom_histogram(bins=10,  position="dodge")+
-  theme_minimal() +
-  theme(legend.position = "none") +
-  xlab('LDA: Coords')
-
-density_lda_4 <- ggplot(calibration_data, aes(x=lda_measure_4, fill=Deviation)) +
-  geom_density(alpha=.5)+
-  theme_minimal() +
-  theme(legend.position = "none") +
-  xlab('LDA: Coords')
-
-multiplot(histo_lda_1,histo_lda_2, histo_lda_3, histo_lda_4, density_lda_1, density_lda_2,  density_lda_3, density_lda_4, cols=2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+rm(all_data_columns, lda_measure.df, constant_columns, constant_columns_ctl,constant_columns_nctl, x, y, normalized_positions)

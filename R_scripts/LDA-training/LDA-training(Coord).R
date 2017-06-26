@@ -1,23 +1,17 @@
 library(MASS) # NB: this will mask dplyr::select
 
-##Subset to deviated and straight trials
-calibration_data = subset(calibration_data, Polarity != 'uncertain')
 
 ### ORDERING DATA
 x <- paste0('x', sprintf("%03d", c(1:101)))
 y <- paste0('y', sprintf("%03d", c(1:101)))
-a <- paste0('a', sprintf("%03d", c(1:101)))
 
 # Each x and y coordenate into two columns (101 coordenates per trial) 
 normalized_positions = calibration_data %>%
-  dplyr::select(Subject, Item.number, Polarity, Expected_response, Normalized.positions.X,Normalized.positions.Y, Acceleration) %>%
+  dplyr::select(Subject, Item.number, Polarity, Expected_response, Normalized.positions.X,Normalized.positions.Y) %>%
   separate(Normalized.positions.Y, into= y, sep = ",") %>%
-  separate(Normalized.positions.X, into= x, sep = ",") %>%
-  separate(Acceleration, into= a, sep = ",")
-  
+  separate(Normalized.positions.X, into= x, sep = ",")
 normalized_positions[y] <- sapply(normalized_positions[y],as.numeric)
 normalized_positions[x] <- sapply(normalized_positions[x],as.numeric)
-normalized_positions[a] <- sapply(normalized_positions[a],as.numeric)
 
 # Taking the negative of false items, to have everything in the same scale
 normalized_positions_false = normalized_positions%>%
@@ -45,14 +39,13 @@ normalized_positions_tr <- normalized_positions
 find_constant <- function(d, epsilon=1e-4) {
   names(d)[apply(d,2,function(x) is.na(var(x)) || sqrt(var(x)) < epsilon)]
 }
-
 constant_columns_ctl <- normalized_positions_tr %>%
   filter(Deviation == "Central") %>%
-  dplyr::select(starts_with("x"), starts_with("y"), starts_with('a')) %>%
+  dplyr::select(starts_with("x"), starts_with("y")) %>%
   find_constant
 constant_columns_nctl <- normalized_positions_tr %>%
   filter(Deviation == "NonCentral") %>%
-  dplyr::select(starts_with("x"), starts_with("y"), starts_with('a')) %>%
+  dplyr::select(starts_with("x"), starts_with("y")) %>%
   find_constant
 constant_columns <- c(constant_columns_ctl, constant_columns_nctl)
 
@@ -84,8 +77,7 @@ find_uncorrelated <- function(d, data_columns, cutoff=0.95,
 
 all_data_columns <- names(dplyr::select(normalized_positions_tr,
                                         starts_with("x"),
-                                        starts_with("y"), 
-                                        starts_with("a")))
+                                        starts_with("y")))
 ##PCA in training set
 m_pca <- normalized_positions_tr %>%
   dplyr::select(one_of(all_data_columns)) %>%
@@ -106,12 +98,11 @@ v_lda <- m_lda$scaling
 #overall bias
 b_lda <- mean(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda)
 
-#save(v_lda, b_lda, x.subset, y.subset, file="transformation_all.RData")
-save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA-training-Coord+AccDistance.RData")
-
+save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA(Coords).RData")
+  
 #Creating matrix with the lda meaure
 lda_measure.df <- data_frame(
-  lda_measure_coord.acc=c(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda- b_lda),
+  lda_measure_coords =c(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda- b_lda),
   Deviation=normalized_positions_tr$Deviation, 
   Subject = normalized_positions_tr$Subject, 
   Expected_response = normalized_positions_tr$Expected_response,
@@ -120,9 +111,9 @@ lda_measure.df <- data_frame(
 
 ###SAVING THIS DATA
 calibration_data$Subject <- factor(calibration_data$Subject)
-calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
-normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response"))
-normalized_positions.plot$lda_measure_coord.acc_cut <- cut(normalized_positions.plot$lda_measure_coord.acc, 5)
-calibration_data$lda_measure_coord.acc_cut <- cut(calibration_data$lda_measure_coord.acc, 5)
+calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response", "Deviation"))
+normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response","Deviation"))
+normalized_positions.plot$lda_measure_coords_cut <- cut(normalized_positions.plot$lda_measure_coords, 5)
+calibration_data$lda_measure_coords_cut <- cut(calibration_data$lda_measure_coords, 5)
 
-rm(all_data_columns, lda_measure.df, constant_columns, constant_columns_ctl,constant_columns_nctl,i,name_ddx,name_ddy,name_dx,name_dx_last, name_dy, name_x_last, name_y, name_x, name_y_last, name_dy_last, x, y, normalized_positions)
+rm(all_data_columns, lda_measure.df, constant_columns, constant_columns_ctl,constant_columns_nctl, x, y, normalized_positions)
