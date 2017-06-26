@@ -8,15 +8,22 @@ source("R_scripts/packages.R")
 #Extracts data from calibration (last version: June 2017) into calibration_data
 source("R_scripts/extracting_calibration_data.R")
 
-## DATA FRAME FOR PLOT
+## ORGANIZING DATA
 # Creates data frame normalized_positions.plot: each row contains one time.step with X.Position, Y.Position, Raw.Acceleration, Raw.Time columns among others 
 source("R_scripts/calibration-trajectories.R")
 
-## LDAs 
-source("R_scripts/LDA-training(Coord+Delta+DeltaDelta).R")
+## LDAs (original)
+source("R_scripts/LDA-training/LDA-training(Coord+Delta+DeltaDelta).R")
+source("R_scripts/LDA-training/LDA-training(Coord+Delta).R")
+source("R_scripts/LDA-training/LDA-training(Coord).R")
+source("R_scripts/LDA-training/LDA-training(Coord+AccDist).R")
+source("R_scripts/LDA-training/LDA-training(LogRatio).R")
+source("R_scripts/LDA-training/LDA-training(DeltaDelta).R")
 
-## 5. Plot Calibration Trajectories 
+
+## PLOT Trajectories
 source("R_scripts/plot-calibration-trajectories.R")
+
 
 ##NEGATION
 ## 1. Extract data

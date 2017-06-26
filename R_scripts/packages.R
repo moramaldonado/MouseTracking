@@ -24,6 +24,16 @@ se <- function(x, ...) {
 }
 
 
+auc <- function(x,y) {
+  # order x and y
+  ord.x = sort(x)
+  ord.y = y[rank(x)]
+  
+  sum(diff(ord.x)*(ord.y[-1]+ord.y[-length(ord.y)]))/2 
+}
+
+
+source("R_scripts/XflipsDD.R")
 
 summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
                       conf.interval=.95, .drop=TRUE) {
@@ -62,6 +72,7 @@ summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
 }
 
 
+
 #Multiplot
 multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
   library(grid)
@@ -98,3 +109,8 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
     }
   }
 }
+
+
+#Plots
+source("R_scripts/plot_measures.R")
+source("R_scripts/plot_single_item.R")
