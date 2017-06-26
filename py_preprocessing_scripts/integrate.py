@@ -43,7 +43,7 @@ def integrate_x(dx,all_trials):
     for s in range(len(all_trials)):
         for t in range(len(all_trials[s])): 
             auc = 0
-           # as long as we have all the mouse tracking data
+           # as long as we have all the mouse tracking datad
             if all_trials[s][t]['value'] != '--' and all_trials[s][t]['mouse_log'] != [] and len(all_trials[s][t]['mouse_log']) > 1:
                 if dx == 'fin':
                     index = 100
