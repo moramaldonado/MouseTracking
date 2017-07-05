@@ -98,6 +98,7 @@ v_lda <- m_lda$scaling
 #overall bias
 b_lda <- mean(as.matrix(dplyr::select(normalized_positions_tr_pca, starts_with("PC"))) %*% v_lda)
 
+#Saving data
 save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA(Coords).RData")
   
 #Creating matrix with the lda meaure

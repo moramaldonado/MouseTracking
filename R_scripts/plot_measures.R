@@ -34,7 +34,7 @@ plot_measure <- function(data, measure, division){
  
    print(mydata.agreggated.overall) 
   
-   return(multiplot(density, histogram, mean.plot,
+   return(multiplot(density, mean.plot,
                    cols=2))  }
 
 

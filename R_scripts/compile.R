@@ -4,6 +4,9 @@ rm(list = ls())
 ## CHARGE PACKAGES
 source("R_scripts/packages.R")
 
+##CHARGE FUNCTIONS FOR LDA TRAINING
+source("R_scripts/LDA.R")
+
 ## EXTRACTING_DATA
 #Extracts data from calibration (last version: June 2017) into calibration_data
 source("R_scripts/extracting_calibration_data.R")
@@ -13,16 +16,18 @@ source("R_scripts/extracting_calibration_data.R")
 source("R_scripts/calibration-trajectories.R")
 
 ## LDAs (original)
-source("R_scripts/LDA-training/LDA-training(Coord+Delta+DeltaDelta).R")
-source("R_scripts/LDA-training/LDA-training(Coord+Delta).R")
-source("R_scripts/LDA-training/LDA-training(Coord).R")
-source("R_scripts/LDA-training/LDA-training(Coord+AccDist).R")
-source("R_scripts/LDA-training/LDA-training(LogRatio).R")
-source("R_scripts/LDA-training/LDA-training(DeltaDelta).R")
+source("R_scripts/LDA-run.R")
+
+##COMPARE predictors and measures
 
 
 ## PLOT Trajectories
 source("R_scripts/plot-calibration-trajectories.R")
+
+
+
+
+
 
 
 ##NEGATION
