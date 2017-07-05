@@ -1,5 +1,5 @@
 calibration_data.corr = calibration_data %>%
-  dplyr::select(MaxLogRatio, MaxDeviation, X.flips, Acc.flips, lda_measure )
+  dplyr::select(MaxLogRatio, MaxDeviation, X.flips, Acc.flips, lda_measure_full)
 
 # Pearson by default
 calibration_corr.matrix = cor(calibration_data.corr)
