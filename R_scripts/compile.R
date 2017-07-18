@@ -1,19 +1,23 @@
-## CLEAN ENVIRONMENT
+## 1. CLEAN ENVIRONMENT
 rm(list = ls())
 
-## CHARGE PACKAGES
+## 2. CHARGE PACKAGES
 source("R_scripts/packages.R")
 
-##CHARGE FUNCTIONS FOR LDA TRAINING
+## 3. CHARGE FUNCTIONS FOR LDA TRAINING
 source("R_scripts/LDA.R")
 
-## EXTRACTING_DATA
-#Extracts data from calibration (last version: June 2017) into calibration_data
-source("R_scripts/extracting_calibration_data.R")
-
-## ORGANIZING DATA
+## 4. EXTRACTING and ORGANIZING CALIBRATION DATA
+# Extracts data from calibration (last version: June 2017) into calibration_data
+# Excludes innacurate trials and print the percentage
 # Creates data frame normalized_positions.plot: each row contains one time.step with X.Position, Y.Position, Raw.Acceleration, Raw.Time columns among others 
-source("R_scripts/calibration-trajectories.R")
+source("R_scripts/extract_calibration_data.R")
+
+## 5. Overall description of the results and computation of original/main LDA (subsection 2.2)
+
+
+
+
 
 ## LDAs (original)
 source("R_scripts/LDA-run.R")
