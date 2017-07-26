@@ -1,58 +1,6 @@
-# PLOTTING MEANS 
+## EXPLORATORY PLOTS (probably they won't go into the paper)
 
-## Mean X position
-normalized_positions.means.subject <-   ddply(normalized_positions.plot, c("Polarity", "Time.Step.Onset", "Subject"),
-                                              function(normalized_positions.plot)c(X.Position.mean=mean(normalized_positions.plot$X.Position, na.rm=T)))
-
-normalized_positions.means <- ddply(normalized_positions.means.subject, c("Polarity", "Time.Step.Onset"),
-                                    function(normalized_positions.means.subject)c(X.Position.mean=mean(normalized_positions.means.subject$X.Position, na.rm=T), X.Position.se=se(normalized_positions.means.subject$X.Position, na.rm=T)))
-
-ggplot(normalized_positions.means.subject, aes(x=Time.Step.Onset, y=X.Position.mean, color=Subject, group=Subject)) + 
-  geom_point(size=0.5) + geom_line() +
-  expand_limits(x=c(-1.5,1.5)) + theme_minimal()+geom_vline(aes(xintercept=0))+
-  theme(legend.position = "none") + facet_grid(Polarity~.) 
-ggsave('calibration_mean_subject_XPosition.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration_new')
-
-ggplot(subset(normalized_positions.means, Polarity!='uncertain'), aes(x=Time.Step.Onset, y=X.Position.mean, color=Polarity, group=Polarity)) + 
-  geom_point(alpha=.6) + geom_line(alpha=.6) + theme_minimal()+ theme(legend.position = "none") +
-  ggtitle('Calibration Mean X-Position Onset at Change point') + geom_vline(aes(xintercept=0)) +  scale_colour_brewer(palette="Set1") +
-  geom_errorbar(aes(ymin=X.Position.mean-X.Position.se, ymax=X.Position.mean+X.Position.se), width=.1, alpha=.4) 
-
-ggsave('calibration_mean_XPosition.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration_new')
-
-
-
-## Mean Trajectory
-normalized_positions.means.subject <- ddply(subset(normalized_positions.plot, Polarity!='uncertain'), c("Polarity", "Time.Step", "Subject"),
-                                            function(normalized_positions.plot)c(X.Position.mean=mean(normalized_positions.plot$X.Position, na.rm=T), 
-                                                                                 Y.Position.mean=mean(normalized_positions.plot$Y.Position, na.rm=T)))
-
-normalized_positions.means.traj <- ddply(normalized_positions.means.subject, c("Polarity", "Time.Step"),
-                                    function(normalized_positions.means.subject)c(X.Position.mean=mean(normalized_positions.means.subject$X.Position, na.rm=T), 
-                                                                          X.Position.se=se(normalized_positions.means.subject$X.Position, na.rm=T),
-                                                                          Y.Position.mean=mean(normalized_positions.means.subject$Y.Position, na.rm=T), 
-                                                                          Y.Position.se=se(normalized_positions.means.subject$Y.Position, na.rm=T)))
-
-ggplot(normalized_positions.means.subject, aes(x=X.Position.mean, y=Y.Position.mean, color=Subject, group=Subject)) +
-  geom_point(size=0.5) + 
-  ggtitle('Mean Trajectories per subject') +
-  theme_minimal() +
-  theme(legend.position = "top") + 
-  expand_limits(x=c(-1.5,1.5)) + 
-  facet_grid(Polarity~.)
-ggsave('calibration_mean_subject_trajectory.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6, path='R_scripts/graphs/calibration_new')
-
-
-ggplot(normalized_positions.means.traj, aes(x=X.Position.mean, y=Y.Position.mean, color=Polarity, group=Polarity)) + 
-  geom_point(alpha=.6, size=1) + 
-  ggtitle('Calibration Mean trajectories')+
-  geom_errorbarh(aes(xmin=X.Position.mean-X.Position.se, xmax=X.Position.mean+X.Position.se)) + 
-  theme_minimal() +
-  theme(legend.position = "none") +
-  scale_colour_brewer(palette="Set1") 
-ggsave('calibration_mean_trajectory.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6,  path='R_scripts/graphs/calibration_new')
-
-## Mean Trajectory with time
+## 1. Mean Trajectory (as a function of the total duration of the trial in facets)
 normalized_positions.means.subject <- ddply(subset(normalized_positions.plot, Polarity!='uncertain'), c("Polarity", "Time.Step", "RT_cut", "Subject"),
                                             function(normalized_positions.plot)c(X.Position.mean=mean(normalized_positions.plot$X.Position, na.rm=T), 
                                                                                  Y.Position.mean=mean(normalized_positions.plot$Y.Position, na.rm=T)))
@@ -60,7 +8,7 @@ normalized_positions.means.subject <- ddply(subset(normalized_positions.plot, Po
 normalized_positions.means.traj <- ddply(normalized_positions.means.subject, c("Polarity", "Time.Step", "RT_cut"),
                                          function(normalized_positions.means.subject)c(X.Position.mean=mean(normalized_positions.means.subject$X.Position, na.rm=T), 
                                                                                        X.Position.se=se(normalized_positions.means.subject$X.Position, na.rm=T),
-                                                                                      Y.Position.mean=mean(normalized_positions.means.subject$Y.Position, na.rm=T), 
+                                                                                       Y.Position.mean=mean(normalized_positions.means.subject$Y.Position, na.rm=T), 
                                                                                        Y.Position.se=se(normalized_positions.means.subject$Y.Position, na.rm=T)))
 
 ggplot(normalized_positions.means.traj, aes(x=X.Position.mean, y=Y.Position.mean, color=Polarity, group=Polarity)) + 
@@ -73,10 +21,9 @@ ggplot(normalized_positions.means.traj, aes(x=X.Position.mean, y=Y.Position.mean
 ggsave('calibration_mean_trajectory (RT).png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6,  path='R_scripts/graphs/calibration_new')
 
 
+## 2. Mean X position with point change 
+# Black line indicates the onset of color change as a function of trial total duration (facets)
 
-
-#MORE PLOTS - EXPLORING
-## Mean X position with point change
 normalized_positions.means.subject <-   ddply(subset(normalized_positions.plot,Polarity!='uncertain'), c("Polarity", "Time.Step.Onset", "RT_cut", "Subject"),
                                               function(normalized_positions.plot)c(X.Position.mean=mean(normalized_positions.plot$X.Position, na.rm=T)))
 
@@ -93,7 +40,9 @@ ggplot(normalized_positions.means, aes(x=Time.Step.Onset, y=X.Position.mean, col
 ggsave('calibration_mean_XPosition_Time.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration_new')
 
 
-## Mean X position with point change
+## 3. Mean X position with point change
+# Black line indicates the onset of color change as a function of the time step (trial percentage) where the change occured (facets)
+
 normalized_positions.means.subject <-   ddply(subset(normalized_positions.plot,Polarity!='uncertain'), c("Polarity", "Time.Step.Onset", "PointChange_cut", "Subject"),
                                               function(normalized_positions.plot)c(X.Position.mean=mean(normalized_positions.plot$X.Position, na.rm=T)))
 
@@ -127,7 +76,9 @@ ggsave('calibration_mean_XPosition_ChangePoint2.png', plot = last_plot(), scale 
 
 
 
-## Mean Trajectory with change point 
+## 4. Mean Trajectory with change point 
+# Actual mean trajectories as a function of the y coordinate when the color changed  (y facet) and the range of time when the color changed (x facet)
+
 normalized_positions.means.subject <- ddply(subset(normalized_positions.plot,Polarity!='uncertain'), c("Polarity", "Time.Step", "PointChange_cut", "Subject", "PointChange.Time.Raw_cut"),
                                             function(normalized_positions.plot)c(X.Position.mean=mean(normalized_positions.plot$X.Position, na.rm=T), 
                                                                                  Y.Position.mean=mean(normalized_positions.plot$Y.Position, na.rm=T)))
