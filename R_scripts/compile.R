@@ -1,32 +1,39 @@
-## 1. CLEAN ENVIRONMENT
+
+#### CALIBRATION DATA ####
+
+## CLEAN ENVIRONMENT
 rm(list = ls())
 
-## 2. CHARGE PACKAGES
+## CHARGE PACKAGES
 source("R_scripts/packages.R")
 
-## 3. CHARGE FUNCTIONS FOR LDA TRAINING
-source("R_scripts/LDA.R")
+## CHARGE FUNCTIONS FOR LDA TRAINING
+source("R_scripts/calibration/LDA.R")
 
-## 4. EXTRACTING and ORGANIZING CALIBRATION DATA
+## EXTRACTING and ORGANIZING CALIBRATION DATA
 # Extracts data from calibration (last version: June 2017) into calibration_data
 # Excludes innacurate trials and print the percentage
 # Creates data frame normalized_positions.plot: each row contains one time.step with X.Position, Y.Position, Raw.Acceleration, Raw.Time columns among others 
-source("R_scripts/extract_calibration_data.R")
+source("R_scripts/calibration/extract_calibration_data.R")
 
-## 5. Overall description of the results and computation of original/main LDA (subsection 2.2)
-
-
-
-
-
-## LDAs (original)
-source("R_scripts/LDA-run.R")
-
-##COMPARE predictors and measures
+## CALIBRATION RESULTS 
+### Overall description of the results and computation of original/main LDA (subsection 2.2)
+source("R_scripts/calibration/calibration_results.R")
+### Comparison with other measures normally used in mouse tracking (subsubsection 2.2.1)
+source("R_scripts/calibration/comparisons_measures.R")
+### Comparison with classifiers which take into account different sets of predictors(subsubsection 2.2.2)
+source("R_scripts/calibration/comparisons_other_predictors.R")
 
 
-## PLOT Trajectories
-source("R_scripts/plot-calibration-trajectories.R")
+
+#### NEGATION DATA #####
+
+## CLEAN ENVIRONMENT
+rm(list = ls())
+
+## CHARGE PACKAGES
+source("R_scripts/packages.R")
+
 
 
 

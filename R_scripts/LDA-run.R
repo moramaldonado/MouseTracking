@@ -24,11 +24,6 @@ save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA(Coord+Delta).RData"
 calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
 normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response"))
 
-#LDA coords + delta + deltadelta based on coordinates
-LDA_training.coord.delta.deltadelta(calibration_data)
-save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA(Coords+Delta+DeltaDelta).RData")
-calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
-normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response"))
 
 #LDA deltadelta
 LDA_training.deltadelta(calibration_data)

@@ -1,3 +1,7 @@
+##CALIBRATION RESULTS
+## Overall description of the results and computation of original/main LDA (subsection 2.2)
+
+
 library(MASS) # NB: this will mask dplyr::select
 
 ## Subset to deviated and straight trials
@@ -114,11 +118,21 @@ bin7 <- rbind(bin7, try$`7`)
 bin8 <- rbind(bin8, try$`8`)
 bin9 <- rbind(bin9, try$`9`)
 bin10 <- rbind(bin10, try$`10`)
-
+rm(try)
 bins <- list(bin1, bin2, bin3, bin4, bin5, bin6, bin7, bin8, bin9, bin10)
 x <- paste0('x', sprintf("%03d", c(1:101)))
 y <- paste0('y', sprintf("%03d", c(1:101)))
-auc.bins <- data.frame(lda.coord.delta.deltadelta=c(1:10))
+auc.bins <- data.frame(lda.full=c(1:10), 
+                       lda.coord.delta=c(1:10), 
+                       lda.coord=c(1:10),
+                       lda.deltadelta=c(1:10),
+                       lda.coord.accdist=c(1:10), 
+                       lda.logratio=c(1:10), 
+                       logratio=c(1:10), 
+                       xflips=c(1:10), 
+                       maxdeviation=c(1:10),
+                       accflips=c(1:10))
+
 
 #Testing classifier per bin and obtaining ROC and AUC
 for (b in 1: length(bins)) {
@@ -135,12 +149,12 @@ for (b in 1: length(bins)) {
   lda.score.te <- lda_measure_te.df$lda_measure 
   lda.label.te <- lda_measure_te.df$Deviation
   lda.roc.te <- roc(lda.label.te, lda.score.te)
-  auc.bins$lda.coord.delta.deltadelta[b] <- lda.roc.te$auc
+  auc.bins$lda.full[b] <- lda.roc.te$auc
   assign(paste0('lda_full.roc.te',b), lda.roc.te)
 }
 
 #plot ROC and aUC
-png(filename='ROC:LDA-FULL.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/ROC:LDA-FULL.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(lda_full.roc.te1), print.auc = FALSE, col="red", main='Original Linear Discriminant Analysis')
 plot.roc(smooth(lda_full.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_full.roc.te3), print.auc = FALSE, col="red", add=TRUE)
@@ -151,6 +165,8 @@ plot.roc(smooth(lda_full.roc.te7), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_full.roc.te8), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_full.roc.te9), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_full.roc.te10), print.auc = FALSE, col="red", add=TRUE)
-text(0.5, 0, paste("MEAN AUC=", round(mean(auc.bins$lda.coord.delta.deltadelta), digits=3)),
+text(0.5, 0, paste("MEAN AUC=", round(mean(auc.bins$lda.full), digits=3)),
      cex = 1)
 dev.off()
+
+rm(lda_full.roc.te1,lda_full.roc.te10,lda_full.roc.te2,lda_full.roc.te3,lda_full.roc.te4,lda_full.roc.te5,lda_full.roc.te6, lda_full.roc.te7,lda_full.roc.te8,lda_full.roc.te9)
