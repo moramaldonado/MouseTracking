@@ -132,10 +132,6 @@ def log_ratio(all_trials):
     return all_trials
 
 
-def lineMagnitude(x1, y1, x2, y2):
-    lineMagnitude = math.sqrt(math.pow((x2 - x1), 2) + math.pow((y2 - y1), 2))
-    return lineMagnitude
-
 
 def median_value(all_trials, value):
     name = 'median_' + value
@@ -195,6 +191,13 @@ def find_value_in(all_trials, value, where):
                 all_trials[s][t][name] = 'NA'
 
     return all_trials
+
+
+
+#distancia
+def lineMagnitude(x1, y1, x2, y2):
+    lineMagnitude = math.sqrt(math.pow((x2 - x1), 2) + math.pow((y2 - y1), 2))
+    return lineMagnitude
 
 
 # FUNCTION: DistancePointLine (px, py, x1, y1, x2, y2)

@@ -1,23 +1,23 @@
 ## 2.2.1 Calibration results: Comparison with other measures
 
 ## plots
-png(filename='R_scripts/graphs/MaxLogRatio.png', width = 8, height = 6, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/MaxLogRatio.png', width = 8, height = 6, units = 'in', res = 300)
 plot_measure(calibration_data, "MaxLogRatio", "Polarity")
 dev.off()
 
-png(filename='R_scripts/graphs/MaxDeviation.png', width = 8, height = 6, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/MaxDeviation.png', width = 8, height = 6, units = 'in', res = 300)
 plot_measure(calibration_data, "MaxDeviation", "Polarity")
 dev.off()
 
-png(filename='R_scripts/graphs/AccFlips.png', width = 8, height = 6, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/AccFlips.png', width = 8, height = 6, units = 'in', res = 300)
 plot_measure(calibration_data, "Acc.flips", "Polarity")
 dev.off()
 
-png(filename='R_scripts/graphs/XFlips.png', width = 8, height = 6, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/XFlips.png', width = 8, height = 6, units = 'in', res = 300)
 plot_measure(calibration_data, "X.flips", "Polarity")
 dev.off()
 
-png(filename='R_scripts/graphs/AUC.png', width = 8, height = 6, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/AUC.png', width = 8, height = 6, units = 'in', res = 300)
 plot_measure(calibration_data, "AUC", "Polarity")
 dev.off()
 
@@ -32,12 +32,11 @@ round(calibration_corr.matrix, 2)
 #plotcorr(calibration_corr.matrix, mar = c(0.1, 0.1, 0.1, 0.1))
 
 ggpairs(calibration_data.corr)
-ggsave('correlations_measures.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration_new')
+ggsave('correlations_measures.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration')
 
 
 ## Cross validation
 for (b in 1: length(bins)) {
-  print(b) 
   calibrationTrain <- subset(calibration_data, !(id %in% bins[[b]]$id))
   calibrationTest <- subset(calibration_data, id %in% bins[[b]]$id)
 
@@ -80,7 +79,7 @@ for (b in 1: length(bins)) {
 }
 
 #MAX LOG RATIO
-png(filename='R_scripts/graphs/ROC:MaxLogRatio.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:MaxLogRatio.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(maxlogratio.roc.te1), print.auc = FALSE, col="red", main=' ROC: maxlogratio')
 plot.roc(smooth(maxlogratio.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(maxlogratio.roc.te3), print.auc = FALSE, col="red", add=TRUE)
@@ -97,7 +96,7 @@ dev.off()
 rm(maxlogratio.roc.te1, maxlogratio.roc.te2, maxlogratio.roc.te3, maxlogratio.roc.te4,maxlogratio.roc.te5,maxlogratio.roc.te6,maxlogratio.roc.te7,maxlogratio.roc.te8,maxlogratio.roc.te9,maxlogratio.roc.te10)
 
 #X FLIPS
-png(filename='R_scripts/graphs/ROC:XFlips.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:XFlips.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(xflips.roc.te1), print.auc = FALSE, col="red", main=' ROC:XFlips')
 plot.roc(smooth(xflips.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(xflips.roc.te3), print.auc = FALSE, col="red", add=TRUE)
@@ -115,7 +114,7 @@ rm(xflips.roc.te1,xflips.roc.te2,  xflips.roc.te3, xflips.roc.te4, xflips.roc.te
 
 
 #AUC
-png(filename='R_scripts/graphs/ROC:AUC.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:AUC.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(auc.roc.te1), print.auc = FALSE, col="red", main='AUC')
 plot.roc(smooth(auc.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(auc.roc.te3), print.auc = FALSE, col="red", add=TRUE)
@@ -133,7 +132,7 @@ rm(auc.roc.te1, auc.roc.te2,  auc.roc.te3, auc.roc.te4, auc.roc.te5, auc.roc.te6
 
 
 #ACC FLIPS
-png(filename='R_scripts/graphs/ROC:AccFlips.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:AccFlips.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(accflips.roc.te1), print.auc = FALSE, col="red", main='AUC')
 plot.roc(smooth(accflips.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(accflips.roc.te3), print.auc = FALSE, col="red", add=TRUE)
@@ -151,7 +150,7 @@ rm(accflips.roc.te1, accflips.roc.te2,  accflips.roc.te3, accflips.roc.te4, accf
 
 
 #MAX DEVIATION
-png(filename='R_scripts/graphs/ROC:MaxDeviation.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:MaxDeviation.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(maxdeviation.roc.te1), print.auc = FALSE, col="red", main=' ROC: maxlogratio')
 plot.roc(smooth(maxdeviation.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(maxdeviation.roc.te3), print.auc = FALSE, col="red", add=TRUE)

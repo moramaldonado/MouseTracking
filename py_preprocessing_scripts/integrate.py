@@ -34,6 +34,31 @@ def integrate(curve,dx,all_trials):
     return all_trials
 
 
+
+def auc(all_trials):
+    for s in range(len(all_trials)):
+        for t in range(len(all_trials[s])):
+            auc = 0
+            for j in range(0, 100):
+                x1 = all_trials[s][t]['normalized_positions'][j][0]
+                x2 = all_trials[s][t]['normalized_positions'][j + 1][0]
+                y1 = all_trials[s][t]['normalized_positions'][j][1]
+                y2 = all_trials[s][t]['normalized_positions'][j+1][1]
+
+                if all_trials[s][t]['value'] == 'false':
+                    x1 = operator.neg(x1)
+                    x2 = operator.neg(x2)
+
+                auc = auc + ((x2-x1) * (y2+y1)/2)
+
+            all_trials[s][t]['auc'] = auc - 0.5 # 0.5 is the AUC for the ideal trayectory given that xn = 1 and yn=1
+    return all_trials
+
+
+
+
+
+
 # Take Area Under the Curve of X axis
 # Input: Trial Structure (containing X coordinates) and upper-end interval
 # Output: AUC on X axis, named 'integral_X'+'_on_'+dx

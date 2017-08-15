@@ -21,14 +21,14 @@ ggplot(normalized_positions.means.subject, aes(x=Time.Step.Onset, y=X.Position.m
   geom_point(size=0.5) + geom_line() +
   expand_limits(x=c(-1.5,1.5)) + theme_minimal()+geom_vline(aes(xintercept=0))+
   theme(legend.position = "none") + facet_grid(Polarity~.) 
-ggsave('calibration_mean_subject_XPosition.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration_new')
+ggsave('calibration_mean_subject_XPosition.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration')
 
 ggplot(subset(normalized_positions.means, Polarity!='uncertain'), aes(x=Time.Step.Onset, y=X.Position.mean, color=Polarity, group=Polarity)) + 
   geom_point(alpha=.6) + geom_line(alpha=.6) + theme_minimal()+ theme(legend.position = "none") +
   ggtitle('Calibration Mean X-Position Onset at Change point') + geom_vline(aes(xintercept=0)) +  scale_colour_brewer(palette="Set1") +
   geom_errorbar(aes(ymin=X.Position.mean-X.Position.se, ymax=X.Position.mean+X.Position.se), width=.1, alpha=.4) 
 
-ggsave('calibration_mean_XPosition.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration_new')
+ggsave('calibration_mean_XPosition.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration')
 
 
 ## Mean Trajectory
@@ -49,7 +49,7 @@ ggplot(normalized_positions.means.subject, aes(x=X.Position.mean, y=Y.Position.m
   theme(legend.position = "top") + 
   expand_limits(x=c(-1.5,1.5)) + 
   facet_grid(Polarity~.)
-ggsave('calibration_mean_subject_trajectory.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6, path='R_scripts/graphs/calibration_new')
+ggsave('calibration_mean_subject_trajectory.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6, path='R_scripts/graphs/calibration')
 
 
 ggplot(normalized_positions.means.traj, aes(x=X.Position.mean, y=Y.Position.mean, color=Polarity, group=Polarity)) + 
@@ -59,7 +59,7 @@ ggplot(normalized_positions.means.traj, aes(x=X.Position.mean, y=Y.Position.mean
   theme_minimal() +
   theme(legend.position = "none") +
   scale_colour_brewer(palette="Set1") 
-ggsave('calibration_mean_trajectory.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6,  path='R_scripts/graphs/calibration_new')
+ggsave('calibration_mean_trajectory.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6,  path='R_scripts/graphs/calibration')
 
 
 ## LDA CLASSIFIER
@@ -70,7 +70,9 @@ calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Sub
 normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response"))
 
 #Plots
+png(filename='R_scripts/graphs/LDA-Distribution.png', width = 7, height = 7, units = 'in', res = 300)
 plot_measure(calibration_data, "lda_measure_full", "Polarity")
+dev.off()
 
 #Taking LDA measure to cut
 normalized_positions.plot$lda_measure_full_cut <- cut(normalized_positions.plot$lda_measure_full, 5)
@@ -136,7 +138,6 @@ auc.bins <- data.frame(lda.full=c(1:10),
 
 #Testing classifier per bin and obtaining ROC and AUC
 for (b in 1: length(bins)) {
-  print(b) 
   calibrationTrain <- subset(calibration_data, !(id %in% bins[[b]]$id))
   calibrationTest <- subset(calibration_data, id %in% bins[[b]]$id)
 

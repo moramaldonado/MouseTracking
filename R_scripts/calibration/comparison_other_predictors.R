@@ -3,7 +3,6 @@
 #Different features in the classifier
 
 for (b in 1: length(bins)) {
-  print(b) 
   calibrationTrain <- subset(calibration_data, !(id %in% bins[[b]]$id))
   calibrationTest <- subset(calibration_data, id %in% bins[[b]]$id)
 
@@ -77,7 +76,7 @@ for (b in 1: length(bins)) {
 
 
 #Plots
-png(filename='R_scripts/graphs/ROC:LDA-Coords.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:LDA-Coords.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(lda_coord.roc.te1), print.auc = FALSE, col="red", main='LDA with Coordinates')
 plot.roc(smooth(lda_coord.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_coord.roc.te3), print.auc = FALSE, col="red", add=TRUE)
@@ -95,7 +94,7 @@ rm(lda_coord.roc.te1,lda_coord.roc.te2,lda_coord.roc.te10,lda_coord.roc.te3, lda
 
 
 
-png(filename='R_scripts/graphs/ROC:LDA-CoordsDelta.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:LDA-CoordsDelta.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(lda_coord.delta.roc.te1), print.auc = FALSE, col="red", main='LDA with Coordinates')
 plot.roc(smooth(lda_coord.delta.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_coord.delta.roc.te3), print.auc = FALSE, col="red", add=TRUE)
@@ -112,7 +111,7 @@ dev.off()
 rm(lda_coord.delta.roc.te1,lda_coord.delta.roc.te2,lda_coord.delta.roc.te3,lda_coord.delta.roc.te4,lda_coord.delta.roc.te5,lda_coord.delta.roc.te6,lda_coord.delta.roc.te7,lda_coord.delta.roc.te8,lda_coord.delta.roc.te9,lda_coord.delta.roc.te10)
 
 
-png(filename='R_scripts/graphs/ROC:LDA-LogRatio.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:LDA-LogRatio.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(lda_logratio.roc.te1), print.auc = FALSE, col="red", main='LDA with LogRatio')
 plot.roc(smooth(lda_logratio.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_logratio.roc.te3), print.auc = FALSE, col="red", add=TRUE)
@@ -129,7 +128,7 @@ dev.off()
 rm(lda_logratio.roc.te1,lda_logratio.roc.te2,lda_logratio.roc.te3,lda_logratio.roc.te4,lda_logratio.roc.te5,lda_logratio.roc.te6,lda_logratio.roc.te7,lda_logratio.roc.te8,lda_logratio.roc.te9,lda_logratio.roc.te10)
 
 
-png(filename='R_scripts/graphs/ROC:LDA-CoordsAcc.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:LDA-CoordsAcc.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(lda_coord_acc.roc.te1), print.auc = FALSE, col="red", main='LDA with Coordinates and Acceleration ')
 plot.roc(smooth(lda_coord_acc.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_coord_acc.roc.te3), print.auc = FALSE, col="red", add=TRUE)
@@ -146,7 +145,7 @@ dev.off()
 rm(lda_coord_acc.roc.te1,lda_coord_acc.roc.te2,lda_coord_acc.roc.te3,lda_coord_acc.roc.te4,lda_coord_acc.roc.te5,lda_coord_acc.roc.te6,lda_coord_acc.roc.te7,lda_coord_acc.roc.te8,lda_coord_acc.roc.te9,lda_coord_acc.roc.te10)
 
 
-png(filename='R_scripts/graphs/ROC:LDA-DeltaDelta.png', width = 7, height = 7, units = 'in', res = 300)
+png(filename='R_scripts/graphs/calibration/ROC:LDA-DeltaDelta.png', width = 7, height = 7, units = 'in', res = 300)
 plot.roc(smooth(lda_deltadelta.roc.te1), print.auc = FALSE, col="red", main='LDA with DeltaDelta ')
 plot.roc(smooth(lda_deltadelta.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_deltadelta.roc.te3), print.auc = FALSE, col="red", add=TRUE)

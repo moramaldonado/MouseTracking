@@ -95,9 +95,8 @@ all_trials = distance_ideal_trajectory(all_trials)
 all_trials = maximum_deviation(all_trials)
 print ">>>> maximum derivation taken"
 
-
 all_trials = integrate('ratio_log','fin',all_trials)
-all_trials = integrate_x('fin',all_trials)
+all_trials = auc(all_trials)
 all_trials = local_maxima_x(all_trials)
 all_trials = x_flips(all_trials)
 all_trials = find_point_change(all_trials)
