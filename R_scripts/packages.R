@@ -33,7 +33,7 @@ auc <- function(x,y) {
 }
 
 
-source("R_scripts/XflipsDD.R")
+source("R_scripts/functions/XflipsDD.R")
 
 summarySE <- function(data=NULL, measurevar, groupvars=NULL, na.rm=FALSE,
                       conf.interval=.95, .drop=TRUE) {
@@ -112,5 +112,5 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
 
 
 #Plots
-source("R_scripts/plot_measures.R")
-source("R_scripts/plot_single_item.R")
+source("R_scripts/functions/plot_measures.R")
+source("R_scripts/functions/plot_single_item.R")
