@@ -8,7 +8,7 @@ import time
 import math
 import numpy as npy
 import pygame
-from organization_functions import *
+from organization_functions_calibration import *
 from analyses_MT import *
 from speed_acceleration import *
 from normalization import *

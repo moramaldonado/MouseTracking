@@ -85,7 +85,7 @@ def exporting_data(path,all_trials, info):
         
         writer = csv.writer(f)
         writer.writerow( ('Subject', 'Item.number', 'Sentence_Type', 'Adjective', 'Polarity', 'Sentence', 'Expected_response',
-                          'Response','Accuracy','RT','Normalized.positions.X','Normalized.positions.Y',
+                          'Response','Accuracy','RT','Normalized.positions.X','Normalized.positions.Y', 'Velocity',
                           'Acceleration','Acceleration_Smooth', 'Acceleration_Smooth.Time', 'RawTime', 'LogRatio',
                           'MaxDeviation','MaxDeviation.Time','MaxDeviation.Time.Norm',
                           'MaxDeviationBorder','MaxDeviationBorder.Time','MaxDeviationBorder.Time.Norm',
@@ -98,7 +98,7 @@ def exporting_data(path,all_trials, info):
                     #print i,t
                     writer.writerow((str(i), str(t), all_trials[i][t]['type'], all_trials[i][t]['adjective'], all_trials[i][t]['polarity'], all_trials[i][t]['sentence'], all_trials[i][t]['expected_response'],
                                      all_trials[i][t]['value'], all_trials[i][t]['accuracy'], all_trials[i][t]['RT'], ','.join(map(repr, all_trials[i][t]['normalized_positions_x'])),','.join(map(repr, all_trials[i][t]['normalized_positions_y'])),
-                                     ','.join(map(repr, all_trials[i][t]['acceleration'])), ','.join(map(repr, all_trials[i][t]['acceleration_window'])), ','.join(map(repr, all_trials[i][t]['acceleration_window.time'])),
+                                     ','.join(map(repr, all_trials[i][t]['velocity'])),','.join(map(repr, all_trials[i][t]['acceleration'])), ','.join(map(repr, all_trials[i][t]['acceleration_window'])), ','.join(map(repr, all_trials[i][t]['acceleration_window.time'])),
                                      ','.join(map(repr,all_trials[i][t]['corresponding_time'])), ','.join(map(repr,all_trials[i][t]['ratio_log'])),
                                      all_trials[i][t]['maxDeviation'][0], all_trials[i][t]['maxDeviation'][1],all_trials[i][t]['maxDeviation'][2],
                                      all_trials[i][t]['maxDeviationBorder'][0], all_trials[i][t]['maxDeviationBorder'][1],all_trials[i][t]['maxDeviationBorder'][2],

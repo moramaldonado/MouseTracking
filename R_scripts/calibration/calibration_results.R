@@ -62,10 +62,11 @@ ggplot(normalized_positions.means.traj, aes(x=X.Position.mean, y=Y.Position.mean
 ggsave('calibration_mean_trajectory.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6,  path='R_scripts/graphs/calibration')
 
 
-## LDA CLASSIFIER
+#### LDA CLASSIFIER ####
+
 #LDA coords + delta + deltadelta based on coordinates
-LDA_training.coord.delta.deltadelta(calibration_data)
-save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA(Coords+Delta+DeltaDelta).RData")
+LDA_training.coord.dist(calibration_data)
+save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA-Full.RData")
 calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
 normalized_positions.plot <- dplyr::full_join(lda_measure.df, normalized_positions.plot, by=c("Subject", "Item.number", "Expected_response"))
 
@@ -125,10 +126,12 @@ bins <- list(bin1, bin2, bin3, bin4, bin5, bin6, bin7, bin8, bin9, bin10)
 x <- paste0('x', sprintf("%03d", c(1:101)))
 y <- paste0('y', sprintf("%03d", c(1:101)))
 auc.bins <- data.frame(lda.full=c(1:10), 
-                       lda.coord.delta=c(1:10), 
+                       lda.coord.vel=c(1:10), 
+                       lda.acc=c(1:10), 
                        lda.coord=c(1:10),
+                       lda.coord.delta.deltadelta=c(1:10),
+                       lda.coord.delta=c(1:10), 
                        lda.deltadelta=c(1:10),
-                       lda.coord.accdist=c(1:10), 
                        lda.logratio=c(1:10), 
                        logratio=c(1:10), 
                        xflips=c(1:10), 
@@ -143,8 +146,8 @@ for (b in 1: length(bins)) {
 
   ## LDA with Coordinates, Delta, DeltaDelta
   ###  TRAINING + TEST
-  LDA_training.coord.delta.deltadelta(calibrationTrain)
-  LDA_test.coord.delta.deltadelta(calibrationTest, v_lda, b_lda, m_pca, all_data_columns, n_pca)
+  LDA_training.coord.dist(calibrationTrain)
+  LDA_test.coord.dist(calibrationTest, v_lda, b_lda, m_pca, all_data_columns, n_pca)
   
   #ROC and AUC
   lda.score.te <- lda_measure_te.df$lda_measure 
@@ -156,7 +159,7 @@ for (b in 1: length(bins)) {
 
 #plot ROC and aUC
 png(filename='R_scripts/graphs/ROC:LDA-FULL.png', width = 7, height = 7, units = 'in', res = 300)
-plot.roc(smooth(lda_full.roc.te1), print.auc = FALSE, col="red", main='Original Linear Discriminant Analysis')
+plot.roc(smooth(lda_full.roc.te1), print.auc = FALSE, col="red", main='Original Linear Discriminant Analysis (Coord, Vel, Acc)')
 plot.roc(smooth(lda_full.roc.te2), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_full.roc.te3), print.auc = FALSE, col="red", add=TRUE)
 plot.roc(smooth(lda_full.roc.te4), print.auc = FALSE, col="red", add=TRUE)

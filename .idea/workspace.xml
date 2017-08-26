@@ -7,51 +7,45 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-D6C3BBE5/C77D3714" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-D6C3BBE5/EAF0FFD1" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/s-D6C3BBE5/lock_file" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/LDA_real_data(onlyAcc).png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/LDA_real_data_1.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/MaxLogRatio_real_data(onlyAcc).png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-Xposition.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-mean-sentences.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/LDA(Coords+Delta+DeltaDelta).RData" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-CoordsAcc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/LDA.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/LDA_means.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/LDA_real_data.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/MaxLogRatio_real_data (After exclusion).png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/Max_means.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.RData" afterPath="$PROJECT_DIR$/.RData" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/LDA_all_calibration.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/LDA_all_calibration.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/MaxLogRatio_all_calibration.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/MaxLogRatio_all_calibration.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_XPosition.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_XPosition.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/LDA-Distribution.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/LDA-Distribution.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-Coords.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-Coords.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-CoordsDelta.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-CoordsDelta.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-DeltaDelta.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-DeltaDelta.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-FULL.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-FULL.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-LogRatio.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/ROC:LDA-LogRatio.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_mean_XPosition.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_mean_XPosition.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_mean_trajectory.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_mean_trajectory.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/1 .png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/1 .png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/10 .png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/10 .png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/2 .png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/2 .png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/3 .png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/3 .png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/4 .png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/4 .png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/6 .png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/6 .png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/7 .png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/7 .png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/8 .png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/8 .png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/9 .png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_per_subject/9 .png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_trajectories.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_trajectories.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/ratio_calibration_trajectories.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/ratio_calibration_trajectories.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/LDA_means.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation_data/LDA_means.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/Max_means.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation_data/Max_means.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-Xposition-subject.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-Xposition-subject.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-mean-Xposition.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-mean-Xposition.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-mean-trajectory.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-mean-trajectory.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-subject-trajectory.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-subject-trajectory.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-trajectory.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation_data/negation-data-trajectory.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/real_data/plural/graphs/LDA_plural_data.png" afterPath="$PROJECT_DIR$/real_data/plural/graphs/LDA_plural_data.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/real_data/plural/graphs/LDA_plural_data_across_exp.png" afterPath="$PROJECT_DIR$/real_data/plural/graphs/LDA_plural_data_across_exp.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/real_data/plural/graphs/plural_data_XPosition_Item.png" afterPath="$PROJECT_DIR$/real_data/plural/graphs/plural_data_XPosition_Item.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/transformation_all.RData" afterPath="$PROJECT_DIR$/transformation_all.RData" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_mean_subject_XPosition.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/calibration/calibration_mean_subject_XPosition.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/LDA-negation.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation/LDA-negation.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-Xposition-subject.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-Xposition-subject.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-mean-Xposition.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-mean-Xposition.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-mean-trajectory.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-mean-trajectory.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-subject-trajectory.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-subject-trajectory.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-trajectory.png" afterPath="$PROJECT_DIR$/R_scripts/graphs/negation/negation-data-trajectory.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_R/Data.csv" afterPath="$PROJECT_DIR$/data_R/Data.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rhistory" afterPath="$PROJECT_DIR$/.Rhistory" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/files-pane.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/files-pane.pper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/source-pane.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/source-pane.pper" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/windowlayoutstate.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/windowlayoutstate.pper" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/workbench-pane.pper" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/pcs/workbench-pane.pper" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/rmd-outputs" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/rmd-outputs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/prop/INDEX" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/sdb/prop/INDEX" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/B7B8F1/session-persistent-state" afterPath="$PROJECT_DIR$/.Rproj.user/B7B8F1/session-persistent-state" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.Rproj.user/shared/notebooks/paths" afterPath="$PROJECT_DIR$/.Rproj.user/shared/notebooks/paths" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/negationMT.iml" afterPath="$PROJECT_DIR$/.idea/negationMT.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_R/Data.csv" afterPath="$PROJECT_DIR$/data_R/Data.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/calibration/LDA.R" afterPath="$PROJECT_DIR$/R_scripts/calibration/LDA.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/calibration/calibration_results.R" afterPath="$PROJECT_DIR$/R_scripts/calibration/calibration_results.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/calibration/comparison_other_predictors.R" afterPath="$PROJECT_DIR$/R_scripts/calibration/comparison_other_predictors.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/R_scripts/negation/negation_results.R" afterPath="$PROJECT_DIR$/R_scripts/negation/negation_results.R" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_R/calibration_pilot/Data.csv" afterPath="$PROJECT_DIR$/data_R/calibration_pilot/Data.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_calibration.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_calibration.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_negation.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_negation.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" afterPath="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" />
     </list>
     <ignored path="negationMT.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,7 +60,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/negationMT$run_me.coverage" NAME="run_me Coverage Results" MODIFIED="1497978344409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py_preprocessing_scripts" />
+    <SUITE FILE_PATH="coverage/negationMT$run_me.coverage" NAME="run_me Coverage Results" MODIFIED="1503683971479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py_preprocessing_scripts" />
+    <SUITE FILE_PATH="coverage/negationMT$run_me_negation.coverage" NAME="run_me_negation Coverage Results" MODIFIED="1503758479885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py_preprocessing_scripts" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -77,14 +72,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="run_me.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py">
+      <file leaf-file-name="run_me_negation.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me_negation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="69" column="35" lean-forward="false" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
-              <folding>
-                <element signature="e#55#64#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="380">
+              <caret line="101" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -126,10 +119,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web_experiment/pilot/step_runs.js" />
-        <option value="$PROJECT_DIR$/web_experiment/template_handling.js" />
-        <option value="$PROJECT_DIR$/web_experiment/experiment.json" />
-        <option value="$PROJECT_DIR$/web_experiment/index.html" />
         <option value="$PROJECT_DIR$/web_experiment/pilot/templates.json" />
         <option value="$PROJECT_DIR$/web_experiment/pilot/index.html" />
         <option value="$PROJECT_DIR$/web_experiment/pilot/template_handling.js" />
@@ -172,11 +161,15 @@
         <option value="$PROJECT_DIR$/web_experiment/calibration/index.html" />
         <option value="$PROJECT_DIR$/web_experiment/calibration/experiment.json" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/normalization.py" />
-        <option value="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
-        <option value="$PROJECT_DIR$/py_preprocessing_scripts/analyses_MT.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/local_maxima.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/speed_acceleration.py" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/analyses_MT.py" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/integrate.py" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/run_me_negation.py" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_calibration.py" />
         <option value="$PROJECT_DIR$/py_preprocessing_scripts/run_me.py" />
+        <option value="$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_negation.py" />
       </list>
     </option>
   </component>
@@ -187,8 +180,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="x" value="-332" />
+    <option name="y" value="-1080" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -205,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -235,6 +229,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -253,7 +248,25 @@
       <recent name="$PROJECT_DIR$/web_experiment/calibration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.run_me">
+  <component name="RunManager" selected="Python.run_me_negation">
+    <configuration default="false" name="run_me_negation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py_preprocessing_scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="negationMT" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/py_preprocessing_scripts/run_me_negation.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -486,9 +499,15 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.run_me" />
+      <item index="1" class="java.lang.String" itemvalue="Python.run_me_negation" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.run_me_negation" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -539,11 +558,12 @@
       <workItem from="1497010784345" duration="2000" />
       <workItem from="1497268771923" duration="2976000" />
       <workItem from="1497364655399" duration="38000" />
+      <workItem from="1499094007831" duration="164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128741000" />
+    <option name="totallyTimeSpent" value="128905000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -555,16 +575,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="-332" y="-1080" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25282714" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14696486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5589431" sideWeight="0.5117146" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29261363" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5589431" sideWeight="0.48828542" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -614,15 +634,23 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web_experiment/calibration_background_time/templates.json" />
-    <entry file="file://$PROJECT_DIR$/web_experiment/calibration_sentence_time/template_handling.js" />
-    <entry file="file://$PROJECT_DIR$/web_experiment/calibration_square_time/templates.json" />
-    <entry file="file://$PROJECT_DIR$/web_experiment/calibration_sentence_mt/templates.json" />
     <entry file="file://$PROJECT_DIR$/web_experiment/calibration_sentence_time/templates.json" />
     <entry file="file://$PROJECT_DIR$/web_experiment/calibration_sentence_mt/calibration.js" />
     <entry file="file://$PROJECT_DIR$/web_experiment/calibration_sentence_time/calibration.js" />
@@ -655,13 +683,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/pilot/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="310" column="16" lean-forward="false" selection-start-line="310" selection-start-column="16" selection-end-line="310" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_experiment/calibration_square_mt/calibration.js" />
     <entry file="file://$PROJECT_DIR$/web_experiment/calibration_square_mt/experiment.json" />
     <entry file="file://$PROJECT_DIR$/web_experiment/calibration_square_mt/index.html" />
@@ -679,20 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5395">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/calibration/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1113">
-          <caret line="27" column="35" lean-forward="false" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_OLD.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="97" column="1347" lean-forward="false" selection-start-line="97" selection-start-column="1310" selection-end-line="97" selection-end-column="1347" />
         </state>
       </provider>
     </entry>
@@ -731,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web_experiment/calibration/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="153" column="6" lean-forward="false" selection-start-line="153" selection-start-column="6" selection-end-line="153" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web_experiment/calibration/template_handling.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -752,13 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/integrate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="0" column="17" lean-forward="false" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/normalization.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -766,241 +759,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="107" column="108" lean-forward="true" selection-start-line="107" selection-start-column="108" selection-end-line="107" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/analyses_MT.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="177" column="50" lean-forward="false" selection-start-line="177" selection-start-column="50" selection-end-line="177" selection-end-column="50" />
-          <folding>
-            <marker date="1497977945000" expanded="true" signature="24:92" ph="&quot;&quot;&quot;Created on Sat Apr 18 10:23:28 2015...&quot;&quot;&quot;" />
-            <marker date="1497977945000" expanded="true" signature="97:127" ph="import ..." />
-            <marker date="1497977945000" expanded="true" signature="129:397" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="440:2394" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="505:535" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="545:576" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="613:2372" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="657:2372" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="801:2310" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="880:1799" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="1092:1380" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="1308:1380" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="1406:1694" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="1622:1694" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="1817:2249" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="2396:2593" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="2621:3554" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="2717:3531" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="2761:3531" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="2839:3461" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="2895:3011" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="3033:3149" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="3213:3400" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="3557:3739" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="3762:4712" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="3799:4690" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="3843:4690" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="3915:4644" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="3971:4087" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="4148:4264" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="4328:4644" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="4786:5124" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="4823:5102" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="4867:5102" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="4953:5048" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="5161:5265" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="5304:6107" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="5370:6084" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="5414:6084" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="5547:6006" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="5619:5963" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="6147:7071" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="6224:7042" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="6268:7042" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="6422:6964" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="7118:7494" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="7189:7471" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="7233:7471" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="7284:7407" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="7497:7792" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="7840:8819" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="8027:8093" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="8234:8544" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="8243:8354" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="8554:8767" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="8822:9044" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="9084:10334" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="9318:10315" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="9358:10315" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="9444:10315" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="9461:9528" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="9658:9716" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="9803:9862" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="9938:10315" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="10367:12036" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="10400:12017" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="10440:12017" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="10535:11861" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="10796:11601" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="11102:11298" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="11382:11601" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="11879:12017" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="12073:12774" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="12143:12751" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="12187:12751" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="12277:12687" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="12371:12639" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="12818:12973" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="12884:12935" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="13045:13894" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="13089:13873" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="13184:13674" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="13232:13674" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="13478:13674" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="13743:13873" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="13978:14903" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="14038:14881" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="14142:14670" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="14456:14670" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="14751:14881" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="14984:15943" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="15028:15806" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="15124:15806" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="15176:15806" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="15228:15806" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="15600:15806" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="16007:17410" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="16073:17299" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="16228:17041" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="16276:17041" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="16395:17041" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="16467:16711" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="16785:17041" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="17498:18503" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="17542:18473" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="17637:18350" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="17689:18350" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="17741:18350" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="18112:18350" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="18539:19544" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="18576:19521" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="18620:19521" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="18777:19276" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="19295:19521" ph="..." />
-            <marker date="1497977945000" expanded="true" signature="19549:21628" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/readme.rtf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/local_maxima.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <marker date="1497978244000" expanded="true" signature="24:91" ph="&quot;&quot;&quot;Created on Tue Apr 21 18:01:41 2015...&quot;&quot;&quot;" />
-            <marker date="1497978244000" expanded="true" signature="127:1274" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="164:1252" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="208:1252" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="362:1176" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="589:894" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="943:1110" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="1301:2147" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="1338:2125" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="1382:2125" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="1556:2125" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="1596:2070" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="2174:2878" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="2211:2801" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="2255:2801" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="2431:2801" ph="..." />
-            <marker date="1497978244000" expanded="true" signature="2471:2742" ph="..." />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="84" column="32" lean-forward="false" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/pilot/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2580">
+          <caret line="310" column="16" lean-forward="false" selection-start-line="310" selection-start-column="16" selection-end-line="310" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/pilot/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5495">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/calibration/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2100">
+          <caret line="27" column="35" lean-forward="false" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web_experiment/calibration/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="75" column="33" lean-forward="false" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/analyses_MT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2040">
+          <caret line="208" column="45" lean-forward="false" selection-start-line="208" selection-start-column="45" selection-end-line="208" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/integrate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="40" column="17" lean-forward="false" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions.py" />
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_OLD.py" />
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_calibration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="88" column="102" lean-forward="false" selection-start-line="88" selection-start-column="102" selection-end-line="88" selection-end-column="102" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/speed_acceleration.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-621">
-          <caret line="188" column="43" lean-forward="true" selection-start-line="188" selection-start-column="43" selection-end-line="188" selection-end-column="43" />
-          <folding>
-            <marker date="1497978344000" expanded="true" signature="0:30" ph="import ..." />
-            <marker date="1497978344000" expanded="true" signature="131:1958" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="168:1934" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="233:1934" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="387:1807" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="668:1645" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="698:1562" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="947:1032" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="1063:1562" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="1825:1934" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="1962:2080" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="2121:3616" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="2158:3593" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="2202:3593" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="2335:3458" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="2505:3318" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="2535:3125" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="2811:2896" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="2927:3125" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="3152:3219" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="3476:3593" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="3762:6400" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="3799:6377" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="3854:6377" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="4352:4704" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="4997:5356" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="5706:6191" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="6404:6562" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="6602:8219" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="6639:8196" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="6704:8196" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="6858:8054" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="7139:7877" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="7169:7801" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="7418:7503" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="7534:7801" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="8072:8196" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="8247:9099" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="8284:9077" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="8328:9077" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="8485:9077" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="8568:9016" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="9134:10622" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="9171:10600" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="9215:10600" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="9369:10526" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="9759:10112" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="10161:10370" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="10627:10752" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="10789:11624" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="10826:11602" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="10870:11602" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="11003:11521" ph="..." />
-            <marker date="1497978344000" expanded="true" signature="11195:11450" ph="..." />
-          </folding>
+        <state relative-caret-position="-810">
+          <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="69" column="35" lean-forward="false" selection-start-line="69" selection-start-column="35" selection-end-line="69" selection-end-column="35" />
+        <state relative-caret-position="-724">
+          <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
           <folding>
-            <element signature="e#55#64#0" expanded="true" />
+            <marker date="1503683971000" expanded="true" signature="24:54" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1503683971000" expanded="true" signature="55:396" ph="import ..." />
+            <marker date="1503683971000" expanded="true" signature="3086:3187" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/organization_functions_negation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="76" column="55" lean-forward="false" selection-start-line="76" selection-start-column="55" selection-end-line="76" selection-end-column="55" />
+          <folding>
+            <marker date="1503684022000" expanded="true" signature="24:91" ph="&quot;&quot;&quot;Created on Fri Apr 17 18:40:03 2015...&quot;&quot;&quot;" />
+            <marker date="1503684022000" expanded="false" signature="94:221" ph="import ..." />
+            <marker date="1503684022000" expanded="true" signature="246:546" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="280:532" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="571:973" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="623:959" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="1001:1621" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="1095:1591" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="1173:1591" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="1213:1591" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="1388:1591" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="1465:1591" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="1666:5450" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="1788:2519" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="1846:2072" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="2119:2519" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="2149:2517" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="2565:5378" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="2632:3441" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="3485:5378" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="3533:5378" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="3602:5376" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="5486:5808" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="5549:5780" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="5862:6508" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="5933:6479" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="6539:6882" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="6576:6855" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="6620:6855" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="6684:6855" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="6931:11381" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="6968:11358" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="7029:11302" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="7402:7534" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="7607:7887" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="7964:9862" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="8155:8284" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="8477:8607" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="8741:8871" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="9005:9136" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="9213:9343" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="9420:9549" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="9572:9697" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="9881:11302" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="11406:11712" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="11443:11690" ph="..." />
+            <marker date="1503684022000" expanded="true" signature="11487:11690" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py_preprocessing_scripts/run_me_negation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="101" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
