@@ -6,9 +6,10 @@ var zero_point, lessone_point, plusone_point, button_size = false;
 var temp_button_rect;
 var calibration_type;
 var straight = Array(32).fill('RR1').concat(Array(32).fill('BB1'));
-var uncertain = Array(2).fill('RR2').concat(Array(2).fill('BB2'), Array(2).fill('RR3'), Array(2).fill('BB3'));
-var deviated = Array(4).fill('RB2').concat(Array(4).fill('BR2'), Array(4).fill('BR3'), Array(4).fill('RB3'));
-var order_calibration =  shuffle(straight.concat(deviated, uncertain));
+//var uncertain = Array(2).fill('RR2').concat(Array(2).fill('BB2'), Array(2).fill('RR3'), Array(2).fill('BB3'));
+var deviated = Array(4).fill('RB1').concat(Array(4).fill('BR1'), Array(4).fill('RB2'), Array(4).fill('BR2'), Array(4).fill('BR3'), Array(4).fill('RB3'));
+//var order_calibration =  shuffle(straight.concat(deviated, uncertain));
+var order_calibration =  shuffle(straight.concat(deviated));
 var myreds = ['#ff4d4d', '#ff0000', '#cc0000', '#800000'];
 var myblues = ['#4d4dff', '#0000ff', '#0000cc', '#000080'];
 var red;
@@ -151,8 +152,19 @@ function initialize_calibration() {
                 switch (order_calibration[exp_pointer].substring(0, 3)) {
 
                     //deviated
+
+                    case 'RB1':
+                        //ty = Number(0.2, 0.7);
+                        ty = 0.4;
+                        roundedRect(ctx, start_width, start_height, end_width, end_height, 10, red);
+                        listener = change_mouse_background.bind(null, red, blue, t1, ty);
+                        document.body.addEventListener('mousemove', listener);
+                        console.log(exp_pointer);
+                        break;
+
                     case 'RB2':
-                        ty = Number(0.2, 0.7);
+                        //ty = Number(0.2, 0.7);
+                        ty = 0.7;
                         roundedRect(ctx, start_width, start_height, end_width, end_height, 10, red);
                         listener = change_mouse_background.bind(null, red, blue, t1, ty);
                         document.body.addEventListener('mousemove', listener);
@@ -160,15 +172,26 @@ function initialize_calibration() {
                         break;
 
                     case 'RB3':
-                        ty = Number(0.4, 0.9);
+                        ty = 0.9;
+                        //ty = Number(0.4, 0.9);
                         roundedRect(ctx, start_width, start_height, end_width, end_height, 10, red);
                         listener = change_mouse_background.bind(null, red, blue, t1, ty);
                         document.body.addEventListener('mousemove', listener);
                         console.log(exp_pointer);
                         break;
 
+                    case 'BR1':
+                        ty = 0.4;
+                        //ty = Number(0.2, 0.7);
+                        roundedRect(ctx, start_width, start_height, end_width, end_height, 10, blue);
+                        listener = change_mouse_background.bind(null, blue, red, t1, ty);
+                        document.body.addEventListener('mousemove', listener);
+                        console.log(exp_pointer);
+                        break;
+
                     case 'BR2':
-                        ty = Number(0.2, 0.7);
+                        ty = 0.7;
+                        //ty = Number(0.2, 0.7);
                         roundedRect(ctx, start_width, start_height, end_width, end_height, 10, blue);
                         listener = change_mouse_background.bind(null, blue, red, t1, ty);
                         document.body.addEventListener('mousemove', listener);
@@ -176,7 +199,8 @@ function initialize_calibration() {
                         break;
 
                     case 'BR3':
-                        ty = Number(0.4, 0.9);
+                        ty = 0.9;
+                        //ty = Number(0.4, 0.9);
                         roundedRect(ctx, start_width, start_height, end_width, end_height, 10, blue);
                         listener = change_mouse_background.bind(null, blue, red, t1, ty);
                         document.body.addEventListener('mousemove', listener);
@@ -195,6 +219,7 @@ function initialize_calibration() {
                         break;
 
                     //uncertain
+/*
                     case 'BB2':
                         ty = .3;
                         roundedRect(ctx, start_width, start_height, end_width, end_height, 10, 'white');
@@ -226,6 +251,7 @@ function initialize_calibration() {
                         document.body.addEventListener('mousemove', listener);
                         console.log(exp_pointer);
                         break;
+*/
 
                 }
             }

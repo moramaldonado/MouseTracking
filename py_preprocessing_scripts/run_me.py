@@ -20,7 +20,9 @@ from scipy import stats
 
 path = "/Users/moramaldonado/WebstormProjects/negationMT"
 
-pathData = path + '/0617_raw_data_calibration'
+#pathData = path + '/0617_raw_data_calibration'
+pathData= path + '/try'
+
 print path
 
 
@@ -106,7 +108,8 @@ all_trials = acc_flips(all_trials, 3)
 
 
 # Exporting the data for R
-pathR = path+'/data_R/calibration_pilot'
+#pathR = path+'/data_R/calibration_pilot'
+pathR = path+'/data_R/try'
 exporting_data(pathR,all_trials, info)
 print ">>>> data exported in csv for R"
 

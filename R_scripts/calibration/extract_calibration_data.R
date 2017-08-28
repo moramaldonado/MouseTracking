@@ -6,6 +6,7 @@ info_calibration$Subject<- mapvalues(info_calibration$Subject, from = c(0:max(in
 
 ## 2. DATA FILE WITH ALL RESULTS ##
 data_calibration <- read.csv(file="data_R/calibration_pilot/Data.csv", header=TRUE, sep=",")
+#data_calibration <- read.csv(file="data_R/try/Data.csv", header=TRUE, sep=",")
 data_calibration$Subject<- mapvalues(data_calibration$Subject, from = c(0:max(data_calibration$Subject)), to = c(1:length(info_calibration$Subject)))
 data_calibration$Item.number<- mapvalues(data_calibration$Item.number, from = c(0:93), to = c(1:94))
 

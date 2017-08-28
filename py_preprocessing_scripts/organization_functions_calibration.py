@@ -209,6 +209,18 @@ def organization_trials(all_trials):
                     all_trials[i][t]['polarity'] = 'straight'
                     all_trials[i][t]['change_point'] = 0
 
+                elif all_trials[i][t]['data']['item']['raw'] == 'RB1':
+                    all_trials[i][t]['expected_response'] = 'false'
+                    all_trials[i][t]['color'] = 'blue'
+                    all_trials[i][t]['polarity'] = 'deviated'
+                    all_trials[i][t]['change_point'] = all_trials[i][t]['data']['ty']
+
+                elif all_trials[i][t]['data']['item']['raw'] == 'BR1':
+                    all_trials[i][t]['expected_response'] = 'true'
+                    all_trials[i][t]['color'] = 'red'
+                    all_trials[i][t]['polarity'] = 'deviated'
+                    all_trials[i][t]['change_point'] = all_trials[i][t]['data']['ty']
+
                 elif all_trials[i][t]['data']['item']['raw'] == 'RB2':
                     all_trials[i][t]['expected_response'] = 'false'
                     all_trials[i][t]['color'] = 'blue'
