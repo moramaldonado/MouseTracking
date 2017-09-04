@@ -6,14 +6,16 @@ class2 <<- sum(training$Polarity=="deviated")/length(training$Polarity)
 
 # 2. Assign labels randomly based on probability
 labels <- c('straight', 'deviated')
-test$random_classifier <- sample(labels, length(test$Polarity), replace=TRUE, prob=c(class1,class2))
+#test$random_classifier <- sample(labels, length(test$Polarity), replace=TRUE, prob=c(class1,class2))
+parameters <- estBetaParams(class1, 0.1)
+test$random_classifier <- rbeta(length(test$Polarity), parameters$alpha, parameters$beta)
 calibrationTest <<- test
 }
 
 calibration_data <- subset(calibration_data, Polarity!='uncertain')
 
 # Data frame for iteration of different bins
-iterations = 100
+iterations = 10
 random_classifier.df <- data.frame(matrix(ncol=iterations, nrow=10))
 
 # Create bins for crossvalidation
@@ -65,8 +67,8 @@ for (i in 1:iterations){
       calibrationTrain <- subset(calibration_data, !(id %in% bins[[b]]$id))
       calibrationTest <- subset(calibration_data, id %in% bins[[b]]$id)
       random_classifier(calibrationTrain, calibrationTest)
-      score <- factor(calibrationTest$random_classifier, ordered=TRUE) 
-      label <- factor(calibrationTest$Polarity)
+      score <- calibrationTest$random_classifier#predictor 
+      label <- factor(calibrationTest$Polarity) #response
       roc <- roc(label, score)
       random_classifier.df[b,i] <- roc$auc
       }
