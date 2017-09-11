@@ -19,6 +19,7 @@ calibration_data <- subset(calibration_data, Polarity!='uncertain')
 iterations = 10000
 random_classifier.df <- data.frame(matrix(ncol=iterations, nrow=10))
 
+
 # Create bins for crossvalidation
 # calibration_data$id <- 1:nrow(calibration_data)
 # deviated <- calibration_data %>% 
@@ -79,10 +80,9 @@ for (b in 1: length(bins)) {
     roc <- roc(label, score)
     random_classifier.df[b,i] <- roc$auc
   }
+
 }
 
 
 
 
-
-  

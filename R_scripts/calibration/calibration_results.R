@@ -125,7 +125,8 @@ rm(try)
 bins <- list(bin1, bin2, bin3, bin4, bin5, bin6, bin7, bin8, bin9, bin10)
 x <- paste0('x', sprintf("%03d", c(1:101)))
 y <- paste0('y', sprintf("%03d", c(1:101)))
-auc.bins <- data.frame(lda.full=c(1:10), 
+auc.bins <- data.frame(bins = c(1:10),
+                       lda.full=c(1:10), 
                        lda.coord.vel=c(1:10), 
                        lda.acc=c(1:10), 
                        lda.coord=c(1:10),
