@@ -20,6 +20,7 @@ normalized_positions.means.subject <-   ddply(normalized_positions.plot, c("Pola
 normalized_positions.means.overall <- ddply(normalized_positions.means.subject, c("Polarity", "Time.Step", "Expected_response"),
                                             function(normalized_positions.means.subject)c(X.Position.mean=mean(normalized_positions.means.subject$X.Position.mean, na.rm=T),
                                                                                           X.Position.se=se(normalized_positions.means.subject$X.Position, na.rm=T)))
+
 #Mean X position per subject
 ggplot(normalized_positions.means.subject, aes(x=Time.Step, y=X.Position.mean, color=Subject, group=Subject)) + 
   geom_point(alpha=.4) + geom_line(alpha=.4) +
@@ -67,9 +68,9 @@ ggsave('negation-data-subject-trajectory.png', plot = last_plot(), scale = 1, dp
 ggplot(normalized_positions.means.traj, aes(x=X.Position.mean, y=Y.Position.mean, color=Polarity, group=Polarity)) +
   geom_point() + 
   ggtitle('Negation data: Mean Trajectories') +
-  geom_errorbarh(aes(xmin=X.Position.mean-X.Position.se, xmax=X.Position.mean+X.Position.se), alpha=.8) +
+  geom_errorbarh(aes(xmin=X.Position.mean-X.Position.se, xmax=X.Position.mean+X.Position.se)) + 
   theme_minimal()+
-  theme(legend.position = "none") + 
+  theme(legend.position = "top") + 
   expand_limits(x=c(-1.5,1.5)) + 
   scale_colour_brewer(palette="Set1")+ 
   facet_grid(.~Expected_response) 
@@ -177,7 +178,7 @@ mydata$Interaction<-factor(contrasts(mydata$Polarity)[mydata$Polarity]*
 
 
 ### LdaMeasure: Differences between conditions and truth values
-control_model.lda <- lmer(lda_measure ~ Polarity + Expected_response + Interaction * Item.number + (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE)
+control_model.lda <- lmer(lda_measure ~ Polarity + Expected_response + Interaction  + (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE)
 summary(control_model.lda)
 
 #Main Effect: Polarity (Affirmative vs. Negative)
@@ -185,7 +186,6 @@ m0.sentence.lda <- lmer(lda_measure ~ Expected_response + Interaction + (1+Polar
 anova(control_model.lda, m0.sentence.lda)
 
 #Main Effect :Expected_response (Affirmative vs. Negative)
-## !! This model does not converge
 m0.response.lda <- lmer(lda_measure ~ Polarity + Interaction + (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
 anova(control_model.lda, m0.response.lda)
 

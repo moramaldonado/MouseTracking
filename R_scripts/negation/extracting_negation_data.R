@@ -22,11 +22,20 @@ negation_data <- data_negation %>%
   mutate (Subject = as.factor(Subject)) 
 rm(natives, not_natives)
 
+negation_data$Accuracy <- factor(negation_data$Accuracy)
+negation_data$Accuracy.log <- if_else(negation_data$Accuracy==1, TRUE, FALSE)
+
+
+##5'. Agreggated accuracy
+accuracy.subject <-   ddply(negation_data, c("Subject"),
+                                              function(negation_data)c(mean=mean(negation_data$Accuracy.log, na.rm=T)))
+
+
 
 ## 5. Excluding unaccurate trials
-innacurate_data <- subset (negation_data, Accuracy==0)
-print('percentage of innacurate trials:')
-print(nrow(innacurate_data)/nrow(negation_data))
+non_accurate_data <- subset (negation_data, Accuracy==0)
+print('percentage of innaccurate trials:')
+print(nrow(non_accurate_data)/nrow(negation_data))
 negation_data <- subset(negation_data, Accuracy==1)
 
 
