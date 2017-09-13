@@ -25,6 +25,8 @@ source("R_scripts/calibration/comparisons_measures.R")
 ### Comparison with classifiers which take into account different sets of predictors(subsubsection 2.2.2)
 source("R_scripts/calibration/comparison_other_predictors.R")
 
+### Permutation tests
+source("R_scripts/calibration/permutation_test.R")
 
 
 #### NEGATION DATA #####

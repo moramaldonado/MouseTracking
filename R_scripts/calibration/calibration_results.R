@@ -137,7 +137,8 @@ auc.bins <- data.frame(bins = c(1:10),
                        logratio=c(1:10), 
                        xflips=c(1:10), 
                        maxdeviation=c(1:10),
-                       accflips=c(1:10))
+                       accflips=c(1:10), 
+                       topline=c(1:10))
 
 
 #Testing classifier per bin and obtaining ROC and AUC
@@ -175,3 +176,9 @@ text(0.5, 0, paste("MEAN AUC=", round(mean(auc.bins$lda.full), digits=3)),
 dev.off()
 
 rm(lda_full.roc.te1,lda_full.roc.te10,lda_full.roc.te2,lda_full.roc.te3,lda_full.roc.te4,lda_full.roc.te5,lda_full.roc.te6, lda_full.roc.te7,lda_full.roc.te8,lda_full.roc.te9)
+
+#Topline and Random classifiers
+source("R_scripts/calibration/topline.R")
+source("R_scripts/calibration/random_classifier.R")
+auc.bins$random_classifier <- rowMeans(random_classifier.df)
+
