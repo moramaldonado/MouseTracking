@@ -1,11 +1,11 @@
 getwd()
 
 ## 1. INFORMATION FILE ##
-info_calibration <- read.csv(file="data_R/calibration_pilot/Information.csv", header=TRUE, sep=",")
+info_calibration <- read.csv(file="data_R/calibration/Information.csv", header=TRUE, sep=",")
 info_calibration$Subject<- mapvalues(info_calibration$Subject, from = c(0:max(info_calibration$Subject)), to = c(1:length(info_calibration$Subject)))
 
 ## 2. DATA FILE WITH ALL RESULTS ##
-data_calibration <- read.csv(file="data_R/calibration_pilot/Data.csv", header=TRUE, sep=",")
+data_calibration <- read.csv(file="data_R/calibration/Data.csv", header=TRUE, sep=",")
 #data_calibration <- read.csv(file="data_R/try/Data.csv", header=TRUE, sep=",")
 data_calibration$Subject<- mapvalues(data_calibration$Subject, from = c(0:max(data_calibration$Subject)), to = c(1:length(info_calibration$Subject)))
 data_calibration$Item.number<- mapvalues(data_calibration$Item.number, from = c(0:93), to = c(1:94))
@@ -43,31 +43,31 @@ levels(calibration_data$Expected_response) <- c('blue','red')
 
 ## Include X.Positions as rows
 normalized_positions.plot.X = calibration_data %>%
-  dplyr::select(Subject,Polarity, Expected_response, Normalized.positions.X, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange_cut, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time) %>%
+  dplyr::select(Subject,Polarity, Expected_response, Normalized.positions.X, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time) %>%
   separate(Normalized.positions.X, into= as.character(c(1:101)), sep = ",") %>%
   gather(Time.Step, X.Position, 4:104) 
 
 ## Include Y.Positions as rows
 normalized_positions.plot.Y = calibration_data %>%
-  dplyr::select(Subject,Polarity, Expected_response, Normalized.positions.Y,Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange_cut, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time)%>%
+  dplyr::select(Subject,Polarity, Expected_response, Normalized.positions.Y,Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time)%>%
   separate(Normalized.positions.Y, into= as.character(c(1:101)), sep = ",") %>%
   gather(Time.Step, Y.Position, 4:104) 
 
 ## Include Raw.Time as rows
 rawtime = calibration_data %>% 
-  dplyr::select(Subject,Polarity, Expected_response, RawTime, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange_cut, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time)%>%
+  dplyr::select(Subject,Polarity, Expected_response, RawTime, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time)%>%
   separate(RawTime, into= as.character(c(1:101)), sep = ",") %>%
   gather(Time.Step, RawTime, 4:104) 
 
 ## Include Raw.Acceleration as rows
 acceleration_calibration = calibration_data %>%
-  dplyr::select(Subject,Polarity, Expected_response, Acceleration, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange_cut, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time) %>%
+  dplyr::select(Subject,Polarity, Expected_response, Acceleration, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time) %>%
   separate(Acceleration, into= as.character(c(1:101)), sep = ",") %>%
   gather(Time.Step, Acceleration, 4:104) 
 
 ## Include LogRatio as rows
 log_ratio = calibration_data %>%
-  dplyr::select(Subject,Polarity, Expected_response, LogRatio, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange_cut, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time) %>%
+  dplyr::select(Subject,Polarity, Expected_response, LogRatio, Item.number, grp, MaxLogRatio, MaxLogRatio_cut, MaxRatio.Time.Norm, PointChange, PointChange.Time_cut,PointChange.Time.Raw_cut, PointChange.Time.Raw, RT_cut, PointChange.Time) %>%
   separate(LogRatio, into= as.character(c(1:101)), sep = ",") %>%
   gather(Time.Step, LogRatio, 4:104) 
 

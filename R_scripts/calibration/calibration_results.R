@@ -10,6 +10,7 @@ calibration_data$Subject <- factor(calibration_data$Subject)
 normalized_positions.plot$Subject <- factor(normalized_positions.plot$Subject)
 
 ## OVERALL PERFORMANCE (Plotting)
+
 ### Mean X position
 normalized_positions.means.subject <-   ddply(normalized_positions.plot, c("Polarity", "Time.Step.Onset", "Subject"),
                                               function(normalized_positions.plot)c(X.Position.mean=mean(normalized_positions.plot$X.Position, na.rm=T)))
@@ -46,7 +47,7 @@ ggplot(normalized_positions.means.subject, aes(x=X.Position.mean, y=Y.Position.m
   geom_point(size=0.5) + 
   ggtitle('Mean Trajectories per subject') +
   theme_minimal() +
-  theme(legend.position = "top") + 
+  theme(legend.position = "none") + 
   expand_limits(x=c(-1.5,1.5)) + 
   facet_grid(Polarity~.)
 ggsave('calibration_mean_subject_trajectory.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6, path='R_scripts/graphs/calibration')
@@ -58,8 +59,29 @@ ggplot(normalized_positions.means.traj, aes(x=X.Position.mean, y=Y.Position.mean
   geom_errorbarh(aes(xmin=X.Position.mean-X.Position.se, xmax=X.Position.mean+X.Position.se)) + 
   theme_minimal() +
   theme(legend.position = "none") +
+  expand_limits(x=c(-1.5,1.5)) + 
   scale_colour_brewer(palette="Set1") 
 ggsave('calibration_mean_trajectory.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 6,  path='R_scripts/graphs/calibration')
+
+
+
+### Mean X position per point change
+normalized_positions.means.subject <-   ddply(normalized_positions.plot, c("Polarity", "Time.Step.Onset", "Subject", "PointChange"),
+                                              function(normalized_positions.plot)c(X.Position.mean=mean(normalized_positions.plot$X.Position, na.rm=T)))
+
+normalized_positions.means <- ddply(normalized_positions.means.subject, c("Polarity", "Time.Step.Onset", "PointChange"),
+                                    function(normalized_positions.means.subject)c(X.Position.mean=mean(normalized_positions.means.subject$X.Position, na.rm=T), X.Position.se=se(normalized_positions.means.subject$X.Position, na.rm=T)))
+
+ggplot(subset(normalized_positions.means, Polarity!='uncertain'), aes(x=Time.Step.Onset, y=X.Position.mean, color=Polarity, group=Polarity)) + 
+  geom_point(alpha=.6) + geom_line(alpha=.6) + theme_minimal()+ theme(legend.position = "none") +
+  ggtitle('Calibration Mean X-Position Onset at Change point') + geom_vline(aes(xintercept=0)) +  scale_colour_brewer(palette="Set1") +
+  geom_errorbar(aes(ymin=X.Position.mean-X.Position.se, ymax=X.Position.mean+X.Position.se), width=.1, alpha=.4) + facet_grid(~PointChange)
+
+ggsave('calibration_mean_XPosition_CP.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='R_scripts/graphs/calibration')
+
+
+
+
 
 
 #### LDA CLASSIFIER ####
