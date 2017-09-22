@@ -3,7 +3,7 @@
 
   "template": "simple",
   "title": "Informed Consent Form",
-  "text": "<p><strong>Description of the study:</strong></p><p>This is an experiment about English sentences. It will take about 5 minutes to complete, and you will be compensated by the amount indicated on Amazon MTurk.</p><p><strong>Risks, Benefits, and Confidentiality:</strong></p><p>There are no known risks and you will not receive any benefit for participating in the study. All of your responses will be held anonymously. Only the researchers involved in this study and those responsible for research oversight will have access to the information you provide. Your data and information will be completely confidential.</p><p><strong>Experimenter:</strong></p><p>If you have any questions or concerns about any aspect of the study, please contact Mora Maldonado, <a href=\"mailto:mora.maldonado@ens.fr\">mora.maldonado@ens.fr</a></p>",
+  "text": "<p><strong>Description of the study:</strong></p><p>This experiment will take about 5 minutes to complete, and you will be compensated by the amount indicated on Amazon MTurk.</p><p><strong>Risks, Benefits, and Confidentiality:</strong></p><p>There are no known risks and you will not receive any benefit for participating in the study. All of your responses will be held anonymously. Only the researchers involved in this study and those responsible for research oversight will have access to the information you provide. Your data and information will be completely confidential.</p><p><strong>Experimenter:</strong></p><p>If you have any questions or concerns about any aspect of the study, please contact Mora Maldonado, <a href=\"mailto:mora.maldonado@ens.fr\">mora.maldonado@ens.fr</a></p>",
   "input": "{checkbox}",
   "checkbox_id": "checkbox_id",
   "check_text": "I agree"
@@ -13,7 +13,7 @@
   {
     "template": "simple",
     "title": "Instructions",
-    "text": "<p><strong> Thanks for your participation! </strong></p> <p> In this experiment, you will see a long rectangle in the middle of the screen, which can be either red or blue. Your task is to press the button that has the same colour as the rectangle. </p> <p> At each time, you will have to click \"START\" in order to see the rectangle.</p> <p>Once you make this first click, please answer as fast as you can. If you take too much time to respond, an alert message will be displayed.</p><p><b><big>We ask you to use a computer mouse to perform the experiment (instead of a trackpad). </big></b></p>",
+    "text": "<p><strong> Thanks for your participation! </strong></p> <p> In this experiment, you will see a frame surrounding the screen, which can be either red or blue. Your task is to press the button that has the same colour as the frame. </p> <p> At each time, you will have to click \"START\" in order to see the coloured frame.</p> <p>Once you make this first click, please answer as fast as you can. If you take too much time to respond, an alert message will be displayed.</p><p><b><big>We ask you to use a computer mouse to perform the experiment (instead of a trackpad). </big></b></p>",
     "input": "{single_button}",
     "button_text": "Start practice"
   },
