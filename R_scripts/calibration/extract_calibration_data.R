@@ -10,7 +10,14 @@ data_calibration <- read.csv(file="data_R/calibration/Data.csv", header=TRUE, se
 data_calibration$Subject<- mapvalues(data_calibration$Subject, from = c(0:max(data_calibration$Subject)), to = c(1:length(info_calibration$Subject)))
 data_calibration$Item.number<- mapvalues(data_calibration$Item.number, from = c(0:93), to = c(1:94))
 
-## 3. EXCLUDING not natives (not for this calibration)
+## 3. EXCLUDING subjets who didn't use a mouse to perform the task 
+yes_mouse <- subset(info_calibration, grepl('mouse',info_calibration$Clicker, ignore.case=TRUE))
+
+info_calibration <- subset(info_calibration, (Subject %in% yes_mouse$Subject))
+data_calibration <- subset(data_calibration, (Subject %in% yes_mouse$Subject))
+
+
+
 #natives <- subset(info_calibration, grepl('en',info_calibration$Language, ignore.case=TRUE))
 #not_natives <- subset(info_calibration, !(Subject %in% natives$Subject))
 

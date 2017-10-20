@@ -1,11 +1,14 @@
+require(reshape)
 
 #Prepare the data
 auc.bins_change <- melt(auc.bins, id=c('bins'))
+auc.means <- aggregate(value~variable, data=auc.bins_change, mean)
+auc.means <- cast(auc.means, .~variable)
 auc.pvalues <- data.frame(matrix(ncol=length(levels(auc.bins_change$variable))-1, nrow = 2))
-colnames(auc.pvalues) <-  levels(auc.bins_change$variable)[2:15]
+
 row.names(auc.pvalues) <- c('pvalue', 'tvalue')
 len <- length(levels(auc.bins_change$variable))-1
-
+colnames(auc.pvalues) <-  levels(auc.bins_change$variable)[2:len]
 
 diff_mean <- function(y, tr, group1, group2) {
   mean(y[tr == group1]) - mean(y[tr == group2])
@@ -45,9 +48,11 @@ for (l in 1:len)
 rm(auc.bins_subset)
 
 require(xtable)
+
+
 xtable(auc.pvalues)
+xtable(auc.means)
 
-
-
+save(auc.pvalues, auc.means, file="AUC-calibration.RData")
 
 
