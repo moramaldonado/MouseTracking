@@ -115,22 +115,3 @@ ggplot(data=auc_power.2, aes(x=variable, y=mean, group=measure, colour=measure))
 
 
 
-
-
-
-## bootstrapping ####
-# bootstrapping complete set of data
-#results of AUC are stored in results$t
-results_xflips <- boot(data=negation_data_true, statistic=auc_roc, R=1000, score='X.flips', label= 'Polarity', n=FALSE)
-results_lda <- boot(data=negation_data_true, statistic=auc_roc, R=1000, score='lda_measure', label= 'Polarity', n=FALSE)
-results_lda_coords <- boot(data=negation_data_true, statistic=auc_roc, R=1000, score='lda_measure_coords', label= 'Polarity', n=FALSE)
-results_maxdeviation <- boot(data=negation_data_true, statistic=auc_roc, R=1000, score='MaxDeviation', label= 'Polarity', n=FALSE)
-
-
-#try to see if works
-hist(results_maxdeviation$t)
-abline(v=results_maxdeviation$t0, col='red')
-
-
-
-
