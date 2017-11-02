@@ -1,5 +1,5 @@
 library(MASS) # NB: this will mask dplyr::select
-
+require(car)
 #### PERFORMANCE ####
 
 #Plot each trajectory
@@ -238,48 +238,57 @@ dev.off()
 
 
 #### STATS ####
+
 mydata <- negation_data
 mydata$Expected_response <- factor(mydata$Expected_response)
+mydata$Polarity <- factor(mydata$Polarity)
+#mydata$Expected_response = factor(mydata$Expected_response,levels(mydata$Expected_response)[c(2,1)])
+#mydata$Polarity = factor(mydata$Polarity,levels(mydata$Polarity)[c(2,1)])
+
+
+contrasts(mydata$Expected_response) <- c(-0.5, 0.5)
+contrasts(mydata$Polarity) <- c(0.5, -0.5)
+
 mydata$Interaction<-factor(contrasts(mydata$Polarity)[mydata$Polarity]*
                              contrasts(mydata$Expected_response)[mydata$Expected_response]) 
+#Mean values
 
+xflips.means.subj <- ddply(mydata, c("Polarity", "Expected_response", "Subject"),
+                      function(mydata)c(mean=mean(mydata$X.flips, na.rm=T)))
+
+xflips.means <- ddply(xflips.means.subj, c("Polarity", "Expected_response"),
+                                            function(xflips.means.subj)c(mean=mean(xflips.means.subj$mean, na.rm=T), se = se(xflips.means.subj$mean)))
 
 ### LdaMeasure: Differences between conditions and truth values
-control_model.lda <- lmer(lda_measure ~ Polarity + Expected_response + Interaction  + (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE)
-#summary(control_model.lda)
+control_model.lda <- lmer(X.flips ~ Polarity*Expected_response + (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE)
+summary(control_model.lda)
+#Effect of Interaction
+m0.interaction.lda <- lmer(X.flips~ Polarity+Expected_response+ (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
+anova(control_model.lda, m0.interaction.lda)
+#Anova(control_model.lda, type=2)
+
+
+control_model.lda <- lmer(X.flips ~ Polarity + Expected_response + Interaction + (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE)
 
 #Main Effect: Polarity (Affirmative vs. Negative)
-m0.sentence.lda <- lmer(lda_measure ~ Expected_response + Interaction + (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
+m0.sentence.lda <- lmer(X.flips ~ Expected_response  +Interaction+ (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
 anova(control_model.lda, m0.sentence.lda)
 
 #Main Effect :Expected_response (True vs. False)
-m0.response.lda <- lmer(lda_measure ~ Polarity + Interaction + (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
+m0.response.lda <- lmer(X.flips ~ Polarity  + Interaction+ (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
 anova(control_model.lda, m0.response.lda)
 
-#Effect of Interaction
-m0.interaction.lda <- lmer(lda_measure~ Polarity+Expected_response+ (1+Polarity*Expected_response|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
-anova(control_model.lda, m0.interaction.lda)
-
-# Subseting data to true responses
-mydata.subset <- subset(mydata, Expected_response=='true')
-control_model.lda <- lmer(lda_measure ~ Polarity  + (1+Polarity|Subject), data = mydata.subset, REML=FALSE)
-null_model.lda <- lmer(lda_measure ~ 1  + (1+Polarity|Subject), data = mydata.subset, REML=FALSE)
-anova(control_model.lda, null_model.lda)
 
 
 
-### Second LDA only with coordinates ####
 
-control_model.lda <- lmer(lda_measure_coords ~ Polarity + Expected_response + Interaction  + (1+Polarity|Subject), data = mydata, REML=FALSE)
-m0.interaction.lda <- lmer(lda_measure_coords~ Polarity+Expected_response+ (1+Polarity|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
-m0.polarity.lda <- lmer(lda_measure_coords~ Polarity+Expected_response+ (1+Polarity|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
 
-anova(control_model.lda, m0.interaction.lda)
 
-# Subseting data to true responses
-control_model.lda <- lmer(lda_measure_coords ~ Polarity  + (1+Polarity|Subject), data = mydata.subset, REML=FALSE)
-null_model.lda <- lmer(lda_measure_coords ~ 1  + (1+Polarity|Subject), data = mydata.subset, REML=FALSE)
-anova(control_model.lda, null_model.lda)
+
+
+
+
+
 
 
 
@@ -339,61 +348,9 @@ auc_measures$accflips <- accflip.roc.te$auc
 
   
 
-
-
-
 # AUC for each measure - table for latex
 require(xtable)
 xtable(auc_measures)
-
-
-
-## Subsetting data ####
-n <- 10
-iterations <- 100
-pvalues.df <- data.frame(iteration=c(1:100), lda.full= c(1:100), lda.coords=c(1:100), logratio = c(1:100), maxdeviation=c(1:100))
-
-for (i in 1:iterations) {
-
-mydata <- subset(negation_data, Subject %in% sample(negation_data$Subject, n))
-#lda
-control_model.lda <- lmer(lda_measure ~ Polarity*Expected_response + (1|Subject), data = mydata, REML=FALSE)
-m0.interaction.lda <- lmer(lda_measure~ Polarity+Expected_response+ (1|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
-a <- anova(control_model.lda, m0.interaction.lda)
-pvalues.df[i,2] <- a$`Pr(>Chisq)`[2]
-
-#lda
-control_model.lda <- lmer(lda_measure_coords ~ Polarity*Expected_response + (1|Subject), data = mydata, REML=FALSE)
-m0.interaction.lda <- lmer(lda_measure_coords~ Polarity+Expected_response+ (1|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
-a <- anova(control_model.lda, m0.interaction.lda)
-pvalues.df[i,3] <- a$`Pr(>Chisq)`[2]
-
-
-# logratio
-control_model.ratio <- lmer(MaxLogRatio ~ Polarity*Expected_response + (1|Subject), data = mydata, REML=FALSE)
-m0.interaction.ratio <- lmer(MaxLogRatio~ Polarity+Expected_response+ (1|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
-a <- anova(control_model.ratio, m0.interaction.ratio)
-pvalues.df[i,4] <- a$`Pr(>Chisq)`[2]
-
-#maxdeviation
-control_model.maxdev <- lmer(MaxDeviation ~ Polarity*Expected_response + (1|Subject), data = mydata, REML=FALSE)
-m0.interaction.maxdev <- lmer(MaxDeviation~ Polarity+Expected_response+ (1|Subject), data = mydata, REML=FALSE) #the value of intercept is not exactly the same as the one in my aggregate function, why?
-a <- anova(control_model.maxdev, m0.interaction.maxdev)
-pvalues.df[i,5] <- a$`Pr(>Chisq)`[2]
-
-}
-
-
-pvalues.df <- melt(pvalues.df, id=c('iteration'))
-
-pvalues.df$measure <- pvalues.df$variable
-pvalues.df$variable <- NULL
-
-ggplot(pvalues.df, aes(x=iteration, y=value, color=measure)) + ylab('pvalue (polarity*truth)') +
-  geom_jitter(alpha=.5) + geom_hline(aes(yintercept=0.05)) + ggtitle('random sample 10 subjects 20 times') + 
-  scale_y_continuous(breaks=seq(0, 0.5, 0.02)) 
-
-ggplot(pvalues.df, aes(x=value, fill=measure))  + geom_histogram(position='dodge', bins = 15) + geom_vline(aes(xintercept=0.05)) + xlab('pvalue') +theme_minimal()
 
 
 

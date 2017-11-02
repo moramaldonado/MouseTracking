@@ -101,6 +101,10 @@ normalized_positions.plot$Polarity <- factor(normalized_positions.plot$Polarity 
 normalized_positions.plot$Acceleration <- as.numeric(normalized_positions.plot$Acceleration)
 normalized_positions.plot$LogRatio <- as.numeric(normalized_positions.plot$LogRatio)
 
+
+
+
+
 ## Take all X.Positions to the positive form
 normalized_positions.plot.false = normalized_positions.plot %>%
   filter(Expected_response=='false')%>%
