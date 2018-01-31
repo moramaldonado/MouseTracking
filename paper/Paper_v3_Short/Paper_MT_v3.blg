@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Paper_MT_v3.aux
+The style file: abbrvnat.bst
+Database file #1: biblio.bib
+Warning--can't use both author and editor fields in Tian2016
+Warning--empty journal in Wojnowicz2009
+You've used 25 entries,
+            2773 wiz_defined-function locations,
+            793 strings with 9690 characters,
+and the built_in function-call counts, 12706 in all, are:
+= -- 1189
+> -- 712
+< -- 18
++ -- 238
+- -- 213
+* -- 1089
+:= -- 1943
+add.period$ -- 94
+call.type$ -- 25
+change.case$ -- 144
+chr.to.int$ -- 25
+cite$ -- 52
+duplicate$ -- 542
+empty$ -- 1009
+format.name$ -- 262
+if$ -- 2660
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 28
+newline$ -- 151
+num.names$ -- 100
+pop$ -- 249
+preamble$ -- 1
+purify$ -- 121
+quote$ -- 0
+skip$ -- 424
+stack$ -- 0
+substring$ -- 602
+swap$ -- 53
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 260
+warning$ -- 2
+while$ -- 123
+width$ -- 0
+write$ -- 370
+(There were 2 warnings)

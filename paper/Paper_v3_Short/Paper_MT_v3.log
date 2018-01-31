@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.6.19)  31 JAN 2018 10:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.6.19)  31 JAN 2018 10:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1316,6 +1316,10 @@ e 521.
 (pdftex.def)             Requested size: 472.03123pt x 269.73265pt.
  [15 <./fig/negation-data-mean-trajectory.png>] [16 <./fig/OriginalLDA-negation
 .png> <./fig/CoordsLDA-negation.png> <./fig/auc_permutation_negation_1.png>]
+
+LaTeX Warning: Reference `fig:different.measures_negation' on page 1 undefined 
+on input line 537.
+
 <./fig/AUC_negation.png, id=366, 3011.25pt x 2266.4675pt>
 File: ./fig/AUC_negation.png Graphic file (type png)
 
@@ -1386,10 +1390,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 645.
  ) 
 Here is how much of TeX's memory you used:
- 20641 strings out of 492995
- 383761 string characters out of 6132704
+ 20642 strings out of 492995
+ 383799 string characters out of 6132704
  472358 words of memory out of 5000000
- 23706 multiletter control sequences out of 15000+600000
+ 23707 multiletter control sequences out of 15000+600000
  17521 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,60p,1177b,723s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1417,7 +1421,7 @@ ist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2017/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2017/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2017/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Paper_MT_v3.pdf (21 pages, 4669727 bytes).
+Output written on Paper_MT_v3.pdf (21 pages, 4669802 bytes).
 PDF statistics:
  516 PDF objects out of 1000 (max. 8388607)
  409 compressed objects within 5 object streams
