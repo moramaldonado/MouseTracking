@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Goals}{2}{subsection.1.1}
+\contentsline {section}{\numberline {2}Manipulating decision making: Validation Experiment}{3}{section.2}
+\contentsline {paragraph}{Participants}{3}{section*.3}
+\contentsline {paragraph}{Design}{3}{section*.4}
+\contentsline {paragraph}{Interface}{4}{section*.6}
+\contentsline {paragraph}{Data treatment}{4}{section*.7}
+\contentsline {subsection}{\numberline {2.1}Overall performance}{4}{subsection.2.1}
+\contentsline {section}{\numberline {3}Classifying decision processes with LDA}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}Description of LDA classifier}{4}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Classifier performance}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Meaningful features and optimal predictors}{6}{subsection.3.3}
+\contentsline {section}{\numberline {4}LDA \emph {versus} traditional mouse-tracking analyses}{7}{section.4}
+\contentsline {section}{\numberline {5}Extension to linguistic data}{10}{section.5}
+\contentsline {subsection}{\numberline {5.1}Experiment}{10}{subsection.5.1}
+\contentsline {paragraph}{Participants}{11}{section*.13}
+\contentsline {paragraph}{Design}{11}{section*.14}
+\contentsline {paragraph}{Interface and data treatment}{11}{section*.17}
+\contentsline {subsection}{\numberline {5.2}Results}{12}{subsection.5.2}
+\contentsline {paragraph}{Replicating Dale and Duran (2011)}{12}{section*.18}
+\contentsline {paragraph}{Classifier performance}{13}{section*.21}
+\contentsline {paragraph}{Measure comparison}{13}{section*.23}
+\contentsline {section}{\numberline {6}General Discussion}{16}{section.6}
+\contentsline {section}{\numberline {7}Supplementary materials}{17}{section.7}
