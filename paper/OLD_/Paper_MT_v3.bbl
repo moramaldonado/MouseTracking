@@ -1,0 +1,182 @@
+\begin{thebibliography}{25}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Baayen et~al.(2008)Baayen, Davidson, and Bates]{baayen2008mixed}
+R.~H. Baayen, D.~J. Davidson, and D.~M. Bates.
+\newblock Mixed-effects modeling with crossed random effects for subjects and
+  items.
+\newblock \emph{Journal of memory and language}, 59\penalty0 (4):\penalty0
+  390--412, 2008.
+
+\bibitem[Cranford and Moss(2017)]{cranford2017mouse}
+E.~A. Cranford and J.~Moss.
+\newblock Mouse-tracking evidence for parallel anticipatory option evaluation.
+\newblock \emph{Cognitive processing}, pages 1--24, 2017.
+
+\bibitem[Dale and Duran(2011)]{Dale2011}
+R.~Dale and N.~D. Duran.
+\newblock {The Cognitive Dynamics of Negated Sentence Verification}.
+\newblock \emph{Cognitive Science}, 35:\penalty0 983--996, 2011.
+\newblock ISSN 03640213.
+\newblock \doi{10.1111/j.1551-6709.2010.01164.x}.
+
+\bibitem[Farmer et~al.(2007)Farmer, Cargill, Hindy, Dale, and
+  Spivey]{Farmer2007}
+T.~a. Farmer, S.~a. Cargill, N.~C. Hindy, R.~Dale, and M.~J. Spivey.
+\newblock {Tracking the continuity of language comprehension: computer mouse
+  trajectories suggest parallel syntactic processing.}
+\newblock \emph{Cognitive science}, 31:\penalty0 889--909, 2007.
+\newblock ISSN 0364-0213.
+\newblock \doi{10.1080/03640210701530797}.
+
+\bibitem[Freeman and Ambady(2010)]{Freeman2010}
+J.~B. Freeman and N.~Ambady.
+\newblock {MouseTracker: software for studying real-time mental processing
+  using a computer mouse-tracking method.}
+\newblock \emph{Behavior research methods}, 42\penalty0 (1):\penalty0 226--241,
+  2010.
+\newblock ISSN 1554-351X.
+\newblock \doi{10.3758/BRM.42.1.226}.
+
+\bibitem[Freeman and Johnson(2016)]{freeman2016more}
+J.~B. Freeman and K.~L. Johnson.
+\newblock More than meets the eye: split-second social perception.
+\newblock \emph{Trends in cognitive sciences}, 20\penalty0 (5):\penalty0
+  362--374, 2016.
+
+\bibitem[Freeman et~al.(2011)Freeman, Dale, and Farmer]{Freeman2011}
+J.~B. Freeman, R.~Dale, and T.~A. Farmer.
+\newblock {Hand in motion reveals mind in motion}.
+\newblock \emph{Frontiers in Psychology}, 2\penalty0 (APR):\penalty0 1--6,
+  2011.
+\newblock ISSN 16641078.
+\newblock \doi{10.3389/fpsyg.2011.00059}.
+
+\bibitem[Hastie et~al.(2009)Hastie, Tibshirani, and Friedman]{Hastie}
+T.~Hastie, R.~Tibshirani, and J.~Friedman.
+\newblock \emph{The Elements of Statistical Learning: Data Mining, Inference
+  and Prediction}.
+\newblock Springer, New York, second edition edition, 2009.
+
+\bibitem[Hehman et~al.(2014)Hehman, Stolier, and Freeman]{Hehman2014}
+E.~Hehman, R.~M. Stolier, and J.~B. Freeman.
+\newblock {Advanced mouse-tracking analytic techniques for enhancing
+  psychological science}.
+\newblock \emph{Group Processes {\&} Intergroup Relations}, pages 1--18, 2014.
+\newblock ISSN 1368-4302.
+\newblock \doi{10.1177/1368430214538325}.
+
+\bibitem[Kaup et~al.(2007)Kaup, Yaxley, Madden, Zwaan, and
+  L{\"u}dtke]{kaup2007experiential}
+B.~Kaup, R.~H. Yaxley, C.~J. Madden, R.~A. Zwaan, and J.~L{\"u}dtke.
+\newblock Experiential simulations of negated text information.
+\newblock \emph{The Quarterly Journal of Experimental Psychology}, 60\penalty0
+  (7):\penalty0 976--990, 2007.
+
+\bibitem[L{\"u}dtke et~al.(2008)L{\"u}dtke, Friedrich, De~Filippis, and
+  Kaup]{ludtke2008event}
+J.~L{\"u}dtke, C.~K. Friedrich, M.~De~Filippis, and B.~Kaup.
+\newblock Event-related potential correlates of negation in a sentence--picture
+  verification paradigm.
+\newblock \emph{Journal of Cognitive Neuroscience}, 20\penalty0 (8):\penalty0
+  1355--1370, 2008.
+
+\bibitem[Nieuwland and Kuperberg(2008)]{nieuwland2008truth}
+M.~S. Nieuwland and G.~R. Kuperberg.
+\newblock When the truth is not too hard to handle: An event-related potential
+  study on the pragmatics of negation.
+\newblock \emph{Psychological Science}, 19\penalty0 (12):\penalty0 1213--1218,
+  2008.
+
+\bibitem[Sauerland et~al.(2015)Sauerland, Tamura, Koizumi, and
+  Tomlinson]{sauerland2015tracking}
+U.~Sauerland, A.~Tamura, M.~Koizumi, and J.~M. Tomlinson.
+\newblock Tracking down disjunction.
+\newblock In \emph{JSAI International Symposium on Artificial Intelligence},
+  pages 109--121. Springer, 2015.
+
+\bibitem[Song and Nakayama(2006)]{song2006role}
+J.-H. Song and K.~Nakayama.
+\newblock Role of focal attention on latencies and trajectories of visually
+  guided manual pointing.
+\newblock \emph{Journal of Vision}, 6\penalty0 (9):\penalty0 11, 2006.
+
+\bibitem[Song and Nakayama(2009)]{Song2009}
+J.~H. Song and K.~Nakayama.
+\newblock {Hidden cognitive states revealed in choice reaching tasks}.
+\newblock \emph{Trends in Cognitive Sciences}, 13\penalty0 (8):\penalty0
+  360--366, 2009.
+\newblock ISSN 13646613.
+\newblock \doi{10.1016/j.tics.2009.04.009}.
+
+\bibitem[Spivey and Dale(2006)]{spivey2006continuous}
+M.~J. Spivey and R.~Dale.
+\newblock Continuous dynamics in real-time cognition.
+\newblock \emph{Current Directions in Psychological Science}, 15\penalty0
+  (5):\penalty0 207--211, 2006.
+
+\bibitem[Spivey et~al.(2005)Spivey, Grosjean, and Knoblich]{Spivey2005}
+M.~J. Spivey, M.~Grosjean, and G.~Knoblich.
+\newblock {Continuous attraction toward phonological competitors.}
+\newblock \emph{Proceedings of the National Academy of Sciences of the United
+  States of America}, 102\penalty0 (29):\penalty0 10393--10398, 2005.
+\newblock ISSN 0027-8424.
+\newblock \doi{10.1073/pnas.0503903102}.
+
+\bibitem[Tian and Breheny(2016)]{Tian2016}
+Y.~Tian and R.~Breheny.
+\newblock \emph{Dynamic Pragmatic View of Negation Processing}, pages 21--43.
+\newblock Springer International Publishing, Cham, 2016.
+\newblock ISBN 978-3-319-17464-8.
+\newblock \doi{10.1007/978-3-319-17464-8_2}.
+\newblock URL \url{https://doi.org/10.1007/978-3-319-17464-8_2}.
+
+\bibitem[Tian et~al.(2010)Tian, Breheny, and Ferguson]{tian2010we}
+Y.~Tian, R.~Breheny, and H.~J. Ferguson.
+\newblock Why we simulate negated information: A dynamic pragmatic account.
+\newblock \emph{The Quarterly Journal of Experimental Psychology}, 63\penalty0
+  (12):\penalty0 2305--2312, 2010.
+
+\bibitem[Tomlinson et~al.(2013)Tomlinson, Bailey, and
+  Bott]{tomlinson2013possibly}
+J.~M. Tomlinson, T.~M. Bailey, and L.~Bott.
+\newblock Possibly all of that and then some: Scalar implicatures are
+  understood in two steps.
+\newblock \emph{Journal of memory and language}, 69\penalty0 (1):\penalty0
+  18--35, 2013.
+
+\bibitem[Wason(1965)]{wason1965contexts}
+P.~C. Wason.
+\newblock The contexts of plausible denial.
+\newblock \emph{Journal of verbal learning and verbal behavior}, 4\penalty0
+  (1):\penalty0 7--11, 1965.
+
+\bibitem[Wason and Johnson-Laird(1972)]{wason1972psychology}
+P.~C. Wason and P.~N. Johnson-Laird.
+\newblock \emph{Psychology of reasoning: Structure and content}, volume~86.
+\newblock Harvard University Press, 1972.
+
+\bibitem[Wojnowicz et~al.(2009)Wojnowicz, Ferguson, Spivey, Wojnowicz,
+  Ferguson, Dale, and Spivey]{Wojnowicz2009}
+M.~Wojnowicz, M.~J. Ferguson, M.~Spivey, M.~T. Wojnowicz, M.~J. Ferguson,
+  R.~Dale, and M.~J. Spivey.
+\newblock {The Self-Organization of Explicit Attitudes}.
+\newblock 20\penalty0 (July 2017):\penalty0 1428--1435, 2009.
+\newblock \doi{10.1111/j.1467-9280.2009.02448.x}.
+
+\bibitem[Xiao and Yamauchi(2014)]{xiao2014semantic}
+K.~Xiao and T.~Yamauchi.
+\newblock Semantic priming revealed by mouse movement trajectories.
+\newblock \emph{Consciousness and cognition}, 27:\penalty0 42--52, 2014.
+
+\bibitem[Xiao and Yamauchi(2017)]{xiao2017role}
+K.~Xiao and T.~Yamauchi.
+\newblock The role of attention in subliminal semantic processing: A mouse
+  tracking study.
+\newblock \emph{PloS one}, 12\penalty0 (6):\penalty0 e0178740, 2017.
+
+\end{thebibliography}

@@ -1,0 +1,642 @@
+\documentclass{article}
+%\documentclass{article}
+\usepackage[utf8]{inputenc}
+%\usepackage{fullpage}
+\usepackage[margin=25mm]{geometry}
+\renewcommand{\baselinestretch}{1.5} 
+%Examples
+\usepackage{linguex}
+
+%Tables
+\usepackage{multirow}
+\usepackage[table]{xcolor}
+\definecolor{blue}{HTML}{4E60F0}
+\usepackage{colortbl}
+
+%Math
+\usepackage{amssymb, stmaryrd}
+\usepackage[fleqn]{amsmath}
+
+%Graphics
+\usepackage{graphicx}
+\graphicspath{{./fig/}}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning}
+
+%Comments
+%MORA
+\newcommand{\changeMM}[2]{{\leavevmode\color{red}{\scriptsize\st{#1}}~\color{red}#2}}
+\newcommand{\nbMM}[1]{{\leavevmode\color{red}{\scriptsize#1}}}
+\newcommand{\addMM}[1]{{\leavevmode\color{red}#1}}
+
+%EWAN
+\newcommand{\changeED}[2]{{\leavevmode\color{blue}{\scriptsize\st{#1}}~\color{blue}#2}}
+\newcommand{\nbED}[1]{{\leavevmode\color{blue}{\scriptsize#1}}}
+\newcommand{\addED}[1]{{\leavevmode\color{blue}#1}}
+
+%EMMANUEL
+\newcommand{\changeEC}[2]{{\leavevmode\color{green}{\scriptsize\st{#1}}~\color{green}#2}}
+\newcommand{\nbEC}[1]{{\leavevmode\color{green}{\scriptsize#1}}}
+\newcommand{\addEC}[1]{{\leavevmode\color{green}#1}}
+
+
+%References and bibliography
+\usepackage{hyperref}
+\usepackage[noabbrev,capitalise,nameinlink]{cleveref}
+\hypersetup{colorlinks={true},linkcolor={blue},citecolor=magenta}
+%\usepackage{natbib}
+
+\usepackage[natbibapa]{apacite}
+\bibliographystyle{apacite}
+
+%Line numbers
+%\usepackage{lineno}
+%\linenumbers
+
+
+
+
+\title{Mouse tracking as a window into decision making}
+\author{Mora Maldonado, Ewan Dunbar \& Emmanuel Chemla}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Mouse-tracking has become a popular method to investigate the dynamics of different cognitive processes. In this paper, we test the connection between decision making and action: how are decision processes reflected in mouse trajectories? 
+We address this question by identifying the features in mouse-trajectories corresponding to decision shift. 
+In a first \emph{validation} experiment, we \emph{manipulate} whether our stimuli trigger a flip in decision.
+The data from this experiment is used to fed a \emph{Linear Discriminant Analysis}, trained to classify trajectories depending on the underlying decision.
+To assess how well this LDA classifies more complex decision processes, we apply it to data obtained from a replication of Dale and Duran's experiment on negation processing \citep{Dale2011}.  
+The performance of our LDA-based measure suggests that verifying negative sentences involves a decision shift, adding new evidence to support the hypothesis that processing negated sentences involves a two-step derivation, where the meaning of the positive sentence is initially computed.  
+\end{abstract}
+
+
+Word count: 4981 (without captions, footnotes, abstract.)
+
+\section{Introduction}
+
+In the past ten years, mouse-tracking has become a popular method to target the processes underlying decision making in different domains, ranging from phonetic competition \citep{Spivey2005,cranford2017mouse}, and syntactic, semantic and pragmatic processing \citep[among others]{Farmer2007, Dale2011, tomlinson2013possibly,xiao2014semantic,sauerland2015tracking,xiao2017role}, to social cognition \citep{Freeman2010,Freeman2011,freeman2016more}.
+%
+All these studies have worked from the assumption that motor responses are prepared in parallel to cognitive processing and performed in a cascade manner \citep{song2006role,Song2009,Freeman2010,spivey2006continuous,Hehman2014}.
+%
+As a result, features of mouse trajectories ought to be reflections of  decision processes, revealing their dynamics with fine-grained temporal resolution. 
+%
+Mouse-tracking studies typically present participants with a \emph{two-alternative forced choice}, where they have to make a choice using the options appearing in the top left or right corner of the screen. Whenever a decision involves two independent processes---such as a change of mind---mouse trajectories are expected to be displayed as two movements, whereas a single smooth and graded movement would reflect a commitment with an initial choice (see \Cref{fig:scheme.traj}, \citealp{Wojnowicz2009}).
+%
+Of course, one could still imagine other types of decision, such as a single but late commitment, or a decision made after uncertainty or doubt. These might have a different reflection on mouse trajectories.
+
+Intuitions about how decision processes should be mapped onto mouse paths have allowed researchers to draw conclusions about the cognitive processes underlying their experimental manipulations. Dale and Duran's (\citeyear{Dale2011}) approach to negation processing is an example of this.   
+Linguistic negation has been traditionally understood as an operator that reverses sentence truth conditions, inducing an extra ``step,'' or mental operation,'' in online processing (\citealp{wason1965contexts,wason1972psychology}; see review in \citealp{Tian2016}). %
+To test the dynamics of negation integration, Dale and Duran tracked mouse trajectories as participants performed a truth-value judgment task, where they had to verify the truth of general statements such as \textit{Cars have (no) wings}.
+%
+The authors found that mouse trajectories presented more shifts towards the alternative response when evaluating negative than affirmative true sentences. This was interpreted as evidence for a `two-step' processing of negation, where truth conditions for the positive content are first derived and negated only as a second step.% 
+%
+\footnote{Several studies have suggested that the positive argument plays an important role in negation processing \citep[among others]{kaup2007experiential,ludtke2008event}.  
+This pattern of results, however, depends on the amount of contextual support given for the sentence: `two-step' negation processing seems to occur specifically for sentences presented out-of-the-blue, whereas no difference between negative and positive sentences arises when the right contextual support is provided \citep{nieuwland2008truth,tian2010we}. How to explain this pattern of results has been at the center of the debate in the negation processing literature (see \citealp{Tian2016} for review). We will not explore this here.}
+
+The impact of experimental manipulations on the shape of trajectories has been taken as evidence for underlying decision patterns. This association, however, has never been explicitly tested. While no one can deny that mouse trajectories are sensitive to experimental manipulations, it is unclear whether this can be directly interpreted as reflecting decision making. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{trajectories.jpeg}
+\caption{Shape of trajectories underlying distinct decision processes. One single cognitive process is expected to be mapped onto one smooth movement (blue line), whereas a change of mind would be reflected by two movements (red line). Intermediate cases are represented in gray.} \label{fig:scheme.traj}
+\end{figure}
+
+Our main goal is to test the connection between cognition (decision making) and action (mouse trajectories): Are decision processes always reflected in mouse trajectories? If yes, how are they reflected? 
+One could imagine a situation where two different trajectory shapes do not correspond to two different decision mechanisms, but to a single one (due to uncertainty, noise, etc.). Differences in trajectories can therefore underlie something other than decision shift. 
+
+We will address these questions by identifying the features in mouse-trajectories corresponding to two different types of decisions: \emph{straightforward} decisions (that is, single commitment) and \emph{switched} decisions (that is, a change of mind)\footnote{Data and code for the analyses developed here are provided in \url{https://github.com/moramaldonado/negationMT/tree/master/paper/R}.}. 
+
+First, we present a \emph{validation} experiment where
+%, instead of taking mouse trajectories as indicators of cognitive processes, 
+we \emph{manipulate} whether or not our stimuli trigger a flip in decision (\Cref{section:validation}). 
+The data from this validation experiment (that is, two groups of `quasi-decisions') is then fed to a \emph{Linear Discriminant Analysis} (henceforth, LDA), trained to classify trajectories depending on the underlying decision (\Cref{section:LDA}). 
+After comparing the performance of the LDA classifier to other traditionally used mouse-tracking measures (\Cref{section:other-mt}), 
+the LDA classifier will be further tested with new data, obtained from a replication of Dale and Duran's (\citeyear{Dale2011}) experiment on negation processing (\Cref{section:replication}). If there is a change of decision triggered by negation, trajectories corresponding to negative trials should be classified together with trajectories underlying changes of decision in the validation experiment. 
+
+
+\section{Manipulating decision making: Validation Experiment}
+\label{section:validation}
+
+We developed an experiment where participants had to perform a \emph{two-alternative forced choice} task: at each trial, they were presented with a colored frame surrounding the screen and they had to determinate whether the frame was blue or red. 
+Responses were made by clicking on the ``blue" or ``red" buttons, allowing the recording of mouse-movements during each trial. Responses were considered accurate if they described the color at the moment of the click. 
+To mirror decision processing, we manipulated whether the color of the frame remained stable, or whether it changed at some point during the trial. 
+While, in the first case, the initial choice will be the correct response (\textit{straightforward} trials), in the second case, participants were forced to change their answer (\textit{switched} trials), mimicking a change of decision. Since we are only \emph{mirroring} decision making, we refer to these decision processes as \emph{`quasi-decisions.'}   
+The procedure is illustrated in \Cref{fig:procedure.example}. 
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.5]{procedure.pdf}
+\caption{\textbf{Procedure in Validation Experiment.} Subjects were instructed to click the `Start' button in order to see the colored frame. Response boxes were on the top-left or top-right. Depending on the trial condition, the frame color either did, or did not, change (once) during the trial.} \label{fig:procedure.example}
+\end{figure}
+
+\paragraph{Participants} We recruited 54 participants (F=27) using Amazon Mechanical Turk. Two subjects were excluded from the analyses because they did not use a mouse to perform the experiment. All of them were compensated with 0.5 USD for their participation, which required approximately 5 minutes. 
+
+\paragraph{Design}
+Each trial instantiated one of two possible \textsc{Decision pattern}s. In \textit{straightforward} trials, the frame color remained stable, and the decision made at the beginning of the trial did not need to be revised. In \textit{switched} trials, the color switched once (from red to blue or from blue to red) during the trial, forcing a revision of the initial choice. 
+The \textsc{point of change} on \textit{switched} trials was determined by the participant's position on the \textit{y} axis. The point of change varied (early, middle, late). 
+The \textsc{Frame color} at the response point was also controlled: it could be red (right button) or blue (left button).    
+The design is given in \Cref{tab:design.validation}. 
+
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{c|cc|c}
+\textsc{Decision Pattern}&\multicolumn{2}{c|}{\textsc{Frame color}}&\textsc{Point of change}\\
+\hline
+\multirow{2}{*}{Straightforward} & \multicolumn{2}{c|}{Blue} & -- \\
+& \multicolumn{2}{c|}{Red} & -- \\
+\hline
+\multirow{2}{*}{Switched} &Blue & Red & early (y=.4), middle (y=.7), late (y=.9) \\
+ &  Red &  Blue & early (y=.4), middle (y=.7), late (y=.9) \\
+\hline
+\end{tabular}
+\caption{Design in Validation Experiment}
+\label{tab:design.validation}
+\end{table}
+
+To prevent participants from developing a strategy whereby they simply left the cursor along the center line rather than moving the mouse toward the current correct answer, the proportion of trials was adjusted so that straightforward trials were the majority (32 repetitions per frame color), while switched trials had only 4 repetitions per frame color and change point. The total number of trials was 88.  
+
+\paragraph{Interface}
+The interface was programmed using JavaScript. Mouse movements triggered the extraction of $x,y$-pixel coordinates (there was thus no constant sample rate).
+% The coordinates were proportional to the window of the participant's browser, forming a rectangle. 
+%(height at 100 percent; width at 120 percent of the height). 
+Three buttons were displayed during the experiment (`start' and response buttons). The `start' button was placed at the bottom center of the screen. The two response boxes were located at the top left (`blue') and top right (`red') corners of window. This location was constant across participants.  
+On each trial, mouse movements were recorded between start-clicks and response-clicks. The $x,y$-pixel trajectory was saved together with its raw time. The positions were normalized according to participants' window size, to allow comparisons between subjects. The normalization was done by considering the start button to be the [0,0] point, the `blue' button corner  [-1,1] and the `red' button  [1,1]. 
+
+\paragraph{Data treatment}
+Mouse-tracking data are particularly variable trial to trial. Variations in response times imply different numbers of \textit{x,y} positions per trial, making the comparisons between items difficult. Moreover, in our design, positions are extracted based on mouse movements, and devices with different sensibility can influence the number of samples taken during the trial. To compare mouse trajectories, we normalized the time course into 101 proportional time steps (percentage of trial duration). 
+
+\paragraph{Overall performance}
+Inaccurate responses (4\% of the data) were removed from the analyses. 
+Mean trajectories for each \textsc{decision pattern} and \textsc{point of change} are illustrated in \Cref{fig:mean.trajectories.calibration}. 
+%Temporal information about changes in the $x$ coordinate is provided in the appendix (Figure X). 
+These trajectories suggest that participants made a decision as soon as they were presented with the color frame, and revised this decision if needed. When they were forced to change their choice, this switch was reflected in mouse trajectories. 
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{calibration_mean_trajectory_pointchang.png}
+\caption{\textbf{Mean trajectories for each `quasi-decision' in the validation experiment.}}\label{fig:mean.trajectories.calibration}
+\end{figure}
+
+\section{Classifying decision processes with LDA}
+\label{section:LDA}
+Different `quasi-decisions' (that is, \textsc{Decision pattern}s) have a different impact on mouse trajectories (\Cref{fig:mean.trajectories.calibration}). To identify the features characteristic of each class (\textit{switched} vs. \textit{straightforward}), we use a Linear Discriminant Analysis method for classification. 
+
+\paragraph{Description of LDA classifier}
+The LDA is a linear classifier for continuous multi-dimensional data. It assumes that different classes have a common covariance, and finds a linear function of the predictors that maps each observation to a position on the line running between the two classes that maximizes their separability. Zero represents the midpoint between the two classes. This linear combination of predictors can be used to form a decision rule for the classification.
+ 
+The two classes here were \emph{switched} and \emph{straightforward}, and the multi-dimensional data were the trajectories. The dimensions were: (a) all the \textit{x,y} coordinates, plus (b) the Euclidean-distance based velocity, plus (c)  the Euclidean-distance based acceleration (both of which are non-linear with respect to the original $x,y$ coordinates). The coordinates provide absolute spatiotemporal information about where the cursor was at what point, and velocity and acceleration provide information about how  it arrived there.
+To avoid collinearity (which causes problems for LDA), we applied a Principle Component Analysis (PCA) to identify the 13 principal components on these predictors, and fitted and applied the LDA to these principal components.
+We thus obtained an \emph{LDA measure} for each trial, the single number giving the position of the trial on the LDA classification axis.
+The procedure is schematized in \Cref{fig:diagram}.
+
+\begin{figure}
+
+\begin{tikzpicture}[
+squarednode/.style={rectangle, draw=gray!60, fill=gray!5, very thick, minimum size=5mm},
+squarednode2/.style={rectangle, draw=red!60, fill=red!5, very thick, minimum size=5mm},
+]
+
+%Nodes
+\node[squarednode]      (pca)                              {\begin{tabular}{c} \textbf{13 Principal Components} \\ (PCA: Maximize variance)\end{tabular}};
+\node[squarednode]        (pred)       [left=of pca] {\begin{tabular}{c} \textbf{Predictors} \\ $x,y$ coordinates \\ Euclidean-speed \\ Euclidean-acceleration \end{tabular}};
+  \node[squarednode]      (lda)       [below= 1cm of pca] {\textbf{Fitting LDA}\\\textbf{coefficients (training)}};
+  \node[squarednode2]        (ldameasure)       [below=1cm of lda] {\begin{tabular}{c} \textbf{LDA Measure (test)}\\ Projection of the PCs on the \\ axis that maximize the separability  \end{tabular}};
+ 
+%Lines
+\draw[->] (pred.east) -- (pca.west);
+\draw[->] (pca.south) -- (lda.north);
+\draw[->] (lda.south) -- (ldameasure.north);
+\draw[->] (pca.south)  -- (lda.north);
+
+
+
+
+\end{tikzpicture}
+\caption{Diagram of classification procedure.}\label{fig:diagram}
+\end{figure}
+
+\paragraph{Performance of the LDA classifier}
+\Cref{DIST:LDA} illustrates the result of applying the procedure in \Cref{fig:diagram} to the trajectories. 
+To evaluate the overall performance of the classifier, we calculated the area under the ROC curve (AUC), a standard method for evaluating classifiers \citep{Hastie}. Intuitively, the AUC gives the degree to which the histograms resulting from the classifier's continuous output (for example, \Cref{DIST:LDA}) are non-overlapping in the correct direction (in this case, \textit{switched} more systematically in the positive direction on the classification axis than \textit{straightforward}). 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=.8\textwidth]{lda_distribution_calibration.png}
+\caption{\textbf{Distribution and mean LDA-based measure for each class.} Classifier performance when applied to the whole validation data set.} \label{DIST:LDA}
+\end{figure}
+
+To properly evaluate the classifier's performance at separating trials following the distribution in the experiments, the AUC measure was cross-validated. That is, calibration data were partitioned into 10 bins that kept the proportion of \textit{straightforward} and \textit{switched} trajectories constant (75/25 proportion). For each bin, we took the complementary set of data (the remaining 90\%) to train the classifier. The data contained in the bin were used as test set to diagnose the classifier performance. We thus obtained one AUC score for each of the ten test bins. The performance of the LDA classifier was compared to a \emph{baseline}, equivalent to the worst possible outcome, and a \emph{topline}, which was what we would expect from the classifier under the best possible conditions. 
+For the baseline, we used a random classifier that assigned labels by sampling from a beta distribution centered at the probability of straightforward trials; the topline was computed by testing and training the original LDA classifier with the same set of data. 
+The mean AUC values for the LDA, the baseline and the topline in each bin are given in \Cref{DIST:AUC}a. 
+
+To assess whether the performance of the LDA classifier was statistically different from baseline (or topline) performance, we tested the groups of ten scores on how likely it would be to obtain the attested differences in scores under the null hypothesis that the LDA classifier performance was the same as  baseline (or topline) performance.   
+The difference in the mean AUC between each of these two pairs of classifiers was calculated as a test statistic. The sampling distribution under the null hypothesis was estimated by randomly shuffling the labels indicating which classifier the score came from.
+
+In \Cref{table:comparisons.permutation.1}a, we report the results of performing a one-tailed test on the mean AUC differences. As expected, our original LDA is significantly better than a random classifier at categorizing trajectories into \emph{straightforward} and \emph{switched.} Conversely, there is no significant difference between the performance of our LDA and the topline; the classifier's performance is not significantly different from the best an LDA could possibly give on the data. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{auc_calibration_1.png}
+\caption{\textbf{Mean Area Under the ROC Curve values obtained from cross-validation.} A. Cross-validation on 10 bins for original LDA, baseline and topline. B. Comparison with values obtained for five additional classifiers obtained by subsetting the original set of predictors.} \label{DIST:AUC}
+\end{figure}
+
+
+\begin{table}[h]
+\centering
+{\footnotesize
+\begin{tabular}{p{1.5cm}>{\columncolor[gray]{0.8}}p{1.5cm}cc|p{1cm}cccc}
+
+ \multicolumn{2}{c}{ } &  \multicolumn{2}{c}{(a)} & \multicolumn{4}{c}{(b)}\\
+\hline
+& \centering \textsc{Original LDA}& \multirow{2}{1.1cm}{\centering \textsc{Baseline}} & \multirow{2}{1.1cm}{\textsc{Topline}} &\multicolumn{5}{c}{\textsc{LDA with different predictors}}\\
+\cline{5-9}
+& \centering (coords, speed, acc) &  & & \centering coords, vel & vel, acc & coords & vel & acc \\[0.5cm]
+
+\hline
+\centering \textbf{AUC (mean)} & \centering .87& .52 & .87 &\centering .87 & .83 & .87 & .82 & .67 \\[0.5cm]
+%& .88 & .84  \\[0.5cm]
+\hline
+\centering \textbf{Mean \\ Difference} & \centering -- & .35 & -.002 &\centering -.0004 &  .04 & -.006 & .04 & .2 \\[0.5cm]
+
+%& -.006 & .05   \\[0.5cm]
+
+\hline
+\centering \textbf{$p$ value} & \centering  --  &  $<$.001 & 0.58 & \centering .5 & $<$.001 & .68 & $<$.001 & $<$.001 \\
+%& .72 & $<$.001 \\
+\hline
+\end{tabular}}
+\caption{Cross-validation results for the LDA classifier. The performance of the LDA was compared to the one of (a) baseline and topline classifiers and (b) LDA classifiers with different predictors.}
+\label{table:comparisons.permutation.1}
+\end{table}
+
+\paragraph{Meaningful features and optimal predictors}
+Our original LDA classifier takes as predictors both absolute and relative spatio-temporal features (coordinates, speed, and acceleration).
+Some of these features, however, might not be relevant for the classification. 
+By comparing classifiers trained with different predictors, we gather information about which features of mouse trajectories are most relevant to decision processes. 
+
+We trained five additional LDA classifiers obtained by subsetting the three original LDA predictors. If both absolute and relative features are required to predict the decision type, we would expect our ``full'' original LDA classifier to be better than any other classifier that takes only a subset of these original predictors. 
+The performance of these additional classifiers was diagnosed in the same way as before, by computing the AUC for each of the 10 test bins. \Cref{DIST:AUC}b illustrates the mean AUC values for each of these classifiers, together with the original LDA, the baseline and the topline. 
+Pairwise comparisons with the original LDA were done by testing whether the observed mean differences would be expected under the null hypothesis of no difference in performance between classifiers. \Cref{table:comparisons.permutation.1}b summarises the comparisons between each of these classifiers and our original LDA. 	
+
+The original LDA does not significantly differ from other LDA classifiers that contain the coordinates among their predictors, suggesting that the distinction between \emph{straightforward} and \emph{switched} `quasi-decisions' might be solely explained by the information contained in the $x,y$ coordinates. 
+Conversely, the original LDA is significantly better than classifiers that use only speed and acceleration as predictors. These comparisons therefore reveal that, for classifying our validation data, absolute spatio-temporal features ($x,y$ coordinates) are generally better predictors than relative features (speed and acceleration). That is, it seems to be more relevant to know where the mouse pointer was at a given time than to know how it got there. 
+
+We caution that effects of true decisions, rather than the simulated quasi-decisions tested here, may indeed have an impact on speed and acceleration. It has been suggested that speed and acceleration components can capture the level of commitment towards the response, such that a change of decision (\textit{swiched} trajectories) might have associated with it a specific speed/acceleration pattern \citep{Hehman2014}. This is not visible, however, in our data.
+
+
+\section{LDA \emph{versus} traditional mouse-tracking analyses}
+\label{section:other-mt}
+The LDA classifier derives a solution to separating two kinds of mouse trajectories that is in a certain sense optimal. Previous studies have used alternative techniques to analyze mouse trajectories. In what follows, we  compare the performance of our LDA to other measures commonly used in mouse tracking studies. We focus on measures that assess the spatial disorder in trajectories, typically taken to be indicative of unpredictability and complexity in response dynamics \citep{Hehman2014}.
+
+Two of the most commonly used methods of mouse tracking \textbf{spatial analysis} are the \textit{Area under the trajectory} and the \textit{Maximal deviation} (henceforth, AUT and MD respectively) (see \citealp{Freeman2010})
+The AUT is the geometric area between the observed trajectory and an idealized straight-line trajectory drawn from the start to the end points, whereas the MD is the point that maximizes the perpendicular distance between this ideal trajectory and the observed path
+(\Cref{fig:traditional-measures}). For both measures, higher values are associated with higher trajectory deviation towards the alternative; values close to or below zero suggest a trajectory close to ideal. 
+Another frequently used measure  counts the number of times a trajectory crosses the $x-$axis (horizontal flips, \citealp{Dale2011}, as illustrated in \Cref{fig:traditional-measures}).
+
+
+
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{AUC.pdf}
+\caption{Area Under the Trajectory}
+\end{subfigure}
+%
+\begin{subfigure}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{MD.pdf}
+\caption{Maximal Deviation}
+\end{subfigure}
+%
+\begin{subfigure}[b]{0.3\textwidth}
+\includegraphics[width=\textwidth]{MaxRatio.jpeg}
+\caption{Maximal Log Ratio}
+\end{subfigure}
+\vspace{.5cm}
+
+\begin{subfigure}[b]{0.45\textwidth}
+\caption{X-coordinate Flips}
+\centering
+\(\sum H[(x_{t} - x_{t-1})(x_{t-1} - x_{t-2})] \)
+\end{subfigure}
+%
+\begin{subfigure}[b]{0.45\textwidth}
+\caption{Acceleration flips}
+\centering
+\((\sum H[( a_{t} - a_{t-1})( a_{t-1} - a_{t-2})])-1 \)
+
+\end{subfigure}
+
+\caption{Description of commonly used mouse-tracking measures.}
+\label{fig:traditional-measures}
+
+\end{figure}
+
+
+
+While all these measures aim to evaluate the degree of complexity of the path, they may fail to distinguish paths straight to the correct answer from `two-step' (deviation to the alternative) and from `uncertain' (centered on the middle of the screen) trajectories.%
+%
+\footnote{A late medium-size deviation towards the alternative might underlie a two-step decision, whereas an early, but large, deviation towards the alternative might very well be considered noise. Measures such as the AUT might not be able to make a distinction between these.} 
+To assess more directly whether mouse trajectories have a meaningful deviation towards the alternative, the distance to both target and alternative responses should be taken into account. 
+For instance, the \textit{ratio of the target distance to the alternative distance} can be calculated for each $x,y$ position. While ratio values closer to one suggest a position near the middle, higher values indicate a deviation towards the alternative response. 
+
+AUT, MD, x-coordinate flips, and the point that maximizes the log distance ratio (Maximal Log Ratio, henceforth) were calculated for the validation data. 
+Following Dale and Duran (\citeyear{Dale2011}, and other studies on error corrections), we also analyzed the \emph{acceleration component} (AC) as a function of the number of changes in acceleration.
+% \addMM{(NB: This is not the same as computing the number of times the acceleration changes direction, going from positive to negative acceleration, as D\&D claim)}. 
+Since stronger competition between alternative responses is typically translated into steeper acceleration peaks, changes in acceleration can be interpreted as decision points \citep{Hehman2014}.   
+\Cref{fig:different.measures.validation} illustrates the distribution and mean values for each `quasi-decision'.
+%Following the procedure in Dale and Duran (2011), trajectory velocity and acceleration were computed using the distance (in pixels) covered per second over a moving window of six $x,y$ pixel coordinates. The number of acceleration flips were calculated on this smoothed acceleration. 
+
+The same cross-validation procedure described in the previous section was used to diagnose the performance of each of these measures.\footnote{Note that these measures do not need training; we simply applied the measure to the same ten test subsets as before.} The mean AUC values for each of these measures are illustrated in \Cref{DIST:AUC2}. \Cref{table:comparisons.permutation.2} summarizes the result of comparing the LDA performance to each of the alternative measures. 
+
+
+
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{AUC_calibration.png}
+\caption{Area Under the Trajectory}
+\end{subfigure}
+%
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{MD_calibration.png}
+\caption{Maximal Deviation}
+\end{subfigure}
+
+%
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{MaxRatio_calibration.png}
+\caption{Maximal LogRatio}
+\end{subfigure}
+%
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{Xflips_calibration.png}
+\caption{X-coordinates Flips}
+\end{subfigure}
+
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{AC_calibration.png}
+\caption{Acceleration Component}
+\end{subfigure}
+
+\caption{Distribution and means obtained from applying different mouse-tracking measures to validation data.}
+\label{fig:different.measures.validation}
+
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{auc_calibration_2.png}
+\caption{\textbf{Mean Area Under the ROC Curve values obtained from cross-validation.} A. Cross-validation on 10 bins for original LDA, baseline and topline. B. Comparison with values obtained for other commonly used mouse-tracking measures.} \label{DIST:AUC}
+\label{DIST:AUC2}
+\end{figure}
+
+\begin{table}[h]
+\centering
+{\small
+\begin{tabular}{p{1.5cm}>{\columncolor[gray]{0.8}}p{1.5cm}cp{1.4cm}p{1.7cm}p{1.6cm}c}
+& \centering \textsc{Original LDA}& \textsc{AUT} & \centering \textsc{MD} & \centering\textsc{Maximal LogRatio} & \centering\textsc{X-Coord. Flips} & \textsc{AC} \\
+
+\hline
+\centering \textbf{AUC (mean)} & \centering .87 & .62 &  \centering .81 &  \centering.81 & \centering.73 & .53 \\[0.5cm]
+\hline 
+\centering \textbf{Mean \\ Difference} & \centering--& .24 & \centering .06 &  \centering.06  & \centering .14 & .34  \\[0.5cm]
+\hline
+\centering \textbf{$p$ value} &\centering -- & \centering$<$.001&\centering $<$.001&\centering$<$.001&\centering$<$.001&$<$.001\\
+\hline
+\end{tabular}}
+\caption{Cross-validation results for the LDA classifier. The performance of  LDA was compared to each of five commonly used measures in mouse-tracking studies.}
+\label{table:comparisons.permutation.2}
+\end{table}
+Overall, these comparisons reveal that the LDA trained on the quasi-decision data is significantly better at classifying this type of data than other commonly used measures. The difference with the classifier is in all the cases significant. Mean AUC values suggest that MD and the Maximal Log Ratio are better at distinguishing decision processes than the other alternative measures. These two measures are the only ones calculated based on coordinates, and therefore give more importance to spatiotemporal information than the others. In other words, both the MD and the Maximal Log Ratio give different weight to positions depending on the moment when they occurred, and therefore are more sensitive to the moment at which deviation occurred. This information seems to be essential for the classification, as observed in \Cref{section:LDA}. 
+
+Finally, we previously observed that velocity and acceleration were not good predictors for the LDA classifier. Indeed, the performance of the Acceleration Component overlaps here with that of the Baseline, suggesting that this type of information is not helpful.
+
+\paragraph{}
+We have shown that (i) a rough manipulation of decision making processes has a direct impact on mouse trajectories; (ii) an LDA using absolute-temporal information is enough to accurately distinguish these quasi-decisions; and (iii) this LDA does a better classification than other traditional mouse-tracking measures. Can our LDA can classify more complex decision processes, such as the ones involved in sentence verification tasks? 
+
+
+\section{Extension to linguistic data}
+\label{section:replication}
+How well does our LDA, trained on “quasi-decisions”, classify new trajectories, which underly cognitive processes that might or not correspond to different decision patterns? To address this question, we test our classifier on data obtained from a replication of Dale and Duran's (\citeyear{Dale2011}) experiment.   
+ 
+Dale and Duran (\citeyear{Dale2011}) found differences in the processing of true positive and negative sentences when people performed a truth-value judgment task. These results were interpreted as indicating that negation gives rise to an abrupt shift in cognitive dynamics (an unconscious change of decision). If this is indeed the case, we would expect mouse trajectories corresponding to the verification of negative sentences to pattern with \emph{switched} trajectories from the validation experiment. This pattern of results would provide additional support to the hypothesis that, at least in out-of-the-blue contexts, processing negation does involve two steps, in which the positive value is initially derived and negated only as a second step.\footnote{We reiterate that, since the training set is only an approximation of what should happen during an unconscious change of decision, we expect some aspects of the decision processes on sentence-verification data not to be captured by the LDA.}
+
+\subsection{Experiment}
+Participants had to perform a truth-value judgment task, in which they had to decide whether a sentence (for example, \textit{Cars have wheels}) is true or false, based on common world knowledge. Each sentence could either be a negate form or a non-negated form, and could either be a true or a false statement.
+Unlike Dale and Duran's experiment, the complete statement was presented in the middle of the screen after participants pressed ``start'' (that is, no self-paced reading). The response buttons appeared at the top-left or right corners of the screen, as in our validation experiment.  
+Materials and design are exemplified in \Cref{table:exampleDD}. 
+
+\paragraph{Participants}
+53 English native speakers were tested using Amazon Mechanical Turk. They were rewarded for their participation (1 USD). The experiment lasted approximately 10 minutes. 
+
+\paragraph{Design}
+The experimental design consisted of two fully crossed factors: \textsc{Truth value} (true, false) and \textsc{Polarity} (negative, positive). We had a total of 4 conditions, and each participant saw 4 instances of each condition (16 sentences). 
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{trial_example2.png}
+\caption{Illustration of a trial in the replication of Dale \& Duran}
+\end{figure}
+
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ccc}
+Truth value & Polarity & Example \\
+\hline
+\multirow{2}{*}{True} & Positive & Cars have wheels.\\ 
+ & Negative & Cars have no wings.\\ 
+\hline
+\multirow{2}{*}{False} & Positive & Cars have wings.\\ 
+ & Negative & Cars have no wheels.\\
+\end{tabular}
+\caption{Design of Dale and Duran's replication.} \label{table:exampleDD}
+\end{table}
+
+
+\paragraph{Interface and data treatment}
+The interface and data treatment were the same as those used in the validation experiment. The time course of mouse trajectories was normalized into 101 time steps.
+
+\subsection{Results and discussion}
+\paragraph{Replicating Dale and Duran (2011)}
+All participants responded correctly more than 75\% of the time. No participant was discarded based on accuracy.  Only accurate trials were analyzed. \Cref{fig:mean.trajectory-negation} illustrates mean trajectories for the four conditions.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{negation-data-mean-trajectory.png}
+\caption{Mean trajectories for accurate trials} \label{fig:mean.trajectory-negation}
+\end{figure}
+
+To assess whether we replicate Dale and Duran's results, we calculated the $x$-coordinate flips (see \Cref{section:other-mt}) and analyzed them with a linear mixed-effects model, taking \textsc{Truth}, \textsc{Polarity} and their interaction as predictors. We included random intercepts per subject and a random slope with the interaction of both factors. $P$-values were obtained by comparing the omnibus model to a reduced model where the relevant factor was removed. This is the analysis done by Dale and Duran. 
+Unlike Dale and Duran, we did not perform statistical analyses based on the acceleration component, since this quantitative measure was unable to distinguish mouse trajectories underlying different `quasi-decisions' in the validation experiment.
+
+%Unlike Dale and Duran, we did not perform statistical analyses based on the acceleration component. In our validation experiment, this quantitative measure was unable to distinguish mouse trajectories underlying different `quasi-decisions'. The origin of this inadequacy is hard to determinate: it could be a property of the kind of decisions were are manipulating, or just a consequence of noisy data. We reasoned if the different decision processes involved in a rather simple task were not captured by the acceleration component, this measure might also be unable to classify more complex processes, such as the ones at play in a sentence verification task. 
+
+The model for x-coordinate flips revealed a main effect of \textsc{Polarity}, such that negation increased the number of flips by an estimated 0.76 ($\chi^{2}=10.11; p=.0014$), and a significant interaction \textsc{Truth} $\times$ \textsc{Polarity} ($\chi^{2}=22.7; p<.001$), such that the difference between negative and positive sentences is bigger for the true than for the false statements. There was no significant effect of \textsc{Truth} ($\chi^{2}<1; p=.5$). 
+\Cref{table:negationresults} summarizes our and of Dale and Duran's results. 
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{ccc}
+Condition & $x$-flips &  $x$-flips in D\&D \\
+\hline
+T/no negation & 2.22 & 1.13 \\
+T/negation & 3.67 & 1.71 \\
+F/no negation & 2.82 & 1.24 \\
+F/negation & 2.9 & 1.34 \\
+Estimate Polarity & .76 & 0.35 \\
+Estimate Truth & .07 & 0.13 \\
+Estimate Truth$\times$Polarity & 1.35 & 0.47\\
+\end{tabular}
+\caption{Mean and effect estimates for Dale \& Duran original expeirment and our replication.}
+\label{table:negationresults}
+\end{center}
+\end{table}%
+
+We seem to replicate Dale and Duran's findings: verifying true negated sentences produces less straightforward trajectories than true positive sentences. The values obtained in the two experiments are slightly different; our results present a higher range of values (see \Cref{table:negationresults}). 
+In our experiments, the mouse position was not sampled at a fixed rate, creating additional noise which could be responsible for the range difference. 
+
+%Our findings therefore pattern with a broader set of psycholinguistic studies, which, using different techniques, have revealed that the positive argument plays a role in negation processing: verifying negative sentences might involve computing the positive content at an early processing stage \citep{Tian2016}. 
+
+\paragraph{Classifier performance}
+Two different LDA classifiers, trained with data from the validation experiment, were applied to the new experimental data. The first classifier was our original LDA, which had as predictors $x,y$ coordinates as well as distance-based velocity and acceleration. The second LDA had only $x,y$ coordinates as predictors. Validation results (see \Cref{section:LDA}) suggest that the simpler model, which only relies on absolute information, might be sufficient to classify the two basic kinds of decision-making processes. That is to say, the simple model might fit the data as well as a more complex model, and be interpreted more straightforwardly. 
+
+The relevant difference in processing between positive and negative sentences is expected to arise specifically for \emph{true} statements. Consequently, we analyze the performance of both classifiers when applied to true trials. \Cref{fig:lda_negation} illustrates the distribution and means of the resulting \textit{LDA measure}. 
+
+
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{OriginalLDA-negation.png}
+\caption{LDA (coordinates, speed, and acceleration) }
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{CoordsLDA-negation.png}
+\caption{LDA only with coordinates}
+\end{subfigure}
+\caption{\textbf{Two LDA classifiers applied to \textit{true} trials (negative vs. affirmative).}  }
+\label{fig:lda_negation}
+\end{figure}
+
+To assess how well these classifiers separate positive from negative trials, we bootstrapped 1000 new samples from the original set of data and calculated the area under the ROC curve for the classification of each one. 
+To estimate the classification power, we evaluated the performance after reducing the sample size. \Cref{fig:permutation_AUC_negation}A shows the mean AUC values obtained after applying the same procedure at different sample sizes. 
+Note that these values are generally lower that the ones obtained in the validation experiment. This is not surprising, given that the classifier is being trained and tested with different sets of data, which may target different cognitive processes. 
+
+Might the observed performance be expected if negative and positive trials were actually not different from each other? Are these AUC values significantly different from the ones one would have obtained from applying the LDA to a set of data where there is no difference between experimental conditions (that is, \emph{null hypothesis})? We calculated the AUC values for a set of data where experimental labels (positive, negative) were scrambled. The distribution of AUC values under this  null hypothesis was compared to the performance observed for the original set of data. \Cref{fig:permutation_AUC_negation}B illustrates the separability of the two classifications for each sample size.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{auc_permutation_negation_1.png}
+\caption{\textbf{Performance of LDA classifiers.} A. Mean AUC values over bootstrapped data (iterations=1000) for different sample sizes;  B. Difference of classifier performance when applied to scrambled vs. original set of data.}
+\label{fig:permutation_AUC_negation}
+\end{figure}
+
+The LDA classifier trained with ``quasi-decisions'' seems to make a relevant distinction between experimental conditions. This finding suggests that the contrast between negative and positive trials has something in common with the contrast in the validation experiment. The fact that negation has similar properties to quasi ``switched-decisions'' indicates that verifying negative sentences might underlie a change of decision, as proposed by Dale \& Duran (\citeyear{Dale2011}), among others.  
+However, while mouse trajectories corresponding to negative and to switched trials do share basic properties, they seem to differ on how they are placed on the ``change of decision'' spectrum: they occupy different parts of the quasi-decision-based LDA continuum (compare \Cref{DIST:LDA} and \Cref{fig:lda_negation}). This is not surprising, given that we are dealing with different cognitive processes---quasi-decisions versus sentence-verification.
+
+Finally, while the classifiers' comparison in \Cref{DIST:AUC} indicated that \emph{relative} spatiotemporal features, such as acceleration and speed, were not essential for the classification of quasi-decisions, these features do seem to play a role in the classification of sentence-verification data. Indeed, \Cref{fig:permutation_AUC_negation} reveals that the \emph{full} classifier---which takes all features as predictors---makes a better separation between the two experimental conditions than the simplified one.   
+
+\paragraph{Other mouse-tracking measures}
+Does the difference in performance between the LDA and other mouse-tracking measures remain when these are applied to the new experimental data?
+%In the validation experiment, the performance of the LDA classifier was shown to be significantly better than the one of other mouse-tracking measures. Does this difference remain when these measures are applied to the new experimental data (and hence to slightly different decision processes)? 
+%While it's true the LDA trained on validation data can make a distinction between negative and positive trials, it might not be the \emph{best} possible strategy for classification. 
+\Cref{fig:different.measures_negation} illustrates the distribution of each measure.
+The question of whether different measures differ on their ability to find the separate the experimental conditions was addressed by applying the same procedure as before: we calculated the mean area under the ROC curve for different sample sizes (see \Cref{fig:permutation_AUC_negation_measures}A), and contrasted these values against a null hypothesis of no difference between experimental conditions (see \Cref{fig:permutation_AUC_negation_measures}B).%\footnote{The ranking based on power does not correspond exactly to the one based on the AUC mean values: how good is each measure at detecting the effect is not necessarily equivalent to its absolute performance.} 
+%% I DON'T UNDERSTAND THAT COMMENT -ed
+
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{AUC_negation.png}
+\caption{Area Under the Trajectory}
+\end{subfigure}
+%
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{MD_negation.png}
+\caption{Maximal Deviation}
+\end{subfigure}
+
+%
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{MaxRatio_negation.png}
+\caption{Maximal Log Ratio}
+\end{subfigure}
+%
+\begin{subfigure}[b]{0.4\textwidth}
+\includegraphics[width=\textwidth]{Xflips_negation.png}
+\caption{X-coordinate flips}
+\end{subfigure}
+
+\caption{\textbf{Distribution and means of negative and positive \emph{true} trials obtained from applying different mouse-tracking measures to negation data.}}
+\label{fig:different.measures_negation}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{auc_permutation_negation_2.png}
+\caption{\textbf{Performance of other mouse-tracking measures.} A. Mean AUC values over bootstrapped data (iterations=1000) for different sample sizes;  B. Difference of measure performance when applied to scrambled vs. original set of data.}
+
+\label{fig:permutation_AUC_negation_measures}
+\end{figure}
+
+The results in \Cref{fig:permutation_AUC_negation_measures}A suggest that most measures perform less well here than on the validation data (cf. \Cref{DIST:AUC2}). 
+Since a decrease in performance is attested across the board and not only for the classifiers trained with validation data, this difference must be driven by properties of the new data set. The sentence-verification data might be more variable, such that both negative and positive trials may underlie instances of different decision processes. 
+
+The LDA classifier seems here to be roughly as powerful as other traditional mouse-tracking measures, such as the Maximal Deviation and the Maximal Log Ratio. In contrast with the validation results, this opens the possibility of using any of these alternative measures to analyze mouse-tracking data from sentence verification tasks. The classifier is still a better choice from a conceptual point of view, as it does not make any specific assumptions about how the change of decision should be reflected by mouse trajectories beyond the observed.
+
+\paragraph{Baseline}
+A linear classifier trained on ``quasi-decisions,'' can separate the two experimental conditions of the replication of a previous study by Dale \& Duran's. We have interpreted this result as suggesting that the key features being extracted reflect two different decision processes. It could instead be argued that the classification is not based on properties related to decision processes, but on some other feature of mouse paths which happen to be partially shared between conditions in both experiments. 
+For example, the LDA might  be sensitive not to decision shift but to differences in cognitive cost, something both experiments might have in common.
+
+
+\begin{figure}
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{TrajectoriesBaseline.png}
+\caption{Mean Trajectories}\label{fig:baseline-traj}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{lda_distribution_baseline.png}
+\caption{Mean and distribution of LDA-based measure}\label{fig:baseline-lda}
+\end{subfigure}
+\caption{Analyses performed on Baseline data set (early vs. late decision). }
+\end{figure}
+
+To disentangle these possibilities, we asked how the classifier trained on the quasi-decisions classifies trajectories that have different shapes but ought not to be related to differing decision processes.
+We  constructed a \emph{baseline} set of data, which contained only positive trials from the replication of the experiment by Dale and Duran. The trials were classified as to whether their response time was above or below the subject mean. We reasoned that shorter response times would correspond to early commitment towards the response, whereas longer response times would reflect a late commitment. As illustrated by in \Cref{fig:baseline-traj}, the two classes in the baseline data have slightly different trajectory shapes. Importantly, however, nothing about this split implies that these shapes correspond to a change of decision. Thus, the classifier trained on straightforward versus switched trials was expected to perform poorly.
+
+The distribution of the LDA measure after testing the classifier on the new data set is shown in \Cref{fig:baseline-lda}. The performance was evaluated following the same procedure applied above (see blue line in \Cref{fig:permutation_AUC_negation_measures}). 
+
+The classification on \emph{early} versus \emph{late} categories is less accurate than the one performed to separate negative and positive trials.
+Differences in trajectories that are not due to the experimental manipulation are poorly captured by the LDA measure: even trajectories that  have look similar to \emph{switched} and \emph{negation} trials are not taken to be underlying a change of decision. 
+Thus, despite the differences between the quasi-decisions in the validation experiment and the experimental condition in the replication experiment, the similarities appear to be more than accidental.
+
+\section{Conclusion/General discussion}
+
+We aimed to investigate the connection between action and cognition by testing one of  specific instances: the mapping of decision making processes onto mouse movements.
+%Our findings make three main contributions.
+
+First, by manipulating whether a stimulus triggered, or did not, trigger a change of decision, we have shown directly, for the first time, that mouse trajectories reflect basic decision processing: when participants were forced to change their answer, this switch had a systematic impact on hand movements (\Cref{section:validation}). 
+
+Second, we trained a classifier on the mouse trajectories underlying these ``quasi-decisions'' to predict whether or not a given trial involved a decision shift. 
+It accurately classifies not only paths corresponding to other quasi-decisions, but also mouse trajectories underlying more complex decision processes, such as sentence verification. The performance of this classifier is no words than the best of the other commonly used mouse-tracking measures (Maximal Deviation), and it has the unique advantage of not relying on any a priori assumption about what change-of-decision trajectories should look like.% Indeed, we demonstrated that the LDA classifier is not just sensitive to superficial similarity between trajectories, but to the underlying cognitive processes.
+
+Finally, our results also contribute to research on the processing of linguistic negation. Besides replicating a previous experiment, the classification performance of our LDA-based measure suggests that verifying negative sentences involves a decision shift, adding new evidence to support the hypothesis that processing negated sentences---at least in out-of-the-blue contexts---involves a two-step derivation, where the meaning of the positive sentence is initially computed.  
+
+%
+%To conclude, we should mention that the differences in the LDA performance across the two experiments can be well understood by noticing that two data sets capture slightly different decision processes. In order to capture more subtle contrasts in decision making, the training data should contain more variation. Further research will explore this possibility. 
+    
+    
+\bibliography{biblio}
+
+\end{document}

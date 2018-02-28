@@ -1,0 +1,58 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Paper_MT_SHORT.aux
+The style file: apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: biblio.bib
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+Warning--No journal in Wojnowicz2009
+You've used 24 entries,
+            6951 wiz_defined-function locations,
+            1447 strings with 15371 characters,
+and the built_in function-call counts, 48384 in all, are:
+= -- 5996
+> -- 432
+< -- 2279
++ -- 2457
+- -- 48
+* -- 3173
+:= -- 8709
+add.period$ -- 100
+call.type$ -- 24
+change.case$ -- 410
+chr.to.int$ -- 0
+cite$ -- 49
+duplicate$ -- 1383
+empty$ -- 1862
+format.name$ -- 740
+if$ -- 9183
+int.to.chr$ -- 0
+int.to.str$ -- 72
+missing$ -- 0
+newline$ -- 647
+num.names$ -- 194
+pop$ -- 727
+preamble$ -- 1
+purify$ -- 96
+quote$ -- 0
+skip$ -- 3081
+stack$ -- 0
+substring$ -- 2704
+swap$ -- 825
+text.length$ -- 62
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 2048
+warning$ -- 1
+while$ -- 247
+width$ -- 0
+write$ -- 833
+(There was 1 warning)

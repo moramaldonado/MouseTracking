@@ -123,6 +123,9 @@ negation_data$Subject <- factor(negation_data$Subject)
 negation_data$Response <- factor(negation_data$Response)
 negation_data$Polarity <- factor(negation_data$Polarity)
 negation_data <- dplyr::full_join(lda_measure.new.df, negation_data, by=c("Subject", "Item.number", "Polarity", "Response"))
+negation_data_positions$Subject <- factor(negation_data_positions$Subject)
+negation_data_positions <- dplyr::full_join(lda_measure.new.df, negation_data_positions, by=c("Subject", "Item.number", "Polarity"))
+
 
 ### Coords only LDA
 load('LDA-Coords.RData')
@@ -137,6 +140,8 @@ lda_measure.new.df <- data_frame(
   Polarity = normalized_positions.new_pca$Polarity, 
   Response = normalized_positions.new_pca$Response)
 negation_data <- dplyr::full_join(lda_measure.new.df, negation_data, by=c("Subject", "Item.number", "Polarity", "Response"))
+negation_data_positions <- dplyr::full_join(lda_measure.new.df, negation_data_positions, by=c("Subject", "Item.number", "Polarity"))
+
 
 ### Figures: mean and distribution 
 Palette1 <- c("#DB172A", "#1470A5")
@@ -149,6 +154,7 @@ ggsave('CoordsLDA-negation.png', plot = last_plot(), scale = 1, dpi = 300, path=
 
 
 
+save(negation_data, negation_data_positions, file = "negation_data_processed.RData")
 
 
 ## OTHER MT MEASURES ####
