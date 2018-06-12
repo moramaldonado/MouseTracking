@@ -14,8 +14,8 @@ y <- paste0('y', sprintf("%03d", c(1:101)))
 
 ## SUBJECT and TRIAL EXCLUSION ####
 ###  Excluding not natives English speakers
-natives <- subset(info_negation, grepl('en',info_negation$Language, ignore.case=TRUE))
-not_natives <- subset(info_negation, !(Subject %in% natives$Subject))
+natives <- subset(negation_info, grepl('en',negation_info$Language, ignore.case=TRUE))
+not_natives <- subset(negation_info, !(Subject %in% natives$Subject))
 negation_info<- subset(negation_info, !(Subject %in% not_natives$Subject))
 negation_data <- subset(negation_data, !(Subject %in% not_natives$Subject))
 negation_data_positions <- subset(negation_data_positions, !(Subject %in% not_natives$Subject))
@@ -146,6 +146,7 @@ negation_data_positions <- dplyr::full_join(lda_measure.new.df, negation_data_po
 ### Figures: mean and distribution 
 Palette1 <- c("#DB172A", "#1470A5")
 negation_data_true <- filter(negation_data, Response=='true')
+
 plot_measure(negation_data_true, "lda_measure", "Polarity")
 ggsave('OriginalLDA-negation.png', plot = last_plot(), scale = 1, dpi = 300, path='paper/R/fig', width = 7, height = 5)
 
@@ -216,14 +217,14 @@ density <-ggplot(negation_data.true_aff, aes(x=lda_measure, fill=Class, color=Cl
   scale_colour_manual(values=palette_baseline) +  scale_fill_manual(values=palette_baseline) +
   theme_minimal() + theme(legend.position = "none")
 
-density <- density + theme(axis.title.x=element_blank(),
-                           axis.text.x=element_blank(),
-                           axis.ticks.x=element_blank(),
-                           axis.line.x = element_blank(),
-                           legend.text = element_text(size = 14), 
-                           legend.title = element_text(size = 14), 
-                           axis.title = element_text(size = 13), 
-                           axis.text = element_text(size = 13)) + theme(plot.margin = unit(c(0, 0, 0, 0), "cm"))
+density <- density + theme_minimal() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+                                             panel.background = element_blank(), 
+                                             axis.title.x=element_blank(),
+                                             axis.text.x=element_blank(),
+                                             legend.text = element_text(size = 14), 
+                                             legend.title = element_text(size = 14), 
+                                             axis.title = element_text(size = 13), 
+                                             axis.text = element_text(size = 13)) + border() + theme(plot.margin = unit(c(0.3, 0, 0.3, 0.3), "cm"))
 
 sp <- ggbarplot(mydata.agreggated.overall, y = "LDA", x = "Class", ylab= FALSE, 
                 color = "Class", palette = palette_baseline, fill="Class",
@@ -236,7 +237,8 @@ sp <- sp + theme(axis.title.y=element_blank(),
         legend.title = element_text(size = 14), 
         axis.title = element_text(size = 13), 
         axis.text = element_text(size = 13), 
-        plot.margin = unit(c(0, 0, 0, 0), "cm"))
+        plot.margin = unit(c(0, 0.3, 0.3, 0.3), "cm"))
+        
 
 ggarrange(density, sp, 
           ncol = 1, nrow = 2,  align = "v", 
@@ -249,9 +251,6 @@ ggsave('LDA-baseline.png', plot = last_plot(), scale = 1, dpi = 300, path='paper
 
 
 ## CROSS-VALIDATION ####
-#Include null hypothesis (labels shuffled in Random column)
-negation_data_true <- random.within(negation_data_true, "Polarity")
-negation_data.true_aff <- random.within(negation_data.true_aff, "Class")
 
 #Data frame
 ns <- c(10,15,20,25,30,35,40,FALSE)
@@ -299,15 +298,18 @@ auc_baseline <- data.frame (
   measure = 'baseline')
 permutation_baseline <- data.frame (N10=0, N15=0, N20=0, N25=0, N30=0, N35=0, N40=0,TOTAL = 0, measure = 'permutation_baseline')
 
-auc_baseline <- data.frame (
-  N10 = c(1:1000),N15 = c(1:1000),N20 = c(1:1000),N25 = c(1:1000),
-  N30 = c(1:1000), N35 = c(1:1000), N40 = c(1:1000), TOTAL = c(1:1000),
-  measure = 'baseline')
-permutation_baseline <- data.frame (N10=0, N15=0, N20=0, N25=0, N30=0, N35=0, N40=0,TOTAL = 0, measure = 'permutation_baseline')
+
 
 
 #LDA: cross validation
+
+#Other MT measures and baseline
+
 for (i in 1:length(ns)) { 
+  
+  #Include null hypothesis (labels shuffled in Random column)
+  negation_data_true <- random.within(negation_data_true, "Polarity")
+  negation_data.true_aff <- random.within(negation_data.true_aff, "Class")
   
   results_lda <- boot(data=negation_data_true, statistic=auc_roc, R=1000, score='lda_measure', label= 'Polarity', n=ns[i])
   results_lda.random <- boot(data=negation_data_true, statistic=auc_roc, R=1000, score='lda_measure', label= 'Random', n=ns[i])
@@ -323,11 +325,8 @@ for (i in 1:length(ns)) {
   permutation_lda_coords[i]<- roc.te$auc 
   auc_lda_coords[i]<- results_lda_coords$t
   
-}
-
-#Other MT measures and baseline
-
-for (i in 1:length(ns)) { 
+  
+  
   #XFlips
   results_xflips <- boot(data=negation_data_true, statistic=auc_roc, R=1000, score='X.flips', label= 'Polarity', n=ns[i])
   results_xflips.random <- boot(data=negation_data_true, statistic=auc_roc, R=1000, score='X.flips', label= 'Random', n=ns[i])
@@ -416,8 +415,6 @@ auc_means <- subset(auc_means, measure!='AccFlips')
 permutations$measure <- factor(permutations$measure)
 auc_means$measure <- factor(auc_means$measure)
 
-auc_means$measure = factor(auc_means$measure,levels(auc_means$measure)[c(1,4,3,5,2,6,7)])
-
 auc_means$point <- if_else(auc_means$measure=='Original LDA' | auc_means$measure=='Coords LDA', 'big','small')
 permutations$point <- if_else(permutations$measure=='Original LDA' | permutations$measure=='Coords LDA', 'big','small')
 
@@ -456,6 +453,8 @@ ggarrange(p1, p2,
 ggsave('auc_permutation_negation_1.png', plot = last_plot(), scale = 1, dpi = 300,width = 14, height=8, path='paper/R/fig')
 
 
+auc_means$measure = factor(auc_means$measure,levels(auc_means$measure)[c(1,4,3,5,2,6,7)])
+
 p3 <- ggplot(data=auc_means, aes(x=variable, y=mean, group=measure, colour=measure)) +
   geom_line(aes(linetype=point), # Line type depends on cond
             size = 1) +
@@ -469,6 +468,8 @@ p3 <- ggplot(data=auc_means, aes(x=variable, y=mean, group=measure, colour=measu
         legend.title = element_text(size = 14), 
         axis.title = element_text(size = 13), 
         axis.text = element_text(size = 13))
+
+
 
 p4 <- ggplot(data=permutations, aes(x=variable, y=value, group=measure, colour=measure)) +
   geom_line(aes(linetype=point), # Line type depends on cond
@@ -489,7 +490,7 @@ p3 <- p3 + guides(linetype=FALSE)
 
 ggarrange(p3, p4, 
           ncol = 2, nrow = 1,  align = "hv", 
-          widths = c(1, 1), heights = c(1,1), common.legend = TRUE, labels = c("A", "B"), legend='right')
+          widths = c(1, 1), heights = c(1,1), labels = c("A", "B"))
 
 ggsave('auc_permutation_negation_2.png', plot = last_plot(), scale = 1, dpi = 300,width = 14, height=8, path='paper/R/fig')
 

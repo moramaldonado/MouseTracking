@@ -55,7 +55,7 @@ ggplot(calibration_data_positions_overall.means, aes(x=X.Position.mean, y=Y.Posi
                       breaks=c("0", "0.4", "0.7", "0.9"),
                       labels=c("Straight", "Early (y=0.4)", "Middle (y=0.7)", "Late (y=0.9)")) +
   theme(legend.position='right')
-ggsave('mean-trajectories-validation.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 5,  path='paper/Paper_v1/fig')
+ggsave('mean-trajectories-validation.png', plot = last_plot(), scale = 1, dpi = 300, width = 6, height = 5,  path='paper/R/fig')
 
 ## LDA FOR CLASSIFICATION ####
 
@@ -71,24 +71,24 @@ Palette1 <- c("#1470A5", "#DB172A")
 ### Figure: Mean and distribution of LDA measure
 
 plot_measure(calibration_data, 'lda_measure_full', 'Decision')
-ggsave('lda_distribution_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 7, path='paper/Paper_v3_Short/fig')
+ggsave('lda_distribution_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 7, path='paper/R/fig')
 
 ## OTHER MOUSE TRACKING MEASURES: Distribution and means ####
 ### Max Deviation 
 plot_measure(calibration_data, 'MaxDeviation', 'Decision')
-ggsave('MD_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/Paper_v3_Short/fig')
+ggsave('MD_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/R/fig')
 ### MaxLogRatio 
 plot_measure(calibration_data, 'MaxLogRatio', 'Decision')
-ggsave('MaxRatio_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/Paper_v3_Short/fig')
+ggsave('MaxRatio_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/R/fig')
 ### AUC 
 plot_measure(calibration_data, 'AUC', 'Decision')
-ggsave('AUC_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/Paper_v3_Short/fig')
+ggsave('AUC_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/R/fig')
 #### X-coordinate flips
 plot_measure(calibration_data, 'X.flips', 'Decision')
-ggsave('Xflips_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/Paper_v3_Short/fig')
+ggsave('Xflips_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/R/fig')
 ### Acceleration component
 plot_measure(calibration_data, 'Acc.flips', 'Decision')
-ggsave('AC_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/Paper_v3_Short/fig')
+ggsave('AC_calibration.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/R/fig')
 
 
 # CLASSIFIER PERFORMANCE ####
@@ -363,7 +363,7 @@ ggarrange(p1, p2,
           widths = c(0.5, 1), heights = c(1,1), common.legend = FALSE, labels = c("A", "B"))
 
 # Figure 6
-ggsave('auc_calibration_1.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/Paper_v1/fig')
+ggsave('auc_calibration_1.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/R/fig')
 
 
 p3 <- ggplot(data=subset(auc.bins_change, variable %in% c("Original LDA", "Maximal LogRatio", "X-coordinate flips","Maximal Deviation", "AccFlips", "Topline" , "Baseline", "Area Under Trajectory")), aes(x=bins, y=value, group=variable, colour=variable)) +
@@ -388,7 +388,7 @@ ggarrange(p1, p3,
           widths = c(0.5, 1), heights = c(1,1), common.legend = FALSE, labels = c("A", "B"))
 
 #Figure 9
-ggsave('auc_calibration_2.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/Paper_v1/fig')
+ggsave('auc_calibration_2.png', plot = last_plot(), scale = 1, dpi = 300,width = 10, path='paper/R/fig')
 
 
 
