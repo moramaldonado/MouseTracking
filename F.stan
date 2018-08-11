@@ -7,7 +7,7 @@ int<lower=1, upper=J> subj[N];
 int<lower=1, upper=K> item[N];
 }
 parameters {
-  vector[1] beta; //agregar otro nivel del vector para el slope
+  vector[1] beta;
   vector[J] u;
   vector[K] w;
   real<lower=0> sigma_e;
@@ -16,8 +16,8 @@ parameters {
   }
 model {
 real mu;
-u ~ normal(0, sigma_u); // subj random effects
-w ~ normal(0, sigma_w); // items random effects
+u ~ normal(0, sigma_u);
+w ~ normal(0, sigma_w);
 for (i in 1:N){
     mu = beta[1] + u[subj[i]] + w[item[i]];
     lda[i] ~ normal(mu, sigma_e);}

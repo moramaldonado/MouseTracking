@@ -4,9 +4,9 @@
 
 ## DATA EXTRACTION ####
 getwd()
-negation_info <- read.csv(file="data_R/negation_info.csv", header=TRUE, sep=",")
-negation_data <- read.csv(file="data_R/negation_data_simple.csv", header=TRUE, sep=",")
-negation_data_positions <- read.csv(file="data_R/negation_data_positions.csv", header=TRUE, sep=",")
+negation_info <- read.csv(file="data_R/negation_data/negation_info.csv", header=TRUE, sep=",")
+negation_data <- read.csv(file="data_R/negation_data/negation_data_simple.csv", header=TRUE, sep=",")
+negation_data_positions <- read.csv(file="data_R/negation_data/negation_data_positions.csv", header=TRUE, sep=",")
 
 x <- paste0('x', sprintf("%03d", c(1:101)))
 y <- paste0('y', sprintf("%03d", c(1:101)))
@@ -493,4 +493,7 @@ ggarrange(p3, p4,
           widths = c(1, 1), heights = c(1,1), labels = c("A", "B"))
 
 ggsave('auc_permutation_negation_2.png', plot = last_plot(), scale = 1, dpi = 300,width = 14, height=8, path='paper/R/fig')
+
+
+
 
