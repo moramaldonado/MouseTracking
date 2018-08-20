@@ -66,6 +66,8 @@ save(m_pca, v_lda, b_lda, n_pca, all_data_columns, file="LDA-Full.RData")
 calibration_data <- dplyr::full_join(lda_measure.df, calibration_data, by=c("Subject", "Item.number", "Expected_response"))
 calibration_data_positions <- dplyr::full_join(lda_measure.df, calibration_data_positions, by=c("Subject", "Item.number", "Expected_response"))
 
+save(calibration_data, calibration_data_positions, file="vvvvalidation.RData")
+
 Palette1 <- c("#1470A5", "#DB172A")
 
 ### Figure: Mean and distribution of LDA measure
