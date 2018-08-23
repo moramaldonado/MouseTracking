@@ -23,7 +23,7 @@ mydata.true$Adjective <- factor(mydata.true$Adjective)
 
 #contrast coding -1/1 for predictor Polarity
 mydata.true$Polarity <- factor(mydata.true$Polarity)
-mydata.true$predictor <- ifelse(mydata.true$Polarity=='P', 1, -1)
+mydata.true$predictor <- ifelse(mydata.true$Polarity=='P', 0, 1)
 
 
 # log-transform the maximal deviation
@@ -31,20 +31,24 @@ mydata.true$LogMaxDeviation <- log(mydata.true$MaxDeviation)
 
 
 par(mfrow=c(2,2))
+hist(subset(mydata.true, predictor==0)$LogMaxDeviation)
 hist(subset(mydata.true, predictor==1)$LogMaxDeviation)
-hist(subset(mydata.true, predictor==-1)$LogMaxDeviation)
+hist(subset(mydata.true, predictor==0)$lda_measure)
 hist(subset(mydata.true, predictor==1)$lda_measure)
-hist(subset(mydata.true, predictor==-1)$lda_measure)
 
 # scale both measures with z-score
 mydata.true$LogMaxDeviation.scale <-  scale(mydata.true$LogMaxDeviation, center=TRUE, scale=TRUE)
 mydata.true$lda_measure.scale <-  scale(mydata.true$lda_measure, center=TRUE, scale=TRUE)
 
 par(mfrow=c(2,2))
+hist(subset(mydata.true, predictor==0)$LogMaxDeviation.scale) 
+abline(v=mean(subset(mydata.true, predictor==0)$LogMaxDeviation.scale),col="red")
 hist(subset(mydata.true, predictor==1)$LogMaxDeviation.scale)
-hist(subset(mydata.true, predictor==-1)$LogMaxDeviation.scale)
+abline(v=mean(subset(mydata.true, predictor==1)$LogMaxDeviation.scale),col="red")
+hist(subset(mydata.true, predictor==0)$lda_measure.scale)
+abline(v=mean(subset(mydata.true, predictor==0)$lda_measure.scale),col="red")
 hist(subset(mydata.true, predictor==1)$lda_measure.scale)
-hist(subset(mydata.true, predictor==-1)$lda_measure.scale)
+abline(v=mean(subset(mydata.true, predictor==1)$lda_measure.scale),col="red")
 
 
 ## 1) SIMPLE MODEL TO TRY (WITH RANDOM STRUCTURE, NO PREDICTORS) ####

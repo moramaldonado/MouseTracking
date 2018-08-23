@@ -8,12 +8,12 @@ output: html_notebook
 #### Clear environment, charge packages and functions
 ```{r Clear environment, charge packages and functions}
 rm(list = ls())
-source("paper/R/packages-functions.R")
+source("/Users/mmaldona/Documents/GitHub/negationMT/paper/R/packages-functions.R")
 require('rstan')
 ```
 ### Data from Dale and Duran replication, and organizing
 ```{r Load negation data and organizing}
-load('negation_data_processed.RData')
+load('/Users/mmaldona/Documents/GitHub/negationMT/negation_data_processed.RData')
 
 # subset data to just true affirmative trials (for super simple model)
 mydata.affirmative.true <- subset(negation_data, Polarity=='P' & Response=='true')
@@ -27,7 +27,7 @@ mydata.true$Adjective <- factor(mydata.true$Adjective)
 
 #contrast coding -1/1 for predictor Polarity
 mydata.true$Polarity <- factor(mydata.true$Polarity)
-mydata.true$predictor <- ifelse(mydata.true$Polarity=='P', 1, -1)
+mydata.true$predictor <- ifelse(mydata.true$Polarity=='P', 0, 1)
 
 # log-transform the maximal deviation
 mydata.true$LogMaxDeviation <- log(mydata.true$MaxDeviation)
@@ -41,10 +41,17 @@ mydata.true$lda_measure.scale <-  scale(mydata.true$lda_measure, center=TRUE, sc
 #### Distribution of LDA and MD
 ```{r Distribution of LDA and MD after scaling, echo=FALSE, message=FALSE, warning=FALSE}
 par(mfrow=c(2,2))
-hist(subset(mydata.true, predictor==1)$LogMaxDeviation.scale, main='Aff,MD')
-hist(subset(mydata.true, predictor==-1)$LogMaxDeviation.scale, main='Neg,MD')
-hist(subset(mydata.true, predictor==1)$lda_measure.scale, main='Aff,LDA')
-hist(subset(mydata.true, predictor==-1)$lda_measure.scale, main='Neg,LDA')
+hist(subset(mydata.true, predictor=0)$LogMaxDeviation.scale, main='Aff,MD', xlim=c(-3,3), breaks=5)
+abline(v=mean(subset(mydata.true, predictor==0)$LogMaxDeviation.scale),col="red")
+
+hist(subset(mydata.true, predictor==1)$LogMaxDeviation.scale, main='Neg,MD' , xlim=c(-3,3), breaks=5)
+abline(v=mean(subset(mydata.true, predictor==1)$LogMaxDeviation.scale),col="red")
+
+hist(subset(mydata.true, predictor==0)$lda_measure.scale, main='Aff,LDA', xlim=c(-3,3), breaks=5)
+abline(v=mean(subset(mydata.true, predictor==0)$lda_measure.scale),col="red")
+
+hist(subset(mydata.true, predictor==1)$lda_measure.scale, main='Neg,LDA', xlim=c(-3,3), breaks=5)
+abline(v=mean(subset(mydata.true, predictor==1)$lda_measure.scale),col="red")
 ```
 
 ### Stan multivariate model 
@@ -92,7 +99,7 @@ stanDat.complete <- list(y= matrix(c(mydata.true$lda_measure.scale,mydata.true$L
                 x=matrix(c(rep(1, nrow(mydata.true)), mydata.true$predictor), ncol = 2),
                 N=nrow(mydata.true), K=2, J=2)
 
-fixEffit.complete <- stan(file="multivariate_outcome.stan", data = stanDat.complete, iter=2000, chains =4)
+fixEffit.complete <- stan(file="/Users/mmaldona/Documents/GitHub/negationMT/multivariate_outcome.stan", data = stanDat.complete, iter=2000, chains =4)
 
 
 ```
@@ -101,10 +108,11 @@ fixEffit.complete <- stan(file="multivariate_outcome.stan", data = stanDat.compl
 
 **How to read the results?**
 
-* beta[1,1] is the first intercept
-* beta[1,2] is the first slope
-* beta[2,1] is the second intercept
-* beta[2,2] is the second slope
+* 
+* beta[1,1] is the first intercept (LDA)
+* beta[1,2] is the first slope (LDA)
+* beta[2,1] is the second intercept (MD)
+* beta[2,2] is the second slope (MD)
 * Omega are the elements of the correlation matrix
 * Sigma are the elements of the covariance matrix
 
@@ -121,13 +129,13 @@ save(fixEffit.complete, file='model_replicationDD.RData')
 ### Applying multivariate model to validation data
 
 ```{r Validation data}
-load('Validation.RData')
+load('/Users/mmaldona/Documents/GitHub/negationMT/Validation.RData')
 
 mydata.validation  <- calibration_data  %>% dplyr::select('lda_measure_full','Subject', 'MaxDeviation', 'Polarity')
 
 #contrast coding -1/1 for predictor Polarity
 mydata.validation$Polarity <- factor(mydata.validation$Polarity)
-mydata.validation$predictor <- ifelse(mydata.validation$Polarity=='straight', 1, -1)
+mydata.validation$predictor <- ifelse(mydata.validation$Polarity=='straight', 0, 1)
 
 
 # log-transform the maximal deviation
@@ -141,10 +149,17 @@ mydata.validation$lda_measure.scale <-  scale(mydata.validation$lda_measure_full
 
 
 par(mfrow=c(2,2))
-hist(subset(mydata.validation, predictor==1)$LogMaxDeviation.scale, main='Straight,MD')
-hist(subset(mydata.validation, predictor==-1)$LogMaxDeviation.scale, main='Deviated,MD')
-hist(subset(mydata.validation, predictor==1)$lda_measure.scale, main='Straight,LDA')
-hist(subset(mydata.validation, predictor==-1)$lda_measure.scale, main='Deviated,LDA')
+hist(subset(mydata.validation, predictor=0)$LogMaxDeviation.scale, main='Straight,MD', xlim=c(-3,3), breaks=5)
+abline(v=mean(subset(mydata.validation, predictor==0)$LogMaxDeviation.scale),col="red")
+
+hist(subset(mydata.validation, predictor==1)$LogMaxDeviation.scale, main='Deviated,MD', xlim=c(-3,3), breaks=5)
+abline(v=mean(subset(mydata.validation, predictor==1)$LogMaxDeviation.scale),col="red")
+
+hist(subset(mydata.validation, predictor==0)$lda_measure.scale, main='Straight,LDA', xlim=c(-3,3), breaks=5)
+abline(v=mean(subset(mydata.validation, predictor==0)$lda_measure.scale),col="red")
+
+hist(subset(mydata.validation, predictor==1)$lda_measure.scale, main='Deviated,LDA', xlim=c(-3,3), breaks=5)
+abline(v=mean(subset(mydata.validation, predictor==1)$lda_measure.scale),col="red")
 
 ```
 
@@ -155,7 +170,7 @@ stanDat.complete.validation <- list(y= matrix(c(mydata.validation$lda_measure.sc
                          N=nrow(mydata.validation), K=2, J=2)
 
 
-fixEffit.complete.validation <- stan(file="multivariate_outcome.stan", data = stanDat.complete.validation, iter=2000, chains =4)
+fixEffit.complete.validation <- stan(file="/Users/mmaldona/Documents/GitHub/negationMT/multivariate_outcome.stan", data = stanDat.complete.validation, iter=2000, chains =4)
 ```
 
 #### Results model fit to Dale and Duran replication data
