@@ -1,4 +1,5 @@
 # PACKAGES ####
+setwd("/Users/mmaldona/Documents/GitHub/negationMT")
 
 library(reshape2)
 library(devtools)
