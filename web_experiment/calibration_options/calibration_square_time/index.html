@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="main.css">
+<style type="text/css">
+    body{
+        margin: 0;
+        padding: 0 1em;
+    }
+    #instructions{
+        position: absolute;
+        width: 529px;
+        right: 0;
+        left: 0;
+        top: 25%;
+        font-weight: 800;
+    }
+    #instructions, #instructions + main p{
+        text-align: center;
+    }
+
+    [data-run=calibration_run]{
+        width: 120vh;
+        height: 100vh;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        -webkit-transform: translateX(-50%);transform: translateX(-50%);
+
+        font-size: 5vh;
+        text-align: center;
+    }
+
+    [data-run=calibrarion_run].invisible #points {
+        visibility: hidden;
+    };
+
+    [data-run=experimental_design]{
+        width: 120vh;
+        height: 100vh;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        -webkit-transform: translateX(-50%);transform: translateX(-50%);
+
+        font-size: 5vh;
+        text-align: center;
+    }
+
+    .exp_des_button_2{
+        box-shadow: inset 0 0 0 1px black;
+        padding: 1em;
+        width: 5em;
+        font-size: .75em;
+        display: inline-block;
+        position: absolute;
+        cursor: pointer;
+        border-radius: .2em;
+        }
+
+    .exp_des_button{
+        box-shadow: inset 0 0 0 1px black;
+        padding: 1em;
+        width: 5em;
+        font-size: .75em;
+        display: inline-block;
+        position: absolute;
+        cursor: pointer;
+        border-radius: .2em;
+    }
+    #false{
+        left: 1em;
+        top: 1em;
+        background-color: blue;
+
+
+    }
+    #true{
+        right: 1em;
+        top: 1em;
+        background-color: red;
+    }
+    #start{
+        bottom: 1em;
+        left: 50%;
+        -webkit-transform: translateX(-50%);transform: translateX(-50%);
+    }
+
+    [data-run=experimental_design] p{
+        position: absolute;
+        bottom: 10em;
+        width: 100%;
+    }
+    canvas#debug{
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    [data-run=experimental_design] canvas#points{
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+    }
+
+    [data-run=experimental_design].invisible #sentence {
+        visibility: hidden;
+    }
+
+
+
+    #warning{
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: transparent;
+        z-index: -5;
+        margin: 0;
+        -webkit-animation: fade .5s ease-in;
+        animation: fade .5s ease-in;
+    }
+
+
+
+    @-webkit-keyframes fade { from { background-color: red; } to { background-color: transparent; }  }
+    @keyframes fade { from { background-color: red; } to { background-color: transparent; }  }
+    #warning p{
+        font-size: 2em;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: auto;
+        margin: 0;
+        transform: translate(-50%,-50%);
+    }
+
+
+</style>
+<body>
+<p id="loading">Loading experiment</p>
+<div class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+</div>
+</body>
+<script src="step_runs.js"></script>
+<script src="template_handling.js"></script>
+
+<script>
+    var exp_pointer = -1;
+    var mouse_log;
+    var started_tracking = false;
+    var can_debug, ctx_debug, rect_debug, timeout;
+    var order = trial_structure();
+    console.log(order);
+    console.log(order.length);
+    var zero_point, lessone_point, plusone_point, button_size = false;
+    var warner = false;
+    var response_timeout;
+    var ctx;
+    var practice_mode = true;
+    var moved_before_timeout, moved_before_400ms = true;
+
+
+
+    function trial_structure(){
+        var truth_value = ["T", "F"];
+        var polarity = ["P", "N"];
+        var adjective = ["B/S", "B/D", "H/C", "F/S", "L/Q"];
+        var trial_type = ['CI']; //  ControlItem
+        var trials = [];
+        var trials_semirandom;
+        var flag = 0;
+        var order = '';
+        var i;//truth
+        var t;//adjective
+        var b;//polarity
+        var n;//repetition
+
+        for (n=1; n < 6; n++) {for (i = 0; i < truth_value.length; i++) {for (b = 0; b < polarity.length; b++)
+            trials.push(trial_type[0]+truth_value[i]+polarity[b]+String(n));
+            //Controls (0,2) +  TRUTH (2,3) + POLARITY (3,4) + nº (4,5)
+        }}
+        console.log(String(trials.length));
+
+        shuffle(trials);
+
+        return trials;
+    }
+
+    function initialize () {
+        exp_pointer++;
+        var setup;
+
+        if(practice_mode && document.querySelector('[data-run=experimental_design]').getAttribute('data-practice')=="false"){
+            exp_pointer = 0;
+            practice_mode = false;
+            warner = false;
+        }
+
+        // warning
+        if(!warner)
+            document.getElementById('warning').style.visibility = "hidden";
+        else{
+            if(warner==="Good!"){
+                document.getElementById('warning').style.animation = "none";
+                document.getElementById('warning').style.webkitAnimation = "none";
+            }
+            document.querySelector('#warning p').innerHTML = warner;
+        }
+        warner = false;
+        // initializing variables
+        moved_before_400ms = true;
+        mouse_log = [];
+        document.querySelector('[data-run=experimental_design]').className = "invisible";
+        zero_point = document.getElementById('start').getBoundingClientRect();
+        zero_point = {
+            'x': zero_point.left + zero_point.width/2,
+            'y': zero_point.top
+        }
+
+        lessone_point = document.getElementById('false').getBoundingClientRect();
+        lessone_point = {
+            'x': lessone_point.right,
+            'y': lessone_point.bottom
+        }
+        plusone_point = document.getElementById('true').getBoundingClientRect();
+        plusone_point = {
+            'x': plusone_point.left,
+            'y': plusone_point.bottom
+        }
+
+
+        if(!button_size){
+            var temp_button_rect = document.getElementById('true').getBoundingClientRect();
+            button_size = {};
+            button_size.x = temp_button_rect.width / (zero_point.x - lessone_point.x)
+            button_size.y = temp_button_rect.height / (zero_point.y - lessone_point.y)
+
+        }
+
+        // setting up canvases
+        can_debug = document.getElementById('debug');
+        can_debug.setAttribute("width", window.innerHeight);
+        can_debug.setAttribute("height", window.innerHeight);
+        ctx_debug = can_debug.getContext("2d");
+        rect_debug = can_debug.getBoundingClientRect();
+
+
+        // on click bindings
+        started_tracking = false;
+        document.getElementById('start').addEventListener('click', function () {
+            if(!started_tracking){
+                extra_data.start_track = Date.now();
+                // log mouse first click
+                var setup2;
+                var norm_x = (event.clientX - zero_point.x) / (zero_point.x - lessone_point.x)
+                var norm_y = (zero_point.y - event.clientY) / (zero_point.y - lessone_point.y)
+                mouse_log.push([norm_x, norm_y, extra_data.start_track]);
+                started_tracking = true;
+                document.querySelector('[data-run=experimental_design]').className = "visible";
+
+                //6:false, 7:true, 8:false, 9:true, 10-11:true
+                if(practice_mode) switch (exp_pointer) {
+                    case 0:
+                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
+                        document.getElementsByTagName('p')[0].innerHTML = 'Giants are small.';
+                        console.log(exp_pointer);
+                        break;
+
+                    case 1:
+                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
+                        document.getElementsByTagName('p')[0].innerHTML = 'Giants are tall.';
+                        console.log(exp_pointer);
+                        break;
+
+                    case 2:
+                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
+                        document.getElementsByTagName('p')[0].innerHTML = 'Skyscrapers are not tall.';
+                        console.log(exp_pointer);
+                        break;
+
+
+                    case 3:
+                        //setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
+                        document.getElementsByTagName('p')[0].innerHTML = 'Skyscrapers are tall.';
+                        console.log(exp_pointer);
+                        break;
+
+
+                }
+
+
+                else{
+                switch (order[exp_pointer].substring(0,2)){
+                    case 'EI':
+                        //EI (0,2) + ADJ.PAIR (2,5) + TRUTH (5,6) + POLARITY (6,7) + nº (7,8)
+                        setup2 = stim_type('EI', order[exp_pointer].substring(2,5),  order[exp_pointer].substring(5,6), order[exp_pointer].substring(6,7), order[exp_pointer].substring(7,8));
+                        document.getElementsByTagName('p')[0].innerHTML = setup2.sentence;
+                        break;
+                    case 'CI':
+                        //Controls (0,2) +  TRUTH (2,3) + POLARITY (3,4) + nº (4,5)
+                        setup2 = stim_type('Control', order[exp_pointer].substring(4,5),  order[exp_pointer].substring(2,3), order[exp_pointer].substring(3,4));
+                        document.getElementsByTagName('p')[0].innerHTML = setup2.sentence;
+
+                }}
+
+                extra_data.design = setup2;
+                document.getElementById('warning').style.visibility = "hidden";
+                document.body.addEventListener('mousemove', record_mouse);
+                extra_data.tooslow = false;
+                response_timeout = setTimeout(function () {
+                    warner = "Too slow. Please answer faster.";
+                    extra_data.tooslow = true;
+                    logger_stop_button();
+                }, 6500)
+                moved_before_timeout = setTimeout(function () {
+                    console.log('didnt move');
+                    moved_before_400ms = false;
+                }, 400)
+            }
+            console.log(setup2)
+            return setup2
+
+        })
+
+        //0:false, 1:true, 2:false, 3:true
+        function logger_stop_button (event) {
+            if(started_tracking){
+                clearTimeout(response_timeout);
+
+                clearTimeout(moved_before_timeout);
+                if (event && practice_mode && moved_before_400ms && (([1,3].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2].indexOf(exp_pointer) > -1  && event.target.id=="false"))) {
+                    warner = "Good!"
+                } else if (event && practice_mode && (([1,3].indexOf(exp_pointer) > -1 && event.target.id!="true") || ([0,2].indexOf(exp_pointer) > -1 && event.target.id!="false"))) {
+                    warner = "Incorrect!"
+                } else if (event && practice_mode && !moved_before_400ms && (([1,3].indexOf(exp_pointer) > -1 && event.target.id=="true") || ([0,2].indexOf(exp_pointer) > -1 && event.target.id=="false"))) {
+                    warner = "Please, start moving the mouse earlier."
+                }
+                document.body.removeEventListener('mousemove', record_mouse)
+                console.log(mouse_log);
+                // next
+                extra_data.end_track = Date.now();
+                // log mouse first click
+                var norm_x = (event.clientX - zero_point.x) / (zero_point.x - lessone_point.x)
+                var norm_y = (zero_point.y - event.clientY) / (zero_point.y - lessone_point.y)
+                mouse_log.push([norm_x, norm_y, extra_data.end_track]);
+                next_page({
+                    mouse_log: mouse_log,
+                    "timestamp": Date.now(),
+                    "value": event?event.target.id:"--",
+                    "data": extra_data
+                });
+            }
+        }
+        document.getElementById('false').addEventListener('click', logger_stop_button)
+        document.getElementById('true').addEventListener('click', logger_stop_button)
+
+
+        var report_type;
+        if(practice_mode) report_type = "practice";
+        else switch (order[exp_pointer].substring(0,2)) {
+            case 'CI':
+                report_type = "Control";
+                break;
+            case 'EI':
+                report_type = "EI";
+                break;
+        }
+
+        return {"item_number": exp_pointer, "type": report_type, "raw": practice_mode?("practice"+exp_pointer):order[exp_pointer]};
+    }
+
+    function setup () {
+
+        var counts = {};
+        for (var i = order.length - 1; i >= 0; i--) {
+            if(!counts[order[i]]) { counts[order[i]] = 1 }
+            else { counts[order[i]]++ }
+        };
+        console.log(counts)
+
+        // debug
+        //order = order.splice(0,3);
+    }
+
+    function record_mouse (event) {
+        var norm_x = (event.clientX - zero_point.x) / (zero_point.x - lessone_point.x)
+        var norm_y = (zero_point.y - event.clientY) / (zero_point.y - lessone_point.y)
+        mouse_log.push([norm_x, norm_y, Date.now()]);
+        clearTimeout(moved_before_timeout);
+
+        // debug
+        // ctx_debug.fillStyle = "black";
+        // ctx_debug.beginPath();
+        // ctx_debug.arc(event.clientX - rect_debug.left, event.clientY - rect_debug.top, 2, 0, Math.PI*2);
+        // ctx_debug.closePath();
+        // ctx_debug.fill();
+    }
+
+
+
+    function stim_type (type, adjective, truth_condition, polarity, number) {
+
+
+        var controls = {
+            "type": "CI",
+            "tokens":
+            {"1": {"T":{"P":"Dogs are animals.",
+                "N":"Dogs are not reptiles."},
+
+                "F":{"P":"Dogs are reptiles.",
+                    "N":"Dogs are not animals."}},
+
+                "2": {"T":{"P":"Human blood is red.",
+                    "N":"Human blood is not green."},
+
+                    "F":{"P":"Human blood is green.",
+                        "N":"Human blood is not red."}},
+
+                "3": {"T":{"P":"Apples are fruits.",
+                    "N":"Apples are not insects."},
+
+                    "F":{"P":"Apples are insects.",
+                        "N":"Apples are not fruits."}},
+
+                "4": {"T":{"P":"Cars have wheels.",
+                    "N":"Cars have no wings."},
+
+                    "F":{"P":"Cars have wings.",
+                        "N":"Cars have no wheels."}},
+
+                "5": {"T":{"P":"Elephants have a trunk.",
+                    "N":"Elephants have no hair."},
+
+                    "F":{"P":"Elephants have hair.",
+                        "N":"Elephants have no trunk."}},
+
+            }
+        };
+
+        var setup = {polarity:polarity, truth_condition:truth_condition, adjective:adjective, number:number, sentence:{}, expectation:{}};
+        //var time = 500;
+
+        if (type=='EI'){
+            setup.sentence = stimuli.adjectives[setup.adjective][setup.truth_condition][setup.polarity][setup.number];
+        }
+        else
+            {
+            setup.sentence = controls.tokens[setup.adjective][setup.truth_condition][setup.polarity];
+        }
+
+        console.log('trial of type (adj, truth, polarity): '+adjective+'-'+truth_condition+'-'+polarity)
+        setup = expectations_from_case (truth_condition, setup)
+
+        return setup;
+    }
+
+
+ function expectations_from_case (truth, setup) {
+        var setup = setup || {expectation:{}};
+        if (truth==='F') {
+            setup.expectation = false
+         } else { // target==='T'
+            setup.expectation = true
+        }
+        return setup;
+    }
+
+
+
+
+
+
+
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
+
+
+    function get_random_int(min, max) {
+        return Math.floor(Math.random() * (max + 1 - min)) + min;
+    }
+
+    function b() {
+        return Math.random()<.5;
+    }
+
+    function get_random_from_array (source, exclude) {
+        var item;
+        do{
+            item = shuffle(source)[0];
+        } while ( !exclude ? false : Array.isArray(exclude) ? exclude.indexOf(item) !== -1 : item === exclude )
+        return item;
+    }
+
+
+
+</script>
+
+<script src="calibration.js"></script>
+
+</html>

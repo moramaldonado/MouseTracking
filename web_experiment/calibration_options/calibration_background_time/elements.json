@@ -1,0 +1,175 @@
+{
+  "title": "Default title",
+  "progress_bar": "<div id='progress' data-run='progress' data-steps='{nb_of_steps}' data-progress='{progress}'><div><span></span></div></div>",
+  "input_method": "{two_buttons}",
+  "label1": "Weird",
+  "label2": "Natural",
+
+  "single_button": "<div class='input button' data-run='single_button'>
+
+  <button><span>{button_text}</span></button>
+
+</div>",
+
+"go_back": "<div class='input button' data-run='go_back'>
+<table><tr>
+<td>
+<button><span>{button_text}</span></button>
+</td>
+</tr></table>
+</div>",
+
+"checkbox": "<div class='input checkbox' data-run='checkbox'> <!-- checkbox -->
+<table><tr>
+<td>
+<input type='checkbox' id='{checkbox_id}'><label for='{checkbox_id}'><span>{check_text}</span></label>
+</td>
+</tr></table>
+</div>",
+
+"numberbox": "<div class='input textbox' data-run='numberbox'>
+<table><tr>
+<td>
+<div><input type='text' autofocus></div>
+</td>
+</tr></table>
+</div>",
+
+"scale_from_middle": "<div class='input scale scale_from_middle' data-run='scale_from_middle' data-start='0'>
+<table><tr>
+<td class='label'>
+<span>{label1}</span>
+</td><td>
+<div><span></span></div>
+</td><td class='label'>
+<span>{label2}</span>
+</td>
+</tr></table>
+</div>",
+
+"scale_with_cursor": "<div class='input scale cursor' data-run='scale_with_cursor' data-start='{scalebar_start_point}'>
+<table><tr>
+<td class='label'>
+<span>{label1}</span>
+</td><td>
+<div><span></span></div>
+</td><td class='label'>
+<span>{label2}</span>
+</td>
+</tr></table>
+</div>",
+
+"scalebar": "<div class='input scale' data-run='scale' data-start='{scalebar_start_point}'>
+<div><span></span></div>
+<div><span>{label1}</span><span>{label2}</span></div>
+</div>",
+"scalebar_start_point": "0",
+
+"looper": "<div class='input button' data-run='looper'>
+<table><tr>
+<td>
+<button value='{label1}' data-loop='{back_to}'><span>{label1}</span></button>
+</td><td>
+<button value='{label2}'><span>{label2}</span></button>
+</td>
+</tr></table>
+</div>",
+
+"two_buttons": "<div class='input button' data-run='two_buttons'>
+<table><tr>
+<td>
+<button value='Not acceptable'><span>Not acceptable</span></button>
+</td><td>
+<button value='Acceptable'><span>Acceptable</span></button>
+</td>
+</tr></table>
+</div>",
+
+"7points": "<div class='input points' data-run='7points'> <!-- points -->
+<table><tr>
+<td class='label'>
+<span>{label1}</span>
+</td><td>
+<button value='1'><span></span></button>
+</td><td>
+<button value='2'><span></span></button>
+</td><td>
+<button value='3'><span></span></button>
+</td><td>
+<button value='4'><span></span></button>
+</td><td>
+<button value='5'><span></span></button>
+</td><td>
+<button value='6'><span></span></button>
+</td><td>
+<button value='7'><span></span></button>
+</td><td class='label'>
+<span>{label2}</span>
+</td>
+</tr></table>
+</div>",
+
+"6points": "<div class='input points' data-run='6points'> <!-- points -->
+<table><tr>
+<td class='label'>
+<span>{label1}</span>
+</td><td>
+<button value='1'><span></span></button>
+</td><td>
+<button value='2'><span></span></button>
+</td><td>
+<button value='3'><span></span></button>
+</td><td>
+<button value='4'><span></span></button>
+</td><td>
+<button value='5'><span></span></button>
+</td><td>
+<button value='6'><span></span></button>
+</td><td class='label'>
+<span>{label2}</span>
+</td>
+</tr></table>
+</div>",
+
+"10points": "<div class='input points' data-run='10points'> <!-- points -->
+<table><tr>
+<td class='label'>
+<span>{label1}</span>
+</td><td>
+<button value='1'><span></span></button>
+</td><td>
+<button value='2'><span></span></button>
+</td><td>
+<button value='3'><span></span></button>
+</td><td>
+<button value='4'><span></span></button>
+</td><td>
+<button value='5'><span></span></button>
+</td><td>
+<button value='6'><span></span></button>
+</td><td>
+<button value='7'><span></span></button>
+</td><td>
+<button value='8'><span></span></button>
+</td><td>
+<button value='9'><span></span></button>
+</td><td>
+<button value='10'><span></span></button>
+</td><td class='label'>
+<span>{label2}</span>
+</td>
+</tr></table>
+</div>",
+
+"textarea": "<div class='input textarea' data-run='textarea'>
+<table><tr>
+<td>
+<div><textarea autofocus></textarea></div>
+</td>
+</tr><tr>
+<td class='button'>
+<button><span>{button_text}</span></button>
+</td>
+</tr></table>
+</div>"
+}
